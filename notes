@@ -1,0 +1,26 @@
+Database:
+
+Tables:
+    - books
+        - ID
+        - Title
+        - Author
+        - ISBN
+        - Category
+        - LoanID
+
+    - loans
+        - BookID
+        - MemberID
+        - Taken
+        - Returned (nullable)
+
+    - members
+        - MembersID
+        - FirstName
+        - LastName
+        - Address
+        - Phone
+        - Birth
+        - Gender
+        - Email
