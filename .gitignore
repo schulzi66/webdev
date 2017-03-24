@@ -9,3 +9,5 @@ README.md
 logs/*
 tmp/*
 vendor/*
+/public_html/protected/database/database.ini
+public_html/src/img/

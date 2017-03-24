@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\MySQLService;
+
+use Database\DatabaseModel\DatabaseModel;
+
 /**
  * Created by PhpStorm.
  * User: Julian

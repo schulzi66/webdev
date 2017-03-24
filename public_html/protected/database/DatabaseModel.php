@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\DatabaseModel;
+use Database\ConnectionFactory\ConnectionFactory;
 
 /**
  * Created by PhpStorm.

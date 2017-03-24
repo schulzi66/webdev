@@ -2,8 +2,8 @@
 
 namespace Database\ConnectionFactory;
 
-use PDO;
-use PDOException;
+use Exception;
+use mysqli;
 
 /**
  * Created by PhpStorm.
@@ -22,8 +22,8 @@ class ConnectionFactory
             try {
                 $dbConfig = $this->loadConfiguration();
 
-                self::$connection = new PDO($dbConfig["dns"], $dbConfig["username"], $dbConfig["password"] );
-            } catch(PDOException $e) {
+                self::$connection = new mysqli($dbConfig["host"], $dbConfig["username"], $dbConfig["password"]);
+            } catch(Exception $e) {
                 echo 'Connection failed ' . $e->getMessage();
             }
         }
@@ -33,14 +33,11 @@ class ConnectionFactory
     {
         $settings = parse_ini_file($file, TRUE);
 
-        $dns = $settings['database']['driver'] . ':host=' . $settings['database']['host'] .
-            ((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '') .
-            ';dbname=' . $settings['database']['schema'];
-
+        $host = $settings['database']['host'];
         $username = $settings['database']['username'];
         $password = $settings['database']['password'];
 
-        $dbConfig = array('dns' => $dns, 'username' => $username, 'password' => $password);
+        $dbConfig = array('host' => $host, 'username' => $username, 'password' => $password);
 
         return $dbConfig;
     }
