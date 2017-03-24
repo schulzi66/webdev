@@ -1,5 +1,9 @@
 Database:
 
+FYI:
+https://www.sanwebe.com/2013/03/basic-php-mysqli-usage
+
+
 Tables:
     - books
         - ID
