@@ -21,10 +21,8 @@ class ConnectionFactory
         if (self::$connection) {
             try {
                 $dbConfig = $this->loadConfiguration();
-                $user = "";
-                $password = "";
 
-                self::$connection = new PDO($dbConfig, $user, $password );
+                self::$connection = new PDO($dbConfig["dns"], $dbConfig["username"], $dbConfig["password"] );
             } catch(PDOException $e) {
                 echo 'Connection failed ' . $e->getMessage();
             }
@@ -35,9 +33,15 @@ class ConnectionFactory
     {
         $settings = parse_ini_file($file, TRUE);
 
-        $dbConfig = $settings['database']['driver'] . ':host=' . $settings['database']['host'] .
+        $dns = $settings['database']['driver'] . ':host=' . $settings['database']['host'] .
             ((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '') .
             ';dbname=' . $settings['database']['schema'];
+
+        $username = $settings['database']['username'];
+        $password = $settings['database']['password'];
+
+        $dbConfig = array('dns' => $dns, 'username' => $username, 'password' => $password);
+
         return $dbConfig;
     }
 }
