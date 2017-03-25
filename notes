@@ -12,6 +12,7 @@ Tables:
         - ISBN
         - Category
         - LoanID
+        - BookNumber --> Join with bookshelf (?)
 
     - loans
         - BookID
@@ -28,3 +29,8 @@ Tables:
         - Birth
         - Gender
         - Email
+    ____
+    - bookshelf
+        - BookshelfID
+        - BookIDs
+        - Category
