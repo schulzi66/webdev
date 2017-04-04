@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\ConnectionFactory;
+namespace Database;
 
 use Exception;
 use mysqli;

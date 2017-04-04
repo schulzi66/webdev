@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\MySQLService;
+namespace Database;
 
-use Database\DatabaseModel\DatabaseModel;
+use Database\DatabaseModel;
 
 
 

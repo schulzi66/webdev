@@ -1,7 +1,7 @@
 <?php
 
-namespace Database\DatabaseModel;
-use Database\ConnectionFactory\ConnectionFactory;
+namespace Database;
+use Database\ConnectionFactory;
 
 
 class DatabaseModel {
