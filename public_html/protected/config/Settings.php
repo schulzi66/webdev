@@ -1,6 +1,6 @@
 <?php
 
-namespace config\settings;
+namespace config;
 
 
 abstract class Settings {
