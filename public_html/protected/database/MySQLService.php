@@ -21,9 +21,9 @@ class MySQLService extends DatabaseModel
 
     /**
      * @param $input
-     * @return Book
+     * @return array
      */
-    public function getAllBooksByTitleOrAuthor($input): Book
+    public function getAllBooksByTitleOrAuthor($input): array
     {
 
     }
@@ -32,9 +32,9 @@ class MySQLService extends DatabaseModel
 
     /**
      * @param $input
-     * @return Book
+     * @return array
      */
-    public function getAvailableBooksByTitleOrAuthor($input): Book
+    public function getAvailableBooksByTitleOrAuthor($input): array
     {
 
     }
