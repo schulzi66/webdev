@@ -10,6 +10,9 @@ class ConnectionFactory
     protected static $connection;
 
 
+    /**
+     * @return mysqli
+     */
     public function getConnection()
     {
         if (self::$connection) {
@@ -19,14 +22,16 @@ class ConnectionFactory
                 self::$connection = new mysqli($dbConfig["host"], $dbConfig["username"], $dbConfig["password"]);
                 return self::$connection;
 
-                echo "Connection successful";
-
             } catch(Exception $e) {
                 echo 'Connection failed ' . $e->getMessage();
             }
         }
     }
 
+    /**
+     * @param string $file
+     * @return array
+     */
     private function loadConfiguration($file = 'database.ini')
     {
         $settings = parse_ini_file($file, TRUE);
