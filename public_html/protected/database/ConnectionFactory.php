@@ -23,6 +23,9 @@ class ConnectionFactory
                 $dbConfig = $this->loadConfiguration();
 
                 self::$connection = new mysqli($dbConfig["host"], $dbConfig["username"], $dbConfig["password"]);
+
+                echo "Connection successful";
+
             } catch(Exception $e) {
                 echo 'Connection failed ' . $e->getMessage();
             }
