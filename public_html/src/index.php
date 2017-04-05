@@ -1,6 +1,13 @@
-<?php
-    echo "test";
+<html>
+<head>
+    <?php include '../protected/view/head.php'; ?>
+</head>
 
-?>
+    <?php include '../protected/view/header.php'; ?>
+<body>
 
-<h1>Test</h1>
+    <?php include '../protected/view/scripts.php'; ?>
+</body>
+</html>
+
+
