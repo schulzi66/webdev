@@ -1,8 +1,8 @@
 <html>
 <head>
-    <?php include '../protected/view/head.php'; ?>
+    <?php include '../protected/view/parts/head.php'; ?>
 </head>
-<?php include '../protected/view/header.php'; ?>
+<?php include '../protected/view/parts/header.php'; ?>
 <body>
 <div class="outer col" data-placeholder-label="Header">
     <div class="mainSearchWrapper">
@@ -21,6 +21,7 @@
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
 <?php include '../protected/view/scripts.php'; ?>
 </body>
+<?php include '../protected/view/parts/footer.php'; ?>
 </html>
 
 

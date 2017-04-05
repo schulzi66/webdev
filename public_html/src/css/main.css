@@ -28,14 +28,16 @@ h1 {
     padding-top:60px;
 }
 
-
 .wrapper .heading h1 {
     font-size:70px;
 }
 
 
-/*search box*/
+.outer.col {
+    margin:0 auto;
+}
 
+/*Search box style front page*/
 #searchTextbox {
     position: relative;
     display: inline;
@@ -61,15 +63,26 @@ h1 {
     cursor: pointer;
 }
 
-.outer.col {
-    margin:0 auto;
-}
-
 .searchBox {
     width:60%;
     margin:0 auto;
     position:relative;
     top:85px;
 }
+/*Search box style front page end*/
 
 
+/* Sticky footer styles
+-------------------------------------------------- */
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    background-color: #f7f7f7;
+}
