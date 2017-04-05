@@ -1,7 +1,6 @@
 <?php
 
 namespace Database;
-use Database\ConnectionFactory;
 
 /**
  * Class DatabaseModel

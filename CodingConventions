@@ -1,0 +1,35 @@
+# Coding Conventions
+
+## Script Names
+
+- Uppercase 
+- Camelcase
+- eg. SearchController.php
+
+## Php Script Structure
+
+- Opening tag: "<?php"
+- No closing php tag
+- Namespace required
+- Only one class per script
+
+## Classes
+
+- Class name is CamelCase  
+- No access modifiers on classes
+- Variable declarations at the beginning of a class
+
+## Functions
+
+- Function names CamelCase but starting with lowercase
+- Every Method must be documented with /** @param and @return */
+- Every method must have a return type declared, even : void
+
+## Variables
+
+- Variable names CamelCase but starting with lowercase
+
+## PHP Storm Settings
+
+- See blue highlighted inspection settings in InspectionSetting.png. These should be set to severity "Error"
+ 

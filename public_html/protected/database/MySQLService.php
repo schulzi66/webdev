@@ -25,7 +25,7 @@ class MySQLService extends DatabaseModel
      */
     public function getAllBooksByTitleOrAuthor($input): array
     {
-
+        return null;
     }
 
 //Todo PHKO: Create Database connection with getAdapter(); and query all available books with levenstein
@@ -36,6 +36,6 @@ class MySQLService extends DatabaseModel
      */
     public function getAvailableBooksByTitleOrAuthor($input): array
     {
-
+        return null;
     }
 }
