@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>Add Employee</title>
+		<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" type="text/css" href="employee_form.css">
+		<style type="text/css"> 
+		 html{
+			background-color: #d53e4f;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<a href="index.html">Home</a>
+		<h1>Employee Management System</h1>
+		<h3>Add Employee: Enter the following detail!</h3>
+
+		<form action="add_emp.php" method="post">
+			<p> First Name: <input type="TEXT" name="first_name" maxlength=20 autofocus required/> </p>
+			<p> Last Name: <input type="TEXT" name="last_name" size=20 	maxlength=20 required/> </p>
+			<p> Employee No: <input type="text" name="employee_no" min="101" max="999" required/> </p>
+			<p> DOB: <input type="text" name="date_of_birth" required/> </p>
+			<p> Gender: </p>
+			<p> <input type="RADIO" name="gender" value="Male"/> Male
+			<input type="RADIO" name="gender" value="Female"/> Female </p>
+			<p> Telephone: <input type="text" name="mobile_no" required/> </p>
+			<p> Email: <input type="text" name="email" maxlength=40 required/> </p>
+			<p> Address: <textarea name="address" cols="30" rows="6" maxlength=50 required></textarea> </p>
+			<p> Salary: <input type="text" name="salary" min="20000" max="80000" required/> </p>
+			<p> Hire Date: <input type="text" name="hire_date" required/> </p>
+			<p> <button class="add_employee" type="submit">Add</button> </p>
+
+		</form>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>Delete Employee</title>
+		<meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" type="text/css" href="employee_form.css">
+		<style type="text/css"> 
+		 html{
+			background-color: #d53e4f;
+			}
+		</style>
+	</head>
+
+	<body>
+		<a href="index.html">Home</a>
+		<h1>Employee Management System</h1>
+		<h3>Delete Employee: Please enter employee no!</h3>
+		<form action="delete_emp.php" method="post">
+			<p> Employee No: <input type="text" name="employee_no" min="101" max="999" required/> </p>
+			<p> <button class="delete_employee" type="submit">Delete</button> </p>
+
+		</form>
+
+  </body>
+
+</html>
