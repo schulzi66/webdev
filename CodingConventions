@@ -28,6 +28,7 @@
 ## Variables
 
 - Variable names CamelCase but starting with lowercase
+- Also variable names inside a form must follow this rule
 
 ## PHP Storm Settings
 
