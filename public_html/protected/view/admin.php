@@ -12,6 +12,7 @@
         </div>
         <div class="form-container container">
             <form action="../action/admin.php" method="post">
+                <h2>Admin Login</h2>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="userName" required>

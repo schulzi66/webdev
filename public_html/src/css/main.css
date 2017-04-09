@@ -1,5 +1,7 @@
+/* Global element styles
+-------------------------------------------------- */
 body {
-    margin: 0;
+    margin: 0 0 40px;
     border-top: 3px solid #096838;
     overflow-x: hidden;
 }
@@ -10,6 +12,12 @@ h1 {
     margin-top: 10px;
 }
 
+textarea {
+    resize: vertical;
+}
+
+/* TODO: Sections
+-------------------------------------------------- */
 .mainSearchWrapper {
     background: url(../img/library.jpg);
     overflow: hidden;
@@ -37,7 +45,7 @@ h1 {
     margin:0 auto;
 }
 
-/*Search box style front page*/
+/* Search box style front page */
 #searchTextbox {
     position: relative;
     display: inline;
@@ -69,28 +77,21 @@ h1 {
     position:relative;
     top:85px;
 }
-/*Search box style front page end*/
 
-
-/* Sticky footer styles
+/* Footer styles
 -------------------------------------------------- */
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 40px;
-}
 .footer {
-    position: absolute;
     bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: 100% !important;
     height: 40px;
+    position: absolute;
     background-color: #f7f7f7;
 }
 
-
-/*
-    Form Container
- */
+/* Form Container
+-------------------------------------------------- */
 
 .form-container {
     width: 63%;

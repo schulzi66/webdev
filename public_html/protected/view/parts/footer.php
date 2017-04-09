@@ -1,5 +1,5 @@
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">© text text text</p>
+        <p class="text-muted">© SWD Library 2017</p>
     </div>
 </footer>
