@@ -1,6 +1,6 @@
 <?php
 
-namespace SearchController;
+namespace Controller;
 use Database\MySQLService;
 use Entities\Book;
 

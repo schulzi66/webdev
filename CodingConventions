@@ -21,7 +21,7 @@
 
 ## Functions
 
-- Function names CamelCase but starting with lowercase
+- Function names are in CamelCase but starting with lowercase
 - Every Method must be documented with /** @param and @return */
 - Every method must have a return type declared, even : void
 

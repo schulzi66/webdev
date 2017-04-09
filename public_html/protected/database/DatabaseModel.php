@@ -7,7 +7,7 @@ namespace Database;
  * @package Database
  */
 class DatabaseModel {
-    protected function getAdapter() {
+    protected static function getAdapter() {
         $connection = new ConnectionFactory();
         return $connection->getConnection();
     }

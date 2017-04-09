@@ -2,16 +2,25 @@
 
 namespace Database;
 
-use Database\DatabaseModel;
+use Database\DatabaseModel as DatabaseModel;
 use Entities\Book;
 
 
 class MySQLService extends DatabaseModel
 {
 
-    public function listItemsForSharerSQL()
+    /**
+     * MySQLService constructor.
+     */
+    public function __construct()
     {
-        $this->getAdapter();
+    }
+
+//Todo: method signature
+    public static function connect()
+    {
+        DatabaseModel::getAdapter();
+//        $this->getAdapter();
         $items = "";
         return $items; //TODO Jul Implementation
     }

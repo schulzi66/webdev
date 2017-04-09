@@ -10,12 +10,12 @@
             <div class="heading"><h1>SWD LIBRARY</h1>
             </div>
         </div>
-        <form action="../controller/LoginController.php" method="post">
+        <form action="../action/admin.php" method="post">
             <fieldset class="fieldset">
                 <legend>Admin Login:</legend>
                 <p>
                     <label>User name:* </label>
-                    <input type="text" name="userName" required>
+                    <input type="text" name="userName" reguired />
                 </p>
                 <p>
                     <label>Password:* </label>

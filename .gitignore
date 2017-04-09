@@ -4,7 +4,6 @@
 .github
 README.md
 .travis.yml
-.htaccess
 .idea/
 logs/*
 tmp/*
