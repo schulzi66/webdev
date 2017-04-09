@@ -1,13 +1,12 @@
 <?php
-
-//namespace Database;
-
+require "ConnectionFactory.php";
 /**
  * Class DatabaseModel
  * @package Database
  */
 class DatabaseModel {
-    protected static function getAdapter() {
+
+    public static function getAdapter() {
         $connection = new ConnectionFactory();
         return $connection->getConnection();
     }

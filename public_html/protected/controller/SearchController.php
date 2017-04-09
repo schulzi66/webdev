@@ -1,9 +1,6 @@
 <?php
-
-//namespace Controller;
-use Database\MySQLService;
 use Entities\Book;
-
+require "../database/MySQLService.php";
 class SearchController
 {
     protected $searchResults;
@@ -14,10 +11,9 @@ class SearchController
      * @param $input
      * @return array
      */
-    public function searchBooks($input) : array {
-        $sql = new MySQLService();
+    public static function searchBooks($input) : array {
         //TODO or other method
-        $sql->getAllBooksByTitleOrAuthor($input);
+        MySQLService::getAllBooksByTitleOrAuthor($input);
 
         $book = new Book("sadf", "df", "masd", "fsa", "asdf", "d");
 

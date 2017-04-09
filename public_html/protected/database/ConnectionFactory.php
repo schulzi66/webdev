@@ -1,10 +1,5 @@
 <?php
 
-//namespace Database;
-
-use Exception;
-use mysqli;
-
 /**
  * Class ConnectionFactory
  * @package Database

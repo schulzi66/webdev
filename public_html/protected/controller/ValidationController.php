@@ -1,12 +1,11 @@
 <?php
-//namespace Controller;
 class ValidationController
 {
     /**
      * @param $data
      * @return string
      */
-    function validateInput($data): string {
+    public static function validateInput($data): string {
         $data = trim($data);
         $data = stripcslashes($data);
         $data = htmlspecialchars($data);
@@ -17,9 +16,9 @@ class ValidationController
      * @param $array
      * @return array
      */
-    function validateInputArray($array) :array {
+    public static function validateInputArray($array) :array {
         foreach ($array as $data){
-            $data = $this->validateInput($data);
+            $data = ValidationController::validateInput($data);
         }
         return $array;
     }

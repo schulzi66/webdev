@@ -1,28 +1,15 @@
 <?php
-
-//namespace Database;
-
-use DatabaseModel as DatabaseModel;
 use Entities\Book;
+require "DatabaseModel.php";
 
-
-class MySQLService extends DatabaseModel
+class MySQLService
 {
-
-    /**
-     * MySQLService constructor.
-     */
-    public function __construct()
-    {
-    }
 
 //Todo: method signature
     public static function connect()
     {
-        DatabaseModel::getAdapter();
-//        $this->getAdapter();
-        $items = "";
-        return $items; //TODO Jul Implementation
+        $adapter = DatabaseModel::getAdapter();
+        return $adapter; //TODO Jul Implementation
     }
 
 
@@ -32,7 +19,7 @@ class MySQLService extends DatabaseModel
      * @param $input
      * @return array
      */
-    public function getAllBooksByTitleOrAuthor($input): array
+    public static function getAllBooksByTitleOrAuthor($input): array
     {
         return null;
     }
@@ -43,7 +30,7 @@ class MySQLService extends DatabaseModel
      * @param $input
      * @return array
      */
-    public function getAvailableBooksByTitleOrAuthor($input): array
+    public static function getAvailableBooksByTitleOrAuthor($input): array
     {
         return null;
     }
