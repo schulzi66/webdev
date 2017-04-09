@@ -16,10 +16,26 @@ class ConnectionFactory
     {
 //        if (self::$connection) {
             try {
-                $dbConfig = $this->loadConfiguration();
+                // Set the database access information as constants...
+                DEFINE ('DB_USER', 'root');
+                DEFINE ('DB_PASSWORD', '');
+                DEFINE ('DB_HOST', 'localhost');
+                DEFINE ('DB_NAME', 'webdev');
 
-                self::$connection = new mysqli($dbConfig["host"], $dbConfig["username"], $dbConfig["password"]);
-                return self::$connection;
+                // Make the connection...
+                $db_connection = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+                OR die ('Could not connect to MySQL! ' . mysqli_connect_error());
+
+                // Set the encoding...
+                mysqli_set_charset($db_connection, 'utf8');
+
+                return $db_connection;
+
+//
+//                $dbConfig = $this->loadConfiguration();
+//
+//                self::$connection = new mysqli($dbConfig["host"], $dbConfig["username"], $dbConfig["password"]);
+//                return self::$connection;
 
             } catch(Exception $e) {
                 echo 'Connection failed ' . $e->getMessage();
