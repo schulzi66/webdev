@@ -9,7 +9,11 @@ class LoginController
      */
     public static function loginUser($credentials): boolean
     {
-        MySQLService::connect();
+        $sqlService = new MySQLService();
+        $sa = $sqlService->connect();
+        if ($sa){
+            $sqlService->getUserFromDatabase($credentials);
+        }
         return true;
     }
 }

@@ -14,7 +14,7 @@ class ConnectionFactory
      */
     public function getConnection()
     {
-        if (self::$connection) {
+//        if (self::$connection) {
             try {
                 $dbConfig = $this->loadConfiguration();
 
@@ -24,7 +24,8 @@ class ConnectionFactory
             } catch(Exception $e) {
                 echo 'Connection failed ' . $e->getMessage();
             }
-        }
+            return null;
+//        }
     }
 
     /**

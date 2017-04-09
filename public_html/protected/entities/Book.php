@@ -1,7 +1,5 @@
 <?php
 
-namespace Entities;
-
 class Book
 {
     private $id, $title, $author, $isbn, $category, $loanId;
