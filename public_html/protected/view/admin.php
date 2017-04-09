@@ -10,24 +10,19 @@
             <div class="heading"><h1>SWD LIBRARY</h1>
             </div>
         </div>
-        <form action="../action/admin.php" method="post">
-            <div class="form-group">
-                <fieldset class="fieldset">
-                    <legend>Admin Login:</legend>
-                    <p>
-                        <label>User name:* </label>
-                        <input type="text" name="userName" reguired/>
-                    </p>
-                    <p>
-                        <label>Password:* </label>
-                        <input type="password" name="password" required>
-                    </p>
-                    <p>
-                        <input class="submit" value="Login" type="submit">
-                    </p>
-                </fieldset>
-            </div>
-        </form>
+        <div class="form-container container">
+            <form action="../action/admin.php" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->

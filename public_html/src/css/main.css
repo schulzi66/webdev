@@ -86,3 +86,25 @@ body {
     height: 40px;
     background-color: #f7f7f7;
 }
+
+
+/*
+    Form Container
+ */
+
+.form-container {
+    width: 63%;
+}
+
+/*
+    Overwrites to change standard Bootstrap
+ */
+
+.btn-primary {
+    background-color: #096838;
+    border-color: #085830;
+}
+
+.btn-primary:hover {
+    background-color: #085830;
+}
