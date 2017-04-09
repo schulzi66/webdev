@@ -26,9 +26,10 @@ class MySQLService
     /**
      * @return bool
      */
-    public function connect() : boolean
+    public function connect() : bool
     {
         $this->setConnection(DatabaseModel::getAdapter());
+
         if ($this->getConnection()){
             return true;
         }
@@ -44,15 +45,14 @@ class MySQLService
     {
         $connection = $this->getConnection();
         if ($this->getConnection()){
-//            $result = $connection->query("Select * From member");
-            $query = "SELECT * FROM member WHERE Firstname=? AND Surname=?";
-            $statement = $connection->prepare($query);
-            $statement->bind_param('ss', $credentials["userName"], $credentials["password"]);
-            $result = $statement->execute();
-//            $statement->bind_result($Firstname, $Lastname);
-            $user = new User($result["Firstname"], $result["Surname"]);
-            return $user;
-//            $sql =  "SELECT * FROM member WHERE Firstname = ". $credentials["userName"] .";";
+            $userName = mysqli_real_escape_string($connection, $credentials["userName"]);
+            $sql = "SELECT * FROM member WHERE Firstname = '". $userName . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result -> num_rows == 1){
+                $user = new User($result["Firstname"], $result["Surname"]);
+                return $user;
+            }
+            return null;
         }
         else  {
             return null;
