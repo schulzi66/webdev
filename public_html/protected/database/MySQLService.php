@@ -1,8 +1,8 @@
 <?php
 
-namespace Database;
+//namespace Database;
 
-use Database\DatabaseModel as DatabaseModel;
+use DatabaseModel as DatabaseModel;
 use Entities\Book;
 
 

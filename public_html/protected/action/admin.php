@@ -1,7 +1,7 @@
 <?php
-namespace Action;
-use Controller\ValidationController as ValidationController;
-use Controller\LoginController as LoginController;
+//namespace Action;
+use ValidationController as ValidationController;
+use LoginController as LoginController;
 
 require_once "../controller/ValidationController.php";
 require_once "../controller/LoginController.php";

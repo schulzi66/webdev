@@ -1,9 +1,10 @@
 <?php
-namespace Controller;
-use Database\MySQLService as MySqlService;
+//namespace Controller;
+use MySQLService as MySqlService;
 //require_once ($_SERVER['DOCUMENT_ROOT']."public_html/protected/database/MySQLService.php");
-require_once $_SERVER['DOCUMENT_ROOT']."/webdev/public_html/protected/database/MySQLService.php";
+//require_once $_SERVER['DOCUMENT_ROOT']."/public_html/protected/database/MySQLService.php";
 //include ($_SERVER['DOCUMENT_ROOT']."public_html/protected/database/MySQLService.php");
+require "../database/MySQLService.php";
 
 class LoginController
 {
