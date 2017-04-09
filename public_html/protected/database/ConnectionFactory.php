@@ -30,13 +30,6 @@ class ConnectionFactory
                 mysqli_set_charset($db_connection, 'utf8');
 
                 return $db_connection;
-
-//
-//                $dbConfig = $this->loadConfiguration();
-//
-//                self::$connection = new mysqli($dbConfig["host"], $dbConfig["username"], $dbConfig["password"]);
-//                return self::$connection;
-
             } catch(Exception $e) {
                 echo 'Connection failed ' . $e->getMessage();
             }
