@@ -19,14 +19,12 @@ textarea {
 /* TODO: Sections
 -------------------------------------------------- */
 .mainSearchWrapper {
-    background: url(../img/library.jpg);
+    background: url(../img/library2.jpg);
     overflow: hidden;
     height: 530px;
     width: 100% !important;
     background-repeat: no-repeat;
     background-position: center;
-    border-bottom:1px solid #096838;
-    border-top:1px solid #096838;
 }
 
 .heading {
@@ -38,11 +36,6 @@ textarea {
 
 .wrapper .heading h1 {
     font-size:70px;
-}
-
-
-.outer.col {
-    margin:0 auto;
 }
 
 /* Search box style front page */

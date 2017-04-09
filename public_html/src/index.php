@@ -6,10 +6,7 @@
 <body>
 <div class="outer col" data-placeholder-label="Header">
     <div class="mainSearchWrapper">
-        <div class="outer col">
-            <div class="heading"><h1>SWD LIBRARY</h1>
-            </div>
-        </div>
+        <div class="heading"><h1>SWD LIBRARY</h1></div>
         <div class="searchBox">
             <div id="searchbox_div">
                 <input id="searchTextbox" name="searchtext" type="text">
