@@ -48,7 +48,7 @@ class MySQLService
         if ($this->getConnection()){
             $userName = mysqli_real_escape_string($connection, $credentials["userName"]);
             $password = mysqli_real_escape_string($connection, $credentials["password"]);
-            $sql = "SELECT * FROM users WHERE UserName = '". $userName . "' AND Password = '" . $password . "';";
+            $sql = "SELECT * FROM users WHERE Binary UserName = '". $userName . "' AND Binary Password = '" . $password . "';";
             $result = mysqli_query($connection, $sql);
             if ($result -> num_rows == 1){
                 $result = mysqli_fetch_assoc($result);

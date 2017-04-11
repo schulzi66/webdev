@@ -1,3 +1,18 @@
+<?php
+session_start();
+//TODO MASC remove. only testing purposes;
+//echo
+//$_SESSION["admin"] = false;
+//var_dump($_SESSION);
+
+if ($_SESSION["admin"] == true){
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   ="/Webdev/public_html/protected/view";
+    $extra = 'dashboard.php';
+    header("Location: http://$host$uri/$extra");
+    exit;
+}
+?>
 <html>
 <head>
     <?php include '../../protected/view/parts/head.php'; ?>

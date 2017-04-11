@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $credentials = ['userName' => $userName, 'password' => $password];
         $credentials = ValidationController::validateInputArray($credentials);
         if (LoginController::loginUser($credentials)){
+            session_start();
+            $_SESSION["admin"] = true;
             $host  = $_SERVER['HTTP_HOST'];
             $uri   ="/Webdev/public_html/protected/view";
             $extra = 'dashboard.php';
