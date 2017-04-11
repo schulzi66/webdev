@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="form-container container">
-            <form action="../action/admin.php" method="post">
+            <form action="../protected/action/admin.php" method="post">
                 <h2>Admin Login</h2>
                 <div class="form-group">
                     <label for="username">Username</label>
