@@ -11,8 +11,10 @@ class LoginController
     {
         $sqlService = new MySQLService();
         if ($sqlService->connect()){
-            $sqlService->getUserFromDatabase($credentials);
+            if ($sqlService->getUserFromDatabase($credentials) != null){
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 }

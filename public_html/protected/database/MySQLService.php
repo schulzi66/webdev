@@ -40,17 +40,19 @@ class MySQLService
 
     /**
      * @param $credentials
+     * @return null|User
      */
-    public function getUserFromDatabase($credentials) : User
+    public function getUserFromDatabase($credentials) : ?User
     {
         $connection = $this->getConnection();
         if ($this->getConnection()){
             $userName = mysqli_real_escape_string($connection, $credentials["userName"]);
-            $sql = "SELECT * FROM member WHERE Firstname = '". $userName . "';";
+            $password = mysqli_real_escape_string($connection, $credentials["password"]);
+            $sql = "SELECT * FROM users WHERE UserName = '". $userName . "' AND Password = '" . $password . "';";
             $result = mysqli_query($connection, $sql);
             if ($result -> num_rows == 1){
-                $user = new User($result["Firstname"], $result["Surname"]);
-                return $user;
+                $result = mysqli_fetch_assoc($result);
+                return new User($result["UserName"], null);
             }
             return null;
         }

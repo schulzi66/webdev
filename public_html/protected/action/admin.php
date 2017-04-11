@@ -10,10 +10,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $credentials = ['userName' => $userName, 'password' => $password];
         $credentials = ValidationController::validateInputArray($credentials);
-        LoginController::loginUser($credentials);
+        if (LoginController::loginUser($credentials)){
+            $host  = $_SERVER['HTTP_HOST'];
+            $uri   ="/Webdev/public_html/protected/view";
+            $extra = 'dashboard.php';
+            header("Location: http://$host$uri/$extra");
+            exit;
+        }
+        else{
+            $errorArray[]= "Please provide valid credentials";
+        }
     }
     else {
         $errorArray[]= "Please provide valid credentials";
+    }
+    if (ValidationController::checkForErrors($errorArray)){
+        echo "<h4>Please <a href='../view/admin.php'>go back</a> and enter credentials again!</h4>";
     }
 }
 
