@@ -52,7 +52,7 @@ class MySQLService
             $result = mysqli_query($connection, $sql);
             if ($result -> num_rows == 1){
                 $result = mysqli_fetch_assoc($result);
-                return new User($result["UserName"], null);
+                return new User($result["UserID"], $result["UserName"]);
             }
             return null;
         }

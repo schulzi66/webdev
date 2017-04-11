@@ -9,8 +9,8 @@
 ## Php Script Structure
 
 - Opening tag: "<?php"
-- No closing php tag 
-- Namespace required
+- No closing php tag ony when html involved
+- No Namespace
 - Only one class per script
 
 ## Classes
