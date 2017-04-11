@@ -1,17 +1,23 @@
 # Coding Conventions
 
-## Script Names
+## Php Class
 
-- Uppercase 
+- Uppercase
 - Camelcase
-- eg. SearchController.php
-
-## Php Script Structure
-
 - Opening tag: "<?php"
-- No closing php tag ony when html involved
+- No closing php tag 
 - No Namespace
 - Only one class per script
+- No html tags or script snippets in a class file 
+
+## Php Scripts 
+
+- LowerCase
+- Opening tag: "<?php"
+- Closing tag: "?>"
+- Can involve html tags/structure
+- No Namespace
+- No class 
 
 ## Classes
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 //TODO MASC remove. only testing purposes;
-//echo
+//Remove to delete session
 //$_SESSION["admin"] = false;
 //var_dump($_SESSION);
 
