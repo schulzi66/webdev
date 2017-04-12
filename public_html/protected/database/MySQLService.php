@@ -1,6 +1,7 @@
 <?php
 require "DatabaseModel.php";
 require "../entities/User.php";
+require "../entities/Book.php";
 class MySQLService
 {
     private $connection;
@@ -45,7 +46,7 @@ class MySQLService
     public function getUserFromDatabase($credentials) : ?User
     {
         $connection = $this->getConnection();
-        if ($this->getConnection()){
+        if ($connection){
             $userName = mysqli_real_escape_string($connection, $credentials["userName"]);
             $password = mysqli_real_escape_string($connection, $credentials["password"]);
             $sql = "SELECT * FROM users WHERE Binary UserName = '". $userName . "' AND Binary Password = '" . $password . "';";
@@ -60,6 +61,26 @@ class MySQLService
             return null;
         }
     }
+
+    /**
+     * @return array|null
+     */
+    public function getAllBooks() : ?array {
+        $connection = $this->getConnection();
+        if ($connection){
+            $sql = "Select * From books";
+            $result = mysqli_query($connection, $sql);
+            if ($result -> num_rows >= 1){
+                $bookArray = $result->fetch_all();
+                return $bookArray;
+            }
+            return null;
+        }
+        else{
+            return null;
+        }
+    }
+
 
 //Todo PHKO: Create Database connection with getAdapter(); and query all available books with levenstein
 

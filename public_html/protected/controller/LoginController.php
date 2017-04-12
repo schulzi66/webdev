@@ -1,5 +1,5 @@
-<?php
-require "../database/MySQLService.php";
+    <?php
+    require "../database/MySQLService.php";
 
 class LoginController
 {
