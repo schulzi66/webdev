@@ -55,17 +55,15 @@ class MySQLService
                 $result = mysqli_fetch_assoc($result);
                 return new User($result["UserID"], $result["UserName"]);
             }
-            return null;
         }
-        else  {
-            return null;
-        }
+        return null;
     }
 
     /**
      * @return array|null
      */
-    public function getAllBooks() : ?array {
+    public function getAllBooks() : ?array
+    {
         $connection = $this->getConnection();
         if ($connection){
             $sql = "Select * From books";
@@ -74,11 +72,27 @@ class MySQLService
                 $bookArray = $result->fetch_all();
                 return $bookArray;
             }
-            return null;
         }
-        else{
-            return null;
+        return null;
+    }
+
+    /**
+     * @param $id
+     * @return Book|null
+     */
+    public function getBookById($id) : ?Book
+    {
+        $connection = $this->getConnection();
+        if ($connection){
+            $sql = "Select * From books WHERE ID = '" . $id . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result -> num_rows == 1){
+                $result = $result->fetch_assoc();
+                $book = new Book($result["ID"],$result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["LoanID"]);
+                return $book;
+            }
         }
+        return null;
     }
 
 

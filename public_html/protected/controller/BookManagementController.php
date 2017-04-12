@@ -13,4 +13,16 @@ class BookManagementController
         }
         return null;
     }
+
+    /**
+     * @param $id
+     * @return Book|null
+     */
+    public static function getBookById($id) : ?Book {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()){
+            return $sqlService->getBookById($id);
+        }
+        return null;
+    }
 }

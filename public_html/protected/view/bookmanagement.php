@@ -17,8 +17,8 @@ if ($_SESSION["admin"] != true){
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 
-<div class="tableau">
-    <table >
+<div class="container">
+    <table class="table table-hover table-bordered">
         <tr>
             <td>
                 ID
@@ -53,13 +53,19 @@ foreach ($books as $book) {
     echo '<td>'.$book["0"].'</td>';
     echo '<td>'.$book["1"].'</td>';
     echo '<td>'.$book["2"].'</td>';
-    echo '<td>'.$book["3"].'€</td>';
+    echo '<td>'.$book["3"].'</td>';
     echo '<td>'.$book["4"].'</td>';
     echo '<td>'.$book["5"].'</td>';
+    echo '<td><a href="../protected/action/bookmanagement.php?book-update='. $book["0"] .'">Update</a></td>';
+    echo '<td><a href="../protected/action/bookmanagement.php?book-delete='. $book["0"] .'">Delete</a></td>';
     echo '</tr>';
 }
+echo '<tr>';
+echo '<td><a href="../action/bookmanagement.php?book-add">Add new Book</a></td>';
+echo '</tr>';
 echo '</table>';
 echo '</div></br>';
+
 
 
 
