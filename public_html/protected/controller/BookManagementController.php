@@ -14,6 +14,7 @@ class BookManagementController
         return null;
     }
 
+    //TODO MASC NEEDED?
     /**
      * @param $id
      * @return Book|null
@@ -24,5 +25,41 @@ class BookManagementController
             return $sqlService->getBookById($id);
         }
         return null;
+    }
+
+    /**
+     * @param $book
+     * @return bool
+     */
+    public static function addBook($book) : bool{
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()){
+            return $sqlService->addBook($book);
+        }
+        return false;
+    }
+
+    /**
+     * @param $book
+     * @return bool
+     */
+    public static function deleteBook($bookId) : bool {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()){
+            return $sqlService->deleteBook($bookId);
+        }
+        return false;
+    }
+
+    /**
+     * @param $book
+     * @return bool
+     */
+    public static function updateBook($book) : bool {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()){
+            return $sqlService->updateBook($book);
+        }
+        return false;
     }
 }

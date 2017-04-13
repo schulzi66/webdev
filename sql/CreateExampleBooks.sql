@@ -24,3 +24,5 @@ INSERT INTO books
       (18, "The Da Vinci Code", "Dan Brown", "0307474275", "Mystery,Thriller", NULL ),
       (19, "The Dictator's Handbook: Why Bad Behavior is Almost Always Good Politics", "Bruce Bueno de Mesquita", "1610391845", "History,Education", NULL ),
       (20, "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", "0345391802", "Fantasy,Humour", NULL );
+
+ALTER TABLE books AUTO_INCREMENT = 21

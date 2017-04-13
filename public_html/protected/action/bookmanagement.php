@@ -8,22 +8,33 @@ if ($_SESSION["admin"] != true){
     header("Location: http://$host$uri/$extra");
     exit;
 }
+$books = unserialize($_SESSION["books"]);
 if (isset($_GET['book-update'])) {
-    $bookId = ($_GET['book-update']);
-    $book = BookManagementController::getBookById($bookId);
+    $bookId = $_GET["book-update"] - 1;
+    $book = $books[$bookId];
     $book = serialize($book);
     $host  = $_SERVER['HTTP_HOST'];
     $uri   ="/Webdev/public_html/protected/view";
     $extra = 'updatebook.php';
-    //TODO MASC find solution
-    header("Location: http://$host$uri/$extra/?book='.$book.'");
+    header("Location: http://$host$uri/$extra/?book=$book");
     exit;
 }
-//TODO MASC
+
 if (isset($_GET['book-delete'])) {
-    $book = $_GET['book-delete'];
+    $bookId = $_GET['book-delete'] - 1;
+    $book = $books[$bookId];
+    $book = serialize($book);
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   ="/Webdev/public_html/protected/view";
+    $extra = 'deletebook.php';
+    header("Location: http://$host$uri/$extra/?book=$book");
+    exit;
 }
 
 if (isset($_GET['book-add'])) {
-    //TODO MASC
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   ="/Webdev/public_html/protected/view";
+    $extra = 'addbook.php';
+    header("Location: http://$host$uri/$extra");
+    exit;
 }
