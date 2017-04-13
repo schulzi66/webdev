@@ -153,25 +153,43 @@ class MySQLService
     }
 
 
-//Todo PHKO: Create Database connection with getAdapter(); and query all available books with levenstein
-
     /**
      * @param $input
      * @return array
      */
-    public static function getAllBooksByTitleOrAuthor($input): array
+    public function getBooksByTitleOrAuthor($input): ?array
     {
-        return null;
-    }
-
-//Todo PHKO: Create Database connection with getAdapter(); and query all available books with levenstein
-
-    /**
-     * @param $input
-     * @return array
-     */
-    public static function getAvailableBooksByTitleOrAuthor($input): array
-    {
+        $connection = $this->getConnection();
+        if($connection) {
+            if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
+                    . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
+            } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
+                    . $input["bookAuthor"] . "%';";
+            } else if ($input["bookTitle"] != "" && $input["notLoaned"] == "on") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND LoanID IS NULL;";
+            } else if ($input["bookTitle"] != "") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%';";
+            } else if ($input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
+                    $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
+            } else if ($input["bookAuthor"] != "") {
+                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%';";
+            } else {
+                return null;
+            }
+            $result = mysqli_query($connection, $sql);
+            if($result -> num_rows > 0)
+            {
+                $resultArray = $result->fetch_all();
+                $bookArray = Array();
+                foreach($resultArray as &$book)
+                {
+                    array_push($bookArray, new Book($book["0"],$book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
+                }
+                return $bookArray;
+            }
+        }
         return null;
     }
 }
