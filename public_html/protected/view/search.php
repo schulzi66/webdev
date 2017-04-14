@@ -30,16 +30,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function validate()
-{
-  if(document.forms["searchForm"]["bookTitle"].value === "" && document.forms["searchForm"]["bookAuthor"].value === "")
-  {
-      alert("Please fill either field with text for a valid search");
-      return false;
-  }
-  return true;
-}</script>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
 <?php include '../../protected/view/parts/scripts.php'; ?>
 </body>
