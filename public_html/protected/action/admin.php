@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorArray[]= "Please provide valid credentials";
     }
     if (ValidationController::checkForErrors($errorArray)){
-        echo "<h4>Please <a href='../view/admin.php'>go back</a> and enter credentials again!</h4>";
+        echo "<div class=\"alert alert-danger\"><strong>Please <a href='../view/admin.php'>go back</a></strong> and enter credentials again.</div>";
     }
 }
 
