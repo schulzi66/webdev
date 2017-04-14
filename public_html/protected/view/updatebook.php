@@ -1,4 +1,5 @@
 <?php
+include "../entities/Book.php";
 session_start();
 if ($_SESSION["admin"] != true){
     $host  = $_SERVER['HTTP_HOST'];
@@ -27,23 +28,23 @@ $book = unserialize($_GET["book"]);
                 <h2>Update Book</h2>
                 <div class="form-group">
                     <label for="title">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" value="<?php echo $book["0"]?>" readonly>
+                    <input type="text" class="form-control" id="id" name="id" value="<?php echo $book->getId()?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" value="<?php echo $book["1"]?>" required>
+                    <input type="text" class="form-control" id="title" name="title" value="<?php echo $book->getTitle()?>" required>
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="author" value="<?php echo $book["2"]?>" required>
+                    <input type="text" class="form-control" id="author" name="author" value="<?php echo $book->getAuthor()?>" required>
                 </div>
                 <div class="form-group">
                     <label for="isbn">ISBN</label>
-                    <input type="text" class="form-control" id="isbn" name="isbn" value="<?php echo $book["3"]?>" required>
+                    <input type="text" class="form-control" id="isbn" name="isbn" value="<?php echo $book->getIsbn()?>" required>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" value="<?php echo $book["4"]?>" required>
+                    <input type="text" class="form-control" id="category" name="category" value="<?php echo $book->getCategory()?>" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

@@ -76,7 +76,6 @@ class MySQLService
         return null;
     }
 
-    //TODO MASC NEEDED?
     /**
      * @param $id
      * @return Book|null

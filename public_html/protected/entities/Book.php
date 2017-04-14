@@ -1,6 +1,6 @@
 <?php
 
-class Book
+class Book implements Serializable
 {
     private $id, $title, $author, $isbn, $category, $loanId;
 
@@ -22,6 +22,36 @@ class Book
         $this->category = $category;
         $this->loanId = $loanId;
     }
+
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->title,
+            $this->author,
+            $this->isbn,
+            $this->category,
+            $this->loanId
+        ]);
+    }
+
+    public function unserialize($data)
+    {
+        list(
+            $this->id,
+            $this->title,
+            $this->author,
+            $this->isbn,
+            $this->category,
+            $this->loanId
+            ) = unserialize($data);
+    }
+//    public function serialize() {
+//        return serialize($this->data);
+//    }
+//    public function unserialize($data) {
+//        $this->data = unserialize($data);
+//    }
 
 
     /**

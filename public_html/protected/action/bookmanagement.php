@@ -10,8 +10,7 @@ if ($_SESSION["admin"] != true){
 }
 $books = unserialize($_SESSION["books"]);
 if (isset($_GET['book-update'])) {
-    $bookId = $_GET["book-update"] - 1;
-    $book = $books[$bookId];
+    $book = BookManagementController::getBookById($_GET["book-update"]);
     $book = serialize($book);
     $host  = $_SERVER['HTTP_HOST'];
     $uri   ="/Webdev/public_html/protected/view";
@@ -21,8 +20,7 @@ if (isset($_GET['book-update'])) {
 }
 
 if (isset($_GET['book-delete'])) {
-    $bookId = $_GET['book-delete'] - 1;
-    $book = $books[$bookId];
+    $book = BookManagementController::getBookById($_GET["book-delete"]);
     $book = serialize($book);
     $host  = $_SERVER['HTTP_HOST'];
     $uri   ="/Webdev/public_html/protected/view";
