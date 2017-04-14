@@ -22,8 +22,7 @@
                     <input type="text" class="form-control" id="author" name="bookAuthor">
                 </div>
                 <div class="form-group">
-                    <label for="notLoaned">Only available books</label>
-                    <input type="checkbox" class="form-control" id="notLoaned" name="notLoaned" value="on">
+                    <label class="checkbox-inline"><input type="checkbox" id="isAvailableCheckbox" name="isAvailableCheckbox" value="on">Display available books only</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Search</button>
                 </form>
