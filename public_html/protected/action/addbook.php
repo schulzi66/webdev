@@ -21,12 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $errorArray[] = 'ISBN is required.';
     }
+    $category = ValidationController::validateInput($_POST["category"]);
 
-    if (empty($_POST["category"]) != true) {
-        $category = ValidationController::validateInput($_POST["category"]);
-    } else {
-        $errorArray[] = 'Category is required.';
-    }
     if (ValidationController::checkForErrors($errorArray)){
         echo "<h4>Please <a href='../view/addbook.php'>go back</a> and enter details again!</h4>";
     }

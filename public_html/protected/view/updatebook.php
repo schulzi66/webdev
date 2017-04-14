@@ -44,7 +44,7 @@ $book = unserialize($_GET["book"]);
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" value="<?php echo $book->getCategory()?>" required>
+                    <input type="text" class="form-control" id="category" name="category" value="<?php echo $book->getCategory()?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
