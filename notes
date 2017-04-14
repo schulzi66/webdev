@@ -36,3 +36,16 @@ Tables:
         - BookshelfID
         - BookIDs
         - Category
+
+
+Image gallery:
+
+- possibility to create an image gallery per web page (checkbox if shown or hidden)
+- list of all images of the database
+- load images  dynamcally out of the database
+
+Slider table
+- aboutus_slider
+- contactus_slider
+- searchLibrary_slider
+- home_slider
