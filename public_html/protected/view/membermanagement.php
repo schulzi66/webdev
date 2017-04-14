@@ -65,6 +65,8 @@ foreach ($members as $member) {
     echo '<td>'.$member["3"].'</td>';
     echo '<td>'.$member["4"].'</td>';
     echo '<td>'.$member["5"].'</td>';
+    echo '<td>'.$member["6"].'</td>';
+    echo '<td>'.$member["7"].'</td>';
     echo '<td><a href="../protected/action/membermanagement.php?member-update='. $member["0"] .'">Update</a></td>';
     echo '<td><a href="../protected/action/membermanagement.php?member-delete='. $member["0"] .'">Delete</a></td>';
     echo '</tr>';

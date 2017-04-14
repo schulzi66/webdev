@@ -38,7 +38,7 @@ if ($_SESSION["admin"] != true){
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" required>
+                    <input type="text" class="form-control" id="category" name="category">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>

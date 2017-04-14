@@ -4,20 +4,24 @@ require "../entities/User.php";
 require "../entities/Book.php";
 require "../entities/Member.php";
 
-class MySQLService {
+class MySQLService
+{
     private $connection;
+
     #region Getter and Setter
     /**
      * @param mixed $connection
      */
-    public function setConnection($connection) {
+    public function setConnection($connection)
+    {
         $this->connection = $connection;
     }
 
     /**
      * @return mixed
      */
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->connection;
     }
     #endregion
@@ -26,12 +30,14 @@ class MySQLService {
     /**
      * @return bool
      */
-    public function connect(): bool {
+    public function connect() : bool
+    {
         $this->setConnection(DatabaseModel::getAdapter());
 
-        if ($this->getConnection()) {
+        if ($this->getConnection()){
             return true;
-        } else {
+        }
+        else{
             return false;
         }
     }
@@ -43,14 +49,15 @@ class MySQLService {
      * @param $credentials
      * @return null|User
      */
-    public function getUserFromDatabase($credentials): ?User {
+    public function getUserFromDatabase($credentials) : ?User
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if ($connection){
             $userName = mysqli_real_escape_string($connection, $credentials["userName"]);
             $password = mysqli_real_escape_string($connection, $credentials["password"]);
-            $sql = "SELECT * FROM users WHERE Binary UserName = '" . $userName . "' AND Binary Password = '" . $password . "';";
+            $sql = "SELECT * FROM users WHERE Binary UserName = '". $userName . "' AND Binary Password = '" . $password . "';";
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows == 1) {
+            if ($result -> num_rows == 1){
                 $result = mysqli_fetch_assoc($result);
                 return new User($result["UserID"], $result["UserName"]);
             }
@@ -64,12 +71,13 @@ class MySQLService {
     /**
      * @return array|null
      */
-    public function getAllBooks(): ?array {
+    public function getAllBooks() : ?array
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if ($connection){
             $sql = "Select * From books";
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows >= 1) {
+            if ($result -> num_rows >= 1){
                 $bookArray = $result->fetch_all();
                 return $bookArray;
             }
@@ -81,14 +89,15 @@ class MySQLService {
      * @param $id
      * @return Book|null
      */
-    public function getBookById($id): ?Book {
+    public function getBookById($id) : ?Book
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if ($connection){
             $sql = "Select * From books WHERE ID = '" . $id . "';";
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows == 1) {
+            if ($result -> num_rows == 1){
                 $result = $result->fetch_assoc();
-                $book = new Book($result["ID"], $result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["LoanID"]);
+                $book = new Book($result["ID"],$result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["LoanID"]);
                 return $book;
             }
         }
@@ -99,9 +108,10 @@ class MySQLService {
      * @param $book
      * @return bool
      */
-    public function addBook($book): bool {
+    public function addBook($book) : bool
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if ($connection){
             $title = mysqli_real_escape_string($connection, $book->getTitle());
             $author = mysqli_real_escape_string($connection, $book->getAuthor());
             $isbn = mysqli_real_escape_string($connection, $book->getIsbn());
@@ -117,11 +127,12 @@ class MySQLService {
      * @param $bookId
      * @return bool
      */
-    public function deleteBook($bookId): bool {
+    public function deleteBook($bookId) : bool
+    {
         $connection = $this->getConnection();
-        if ($connection) {
-            $result = $connection->query("DELETE FROM books WHERE ID = " . $bookId . ";");
-            if ($result) {
+        if ($connection){
+            $result = $connection->query("DELETE FROM books WHERE ID = " . $bookId. ";");
+            if ($result){
                 $connection->query("ALTER TABLE books AUTO_INCREMENT = " . $bookId . ";");
             }
             return $result;
@@ -133,7 +144,8 @@ class MySQLService {
      * @param $book
      * @return bool
      */
-    public function updateBook($book): bool {
+    public function updateBook($book): bool
+    {
 
         $connection = $this->getConnection();
         if ($connection) {
@@ -152,13 +164,15 @@ class MySQLService {
         return false;
     }
 
+
     /**
      * @param $input
      * @return array
      */
-    public function getBooksByTitleOrAuthor($input): ?array {
+    public function getBooksByTitleOrAuthor($input): ?array
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if($connection) {
             if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
@@ -170,18 +184,20 @@ class MySQLService {
             } else if ($input["bookTitle"] != "") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%';";
             } else if ($input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
-                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
+                    $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
             } else if ($input["bookAuthor"] != "") {
                 $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%';";
             } else {
                 return null;
             }
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows > 0) {
+            if($result -> num_rows > 0)
+            {
                 $resultArray = $result->fetch_all();
                 $bookArray = Array();
-                foreach ($resultArray as &$book) {
-                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
+                foreach($resultArray as &$book)
+                {
+                    array_push($bookArray, new Book($book["0"],$book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
                 }
                 return $bookArray;
             }
@@ -195,12 +211,13 @@ class MySQLService {
     /**
      * @return array|null
      */
-    public function getAllMembers(): ?array {
+    public function getAllMembers() : ?array
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if ($connection){
             $sql = "Select * From member";
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows >= 1) {
+            if ($result -> num_rows >= 1){
                 $memberArray = $result->fetch_all();
                 return $memberArray;
             }
@@ -212,12 +229,13 @@ class MySQLService {
      * @param $id
      * @return Member|null
      */
-    public function getMemberById($id): ?Member {
+    public function getMemberById($id) : ?Member
+    {
         $connection = $this->getConnection();
-        if ($connection) {
+        if ($connection){
             $sql = "Select * From member WHERE MemberID = '" . $id . "';";
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows == 1) {
+            if ($result -> num_rows == 1){
                 $result = $result->fetch_assoc();
                 $member = new Member($result["MemberID"], $result["Firstname"], $result["Surname"], $result["Address"], $result["Phone"], $result["Birth"], $result["Gender"], $result["Email"]);
                 return $member;
@@ -230,10 +248,11 @@ class MySQLService {
      * @param $member
      * @return bool
      */
-    public function addMember($member): bool {
+    public function addMember($member) : bool
+    {
         $connection = $this->getConnection();
-        if ($connection) {
-            $firstName = mysqli_real_escape_string($connection, $member->getFirtName());
+        if ($connection){
+            $firstName = mysqli_real_escape_string($connection, $member->getFirstName());
             $surName = mysqli_real_escape_string($connection, $member->getSurName());
             $address = mysqli_real_escape_string($connection, $member->getAddress());
             $phone = mysqli_real_escape_string($connection, $member->getPhone());
@@ -251,11 +270,12 @@ class MySQLService {
      * @param $memberId
      * @return bool
      */
-    public function deleteMember($memberId): bool {
+    public function deleteMember($memberId) : bool
+    {
         $connection = $this->getConnection();
-        if ($connection) {
-            $result = $connection->query("DELETE FROM member WHERE MemberID = " . $memberId . ";");
-            if ($result) {
+        if ($connection){
+            $result = $connection->query("DELETE FROM member WHERE MemberID = " . $memberId. ";");
+            if ($result){
                 $connection->query("ALTER TABLE member AUTO_INCREMENT = " . $memberId . ";");
             }
             return $result;
@@ -267,7 +287,8 @@ class MySQLService {
      * @param $member
      * @return bool
      */
-    public function updateMember($member): bool {
+    public function updateMember($member): bool
+    {
 
         $connection = $this->getConnection();
         if ($connection) {
