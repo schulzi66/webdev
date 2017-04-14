@@ -292,10 +292,15 @@ class MySQLService {
 
     //TODO Julian: Queries
     //region images
-    public function getAllImages(): ?array {
+    public function getImages($imageGalleryName = "default"): ?array {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT * FROM images";
+            if ($imageGalleryName = "default") {
+                $sql = $connection->prepare("SELECT * FROM gallery WHERE name=?");
+                $sql->bind_param($imageGalleryName);
+            } else {
+                $sql = "SELECT * FROM gallery";
+            }
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $imageArray = $result->fetch_all();
@@ -304,7 +309,7 @@ class MySQLService {
         }
     }
 
-    public function setImageGallery(): bool {
+    public function setImageGalleryImages(): bool {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = $connection->prepare("");

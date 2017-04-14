@@ -12,9 +12,10 @@ if ($_SESSION["admin"] != true) {
 <div id="<?php echo $galleryName ?>" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <?php
-    $images = ImageGalleryController::getAllImages();
-
-    for ($i = 0; $i < count($images); $i++) {
+    $images = ImageGalleryController::getImages();
+    $counter = 0;
+    foreach ($images as $image) {
+        $counter++;
     ?>
         <ol class="carousel-indicators">
             <li data-target="#imagegallery" data-slide-to="<?php echo $counter ?>" id="indicator_ <?php echo $counter; ?>"></li>
@@ -25,11 +26,13 @@ if ($_SESSION["admin"] != true) {
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <?php
-        for ($i = 0; $i < count($images); $i++) {
+        foreach ($images as $image) {
+            $counter++;
+            $imageName = $image['name'];
         ?>
         <!-- creates slides dynamically based on the images configured within the admin view -->
         <div class="item">
-            <img src="<?php echo $images[$i].$imageName . $fileFormat ?>" alt="<?php $images['name'] ?>" id="<?php echo $i ?>">
+            <img src="<?php echo $imageName . $fileFormat ?>" alt="<?php $image['name'] ?>" id="<?php echo $counter ?>">
         </div>
     </div>
 <?php

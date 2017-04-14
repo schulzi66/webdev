@@ -4,10 +4,10 @@
 class ImageGalleryController
 {
 
-    public static function getAllImages() :?array {
+    public static function getImages() :?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->getAllImages();
+            return $sqlService->getImages();
         }
         return null;
     }
@@ -15,7 +15,7 @@ class ImageGalleryController
     public static function setImageGalleryImages() :bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->setImagesForSlider();
+            return $sqlService->setImageGalleryImages();
         }
         return null;
     }
