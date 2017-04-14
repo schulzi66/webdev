@@ -8,6 +8,13 @@ $(document).ready(function () {
         return this.href == url;
     }).parent().addClass('active').parent().parent().addClass('active');
 
+
+    $('#imageGalleryDropdown').on('change', function() {
+        if ( this.value == '1') {
+            //
+        }
+    });
+
 });
 
 function validate() {
