@@ -17,6 +17,27 @@ class User
     }
 
     /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->userId,
+            $this->userName
+        ]);
+    }
+
+    /**
+     * @param string $data
+     */
+    public function unserialize($data)
+    {
+        list(
+            $this->userId,
+            $this->userName
+            ) = unserialize($data);
+    }
+    /**
      * @return mixed
      */
     public function getUserId()

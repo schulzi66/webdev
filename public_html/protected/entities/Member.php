@@ -1,7 +1,7 @@
 <?php
 
 
-class Member
+class Member implements Serializable
 {
     private $memberId, $firstName, $surName, $address, $phone, $birth, $gender, $email;
 
@@ -26,6 +26,40 @@ class Member
         $this->birth = $birth;
         $this->gender = $gender;
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->memberId,
+            $this->firstName,
+            $this->surName,
+            $this->address,
+            $this->phone,
+            $this->birth,
+            $this->gender,
+            $this->email
+        ]);
+    }
+
+    /**
+     * @param string $data
+     */
+    public function unserialize($data)
+    {
+        list(
+            $this->memberId,
+            $this->firstName,
+            $this->surName,
+            $this->address,
+            $this->phone,
+            $this->birth,
+            $this->gender,
+            $this->email
+            ) = unserialize($data);
     }
 
     /**

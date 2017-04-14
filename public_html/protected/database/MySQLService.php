@@ -2,6 +2,8 @@
 require "DatabaseModel.php";
 require "../entities/User.php";
 require "../entities/Book.php";
+require "../entities/Member.php";
+
 class MySQLService
 {
     private $connection;
@@ -24,6 +26,7 @@ class MySQLService
     }
     #endregion
 
+    //region Connection
     /**
      * @return bool
      */
@@ -39,6 +42,9 @@ class MySQLService
         }
     }
 
+    //endregion
+
+    //region User
     /**
      * @param $credentials
      * @return null|User
@@ -59,6 +65,9 @@ class MySQLService
         return null;
     }
 
+    //endregion
+
+    //region Books
     /**
      * @return array|null
      */
@@ -131,6 +140,10 @@ class MySQLService
         return false;
     }
 
+    /**
+     * @param $book
+     * @return bool
+     */
     public function updateBook($book): bool
     {
 
@@ -191,4 +204,110 @@ class MySQLService
         }
         return null;
     }
+
+    //endregion
+
+    //region Member
+    /**
+     * @return array|null
+     */
+    public function getAllMembers() : ?array
+    {
+        $connection = $this->getConnection();
+        if ($connection){
+            $sql = "Select * From member";
+            $result = mysqli_query($connection, $sql);
+            if ($result -> num_rows >= 1){
+                $memberArray = $result->fetch_all();
+                return $memberArray;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param $id
+     * @return Member|null
+     */
+    public function getMemberById($id) : ?Member
+    {
+        $connection = $this->getConnection();
+        if ($connection){
+            $sql = "Select * From member WHERE MemberID = '" . $id . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result -> num_rows == 1){
+                $result = $result->fetch_assoc();
+                $member = new Member($result["MemberID"], $result["Firstname"], $result["Surname"], $result["Address"], $result["Phone"], $result["Birth"], $result["Gender"], $result["Email"]);
+                return $member;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param $member
+     * @return bool
+     */
+    public function addMember($member) : bool
+    {
+        $connection = $this->getConnection();
+        if ($connection){
+            $firstName = mysqli_real_escape_string($connection, $member->getFirtName());
+            $surName = mysqli_real_escape_string($connection, $member->getSurName());
+            $address = mysqli_real_escape_string($connection, $member->getAddress());
+            $phone = mysqli_real_escape_string($connection, $member->getPhone());
+            $birth = mysqli_real_escape_string($connection, $member->getBirth());
+            $gender = mysqli_real_escape_string($connection, $member->getGender());
+            $mail = mysqli_real_escape_string($connection, $member->getEmail());
+            $sql = "INSERT INTO member (MemberID, Firstname, Surname, Address, Phone, Birth, Gender, Email) VALUES (DEFAULT , '$firstName', '$surName', '$address', '$phone', '$birth', '$gender', '$mail')";
+            $result = mysqli_query($connection, $sql);
+            return $result;
+        }
+        return false;
+    }
+
+    /**
+     * @param $memberId
+     * @return bool
+     */
+    public function deleteMember($memberId) : bool
+    {
+        $connection = $this->getConnection();
+        if ($connection){
+            $result = $connection->query("DELETE FROM member WHERE MemberID = " . $memberId. ";");
+            if ($result){
+                $connection->query("ALTER TABLE member AUTO_INCREMENT = " . $memberId . ";");
+            }
+            return $result;
+        }
+        return false;
+    }
+
+    /**
+     * @param $member
+     * @return bool
+     */
+    public function updateMember($member): bool
+    {
+
+        $connection = $this->getConnection();
+        if ($connection) {
+            $memberId = mysqli_real_escape_string($connection, $member->getMemberId());
+            $firstName = mysqli_real_escape_string($connection, $member->getFirtName());
+            $surName = mysqli_real_escape_string($connection, $member->getSurName());
+            $address = mysqli_real_escape_string($connection, $member->getAddress());
+            $phone = mysqli_real_escape_string($connection, $member->getPhone());
+            $birth = mysqli_real_escape_string($connection, $member->getBirth());
+            $gender = mysqli_real_escape_string($connection, $member->getGender());
+            $mail = mysqli_real_escape_string($connection, $member->getEmail());
+
+            $sql = $connection->prepare("UPDATE member SET Firstname=?, Surname=?, Address=?, Phone=?, Birth=?, Gender=?, Email=? WHERE MemberID=?");
+            $sql->bind_param('ssssssi', $firstName, $surName, $address, $phone, $gender, $mail, $memberId);
+
+            $result = $sql->execute();
+            return $result;
+        }
+        return false;
+    }
+    //endregion
 }

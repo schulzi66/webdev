@@ -1,62 +1,62 @@
 <?php
 require "../database/MySQLService.php";
 
-class BookManagementController
+class MemberManagementController
 {
     /**
      * @return array|null
      */
-    public static function getAllBooks() : ?array {
+    public static function getAllMembers() : ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->getAllBooks();
+            return $sqlService->getAllMembers();
         }
         return null;
     }
     /**
      * @param $id
-     * @return Book|null
+     * @return Member|null
      */
-    public static function getBookById($id) : ?Book {
+    public static function getMemberById($id) : ?Member {
         $sqlService = new MySQLService();
         if ($sqlService->connect()){
-            return $sqlService->getBookById($id);
+            return $sqlService->getMemberById($id);
         }
         return null;
     }
 
     /**
-     * @param $book
+     * @param $member
      * @return bool
      */
-    public static function addBook($book) : bool{
+    public static function addMember($member) : bool{
         $sqlService = new MySQLService();
         if ($sqlService->connect()){
-            return $sqlService->addBook($book);
+            return $sqlService->addMember($member);
         }
         return false;
     }
 
     /**
-     * @param $bookId
+     * @param $memberId
      * @return bool
      */
-    public static function deleteBook($bookId) : bool {
+    public static function deleteMember($memberId) : bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()){
-            return $sqlService->deleteBook($bookId);
+            return $sqlService->deleteMember($memberId);
         }
         return false;
     }
 
     /**
-     * @param $book
+     * @param $member
      * @return bool
      */
-    public static function updateBook($book) : bool {
+    public static function updateMember($member) : bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()){
-            return $sqlService->updateBook($book);
+            return $sqlService->updateMember($member);
         }
         return false;
     }

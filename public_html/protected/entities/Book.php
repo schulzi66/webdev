@@ -23,6 +23,9 @@ class Book implements Serializable
         $this->loanId = $loanId;
     }
 
+    /**
+     * @return string
+     */
     public function serialize()
     {
         return serialize([
@@ -35,6 +38,9 @@ class Book implements Serializable
         ]);
     }
 
+    /**
+     * @param string $data
+     */
     public function unserialize($data)
     {
         list(
@@ -46,14 +52,6 @@ class Book implements Serializable
             $this->loanId
             ) = unserialize($data);
     }
-//    public function serialize() {
-//        return serialize($this->data);
-//    }
-//    public function unserialize($data) {
-//        $this->data = unserialize($data);
-//    }
-
-
     /**
      * @return mixed
      */
