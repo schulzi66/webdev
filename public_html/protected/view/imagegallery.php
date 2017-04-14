@@ -11,23 +11,31 @@ if ($_SESSION["admin"] != true) {
 
 <div id="<?php echo $galleryName ?>" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
     <?php
     $images = ImageGalleryController::getAllImages();
-    foreach ($images as $image) {
-        ?>
-        <div class="carousel-inner" role="listbox">
-            <div class="item">
-                <img src="<?php echo $imageName . $fileFormat ?>" alt="<?php $image['name']?>" >
-            </div>
-        </div>
-        <?php
+
+    for ($i = 0; $i < count($images); $i++) {
+    ?>
+        <ol class="carousel-indicators">
+            <li data-target="#imagegallery" data-slide-to="<?php echo $counter ?>" id="indicator_ <?php echo $counter; ?>"></li>
+        </ol>
+    <?php
     }
     ?>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <?php
+        for ($i = 0; $i < count($images); $i++) {
+        ?>
+        <!-- creates slides dynamically based on the images configured within the admin view -->
+        <div class="item">
+            <img src="<?php echo $images[$i].$imageName . $fileFormat ?>" alt="<?php $images['name'] ?>" id="<?php echo $i ?>">
+        </div>
+    </div>
+<?php
+}
+?>
+
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
