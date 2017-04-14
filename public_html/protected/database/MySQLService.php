@@ -293,7 +293,7 @@ class MySQLService
         $connection = $this->getConnection();
         if ($connection) {
             $memberId = mysqli_real_escape_string($connection, $member->getMemberId());
-            $firstName = mysqli_real_escape_string($connection, $member->getFirstName());
+            $firstName = mysqli_real_escape_string($connection, $member->getFirtName());
             $surName = mysqli_real_escape_string($connection, $member->getSurName());
             $address = mysqli_real_escape_string($connection, $member->getAddress());
             $phone = mysqli_real_escape_string($connection, $member->getPhone());
@@ -302,7 +302,7 @@ class MySQLService
             $mail = mysqli_real_escape_string($connection, $member->getEmail());
 
             $sql = $connection->prepare("UPDATE member SET Firstname=?, Surname=?, Address=?, Phone=?, Birth=?, Gender=?, Email=? WHERE MemberID=?");
-            $sql->bind_param('sssssssi', $firstName, $surName, $address, $phone, $birth, $gender, $mail, $memberId);
+            $sql->bind_param('ssssssi', $firstName, $surName, $address, $phone, $gender, $mail, $memberId);
 
             $result = $sql->execute();
             return $result;
