@@ -14,51 +14,49 @@ if ($_SESSION["admin"] != true) {
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
-    <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">Available Galleries</div>
-            <table class="table table-hover table-bordered">
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Number Of Images</td>
-                    <td>Status</td>
-                </tr>
-
-                <?php ?>
-            </table>
-        </div>
-
-
-
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Gallery
-                <span class="caret"></span></button>
-            <ul id="imageGalleryDropdown" class="dropdown-menu">
-                <?php
-                $galeryNames = ImageGalleryController::getGalleryNames();
-                foreach ($galeryNames as $name) { ?>
-                    <li><a href="#"><?php echo $name ?></a></li>
-                <?php } ?>
-            </ul>
-        </div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Available Galleries</div>
+        <table class="table table-hover table-bordered">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Number Of Images</td>
+                <td>Status</td>
+            </tr>
+        </table>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Available images</h1>
-            </div>
-            <select multiple="multiple" class="image-picker show-html">
-                <?php
-                $images = ImageGalleryController::getImages();
-                foreach ($images as $image) {
-                    ?>
-                    <option data-img-src="<?php $image['Image'] ?>"
-                            value="<?php echo $image['ImageID'] ?>"><?php echo $image['Name'] ?></option>
-                <?php } ?>
-            </select>
-        </div>
+
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Gallery
+            <span class="caret"></span></button>
+        <ul id="imageGalleryDropdown" class="dropdown-menu">
+            <?php
+            $galleries = ImageGalleryController::getAllGalleries();
+            $galleryNames = $galleries["Name"];
+            foreach ($galleryNames as $name) { ?>
+                <li><a href="#"><?php echo $name ?></a></li>
+            <?php } ?>
+        </ul>
     </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Available images</h1>
+        </div>
+        <select multiple="multiple" class="image-picker show-html">
+            <?php
+            $images = ImageGalleryController::getImages();
+            foreach ($images as $image) {
+                ?>
+                <option data-img-src="<?php $image['Image'] ?>"
+                        value="<?php echo $image['ImageID'] ?>"><?php echo $image['Name'] ?></option>
+            <?php } ?>
+        </select>
+    </div>
+</div>
 
 <!--                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <a class="thumbnail" href="#">

@@ -343,14 +343,14 @@ class MySQLService {
         return false;
     }
 
-    public function getGalleryNames() {
+    public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT Name FROM gallery";
+            $sql = "SELECT * FROM galleries";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $memberArray = $result->fetch_all();
-                return $memberArray;
+                $galleryArray = $result->fetch_all();
+                return $galleryArray;
             }
         }
         return null;
