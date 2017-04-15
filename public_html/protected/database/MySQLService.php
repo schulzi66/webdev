@@ -346,7 +346,7 @@ class MySQLService {
     public function getGalleryNames() {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT name FROM gallery";
+            $sql = "SELECT Name FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $memberArray = $result->fetch_all();

@@ -15,7 +15,22 @@ if ($_SESSION["admin"] != true) {
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
     <div class="container">
-        <!-- TODO: ImageGallery Overview (possibility to show / hide galleries)
+        <div class="panel panel-default">
+            <div class="panel-heading">Available Galleries</div>
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Number Of Images</td>
+                    <td>Status</td>
+                </tr>
+
+                <?php ?>
+            </table>
+        </div>
+
+
+
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Gallery
                 <span class="caret"></span></button>
