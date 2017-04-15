@@ -28,7 +28,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="pagemanagement.php">
+                <a href="../protected/view/pagemanagement.php">
                     <div class="panel-footer panel-footer-blue">
                         <span class="pull-left">Edit pages</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -49,7 +49,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="imagegallery.php">
+                <a href="../protected/view/imagegallery.php">
                     <div class="panel-footer">
                         <span class="pull-left">Edit Galleries</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -70,7 +70,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="bookmanagement.php">
+                <a href="../protected/view/bookmanagement.php">
                     <div class="panel-footer panel-footer">
                         <span class="pull-left">Manage Books</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -91,7 +91,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="pagemanagement.php">
+                <a href="../protected/view/pagemanagement.php">
                     <div class="panel-footer">
                         <span class="pull-left">Edit Members</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -112,7 +112,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="bookloans.php">
+                <a href="../protected/view/bookloans.php">
                     <div class="panel-footer">
                         <span class="pull-left">View Loans</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

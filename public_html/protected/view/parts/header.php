@@ -19,6 +19,11 @@
         <li><a href="../protected/view/contact.php">Contact Us</a></li>
         <li><a href="../protected/view/search.php">Search Library</a></li>
         <li><a href="../protected/view/admin.php">Admin</a></li>
+      <?php
+        session_start();
+        if ($_SESSION["admin"]){
+            echo "<li><a href='../protected/action/logout.php'>Logout</a></li>";
+        }?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -30,4 +30,14 @@ class SessionController
             exit;
         }
     }
+
+    /**
+     *
+     */
+    public static function logout() : void {
+        session_start();
+        session_unset();
+        session_destroy();
+        self::validateAdminSession();
+    }
 }
