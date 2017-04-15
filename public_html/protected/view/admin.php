@@ -1,17 +1,10 @@
 <?php
-session_start();
 //TODO MASC remove. only testing purposes;
 //Remove to delete session
 //$_SESSION["admin"] = false;
-//var_dump($_SESSION);
+require_once "../controller/SessionController.php";
 
-if ($_SESSION["admin"] == true){
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri   ="/Webdev/public_html/protected/view";
-    $extra = 'dashboard.php';
-    header("Location: http://$host$uri/$extra");
-    exit;
-}
+SessionController::redirectAdmin();
 ?>
 <html>
 <head>

@@ -2,6 +2,9 @@
 require_once "../controller/ValidationController.php";
 require_once "../controller/BookManagementController.php";
 require_once "../entities/Book.php";
+require_once "../controller/SessionController.php";
+
+SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
     if (empty($_POST["id"]) != true){
