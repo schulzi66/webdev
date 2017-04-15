@@ -12,14 +12,14 @@
         </div>
         <div class="form-container container">
             <h2> Contact Us</h2>
-            <form action="../action/contact.php" method="post">
+            <form action="../protected/action/contact.php" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="Name" required>
+                </div>
                 <div class="form-group">
                     <label for="surname">Surname</label>
                     <input type="text" class="form-control" name="surname" required>
-                </div>
-                <div class="form-group">
-                    <label for="forename">Forename</label>
-                    <input type="text" class="form-control" name="forename" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
