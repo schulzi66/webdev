@@ -9,28 +9,10 @@ SessionController::validateAdminSession();
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
-<div class="" data-placeholder-label="Header">
-    <div class="">
-        <div class="">
-            <div class="heading"><h1>SWD LIBRARY</h1>
-            </div>
-        </div>
-        <div class="form-container container">
-            <ul class="nav navbar-nav">
-                <li><a href="pagemanagement.php">Page Management</a></li>
-                <li><a href="imagegallery.php">Image Gallery</a></li>
-                <li><a href="bookmanagement.php">Book Management</a></li>
-                <li><a href="membermanagement.php">Member Management</a></li>
-                <li><a href="bookloans.php">Book Loans</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">SWD Library Administration</h1>
         </div>
     </div>
     <div class="row">
@@ -42,13 +24,13 @@ SessionController::validateAdminSession();
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="admin-panel-text">Emails</div>
+                            <div class="admin-panel-text">Page Management</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="pagemanagement.php">
                     <div class="panel-footer panel-footer-blue">
-                        <span class="pull-left">Jetzt abrufen</span>
+                        <span class="pull-left">Edit pages</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -63,13 +45,13 @@ SessionController::validateAdminSession();
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="admin-panel-text">Bestellungen</div>
+                            <div class="admin-panel-text">Image Galleries</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="imagegallery.php">
                     <div class="panel-footer">
-                        <span class="pull-left">Jetzt bestätigen</span>
+                        <span class="pull-left">Edit Galleries</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -84,13 +66,13 @@ SessionController::validateAdminSession();
                             <i class="fa fa-upload fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="admin-panel-text">Rezept hochladen</div>
+                            <div class="admin-panel-text">Book Management</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="bookmanagement.php">
                     <div class="panel-footer panel-footer">
-                        <span class="pull-left">Jetzt hochladen</span>
+                        <span class="pull-left">Manage Books</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -105,13 +87,34 @@ SessionController::validateAdminSession();
                             <i class="fa fa-user-plus fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="admin-panel-text">Mitarbeiter hinzufügen</div>
+                            <div class="admin-panel-text">Member Management</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="pagemanagement.php">
                     <div class="panel-footer">
-                        <span class="pull-left">Jetzt anlegen</span>
+                        <span class="pull-left">Edit Members</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-user-plus fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="admin-panel-text">Book Loans</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="bookloans.php">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Loans</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
