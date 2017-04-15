@@ -22,7 +22,7 @@ $book = unserialize($_GET["book"]);
             <form action="../protected/action/updatebook.php" method="post">
                 <h2>Update Book</h2>
                 <div class="form-group">
-                    <label for="title">ID</label>
+                    <label for="id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" value="<?php echo $book->getId()?>" readonly>
                 </div>
                 <div class="form-group">
