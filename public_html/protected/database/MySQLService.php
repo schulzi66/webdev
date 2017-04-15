@@ -355,5 +355,18 @@ class MySQLService {
         }
         return null;
     }
+
+    public function getGalleryNames(): ?array {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = "SELECT name FROM galleries";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows >= 1) {
+                $galleryArray = $result->fetch_all();
+                return $galleryArray;
+            }
+        }
+        return null;
+    }
     //end region images
 }

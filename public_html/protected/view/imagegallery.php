@@ -24,40 +24,51 @@ if ($_SESSION["admin"] != true) {
                 <td>Number Of Images</td>
                 <td>Status</td>
             </tr>
+            <?php
+            require_once "../controller/ImageGalleryController.php";
+            $galleries = ImageGalleryController::getAllGalleries();
+            foreach ($galleries as $gallery) {
+                echo '<tr>';
+                echo '<td>' . $gallery["0"] . '</td>';
+                echo '<td>' . $gallery["1"] . '</td>';
+                echo '<td>' . $gallery["2"] . '</td>';
+                echo '<td class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Visibility<span class="caret"></span></button><ul id="imageGalleryDropdown" class="dropdown-menu"><li>Show</li><li>Hide</li></ul></td>';
+                echo '</tr>';
+            }
+            echo '<tr>';
+            echo '</tr>';
+            ?>
         </table>
     </div>
-
-
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Gallery
             <span class="caret"></span></button>
         <ul id="imageGalleryDropdown" class="dropdown-menu">
             <?php
-            $galleries = ImageGalleryController::getAllGalleries();
-            $galleryNames = $galleries["Name"];
+            $galleryNames = ImageGalleryController::getGalleryNames();
             foreach ($galleryNames as $name) { ?>
                 <li><a href="#"><?php echo $name ?></a></li>
             <?php } ?>
         </ul>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Available images</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Available images</h1>
+            </div>
+            <select multiple="multiple" class="image-picker show-html">
+                <?php
+                $images = ImageGalleryController::getImages();
+                foreach ($images as $image) {
+                    ?>
+                    <option data-img-src="<?php $image['Image'] ?>"
+                            value="<?php echo $image['ImageID'] ?>"><?php echo $image['Name'] ?></option>
+                <?php } ?>
+            </select>
         </div>
-        <select multiple="multiple" class="image-picker show-html">
-            <?php
-            $images = ImageGalleryController::getImages();
-            foreach ($images as $image) {
-                ?>
-                <option data-img-src="<?php $image['Image'] ?>"
-                        value="<?php echo $image['ImageID'] ?>"><?php echo $image['Name'] ?></option>
-            <?php } ?>
-        </select>
     </div>
 </div>
-
 <!--                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <a class="thumbnail" href="#">
                 <img class="img-responsive" src="http://placehold.it/400x300" alt="">

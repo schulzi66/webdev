@@ -8,4 +8,4 @@ README.md
 logs/*
 tmp/*
 vendor/*
-/public_html/protected/database/database.ini
+*.ini

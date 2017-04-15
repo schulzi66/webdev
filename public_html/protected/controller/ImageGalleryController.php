@@ -39,10 +39,21 @@ class ImageGalleryController {
     /**
      * @return array|null
      */
-    public static function getAllGalleries() {
+    public static function getAllGalleries(): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllGalleries();
+        }
+        return null;
+    }
+
+    /**
+     * @return array|null
+     */
+    public static function getGalleryNames(): ?array {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->getGalleryNames();
         }
         return null;
     }
