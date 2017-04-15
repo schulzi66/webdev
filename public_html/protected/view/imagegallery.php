@@ -32,7 +32,7 @@ if ($_SESSION["admin"] != true) {
                 echo '<td>' . $gallery["0"] . '</td>';
                 echo '<td>' . $gallery["1"] . '</td>';
                 echo '<td>' . $gallery["2"] . '</td>';
-                echo '<td class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Visibility<span class="caret"></span></button><ul id="imageGalleryDropdown" class="dropdown-menu"><li>Show</li><li>Hide</li></ul></td>';
+                echo '<td><label class="radio-inline"><input type="radio" name="optradio">Hidden</label><label class="radio-inline"><input type="radio" name="optradio">Shown</label></td>';
                 echo '</tr>';
             }
             echo '<tr>';
@@ -47,7 +47,7 @@ if ($_SESSION["admin"] != true) {
             <?php
             $galleryNames = ImageGalleryController::getGalleryNames();
             foreach ($galleryNames as $name) { ?>
-                <li><a href="#"><?php echo $name ?></a></li>
+                <li><a href="#"><?php echo $name[0] ?></a></li>
             <?php } ?>
         </ul>
     </div>
@@ -55,14 +55,14 @@ if ($_SESSION["admin"] != true) {
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Available images</h1>
+                <h2 class="page-header">Available images</h2>
             </div>
             <select multiple="multiple" class="image-picker show-html">
                 <?php
                 $images = ImageGalleryController::getImages();
                 foreach ($images as $image) {
                     ?>
-                    <option data-img-src="<?php $image['Image'] ?>"
+                    <option data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image['PictureRef'] ?>"
                             value="<?php echo $image['ImageID'] ?>"><?php echo $image['Name'] ?></option>
                 <?php } ?>
             </select>

@@ -1,5 +1,6 @@
 <?php
 
+require "../database/MySQLService.php";
 class ImageGalleryController {
     /**
      * @return array|null

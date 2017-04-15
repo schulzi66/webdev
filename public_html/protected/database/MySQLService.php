@@ -302,7 +302,7 @@ class MySQLService {
             if ($imageGalleryName == "default") {
                 $sql = "SELECT * FROM images";
             } else {
-                $sql = $connection->prepare("SELECT * FROM gallery JOIN galleryimages ON gallery.SliderID = galleryimages.SliderID WHERE name=?");
+                $sql = $connection->prepare("SELECT * FROM gallery JOIN galleryimages ON gallery.GalleryID = galleryimages.GalleryID WHERE name=?");
                 $sql->bind_param($imageGalleryName);
             }
             $result = mysqli_query($connection, $sql);
@@ -322,7 +322,7 @@ class MySQLService {
         if ($connection) {
             $sql = "";
             foreach ($images as $image) {
-                $sql .= "INSERT INTO galleryimages(SliderID, ImageID) VALUES(" . $image["sliderID"] . "," . $image["imageID"] . ")";
+                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $image["GalleryID"] . "," . $image["imageID"] . ")";
             }
             $connection->multi_query($sql);
         }
@@ -346,7 +346,7 @@ class MySQLService {
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT * FROM galleries";
+            $sql = "SELECT * FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $galleryArray = $result->fetch_all();
@@ -359,7 +359,7 @@ class MySQLService {
     public function getGalleryNames(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT name FROM galleries";
+            $sql = "SELECT name FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $galleryArray = $result->fetch_all();
