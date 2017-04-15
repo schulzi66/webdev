@@ -2,6 +2,9 @@
 require_once "../controller/ValidationController.php";
 require_once "../controller/MemberManagementController.php";
 require_once "../entities/Member.php";
+require_once "../controller/SessionController.php";
+
+SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
     $firstName = ""; $surName = "";

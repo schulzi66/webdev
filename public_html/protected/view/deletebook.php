@@ -1,13 +1,8 @@
 <?php
 include "../entities/Book.php";
-session_start();
-if ($_SESSION["admin"] != true){
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri   ="/Webdev/public_html/protected/view";
-    $extra = 'admin.php';
-    header("Location: http://$host$uri/$extra");
-    exit;
-}
+require_once "../controller/SessionController.php";
+
+SessionController::validateAdminSession();
 $book = unserialize($_GET["book"]);
 ?>
 
