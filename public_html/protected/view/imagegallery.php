@@ -28,7 +28,7 @@ SessionController::validateAdminSession();
                 echo '<td>' . $gallery["0"] . '</td>';
                 echo '<td>' . $gallery["1"] . '</td>';
                 echo '<td>' . $gallery["2"] . '</td>';
-                echo '<td><label class="radio-inline"><input type="radio" name="optradio">Hidden</label><label class="radio-inline"><input type="radio" name="optradio">Shown</label></td>';
+                echo '<td><label class="radio-inline"><input type="radio" name="optradio" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" name="optradio">Shown</label></td>';
                 echo '<td><button class="btn btn-primary" type="button">Update</button></td>';
                 echo '</tr>';
             }
