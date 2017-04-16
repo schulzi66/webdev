@@ -33,7 +33,7 @@ class SessionController {
         session_start();
         if ($_SESSION["admin"] == false) {
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/protected/view";
+            $uri = "/Webdev/public_html/src/view";
             $extra = 'admin.php';
             header("Location: http://$host$uri/$extra");
             exit;

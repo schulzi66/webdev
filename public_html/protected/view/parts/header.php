@@ -20,7 +20,7 @@
                 <li><a href="view/about.php">About Us</a></li>
                 <li><a href="view/contact.php">Contact Us</a></li>
                 <li><a href="view/search.php">Search Library</a></li>
-                <li><a href="../protected/view/admin.php">Admin</a></li>
+                <li><a href="view/admin.php">Admin</a></li>
                 <?php
                 if(!isset($_SESSION)) {
                     session_start();
