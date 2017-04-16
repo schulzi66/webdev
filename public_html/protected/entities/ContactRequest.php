@@ -3,7 +3,7 @@
 
 class ContactRequest implements Serializable
 {
-    private $id, $name, $surName, $mail, $message;
+    private $id, $name, $surName, $mail, $message, $replied;
 
     /**
      * ContactRequest constructor.
@@ -12,14 +12,16 @@ class ContactRequest implements Serializable
      * @param $surName
      * @param $mail
      * @param $message
+     * @param $replied
      */
-    public function __construct($id, $name, $surName, $mail, $message)
+    public function __construct($id, $name, $surName, $mail, $message, $replied)
     {
         $this->id = $id;
         $this->name = $name;
         $this->surName = $surName;
         $this->mail = $mail;
         $this->message = $message;
+        $this->replied = $replied;
     }
 
     /**
@@ -32,7 +34,8 @@ class ContactRequest implements Serializable
             $this->name,
             $this->surName,
             $this->mail,
-            $this->message
+            $this->message,
+            $this->replied
         ]);
     }
 
@@ -46,7 +49,8 @@ class ContactRequest implements Serializable
             $this->name,
             $this->surName,
             $this->mail,
-            $this->message
+            $this->message,
+            $this->replied
             ) = unserialize($data);
     }
 
@@ -130,6 +134,19 @@ class ContactRequest implements Serializable
         $this->message = $message;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getReplied()
+    {
+        return $this->replied;
+    }
 
-
+    /**
+     * @param mixed $replied
+     */
+    public function setReplied($replied)
+    {
+        $this->replied = $replied;
+    }
 }

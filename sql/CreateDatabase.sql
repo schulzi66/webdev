@@ -58,5 +58,6 @@ CREATE TABLE IF NOT EXISTS messages (
   Firstname VARCHAR(50)                 NOT NULL,
   Surname   VARCHAR(50)                 NOT NULL,
   Email     VARCHAR(50)                 NOT NULL,
-  Message   LONGTEXT                    NOT NULL
+  Message   LONGTEXT                    NOT NULL,
+  Replied   BOOL
 );

@@ -2,6 +2,7 @@
 require_once "../controller/MailController.php";
 require_once "../controller/SessionController.php";
 require_once "../controller/ValidationController.php";
+require_once "../controller/ContactController.php";
 
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,11 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else {
         if (MailController::sendMail($email,"Reply to your Request with the ID: " . $id, $response)){
-            $host  = $_SERVER['HTTP_HOST'];
-            $uri   ="/Webdev/public_html/protected/view";
-            $extra = 'contactmanagement.php';
-            header("Location: http://$host$uri/$extra");
-            exit;
+            if (ContactController::setContactRequestToReplied($id)) {
+                $host = $_SERVER['HTTP_HOST'];
+                $uri = "/Webdev/public_html/protected/view";
+                $extra = 'contactmanagement.php';
+                header("Location: http://$host$uri/$extra");
+                exit;
+            }
+            else{
+                $errorArray[] = 'Request could not be updated';
+            }
         }
         else{
             $errorArray[] = 'Reply could not be sent';

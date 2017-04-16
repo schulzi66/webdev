@@ -288,7 +288,7 @@ class MySQLService {
             $mail = mysqli_real_escape_string($connection, $member->getEmail());
 
             $sql = $connection->prepare("UPDATE member SET Firstname=?, Surname=?, Address=?, Phone=?, Birth=?, Gender=?, Email=? WHERE MemberID=?");
-            $sql->bind_param('ssssssi', $firstName, $surName, $address, $phone, $gender, $mail, $memberId);
+            $sql->bind_param('sssssssi', $firstName, $surName, $address, $phone, $birth, $gender, $mail, $memberId);
 
             $result = $sql->execute();
             return $result;
@@ -388,7 +388,7 @@ class MySQLService {
             $surName = mysqli_real_escape_string($connection, $contactRequest->getSurName());
             $email = mysqli_real_escape_string($connection, $contactRequest->getMail());
             $message = mysqli_real_escape_string($connection, $contactRequest->getMessage());
-            $sql = "INSERT INTO messages (MessageID, Firstname, Surname, Email, Message) VALUES (DEFAULT , '$name', '$surName', '$email', '$message')";
+            $sql = "INSERT INTO messages (MessageID, Firstname, Surname, Email, Message, Replied) VALUES (DEFAULT , '$name', '$surName', '$email', '$message', FALSE )";
             $result = mysqli_query($connection, $sql);
             return $result;
         }
@@ -422,11 +422,28 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
-                $request = new ContactRequest($result["MessageID"], $result["Firstname"], $result["Surname"], $result["Email"], $result["Message"]);
+                $request = new ContactRequest($result["MessageID"], $result["Firstname"], $result["Surname"], $result["Email"], $result["Message"], $result["Replied"]);
                 return $request;
             }
         }
         return null;
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function setContactRequestToReplied($id) : bool {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $messageId = mysqli_real_escape_string($connection, $id);
+            $sql = $connection->prepare("UPDATE messages SET Replied=TRUE WHERE MessageID=?");
+            $sql->bind_param('i', $messageId);
+
+            $result = $sql->execute();
+            return $result;
+        }
+        return false;
     }
     //endregion
 }

@@ -20,6 +20,7 @@ SessionController::validateAdminSession();
                 <td>Surname</td>
                 <td>Email</td>
                 <td>Message</td>
+                <td>Replied</td>
             </tr>
 
             <?php
@@ -33,6 +34,7 @@ SessionController::validateAdminSession();
                 echo '<td>' . $request["2"] . '</td>';
                 echo '<td>' . $request["3"] . '</td>';
                 echo '<td>' . $request["4"] . '</td>';
+                echo '<td>' . $request["5"] . '</td>';
                 echo '<td><a href="../protected/action/contactmanagement.php?contact-reply=' . $request["0"] . '">Reply</a></td>';
                 echo '</tr>';
             }

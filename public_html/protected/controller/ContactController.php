@@ -37,4 +37,16 @@ class ContactController
         }
         return null;
     }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public static function setContactRequestToReplied($id) : bool {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->setContactRequestToReplied($id);
+        }
+        return null;
+    }
 }

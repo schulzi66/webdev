@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<h4>Please <a href='../../src/view/contact.php'>go back</a> and enter details again again!</h4>";
     }
     else{
-        $contactRequest = new ContactRequest(null, $name, $surName, $email, $message);
+        $contactRequest = new ContactRequest(null, $name, $surName, $email, $message, null);
         if (ContactController::receiveContactRequest($contactRequest)){
             $host  = $_SERVER['HTTP_HOST'];
             $uri   ="/Webdev/public_html/src";
