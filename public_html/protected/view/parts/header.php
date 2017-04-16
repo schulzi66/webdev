@@ -22,8 +22,10 @@
                 <li><a href="view/search.php">Search Library</a></li>
                 <li><a href="../protected/view/admin.php">Admin</a></li>
                 <?php
-                session_start();
-                if ($_SESSION["admin"] == true) {
+                if(!isset($_SESSION)) {
+                    session_start();
+                }
+                if (!empty($_SESSION) && $_SESSION["admin"] == true) {
                     echo "<li><a href='../protected/action/logout.php'>Logout</a></li>";
                 } ?>
             </ul>
