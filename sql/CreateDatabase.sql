@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS images (
   Caption    VARCHAR(255)
 );
 
+-- TODO PHKO Foreign Key for bookloan and images
 CREATE TABLE IF NOT EXISTS galleryimages (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   ImageID  INTEGER                NOT NULL

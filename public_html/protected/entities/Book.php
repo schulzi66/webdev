@@ -21,12 +21,6 @@ class Book implements Serializable {
         $this->loanId = $loanId;
     }
 
-    static function __set_state(array $array) {
-        foreach ($array as $k => $v) {
-            echo("$k ==> $v <br/>");
-        }
-    }
-
     /**
      * @return string
      */
