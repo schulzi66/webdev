@@ -21,7 +21,7 @@
         <li><a href="../protected/view/admin.php">Admin</a></li>
       <?php
         session_start();
-        if ($_SESSION["admin"]){
+        if ($_SESSION["admin"] == true){
             echo "<li><a href='../protected/action/logout.php'>Logout</a></li>";
         }?>
       </ul>

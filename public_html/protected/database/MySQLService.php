@@ -3,6 +3,7 @@ require "DatabaseModel.php";
 require "../entities/User.php";
 require "../entities/Book.php";
 require "../entities/Member.php";
+require "../entities/ContactRequest.php";
 
 class MySQLService {
     private $connection;
@@ -289,9 +290,8 @@ class MySQLService {
         return false;
     }
     //endregion
-
     //TODO Julian: Queries
-    //region images
+    //region Images
     /**
      * @param string $imageGalleryName
      * @return array|null
@@ -368,5 +368,59 @@ class MySQLService {
         }
         return null;
     }
-    //end region images
+    //endregion
+
+    //region ContactRequests
+    /**
+     * @param $contactRequest
+     * @return bool
+     */
+    public function receiveContactRequest($contactRequest) : bool {
+        $connection = $this->getConnection();
+        if ($connection){
+            $name = mysqli_real_escape_string($connection, $contactRequest->getName());
+            $surName = mysqli_real_escape_string($connection, $contactRequest->getSurName());
+            $email = mysqli_real_escape_string($connection, $contactRequest->getMail());
+            $message = mysqli_real_escape_string($connection, $contactRequest->getMessage());
+            $sql = "INSERT INTO messages (MessageID, Firstname, Surname, Email, Message) VALUES (DEFAULT , '$name', '$surName', '$email', '$message')";
+            $result = mysqli_query($connection, $sql);
+            return $result;
+        }
+        return false;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getAllContactRequests() : ?array {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = "SELECT * FROM messages";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows >= 1) {
+                $requestArray = $result->fetch_all();
+                return $requestArray;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param $id
+     * @return ContactRequest|null
+     */
+    public function getContactRequestById($id) : ?ContactRequest {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = "SELECT * FROM messages WHERE MessageID = '" . $id . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows == 1) {
+                $result = $result->fetch_assoc();
+                $request = new ContactRequest($result["MessageID"], $result["Firstname"], $result["Surname"], $result["Email"], $result["Message"]);
+                return $request;
+            }
+        }
+        return null;
+    }
+    //endregion
 }

@@ -44,14 +44,12 @@ SessionController::validateAdminSession();
             echo '</tr>';
             echo '</table>';
             echo '</div></br>';
-            $books = serialize($books);
-            $_SESSION["books"] = $books;
             ?>
 
             <!-- Keep this at the end of the body tag to load the scripts at the right time -->
             <?php include '../../protected/view/parts/scripts.php'; ?>
 </body>
-<?php //include '../../protected/view/parts/footer.php'; ?>
+<?php include '../../protected/view/parts/footer.php'; ?>
 </html>
 
 

@@ -52,3 +52,11 @@ CREATE TABLE IF NOT EXISTS gallery (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   Name     VARCHAR(50)            NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS messages (
+  MessageID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  Firstname VARCHAR(50)                 NOT NULL,
+  Surname   VARCHAR(50)                 NOT NULL,
+  Email     VARCHAR(50)                 NOT NULL,
+  Message   LONGTEXT                    NOT NULL
+);

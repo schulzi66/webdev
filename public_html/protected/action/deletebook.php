@@ -5,7 +5,7 @@ require_once "../entities/Book.php";
 require_once "../controller/SessionController.php";
 
 SessionController::validateAdminSession();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
     if (empty($_POST["id"]) != true){
         $id = ValidationController::validateInput($_POST["id"]);

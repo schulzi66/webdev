@@ -4,7 +4,6 @@ require_once "../controller/SessionController.php";
 
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $members = unserialize($_SESSION["members"]);
     if (isset($_GET['member-update'])) {
         $member = MemberManagementController::getMemberById($_GET["member-update"]);
         $member = serialize($member);

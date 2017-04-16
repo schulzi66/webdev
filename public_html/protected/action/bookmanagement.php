@@ -4,7 +4,6 @@ require_once "../controller/SessionController.php";
 
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $books = unserialize($_SESSION["books"]);
     if (isset($_GET['book-update'])) {
         $book = BookManagementController::getBookById($_GET["book-update"]);
         $book = serialize($book);

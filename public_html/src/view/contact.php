@@ -15,7 +15,7 @@
             <form action="../protected/action/contact.php" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="Name" required>
+                    <input type="text" class="form-control" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="surname">Surname</label>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea type="text" class="form-control" name="message" required rows="3"></textarea>
+                    <textarea type="text" class="form-control" name="message" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
