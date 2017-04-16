@@ -15,11 +15,11 @@
                 <h2>Search our library</h2>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="bookTitle">
+                    <input type="text" class="form-control" id="title" name="bookTitle" minlength="3" title="At least 3 characters required">
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="bookAuthor">
+                    <input type="text" class="form-control" id="author" name="bookAuthor" minlength="3" title="At least 3 characters required">
                 </div>
                 <div class="form-group">
                     <label class="checkbox-inline"><input type="checkbox" id="isAvailableCheckbox" name="isAvailableCheckbox" value="on">Display available books only</label>

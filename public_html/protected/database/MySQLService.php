@@ -158,8 +158,12 @@ class MySQLService {
      */
     public function getBooksByTitleOrAuthor($input): ?array {
         $connection = $this->getConnection();
-        if ($connection) {
-            if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
+        if ($connection)
+        {
+            if(count($input) == 1) {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
+                    . $input . "%';";
+            }else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
             } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
@@ -177,10 +181,12 @@ class MySQLService {
                 return null;
             }
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows > 0) {
+            if ($result->num_rows > 0)
+            {
                 $resultArray = $result->fetch_all();
                 $bookArray = Array();
-                foreach ($resultArray as &$book) {
+                foreach ($resultArray as &$book)
+                {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
                 }
                 return $bookArray;
