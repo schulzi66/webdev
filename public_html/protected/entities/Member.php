@@ -1,8 +1,7 @@
 <?php
 
 
-class Member implements Serializable
-{
+class Member implements Serializable {
     private $memberId, $firstName, $surName, $address, $phone, $birth, $gender, $email;
 
     /**
@@ -16,8 +15,7 @@ class Member implements Serializable
      * @param $gender
      * @param $email
      */
-    public function __construct($memberId, $firstName, $surName, $address, $phone, $birth, $gender, $email)
-    {
+    public function __construct($memberId, $firstName, $surName, $address, $phone, $birth, $gender, $email) {
         $this->memberId = $memberId;
         $this->firstName = $firstName;
         $this->surName = $surName;
@@ -31,8 +29,7 @@ class Member implements Serializable
     /**
      * @return string
      */
-    public function serialize()
-    {
+    public function serialize() {
         return serialize([
             $this->memberId,
             $this->firstName,
@@ -48,8 +45,7 @@ class Member implements Serializable
     /**
      * @param string $data
      */
-    public function unserialize($data)
-    {
+    public function unserialize($data) {
         list(
             $this->memberId,
             $this->firstName,
@@ -65,128 +61,112 @@ class Member implements Serializable
     /**
      * @return mixed
      */
-    public function getMemberId()
-    {
+    public function getMemberId() {
         return $this->memberId;
     }
 
     /**
      * @param mixed $memberId
      */
-    public function setMemberId($memberId)
-    {
+    public function setMemberId($memberId) {
         $this->memberId = $memberId;
     }
 
     /**
      * @return mixed
      */
-    public function getFirstName()
-    {
+    public function getFirstName() {
         return $this->firstName;
     }
 
     /**
      * @param mixed $firstName
      */
-    public function setFirstName($firstName)
-    {
+    public function setFirstName($firstName) {
         $this->firstName = $firstName;
     }
 
     /**
      * @return mixed
      */
-    public function getSurName()
-    {
+    public function getSurName() {
         return $this->surName;
     }
 
     /**
      * @param mixed $surName
      */
-    public function setSurName($surName)
-    {
+    public function setSurName($surName) {
         $this->surName = $surName;
     }
 
     /**
      * @return mixed
      */
-    public function getAddress()
-    {
+    public function getAddress() {
         return $this->address;
     }
 
     /**
      * @param mixed $address
      */
-    public function setAddress($address)
-    {
+    public function setAddress($address) {
         $this->address = $address;
     }
 
     /**
      * @return mixed
      */
-    public function getPhone()
-    {
+    public function getPhone() {
         return $this->phone;
     }
 
     /**
      * @param mixed $phone
      */
-    public function setPhone($phone)
-    {
+    public function setPhone($phone) {
         $this->phone = $phone;
     }
 
     /**
      * @return mixed
      */
-    public function getBirth()
-    {
+    public function getBirth() {
         return $this->birth;
     }
 
     /**
      * @param mixed $birth
      */
-    public function setBirth($birth)
-    {
+    public function setBirth($birth) {
         $this->birth = $birth;
     }
 
     /**
      * @return mixed
      */
-    public function getGender()
-    {
+    public function getGender() {
         return $this->gender;
     }
 
     /**
      * @param mixed $gender
      */
-    public function setGender($gender)
-    {
+    public function setGender($gender) {
         $this->gender = $gender;
     }
 
     /**
      * @return mixed
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
     /**
      * @param mixed $email
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
     }
 

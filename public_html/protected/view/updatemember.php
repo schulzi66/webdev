@@ -23,35 +23,43 @@ $member = unserialize($_GET["member"]);
                 <h2>Update Member</h2>
                 <div class="form-group">
                     <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" value="<?php echo $member->getMemberId()?>" readonly>
+                    <input type="text" class="form-control" id="id" name="id"
+                           value="<?php echo $member->getMemberId() ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="firstName">Firstname</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo $member->getFirstName()?>" required>
+                    <input type="text" class="form-control" id="firstName" name="firstName"
+                           value="<?php echo $member->getFirstName() ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="surName">Surname</label>
-                    <input type="text" class="form-control" id="surName" name="surName" value="<?php echo $member->getSurName()?>" required>
+                    <input type="text" class="form-control" id="surName" name="surName"
+                           value="<?php echo $member->getSurName() ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" value="<?php echo $member->getAddress()?>" required>
+                    <input type="text" class="form-control" id="address" name="address"
+                           value="<?php echo $member->getAddress() ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $member->getPhone()?>" >
+                    <input type="text" class="form-control" id="phone" name="phone"
+                           value="<?php echo $member->getPhone() ?>">
                 </div>
                 <div class="form-group">
                     <label for="birth">Birth</label>
-                    <input type="date" class="form-control" id="birth" name="birth" value="<?php echo $member->getBirth()?>" >
+                    <input type="date" class="form-control" id="birth" name="birth"
+                           value="<?php echo $member->getBirth() ?>">
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender</label>
-                    <input type="text" class="form-control" id="gender" name="gender" value="<?php echo $member->getGender()?>" >
+                    <input type="text" class="form-control" id="gender" name="gender"
+                           value="<?php echo $member->getGender() ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="<?php echo $member->getEmail()?>" >
+                    <input type="text" class="form-control" id="email" name="email"
+                           value="<?php echo $member->getEmail() ?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

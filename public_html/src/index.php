@@ -10,8 +10,9 @@
         <div class="searchBox">
             <div id="searchbox_div">
                 <form name="searchForm" action="../protected/action/indexsearch.php" method="post">
-                    <input id="searchTextbox" name="searchText" type="text" minlength="3" title="At least 3 characters required" required/>
-                    <input type="submit" id="searchBtn" />
+                    <input id="searchTextbox" name="searchText" type="text" minlength="3"
+                           title="At least 3 characters required" required/>
+                    <input type="submit" id="searchBtn"/>
                 </form>
             </div>
         </div>

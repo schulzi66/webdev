@@ -1,17 +1,15 @@
-    <?php
-    require "../database/MySQLService.php";
+<?php
+require "../database/MySQLService.php";
 
-class LoginController
-{
+class LoginController {
     /**
      * @param $credentials
      * @return bool
      */
-    public static function loginUser($credentials): bool
-    {
+    public static function loginUser($credentials): bool {
         $sqlService = new MySQLService();
-        if ($sqlService->connect()){
-            if ($sqlService->getUserFromDatabase($credentials) != null){
+        if ($sqlService->connect()) {
+            if ($sqlService->getUserFromDatabase($credentials) != null) {
                 return true;
             }
         }

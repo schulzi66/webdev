@@ -1,8 +1,7 @@
 <?php
 
 
-class User
-{
+class User {
     private $userId, $userName;
 
     /**
@@ -10,8 +9,7 @@ class User
      * @param $userId
      * @param $userName
      */
-    public function __construct($userId, $userName)
-    {
+    public function __construct($userId, $userName) {
         $this->userId = $userId;
         $this->userName = $userName;
     }
@@ -19,8 +17,7 @@ class User
     /**
      * @return string
      */
-    public function serialize()
-    {
+    public function serialize() {
         return serialize([
             $this->userId,
             $this->userName
@@ -30,42 +27,38 @@ class User
     /**
      * @param string $data
      */
-    public function unserialize($data)
-    {
+    public function unserialize($data) {
         list(
             $this->userId,
             $this->userName
             ) = unserialize($data);
     }
+
     /**
      * @return mixed
      */
-    public function getUserId()
-    {
+    public function getUserId() {
         return $this->userId;
     }
 
     /**
      * @param mixed $userId
      */
-    public function setUserId($userId)
-    {
+    public function setUserId($userId) {
         $this->userId = $userId;
     }
 
     /**
      * @return mixed
      */
-    public function getUserName()
-    {
+    public function getUserName() {
         return $this->userName;
     }
 
     /**
      * @param mixed $userName
      */
-    public function setUserName($userName)
-    {
+    public function setUserName($userName) {
         $this->userName = $userName;
     }
 }

@@ -33,19 +33,19 @@ SessionController::validateAdminSession();
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" >
+                    <input type="text" class="form-control" id="phone" name="phone">
                 </div>
                 <div class="form-group">
                     <label for="birth">Birth</label>
-                    <input type="date" class="form-control" id="birth" name="birth" >
+                    <input type="date" class="form-control" id="birth" name="birth">
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender</label>
-                    <input type="text" class="form-control" id="gender" name="gender" >
+                    <input type="text" class="form-control" id="gender" name="gender">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" >
+                    <input type="text" class="form-control" id="email" name="email">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>

@@ -1,5 +1,6 @@
 <?php
 require "ConnectionFactory.php";
+
 /**
  * Class DatabaseModel
  * @package Database

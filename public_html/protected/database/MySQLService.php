@@ -8,22 +8,7 @@ require "../entities/ContactRequest.php";
 class MySQLService {
     private $connection;
     #region Getter and Setter
-    /**
-     * @param mixed $connection
-     */
-    public function setConnection($connection) {
-        $this->connection = $connection;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getConnection() {
-        return $this->connection;
-    }
-    #endregion
-
-    //region Connection
     /**
      * @return bool
      */
@@ -37,9 +22,27 @@ class MySQLService {
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function getConnection() {
+        return $this->connection;
+    }
+    #endregion
+
+    //region Connection
+
+    /**
+     * @param mixed $connection
+     */
+    public function setConnection($connection) {
+        $this->connection = $connection;
+    }
+
     //endregion
 
     //region User
+
     /**
      * @param $credentials
      * @return null|User
@@ -159,12 +162,11 @@ class MySQLService {
      */
     public function getBooksByTitleOrAuthor($input): ?array {
         $connection = $this->getConnection();
-        if ($connection)
-        {
-            if(count($input) == 1) {
+        if ($connection) {
+            if (count($input) == 1) {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
                     . $input . "%';";
-            }else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
+            } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
             } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
@@ -182,12 +184,10 @@ class MySQLService {
                 return null;
             }
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows > 0)
-            {
+            if ($result->num_rows > 0) {
                 $resultArray = $result->fetch_all();
                 $bookArray = Array();
-                foreach ($resultArray as &$book)
-                {
+                foreach ($resultArray as &$book) {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
                 }
                 return $bookArray;
@@ -381,9 +381,9 @@ class MySQLService {
      * @param $contactRequest
      * @return bool
      */
-    public function receiveContactRequest($contactRequest) : bool {
+    public function receiveContactRequest($contactRequest): bool {
         $connection = $this->getConnection();
-        if ($connection){
+        if ($connection) {
             $name = mysqli_real_escape_string($connection, $contactRequest->getName());
             $surName = mysqli_real_escape_string($connection, $contactRequest->getSurName());
             $email = mysqli_real_escape_string($connection, $contactRequest->getMail());
@@ -398,7 +398,7 @@ class MySQLService {
     /**
      * @return array|null
      */
-    public function getAllContactRequests() : ?array {
+    public function getAllContactRequests(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT * FROM messages";
@@ -415,7 +415,7 @@ class MySQLService {
      * @param $id
      * @return ContactRequest|null
      */
-    public function getContactRequestById($id) : ?ContactRequest {
+    public function getContactRequestById($id): ?ContactRequest {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT * FROM messages WHERE MessageID = '" . $id . "';";
@@ -433,7 +433,7 @@ class MySQLService {
      * @param $id
      * @return bool
      */
-    public function setContactRequestToReplied($id) : bool {
+    public function setContactRequestToReplied($id): bool {
         $connection = $this->getConnection();
         if ($connection) {
             $messageId = mysqli_real_escape_string($connection, $id);

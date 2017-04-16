@@ -4,16 +4,14 @@
  * Class ConnectionFactory
  * @package Database
  */
-class ConnectionFactory
-{
+class ConnectionFactory {
     protected static $connection;
 
 
     /**
      * @return mysqli
      */
-    public function getConnection() : mysqli
-    {
+    public function getConnection(): mysqli {
         try {
             $config = $this->loadConfiguration();
             // Make the connection
@@ -24,7 +22,7 @@ class ConnectionFactory
             mysqli_set_charset($db_connection, 'utf8');
 
             return $db_connection;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo 'Connection failed ' . $e->getMessage();
         }
         return null;
@@ -34,8 +32,7 @@ class ConnectionFactory
      * @param string $file
      * @return array
      */
-    private function loadConfiguration($file = 'database.ini') : array
-    {
+    private function loadConfiguration($file = 'database.ini'): array {
         $settings = parse_ini_file($file, TRUE);
 
         $host = $settings['database']['host'];

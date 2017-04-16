@@ -1,13 +1,12 @@
 <?php
 require "../database/MySQLService.php";
 
-class ContactController
-{
+class ContactController {
     /**
      * @param $contactRequest
      * @return bool
      */
-    public static function receiveContactRequest ($contactRequest) : bool {
+    public static function receiveContactRequest($contactRequest): bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->receiveContactRequest($contactRequest);
@@ -18,7 +17,7 @@ class ContactController
     /**
      * @return array|null
      */
-    public static function getAllContactRequests () : ?array {
+    public static function getAllContactRequests(): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllContactRequests();
@@ -30,7 +29,7 @@ class ContactController
      * @param $id
      * @return ContactRequest|null
      */
-    public static function getContactRequestById($id) : ?ContactRequest {
+    public static function getContactRequestById($id): ?ContactRequest {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getContactRequestById($id);
@@ -42,7 +41,7 @@ class ContactController
      * @param $id
      * @return bool
      */
-    public static function setContactRequestToReplied($id) : bool {
+    public static function setContactRequestToReplied($id): bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->setContactRequestToReplied($id);

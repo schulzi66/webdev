@@ -1,25 +1,25 @@
 <?php
 require "../database/MySQLService.php";
 
-class BookManagementController
-{
+class BookManagementController {
     /**
      * @return array|null
      */
-    public static function getAllBooks() : ?array {
+    public static function getAllBooks(): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllBooks();
         }
         return null;
     }
+
     /**
      * @param $id
      * @return Book|null
      */
-    public static function getBookById($id) : ?Book {
+    public static function getBookById($id): ?Book {
         $sqlService = new MySQLService();
-        if ($sqlService->connect()){
+        if ($sqlService->connect()) {
             return $sqlService->getBookById($id);
         }
         return null;
@@ -29,9 +29,9 @@ class BookManagementController
      * @param $book
      * @return bool
      */
-    public static function addBook($book) : bool{
+    public static function addBook($book): bool {
         $sqlService = new MySQLService();
-        if ($sqlService->connect()){
+        if ($sqlService->connect()) {
             return $sqlService->addBook($book);
         }
         return false;
@@ -41,9 +41,9 @@ class BookManagementController
      * @param $bookId
      * @return bool
      */
-    public static function deleteBook($bookId) : bool {
+    public static function deleteBook($bookId): bool {
         $sqlService = new MySQLService();
-        if ($sqlService->connect()){
+        if ($sqlService->connect()) {
             return $sqlService->deleteBook($bookId);
         }
         return false;
@@ -53,9 +53,9 @@ class BookManagementController
      * @param $book
      * @return bool
      */
-    public static function updateBook($book) : bool {
+    public static function updateBook($book): bool {
         $sqlService = new MySQLService();
-        if ($sqlService->connect()){
+        if ($sqlService->connect()) {
             return $sqlService->updateBook($book);
         }
         return false;

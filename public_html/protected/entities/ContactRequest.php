@@ -1,8 +1,7 @@
 <?php
 
 
-class ContactRequest implements Serializable
-{
+class ContactRequest implements Serializable {
     private $id, $name, $surName, $mail, $message, $replied;
 
     /**
@@ -14,8 +13,7 @@ class ContactRequest implements Serializable
      * @param $message
      * @param $replied
      */
-    public function __construct($id, $name, $surName, $mail, $message, $replied)
-    {
+    public function __construct($id, $name, $surName, $mail, $message, $replied) {
         $this->id = $id;
         $this->name = $name;
         $this->surName = $surName;
@@ -27,8 +25,7 @@ class ContactRequest implements Serializable
     /**
      * @return string
      */
-    public function serialize()
-    {
+    public function serialize() {
         return serialize([
             $this->id,
             $this->name,
@@ -42,8 +39,7 @@ class ContactRequest implements Serializable
     /**
      * @param string $data
      */
-    public function unserialize($data)
-    {
+    public function unserialize($data) {
         list(
             $this->id,
             $this->name,
@@ -57,96 +53,84 @@ class ContactRequest implements Serializable
     /**
      * @return mixed
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
     /**
      * @param mixed $id
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * @param mixed $name
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 
     /**
      * @return mixed
      */
-    public function getSurname()
-    {
+    public function getSurname() {
         return $this->surName;
     }
 
     /**
      * @param mixed $surname
      */
-    public function setSurname($surname)
-    {
+    public function setSurname($surname) {
         $this->surname = $surname;
     }
 
     /**
      * @return mixed
      */
-    public function getMail()
-    {
+    public function getMail() {
         return $this->mail;
     }
 
     /**
      * @param mixed $mail
      */
-    public function setMail($mail)
-    {
+    public function setMail($mail) {
         $this->mail = $mail;
     }
 
     /**
      * @return mixed
      */
-    public function getMessage()
-    {
+    public function getMessage() {
         return $this->message;
     }
 
     /**
      * @param mixed $message
      */
-    public function setMessage($message)
-    {
+    public function setMessage($message) {
         $this->message = $message;
     }
 
     /**
      * @return mixed
      */
-    public function getReplied()
-    {
+    public function getReplied() {
         return $this->replied;
     }
 
     /**
      * @param mixed $replied
      */
-    public function setReplied($replied)
-    {
+    public function setReplied($replied) {
         $this->replied = $replied;
     }
 }
