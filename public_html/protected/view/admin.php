@@ -1,8 +1,4 @@
 <?php
-//TODO MASC remove. only testing purposes;
-//Remove to delete session
-//session_start();
-//$_SESSION["admin"] = false;
 require_once "../controller/SessionController.php";
 
 SessionController::redirectAdmin();

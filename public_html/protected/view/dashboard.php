@@ -91,7 +91,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/pagemanagement.php">
+                <a href="../protected/view/membermanagement.php">
                     <div class="panel-footer">
                         <span class="pull-left">Edit Members</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

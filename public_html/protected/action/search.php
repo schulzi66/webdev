@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         else
         {
-            echo "<h4>No books could be found using the provided search terms. Please <a href='../view/search.php'>go back</a>";
+            echo "<h4>No books could be found using the provided search terms. Please <a href='../../src/view/search.php'>go back</a>";
         }
     }
         else{
@@ -33,6 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorArray[]= "Please provide valid search terms";
     }
     if (ValidationController::checkForErrors($errorArray)) {
-        echo "<h4>Please <a href='../view/search.php'>go back</a> and enter search terms again!</h4>";
+        echo "<h4>Please <a href='../../src/view/search.php'>go back</a> and enter search terms again!</h4>";
     }
 

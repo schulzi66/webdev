@@ -15,9 +15,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/Webdev/public_html/src/index.php">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="../protected/view/about.php">About Us</a></li>
-        <li><a href="../protected/view/contact.php">Contact Us</a></li>
-        <li><a href="../protected/view/search.php">Search Library</a></li>
+        <li><a href="view/about.php">About Us</a></li>
+        <li><a href="view/contact.php">Contact Us</a></li>
+        <li><a href="view/search.php">Search Library</a></li>
         <li><a href="../protected/view/admin.php">Admin</a></li>
       <?php
         session_start();
