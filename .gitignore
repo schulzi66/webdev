@@ -2,7 +2,6 @@
 .editorconfig
 .gitattributes
 .github
-README.md
 .travis.yml
 .idea/
 logs/*
