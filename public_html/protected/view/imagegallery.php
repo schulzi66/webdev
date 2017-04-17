@@ -56,14 +56,13 @@ SessionController::validateAdminSession();
             </div>
 
             <div class="picker">
-                <select id="imageGallerySelect" multiple="multiple" data-limit='5' class="form-control image-picker show-html"
-                        id="imageGallerySelect">
+                <select id="imageGallerySelect" multiple="multiple" data-limit='5' class="form-control image-picker show-html">
                     <?php
                     $images = ImageGalleryController::getImages();
                     foreach ($images as $image) {
                         ?>
                         <option data-img-class="thumbnail-img" data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
-                                value="<?php echo $image[0] ?>"><?php echo $image[3] ?></option>
+                                value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
                     <?php }
                     echo '</select>' ?>
             </div>

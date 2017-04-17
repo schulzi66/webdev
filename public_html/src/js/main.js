@@ -30,10 +30,10 @@ $(document).ready(function () {
 
 function sendSelectedValues() {
     var values = [];
-    $('#imageGallerySelect:selected').each(function(i, selected){
-        values[i] = $(selected).text();
-        console.log(values[i]);
+    $('#imageGallerySelect :selected').each(function(i, selected){
+        values[i] = $(selected).val();
     });
+    console.log(values);
     $.ajax({
         type: 'POST',
         url: '', //TODO post URL
