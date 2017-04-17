@@ -1,7 +1,7 @@
 <?php
 
 class Book implements Serializable {
-    private $id, $title, $author, $isbn, $category, $loanId;
+    private $id, $title, $author, $isbn, $category, $memberId;
 
     /**
      * Book constructor.
@@ -12,13 +12,13 @@ class Book implements Serializable {
      * @param $category
      * @param $loanId
      */
-    public function __construct($id, $title, $author, $isbn, $category, $loanId) {
+    public function __construct($id, $title, $author, $isbn, $category, $memberId) {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->isbn = $isbn;
         $this->category = $category;
-        $this->loanId = $loanId;
+        $this->memberId = $memberId;
     }
 
     /**
@@ -31,7 +31,7 @@ class Book implements Serializable {
             $this->author,
             $this->isbn,
             $this->category,
-            $this->loanId
+            $this->memberId
         ]);
     }
 
@@ -45,7 +45,7 @@ class Book implements Serializable {
             $this->author,
             $this->isbn,
             $this->category,
-            $this->loanId
+            $this->memberId
             ) = unserialize($data);
     }
 
@@ -122,14 +122,14 @@ class Book implements Serializable {
     /**
      * @return mixed
      */
-    public function getLoanId() {
-        return $this->loanId;
+    public function getMemberId() {
+        return $this->memberId;
     }
 
     /**
      * @param mixed $loanId
      */
-    public function setLoanId($loanId) {
-        $this->loanId = $loanId;
+    public function setMemberId($memberId) {
+        $this->loanId = $memberId;
     }
 }

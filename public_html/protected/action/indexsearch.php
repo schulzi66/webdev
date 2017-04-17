@@ -10,8 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $searchText = ValidationController::validateInput($searchText);
         $resultBooks = SearchController::searchBooks($searchText);
         if ($resultBooks != null && count($resultBooks) > 0) {
-            //TODO PHKO ODER JULS: VERARBEITE BOOK ARRAY
-            var_dump($resultBooks);
+            $resultBooks = serialize($resultBooks);
+            $host = $_SERVER['HTTP_HOST'];
+            $uri = "/Webdev/public_html/src/view";
+            $extra = 'searchresults.php';
+            header("Location: http://$host$uri/$extra/?result-books=" . $resultBooks);
+            exit;
         } else {
             echo "<h4>No books could be found using the provided search terms. Please <a href='../../src/index.php'>go back</a>";
         }

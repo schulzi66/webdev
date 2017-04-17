@@ -37,7 +37,7 @@ SessionController::validateAdminSession();
                     echo '<td>' . $book->getAuthor() . '</td>';
                     echo '<td>' . $book->getIsbn() . '</td>';
                     echo '<td>' . $book->getCategory() . '</td>';
-                    echo '<td>' . $book->getLoanId() . '</td>';
+                    echo '<td>' . $book->getMemberId() . '</td>';
                     echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
                     echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
                     echo '</tr>';

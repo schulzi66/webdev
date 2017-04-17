@@ -98,7 +98,7 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
-                $book = new Book($result["ID"], $result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["LoanID"]);
+                $book = new Book($result["ID"], $result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["MemberID"]);
                 return $book;
             }
         }
@@ -116,7 +116,7 @@ class MySQLService {
             $author = mysqli_real_escape_string($connection, $book->getAuthor());
             $isbn = mysqli_real_escape_string($connection, $book->getIsbn());
             $category = mysqli_real_escape_string($connection, $book->getCategory());
-            $sql = "INSERT INTO books (ID,  Title, Author, ISBN, Category, LoanID) VALUES (DEFAULT , '$title', '$author', '$isbn', '$category', NULL )";
+            $sql = "INSERT INTO books (ID,  Title, Author, ISBN, Category, MemberID) VALUES (DEFAULT , '$title', '$author', '$isbn', '$category', NULL )";
             $result = mysqli_query($connection, $sql);
             return $result;
         }
@@ -174,16 +174,16 @@ class MySQLService {
                     . $input . "%';";
             } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
-                    . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
+                    . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%';";
             } else if ($input["bookTitle"] != "" && $input["notLoaned"] == "on") {
-                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND LoanID IS NULL;";
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookTitle"] != "") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%';";
             } else if ($input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
-                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND LoanID IS NULL;";
+                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookAuthor"] != "") {
                 $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%';";
             } else {
