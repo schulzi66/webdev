@@ -9,6 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (isset($_GET['image-gallery-visibility'])) {
-        //TODO juls
+        //TODO juls2
     }
 }

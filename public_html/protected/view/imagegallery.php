@@ -27,9 +27,9 @@ SessionController::validateAdminSession();
                 echo '<td>' . $gallery["0"] . '</td>';
                 echo '<td>' . $gallery["1"] . '</td>';
                 if ($gallery["2"] == 0) {
-                    echo '<td><label class="radio-inline"><input type="radio" id="visibilityHidden" name="visibilityRadio" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio">Shown</label></td>';
+                    echo '<td><label class="radio-inline"><input type="radio" name="visibilityRadio_' . $gallery["0"] . '" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio_' . $gallery["0"] . '">Shown</label></td>';
                 } else if ($gallery["2"] == 1) {
-                    echo '<td><label class="radio-inline"><input type="radio" id="visibilityHidden" name="visibilityRadio">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio" checked="checked">Shown</label></td>';
+                    echo '<td><label class="radio-inline"><input type="radio" name="visibilityRadio_' . $gallery["0"] . '">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio_' . $gallery["0"] . '" checked="checked">Shown</label></td>';
                 }
                 # TODO: Button action for hide / show gallery
                 echo '<td><button class="btn btn-primary" onclick="updateVisibility(' . $gallery["0"] . ')" type="button">Update</button></td>';

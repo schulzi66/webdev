@@ -35,7 +35,7 @@ function sendSelectedValues() {
 }
 
 function updateVisibility(galleryID) {
-    var current = $('input:radio[name=visibilityRadio]:checked');
+    var current = $('input:radio[name=visibilityRadio_' + galleryID + ']:checked');
     var state = 0;
     if (current.attr('id') == 'visibilityShown') {
         state = 1;
@@ -44,7 +44,8 @@ function updateVisibility(galleryID) {
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
             data: state
         });
-    } else if (current.attr('id') == 'visibilityHidden') {
+    } else {
+        state = 0;
         $.ajax({
             type: 'POST',
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
