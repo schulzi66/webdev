@@ -11,6 +11,7 @@ SessionController::validateAdminSession();
 <body>
 
 <div class="container">
+    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Page Management</div>
         <table class="table table-hover table-bordered">

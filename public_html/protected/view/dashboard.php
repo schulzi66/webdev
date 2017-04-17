@@ -10,6 +10,7 @@ SessionController::validateAdminSession();
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 <div class="container">
+    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">SWD Library Administration</h1>

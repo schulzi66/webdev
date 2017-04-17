@@ -11,10 +11,10 @@ $(document).ready(function () {
 
     $('#imageGalleryDropdown a').on('click', function (e) {
         e.preventDefault();
-        if(document.cookie.indexOf('slider') === 0) {
+        if (document.cookie.indexOf('slider') === 0) {
             deleteCookie("currentSlider")
         }
-        $('#imageGalleryDropdown li').click(function(){
+        $('#imageGalleryDropdown li').click(function () {
             var current = $(this).attr('id');
             setCookie("currentSlider", current);
             $('#imageSelectionWrapper').show();
@@ -27,6 +27,7 @@ $(document).ready(function () {
     });
     // Retrieve the picker
     $("select").data('picker');
+
 });
 
 function sendSelectedValues(id) {
@@ -77,20 +78,20 @@ function updateVisibility(galleryID) {
 }
 
 /*
-    Cookie Functions
+ Cookie Functions
  */
 function setCookie(name, value) {
-    document.cookie = name +'='+ value +'; Path=/;';
+    document.cookie = name + '=' + value + '; Path=/;';
 }
 function deleteCookie(name) {
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);

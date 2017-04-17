@@ -10,6 +10,7 @@ SessionController::validateAdminSession();
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 <div class="container">
+    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Available Galleries</div>
         <table class="table table-hover table-bordered">
@@ -31,7 +32,6 @@ SessionController::validateAdminSession();
                 } else if ($gallery["2"] == 1) {
                     echo '<td><label class="radio-inline"><input type="radio" name="visibilityRadio_' . $gallery["0"] . '">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio_' . $gallery["0"] . '" checked="checked">Shown</label></td>';
                 }
-                # TODO: Button action for hide / show gallery
                 echo '<td><button class="btn btn-primary" onclick="updateVisibility(' . $gallery["0"] . ')" type="button">Update</button></td>';
                 echo '</tr>';
             }
@@ -75,7 +75,9 @@ SessionController::validateAdminSession();
                     ?>
             </div>
         </div>
-        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to Gallery</button>
+        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to
+            Gallery
+        </button>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
