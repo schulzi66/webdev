@@ -1,0 +1,13 @@
+<FilesMatch "\.(jpg|png|css|js)$">
+Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
+
+ErrorDocument 403 /webdev/public_html/src/img/error/403.jpg
+ErrorDocument 404 /webdev/public_html/src/img/error/404.png
+
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+Options All -Indexes

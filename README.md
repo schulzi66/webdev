@@ -3,3 +3,6 @@
 You need to configure your XAMPP according to the following stackoverflow entry!
 
 https://stackoverflow.com/questions/15965376/how-to-configure-xampp-to-send-mail-from-localhost
+
+Email:      swd.library.griffith.gmail.com
+Password:   SWDLIBRARYGRIFFITH

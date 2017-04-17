@@ -4,9 +4,15 @@
 </head>
 <?php include '../protected/view/parts/header.php'; ?>
 <body>
+<?php
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once "$root/webdev/public_html/protected/controller/ContentController.php";
+require_once "$root/webdev/public_html/protected/entities/PageContent.php";
+$content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
+?>
 <div class="outer col" data-placeholder-label="Header">
     <div class="mainSearchWrapper">
-        <div class="heading"><h1>SWD LIBRARY</h1></div>
+        <div class="heading"><h1><?php echo $content->getHeadline() ?></h1><label><?php echo $content->getContent() ?></label></div>
         <div class="searchBox">
             <div id="searchbox_div">
                 <form name="searchForm" action="../protected/action/indexsearch.php" method="post">

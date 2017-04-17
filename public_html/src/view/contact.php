@@ -4,14 +4,20 @@
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
+<?php
+require_once "../../protected/controller/ContentController.php";
+require_once "../../protected/entities/PageContent.php";
+$content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
+?>
 <div class="" data-placeholder-label="Header">
     <div class="">
         <div class="">
-            <div class="heading"><h1>SWD LIBRARY</h1>
+            <div class="heading"><h1><?php echo $content->getHeadline() ?></h1>
+                <label><?php echo $content->getContent() ?></label>
             </div>
+
         </div>
         <div class="form-container container">
-            <h2> Contact Us</h2>
             <form action="../protected/action/contact.php" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
