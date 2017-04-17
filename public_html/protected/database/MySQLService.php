@@ -1,9 +1,10 @@
 <?php
 require "DatabaseModel.php";
-require "../entities/User.php";
-require "../entities/Book.php";
-require "../entities/Member.php";
-require "../entities/ContactRequest.php";
+require "../../protected/entities/User.php";
+require "../../protected/entities/Book.php";
+require "../../protected/entities/Member.php";
+require "../../protected/entities/ContactRequest.php";
+require "../../protected/entities/PageContent.php";
 
 class MySQLService {
     private $connection;
@@ -74,7 +75,11 @@ class MySQLService {
             $sql = "SELECT * FROM books";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $bookArray = $result->fetch_all();
+                $resultArray = $result->fetch_all();
+                $bookArray = Array();
+                foreach ($resultArray as $book) {
+                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
+                }
                 return $bookArray;
             }
         }
@@ -187,7 +192,7 @@ class MySQLService {
             if ($result->num_rows > 0) {
                 $resultArray = $result->fetch_all();
                 $bookArray = Array();
-                foreach ($resultArray as &$book) {
+                foreach ($resultArray as $book) {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"]));
                 }
                 return $bookArray;
@@ -208,7 +213,11 @@ class MySQLService {
             $sql = "SELECT * FROM member";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $memberArray = $result->fetch_all();
+                $resultArray = $result->fetch_all();
+                $memberArray = Array();
+                foreach ($resultArray as $member) {
+                    array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"],$member["7"]));
+                }
                 return $memberArray;
             }
         }
@@ -349,6 +358,7 @@ class MySQLService {
         return false;
     }
 
+    //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
@@ -404,7 +414,11 @@ class MySQLService {
             $sql = "SELECT * FROM messages";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $requestArray = $result->fetch_all();
+                $resultArray = $result->fetch_all();
+                $requestArray = Array();
+                foreach ($resultArray as $request) {
+                    array_push($requestArray, new ContactRequest($request["0"], $request["1"], $request["2"], $request["3"], $request["4"], $request["5"]));
+                }
                 return $requestArray;
             }
         }
@@ -445,5 +459,26 @@ class MySQLService {
         }
         return false;
     }
+    //endregion
+
+    //region Content
+    /**
+     * @param $pageName
+     * @return null|PageContent
+     */
+    public function getContentByPageName($pageName) : ?PageContent {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = "SELECT * FROM pagecontent WHERE PageName = '" . $pageName . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows == 1) {
+                $result = $result->fetch_assoc();
+                $request = new PageContent($result["PageID"], $result["PageName"], $result["Headline"], $result["Content"]);
+                return $request;
+            }
+        }
+        return null;
+    }
+
     //endregion
 }

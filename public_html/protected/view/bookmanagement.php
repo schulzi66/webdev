@@ -26,18 +26,19 @@ SessionController::validateAdminSession();
 
             <?php
             require_once "../controller/BookManagementController.php";
+            require_once "../entities/Book.php";
             $books = BookManagementController::getAllBooks();
             foreach ($books as $book) {
 
                 echo '<tr>';
-                echo '<td>' . $book["0"] . '</td>';
-                echo '<td>' . $book["1"] . '</td>';
-                echo '<td>' . $book["2"] . '</td>';
-                echo '<td>' . $book["3"] . '</td>';
-                echo '<td>' . $book["4"] . '</td>';
-                echo '<td>' . $book["5"] . '</td>';
-                echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book["0"] . '">Update</a></td>';
-                echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book["0"] . '">Delete</a></td>';
+                echo '<td>' . $book->getId() . '</td>';
+                echo '<td>' . $book->getTitle() . '</td>';
+                echo '<td>' . $book->getAuthor() . '</td>';
+                echo '<td>' . $book->getIsbn() . '</td>';
+                echo '<td>' . $book->getCategory(). '</td>';
+                echo '<td>' . $book->getLoanId (). '</td>';
+                echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
+                echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
                 echo '</tr>';
             }
             echo '<tr>';

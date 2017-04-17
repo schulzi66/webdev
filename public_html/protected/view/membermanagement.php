@@ -28,20 +28,21 @@ SessionController::validateAdminSession();
 
             <?php
             require_once "../controller/MemberManagementController.php";
+            require_once "../entities/Member.php";
             $members = MemberManagementController::getAllMembers();
             foreach ($members as $member) {
 
                 echo '<tr>';
-                echo '<td>' . $member["0"] . '</td>';
-                echo '<td>' . $member["1"] . '</td>';
-                echo '<td>' . $member["2"] . '</td>';
-                echo '<td>' . $member["3"] . '</td>';
-                echo '<td>' . $member["4"] . '</td>';
-                echo '<td>' . $member["5"] . '</td>';
-                echo '<td>' . $member["6"] . '</td>';
-                echo '<td>' . $member["7"] . '</td>';
-                echo '<td><a href="../protected/action/membermanagement.php?member-update=' . $member["0"] . '">Update</a></td>';
-                echo '<td><a href="../protected/action/membermanagement.php?member-delete=' . $member["0"] . '">Delete</a></td>';
+                echo '<td>' . $member->getMemberId() . '</td>';
+                echo '<td>' . $member->getFirstName() . '</td>';
+                echo '<td>' . $member->getSurName() . '</td>';
+                echo '<td>' . $member->getAddress() . '</td>';
+                echo '<td>' . $member->getPhone() . '</td>';
+                echo '<td>' . $member->getBirth() . '</td>';
+                echo '<td>' . $member->getGender() . '</td>';
+                echo '<td>' . $member->getEmail() . '</td>';
+                echo '<td><a href="../protected/action/membermanagement.php?member-update=' . $member->getMemberId() . '">Update</a></td>';
+                echo '<td><a href="../protected/action/membermanagement.php?member-delete=' . $member->getMemberId() . '">Delete</a></td>';
                 echo '</tr>';
             }
             echo '<tr>';

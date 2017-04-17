@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS images (
   Caption    VARCHAR(255)
 );
 
--- TODO PHKO Foreign Key for bookloan and images
+-- TODO PHKO Foreign Key for bookloan and images and in general :D
 CREATE TABLE IF NOT EXISTS galleryimages (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   ImageID  INTEGER                NOT NULL
@@ -61,4 +61,11 @@ CREATE TABLE IF NOT EXISTS messages (
   Email     VARCHAR(50)                 NOT NULL,
   Message   LONGTEXT                    NOT NULL,
   Replied   BOOL
+);
+
+CREATE TABLE IF NOT EXISTS pagecontent (
+  PageID    INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY ,
+  PageName  VARCHAR(50)            NOT NULL,
+  Headline  VARCHAR(255)           NOT NULL,
+  Content   LONGTEXT               NOT NULL
 );
