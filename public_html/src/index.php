@@ -5,7 +5,6 @@
 <?php include '../protected/view/parts/header.php'; ?>
 <body>
 <?php
-//TODO MASC: fix path
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/controller/ContentController.php";
 require_once "$root/webdev/public_html/protected/entities/PageContent.php";
