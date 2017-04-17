@@ -2,10 +2,10 @@
 .editorconfig
 .gitattributes
 .github
-README.md
 .travis.yml
 .idea/
 logs/*
 tmp/*
+xxxsample_code
 vendor/*
 *.ini
