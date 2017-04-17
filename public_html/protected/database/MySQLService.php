@@ -169,6 +169,7 @@ class MySQLService {
     public function getBooksByTitleOrAuthor($input): ?array {
         $connection = $this->getConnection();
         if ($connection) {
+            //if the main page search was used the input will be only one string. Both Title and Author are searched for this String
             if (count($input) == 1) {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
                     . $input . "%';";

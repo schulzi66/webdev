@@ -27,6 +27,7 @@ SessionController::validateAdminSession();
             <?php
             require_once "../controller/BookManagementController.php";
             require_once "../entities/Book.php";
+
             $books = BookManagementController::getAllBooks();
             if ($books != null) {
                 foreach ($books as $book) {

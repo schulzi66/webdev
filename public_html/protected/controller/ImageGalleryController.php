@@ -1,6 +1,6 @@
 <?php
 
-require "../database/MySQLService.php";
+require_once "../database/MySQLService.php";
 
 class ImageGalleryController {
     /**
