@@ -94,6 +94,13 @@ textarea {
     width: 63%;
 }
 
+/* Image Gallery
+ -------------------------------------------------- */
+.thumbnail-image {
+    width: 264px;
+    height: 264px;
+}
+
 /*
     Overwrites to change standard Bootstrap
  */
