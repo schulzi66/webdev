@@ -17,7 +17,7 @@ SessionController::validateAdminSession();
                 <td>ID</td>
                 <td>Name</td>
                 <td>Status</td>
-                <td>Update</td>
+                <td>Update Visibility</td>
             </tr>
             <?php
             require_once "../controller/ImageGalleryController.php";
@@ -47,7 +47,7 @@ SessionController::validateAdminSession();
             <?php
             $galleryNames = ImageGalleryController::getGalleryNames();
             foreach ($galleryNames as $name) { ?>
-                <li><a href=""><?php echo $name[0] ?></a></li>
+                <li id="<?php echo $name[1] ?>"><a href=""><?php echo $name[0] ?></a></li>
             <?php } ?>
         </ul>
     </div>
@@ -75,7 +75,7 @@ SessionController::validateAdminSession();
                     ?>
             </div>
         </div>
-        <button onclick="sendSelectedValues();" class="btn btn-primary">Add Selected Images to Gallery</button>
+        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to Gallery</button>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->

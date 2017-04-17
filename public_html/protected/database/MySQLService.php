@@ -306,7 +306,7 @@ class MySQLService {
         return false;
     }
     //endregion
-    //TODO Julian: Queries
+    //TODO JUUL: Queries
     //region Images
     /**
      * @param string $imageGalleryName
@@ -359,6 +359,16 @@ class MySQLService {
         return false;
     }
 
+    public function updateImageGalleryVisibility($imageGalleryName, $param) {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = $connection->prepare("");
+            $result = $sql->execute();
+            return $result;
+        }
+        return false;
+    }
+
     //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
@@ -376,7 +386,7 @@ class MySQLService {
     public function getGalleryNames(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT name FROM gallery";
+            $sql = "SELECT Name, GalleryID FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $galleryArray = $result->fetch_all();
@@ -385,6 +395,7 @@ class MySQLService {
         }
         return null;
     }
+
     //endregion
 
     //region ContactRequests

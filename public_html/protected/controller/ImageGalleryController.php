@@ -39,6 +39,19 @@ class ImageGalleryController {
     }
 
     /**
+     * @param $imageGalleryName
+     * @param $state
+     * @return bool
+     */
+    public static function updateImageGalleryVisibility($imageGalleryName, $state): bool {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->updateImageGalleryVisibility($imageGalleryName, $state);
+        }
+        return null;
+    }
+
+    /**
      * @return array|null
      */
     public static function getAllGalleries(): ?array {
