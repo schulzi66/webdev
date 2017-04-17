@@ -10,25 +10,36 @@ $(document).ready(function () {
 
 
     /*$('#imageGalleryDropdown').on('change', function () {
-        if (this.value == '1') {
-            alert("test");
-        }
-    });*/
+     if (this.value == '1') {
+     alert("test");
+     }
+     });*/
 
-    $('#imageGalleryDropdown a').on('click', function(e){
+    $('#imageGalleryDropdown a').on('click', function (e) {
         e.preventDefault();
         $('#imageSelectionWrapper').show();
     });
 
-// Initialize the object
+    // Initialize the image picker
     $("select").imagepicker({
-        hide_select : false
-    })
+        hide_select: false
+    });
     // Retrieve the picker
     $("select").data('picker');
-
-
 });
+
+function sendSelectedValues() {
+    var values = JSON.stringify(ImagePicker.selected_values());
+    console.log(ImagePicker.selected_values());
+    $.ajax({
+        type: 'POST',
+        url: '', //TODO post URL
+        data: values,
+        success: function(response) {
+            content.html(response);
+        }
+    });
+}
 //TODO Never use alert in productive code
 function validate() {
     if (document.forms["searchForm"]["bookTitle"].value === "" && document.forms["searchForm"]["bookAuthor"].value === "") {

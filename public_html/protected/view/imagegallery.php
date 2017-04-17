@@ -62,12 +62,13 @@ SessionController::validateAdminSession();
                     $images = ImageGalleryController::getImages();
                     foreach ($images as $image) {
                         ?>
-                        <option data-img-class="thumbnail-image" data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
+                        <option data-img-class="thumbnail-img" data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
                                 value="<?php echo $image[0] ?>"><?php echo $image[3] ?></option>
                     <?php }
                     echo '</select>' ?>
             </div>
         </div>
+        <button onclick="sendSelectedValues();" " class="btn btn-primary">Add Selected Images to Gallery</button>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->

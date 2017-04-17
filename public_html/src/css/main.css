@@ -96,9 +96,9 @@ textarea {
 
 /* Image Gallery
  -------------------------------------------------- */
-.thumbnail-image {
+.thumbnail-img {
     width: 264px;
-    height: 264px;
+    /*height: 264px;*/
 }
 
 /*
