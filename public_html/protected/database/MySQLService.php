@@ -217,7 +217,7 @@ class MySQLService {
                 $resultArray = $result->fetch_all();
                 $memberArray = Array();
                 foreach ($resultArray as $member) {
-                    array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"],$member["7"]));
+                    array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"], $member["7"]));
                 }
                 return $memberArray;
             }
@@ -289,7 +289,7 @@ class MySQLService {
         $connection = $this->getConnection();
         if ($connection) {
             $memberId = mysqli_real_escape_string($connection, $member->getMemberId());
-            $firstName = mysqli_real_escape_string($connection, $member->getFirtName());
+            $firstName = mysqli_real_escape_string($connection, $member->getFirstName());
             $surName = mysqli_real_escape_string($connection, $member->getSurName());
             $address = mysqli_real_escape_string($connection, $member->getAddress());
             $phone = mysqli_real_escape_string($connection, $member->getPhone());
@@ -478,7 +478,7 @@ class MySQLService {
      * @param $pageName
      * @return null|PageContent
      */
-    public function getContentByPageName($pageName) : ?PageContent {
+    public function getContentByPageName($pageName): ?PageContent {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT * FROM pagecontent WHERE PageName = '" . $pageName . "';";
@@ -489,13 +489,13 @@ class MySQLService {
                 return $request;
             }
         }
-            return null;
+        return null;
     }
 
     /**
      * @return array|null
      */
-    public function getAllPageContents() : ? array {
+    public function getAllPageContents(): ? array {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT * FROM pagecontent";
@@ -516,7 +516,7 @@ class MySQLService {
      * @param $pageContent
      * @return bool
      */
-    public function updatePageContent($pageContent) : bool {
+    public function updatePageContent($pageContent): bool {
         $connection = $this->getConnection();
         if ($connection) {
             $pageName = mysqli_real_escape_string($connection, $pageContent->getPageName());

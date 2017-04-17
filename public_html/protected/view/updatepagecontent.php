@@ -29,12 +29,12 @@ $pageContent = unserialize($_GET["page-content"]);
                 <div class="form-group">
                     <label for="pageName">Pagename</label>
                     <input type="text" class="form-control" id="pageName" name="pageName"
-                           value="<?php echo $pageContent->getPageName() ?>" readonly>
+                           value="<?php echo $pageContent->getPageName() ?>" maxlength="50" readonly>
                 </div>
                 <div class="form-group">
                     <label for="headline">Headline</label>
                     <input type="text" class="form-control" id="headline" name="headline"
-                           value="<?php echo $pageContent->getHeadline() ?>" required>
+                           value="<?php echo $pageContent->getHeadline() ?>" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>

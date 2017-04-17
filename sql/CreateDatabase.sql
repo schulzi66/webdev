@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS member (
   Address   VARCHAR(50)            NOT NULL,
   Phone     VARCHAR(50),
   Birth     DATE,
-  Gender    VARCHAR(5),
+  Gender    VARCHAR(50),
   Email     VARCHAR(50)
 );
 INSERT INTO member
