@@ -172,17 +172,17 @@ class MySQLService {
             if (count($input) == 1) {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
                     . $input . "%';";
-            } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
+            } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["isAvailable"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%';";
-            } else if ($input["bookTitle"] != "" && $input["notLoaned"] == "on") {
+            } else if ($input["bookTitle"] != "" && $input["isAvailable"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookTitle"] != "") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%';";
-            } else if ($input["bookAuthor"] != "" && $input["notLoaned"] == "on") {
+            } else if ($input["bookAuthor"] != "" && $input["isAvailable"] == "on") {
                 $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookAuthor"] != "") {
                 $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%';";

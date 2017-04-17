@@ -8,12 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["bookTitle"]) == false || empty($_POST["bookAuthor"]) == false) {
         $bookTitle = $_POST["bookTitle"];
         $bookAuthor = $_POST["bookAuthor"];
-        if (empty($_POST["notLoaned"])) {
-            $notLoaned = "";
+        if (empty($_POST["isAvailableCheckbox"])) {
+            $isAvailable = "";
         } else {
-            $notLoaned = $_POST["notLoaned"];
+            $isAvailable = $_POST["isAvailableCheckbox"];
         }
-        $searchArray = ['bookTitle' => $bookTitle, 'bookAuthor' => $bookAuthor, 'notLoaned' => $notLoaned];
+        $searchArray = ['bookTitle' => $bookTitle, 'bookAuthor' => $bookAuthor, 'isAvailable' => $isAvailable];
         $searchArray = ValidationController::validateInputArray($searchArray);
         $resultBooks = SearchController::searchBooks($searchArray);
         if ($resultBooks != null && count($resultBooks) > 0) {
