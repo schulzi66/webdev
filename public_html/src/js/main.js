@@ -36,11 +36,19 @@ function sendSelectedValues() {
 
 function updateVisibility(galleryID) {
     var current = $('input:radio[name=visibilityRadio]:checked');
+    var state = 0;
     if (current.attr('id') == 'visibilityShown') {
+        state = 1;
         $.ajax({
             type: 'POST',
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
-            data: current
+            data: state
+        });
+    } else if (current.attr('id') == 'visibilityHidden') {
+        $.ajax({
+            type: 'POST',
+            url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
+            data: state
         });
     }
 }
