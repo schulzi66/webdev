@@ -28,18 +28,20 @@ SessionController::validateAdminSession();
             require_once "../controller/BookManagementController.php";
             require_once "../entities/Book.php";
             $books = BookManagementController::getAllBooks();
-            foreach ($books as $book) {
+            if ($books != null) {
+                foreach ($books as $book) {
 
-                echo '<tr>';
-                echo '<td>' . $book->getId() . '</td>';
-                echo '<td>' . $book->getTitle() . '</td>';
-                echo '<td>' . $book->getAuthor() . '</td>';
-                echo '<td>' . $book->getIsbn() . '</td>';
-                echo '<td>' . $book->getCategory(). '</td>';
-                echo '<td>' . $book->getLoanId (). '</td>';
-                echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
-                echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
-                echo '</tr>';
+                    echo '<tr>';
+                    echo '<td>' . $book->getId() . '</td>';
+                    echo '<td>' . $book->getTitle() . '</td>';
+                    echo '<td>' . $book->getAuthor() . '</td>';
+                    echo '<td>' . $book->getIsbn() . '</td>';
+                    echo '<td>' . $book->getCategory() . '</td>';
+                    echo '<td>' . $book->getLoanId() . '</td>';
+                    echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
+                    echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
+                    echo '</tr>';
+                }
             }
             echo '<tr>';
             echo '</tr>';

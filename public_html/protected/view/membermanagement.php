@@ -30,20 +30,22 @@ SessionController::validateAdminSession();
             require_once "../controller/MemberManagementController.php";
             require_once "../entities/Member.php";
             $members = MemberManagementController::getAllMembers();
-            foreach ($members as $member) {
+            if ($members != null) {
+                foreach ($members as $member) {
 
-                echo '<tr>';
-                echo '<td>' . $member->getMemberId() . '</td>';
-                echo '<td>' . $member->getFirstName() . '</td>';
-                echo '<td>' . $member->getSurName() . '</td>';
-                echo '<td>' . $member->getAddress() . '</td>';
-                echo '<td>' . $member->getPhone() . '</td>';
-                echo '<td>' . $member->getBirth() . '</td>';
-                echo '<td>' . $member->getGender() . '</td>';
-                echo '<td>' . $member->getEmail() . '</td>';
-                echo '<td><a href="../protected/action/membermanagement.php?member-update=' . $member->getMemberId() . '">Update</a></td>';
-                echo '<td><a href="../protected/action/membermanagement.php?member-delete=' . $member->getMemberId() . '">Delete</a></td>';
-                echo '</tr>';
+                    echo '<tr>';
+                    echo '<td>' . $member->getMemberId() . '</td>';
+                    echo '<td>' . $member->getFirstName() . '</td>';
+                    echo '<td>' . $member->getSurName() . '</td>';
+                    echo '<td>' . $member->getAddress() . '</td>';
+                    echo '<td>' . $member->getPhone() . '</td>';
+                    echo '<td>' . $member->getBirth() . '</td>';
+                    echo '<td>' . $member->getGender() . '</td>';
+                    echo '<td>' . $member->getEmail() . '</td>';
+                    echo '<td><a href="../protected/action/membermanagement.php?member-update=' . $member->getMemberId() . '">Update</a></td>';
+                    echo '<td><a href="../protected/action/membermanagement.php?member-delete=' . $member->getMemberId() . '">Delete</a></td>';
+                    echo '</tr>';
+                }
             }
             echo '<tr>';
             echo '</tr>';

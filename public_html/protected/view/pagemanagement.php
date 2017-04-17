@@ -23,13 +23,15 @@ SessionController::validateAdminSession();
             require_once "../controller/ContentController.php";
             require_once "../entities/PageContent.php";
             $contents = ContentController::getAllPageContents();
-            foreach ($contents as $content) {
+            if ($contents != null) {
+                foreach ($contents as $content) {
 
-                echo '<tr>';
-                echo '<td>' . $content->getPageId() . '</td>';
-                echo '<td>' . $content->getPageName() . '</td>';
-                echo '<td><a href="../protected/action/pagemanagement.php?page-update=' . $content->getPageName() . '">Update</a></td>';
-                echo '</tr>';
+                    echo '<tr>';
+                    echo '<td>' . $content->getPageId() . '</td>';
+                    echo '<td>' . $content->getPageName() . '</td>';
+                    echo '<td><a href="../protected/action/pagemanagement.php?page-update=' . $content->getPageName() . '">Update</a></td>';
+                    echo '</tr>';
+                }
             }
             echo '<tr>';
             echo '</tr>';
