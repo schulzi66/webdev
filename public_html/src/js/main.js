@@ -40,7 +40,7 @@ function sendSelectedValues() {
         data: values
     });
 }
-//TODO Never use alert in productive code
+//TODO PHKO Never use alert in productive code
 function validate() {
     if (document.forms["searchForm"]["bookTitle"].value === "" && document.forms["searchForm"]["bookAuthor"].value === "") {
         alert("Please fill either field with text for a valid search");

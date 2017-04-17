@@ -13,7 +13,9 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
     <div class="">
         <div class="">
             <div class="heading"><h1><?php echo $content->getHeadline() ?></h1>
+                <label><?php echo $content->getContent() ?></label>
             </div>
+
         </div>
         <div class="form-container container">
             <form action="../protected/action/contact.php" method="post">

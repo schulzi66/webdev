@@ -1,10 +1,11 @@
 <?php
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require "DatabaseModel.php";
-require "../../protected/entities/User.php";
-require "../../protected/entities/Book.php";
-require "../../protected/entities/Member.php";
-require "../../protected/entities/ContactRequest.php";
-require "../../protected/entities/PageContent.php";
+require "$root/webdev/public_html/protected/entities/User.php";
+require "$root/webdev/public_html/protected/entities/Book.php";
+require "$root/webdev/public_html/protected/entities/Member.php";
+require "$root/webdev/public_html/protected/entities/ContactRequest.php";
+require "$root/webdev/public_html/protected/entities/PageContent.php";
 
 class MySQLService {
     private $connection;
@@ -477,7 +478,47 @@ class MySQLService {
                 return $request;
             }
         }
+            return null;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getAllPageContents() : ? array {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = "SELECT * FROM pagecontent";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows >= 1) {
+                $resultArray = $result->fetch_all();
+                $contentArray = Array();
+                foreach ($resultArray as $content) {
+                    array_push($contentArray, new PageContent($content["0"], $content["1"], $content["2"], $content["3"]));
+                }
+                return $contentArray;
+            }
+        }
         return null;
+    }
+
+    /**
+     * @param $pageContent
+     * @return bool
+     */
+    public function updatePageContent($pageContent) : bool {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $pageName = mysqli_real_escape_string($connection, $pageContent->getPageName());
+            $headline = mysqli_real_escape_string($connection, $pageContent->getHeadline());
+            $content = mysqli_real_escape_string($connection, $pageContent->getContent());
+
+            $sql = $connection->prepare("UPDATE pagecontent SET Headline=?, Content=? WHERE PageName=?");
+            $sql->bind_param('sss', $headline, $content, $pageName);
+
+            $result = $sql->execute();
+            return $result;
+        }
+        return false;
     }
 
     //endregion
