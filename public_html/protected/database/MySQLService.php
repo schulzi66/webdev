@@ -169,6 +169,7 @@ class MySQLService {
     public function getBooksByTitleOrAuthor($input): ?array {
         $connection = $this->getConnection();
         if ($connection) {
+            //if the main page search was used the input will be only one string. Both Title and Author are searched for this String
             if (count($input) == 1) {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
                     . $input . "%';";
@@ -289,7 +290,7 @@ class MySQLService {
         $connection = $this->getConnection();
         if ($connection) {
             $memberId = mysqli_real_escape_string($connection, $member->getMemberId());
-            $firstName = mysqli_real_escape_string($connection, $member->getFirtName());
+            $firstName = mysqli_real_escape_string($connection, $member->getFirstName());
             $surName = mysqli_real_escape_string($connection, $member->getSurName());
             $address = mysqli_real_escape_string($connection, $member->getAddress());
             $phone = mysqli_real_escape_string($connection, $member->getPhone());
