@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (isset($_GET['image-gallery-visibility'])) {
+        ImageGalleryController::updateImageGalleryVisibility($_GET['image-gallery-visibility'], $_GET['image-gallery-visibility']);
         //TODO juls
     }
 }

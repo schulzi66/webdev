@@ -10,6 +10,7 @@ SessionController::validateAdminSession();
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 <div class="container">
+    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Available Galleries</div>
         <table class="table table-hover table-bordered">
@@ -17,7 +18,7 @@ SessionController::validateAdminSession();
                 <td>ID</td>
                 <td>Name</td>
                 <td>Status</td>
-                <td>Update</td>
+                <td>Update Visibility</td>
             </tr>
             <?php
             require_once "../controller/ImageGalleryController.php";
@@ -27,11 +28,10 @@ SessionController::validateAdminSession();
                 echo '<td>' . $gallery["0"] . '</td>';
                 echo '<td>' . $gallery["1"] . '</td>';
                 if ($gallery["2"] == 0) {
-                    echo '<td><label class="radio-inline"><input type="radio" id="visibilityHidden" name="visibilityRadio" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio">Shown</label></td>';
+                    echo '<td><label class="radio-inline"><input type="radio" name="visibilityRadio_' . $gallery["0"] . '" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio_' . $gallery["0"] . '">Shown</label></td>';
                 } else if ($gallery["2"] == 1) {
-                    echo '<td><label class="radio-inline"><input type="radio" id="visibilityHidden" name="visibilityRadio">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio" checked="checked">Shown</label></td>';
+                    echo '<td><label class="radio-inline"><input type="radio" name="visibilityRadio_' . $gallery["0"] . '">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio_' . $gallery["0"] . '" checked="checked">Shown</label></td>';
                 }
-                # TODO: Button action for hide / show gallery
                 echo '<td><button class="btn btn-primary" onclick="updateVisibility(' . $gallery["0"] . ')" type="button">Update</button></td>';
                 echo '</tr>';
             }
@@ -47,7 +47,7 @@ SessionController::validateAdminSession();
             <?php
             $galleryNames = ImageGalleryController::getGalleryNames();
             foreach ($galleryNames as $name) { ?>
-                <li><a href=""><?php echo $name[0] ?></a></li>
+                <li id="<?php echo $name[1] ?>"><a href=""><?php echo $name[0] ?></a></li>
             <?php } ?>
         </ul>
     </div>
@@ -75,7 +75,9 @@ SessionController::validateAdminSession();
                     ?>
             </div>
         </div>
-        <button onclick="sendSelectedValues();" class="btn btn-primary">Add Selected Images to Gallery</button>
+        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to
+            Gallery
+        </button>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->

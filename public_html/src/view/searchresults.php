@@ -1,7 +1,7 @@
 <?php
 require_once "../../protected/entities/Book.php";
 $books = unserialize($_GET["result-books"]);
-$count = Count($books);?>
+$count = Count($books); ?>
 <html>
 <head>
     <?php include '../../protected/view/parts/head.php'; ?>
@@ -11,7 +11,7 @@ $count = Count($books);?>
 
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading"><?php echo $count?> results returned</div>
+        <div class="panel-heading"><?php echo $count ?> results returned</div>
         <table class="table table-hover table-bordered">
             <tr>
                 <td>ID</td>

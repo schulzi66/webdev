@@ -7,7 +7,7 @@ class ContentController {
      * @param $pageName
      * @return null|PageContent
      */
-    public static function getContentByPageName($pageName) : ?PageContent {
+    public static function getContentByPageName($pageName): ?PageContent {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getContentByPageName($pageName);
@@ -18,7 +18,7 @@ class ContentController {
     /**
      * @return array|null
      */
-    public static function getAllPageContents() : ?array {
+    public static function getAllPageContents(): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllPageContents();
@@ -30,7 +30,7 @@ class ContentController {
      * @param $pageContent
      * @return bool
      */
-    public static function updatePageContent($pageContent) : bool {
+    public static function updatePageContent($pageContent): bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->updatePageContent($pageContent);

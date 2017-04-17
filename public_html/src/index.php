@@ -12,7 +12,8 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
 ?>
 <div class="outer col" data-placeholder-label="Header">
     <div class="mainSearchWrapper">
-        <div class="heading"><h1><?php echo $content->getHeadline() ?></h1><label><?php echo $content->getContent() ?></label></div>
+        <div class="heading"><h1><?php echo $content->getHeadline() ?></h1>
+            <label><?php echo $content->getContent() ?></label></div>
         <div class="searchBox">
             <div id="searchbox_div">
                 <form name="searchForm" action="../protected/action/indexsearch.php" method="post">

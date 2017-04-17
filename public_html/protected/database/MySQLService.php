@@ -218,7 +218,7 @@ class MySQLService {
                 $resultArray = $result->fetch_all();
                 $memberArray = Array();
                 foreach ($resultArray as $member) {
-                    array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"],$member["7"]));
+                    array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"], $member["7"]));
                 }
                 return $memberArray;
             }
@@ -307,7 +307,7 @@ class MySQLService {
         return false;
     }
     //endregion
-    //TODO Julian: Queries
+    //TODO JUUL: Queries
     //region Images
     /**
      * @param string $imageGalleryName
@@ -360,6 +360,16 @@ class MySQLService {
         return false;
     }
 
+    public function updateImageGalleryVisibility($imageGalleryName, $param) {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = $connection->prepare("");
+            $result = $sql->execute();
+            return $result;
+        }
+        return false;
+    }
+
     //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
@@ -377,7 +387,7 @@ class MySQLService {
     public function getGalleryNames(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT name FROM gallery";
+            $sql = "SELECT Name, GalleryID FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $galleryArray = $result->fetch_all();
@@ -386,6 +396,7 @@ class MySQLService {
         }
         return null;
     }
+
     //endregion
 
     //region ContactRequests
@@ -468,7 +479,7 @@ class MySQLService {
      * @param $pageName
      * @return null|PageContent
      */
-    public function getContentByPageName($pageName) : ?PageContent {
+    public function getContentByPageName($pageName): ?PageContent {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT * FROM pagecontent WHERE PageName = '" . $pageName . "';";
@@ -479,13 +490,13 @@ class MySQLService {
                 return $request;
             }
         }
-            return null;
+        return null;
     }
 
     /**
      * @return array|null
      */
-    public function getAllPageContents() : ? array {
+    public function getAllPageContents(): ? array {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT * FROM pagecontent";
@@ -506,7 +517,7 @@ class MySQLService {
      * @param $pageContent
      * @return bool
      */
-    public function updatePageContent($pageContent) : bool {
+    public function updatePageContent($pageContent): bool {
         $connection = $this->getConnection();
         if ($connection) {
             $pageName = mysqli_real_escape_string($connection, $pageContent->getPageName());

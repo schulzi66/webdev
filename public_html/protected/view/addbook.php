@@ -21,19 +21,19 @@ SessionController::validateAdminSession();
                 <h2>Add New Book</h2>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control" id="title" name="title" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="author" required>
+                    <input type="text" class="form-control" id="author" name="author" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label for="isbn">ISBN</label>
-                    <input type="text" class="form-control" id="isbn" name="isbn" required>
+                    <input type="text" class="form-control" id="isbn" name="isbn" maxlength="10" required>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category">
+                    <input type="text" class="form-control" id="category" name="category" maxlength="50">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
