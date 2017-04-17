@@ -27,6 +27,7 @@ $(document).ready(function () {
     });
     // Retrieve the picker
     $("select").data('picker');
+
 });
 
 function sendSelectedValues(id) {
