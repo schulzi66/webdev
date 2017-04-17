@@ -4,8 +4,8 @@ USE webdev;
 
 CREATE TABLE IF NOT EXISTS books (
   ID       INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  Title    VARCHAR(255)            NOT NULL,
-  Author   VARCHAR(255)            NOT NULL,
+  Title    VARCHAR(255)           NOT NULL,
+  Author   VARCHAR(255)           NOT NULL,
   ISBN     VARCHAR(10)            NOT NULL,
   Category VARCHAR(50),
   LoanID   INTEGER
@@ -46,19 +46,20 @@ CREATE TABLE IF NOT EXISTS images (
 -- TODO PHKO Foreign Key for bookloan and images
 CREATE TABLE IF NOT EXISTS galleryimages (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  ImageID  INTEGER                NOT NULL
+  ImageID   INTEGER                NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS gallery (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  Name     VARCHAR(50)            NOT NULL
+  Name      VARCHAR(50)            NOT NULL,
+  Status    BOOLEAN                NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS messages (
   MessageID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  Firstname VARCHAR(50)                 NOT NULL,
-  Surname   VARCHAR(50)                 NOT NULL,
-  Email     VARCHAR(50)                 NOT NULL,
-  Message   LONGTEXT                    NOT NULL,
+  Firstname VARCHAR(50)            NOT NULL,
+  Surname   VARCHAR(50)            NOT NULL,
+  Email     VARCHAR(50)            NOT NULL,
+  Message   LONGTEXT               NOT NULL,
   Replied   BOOL
 );
