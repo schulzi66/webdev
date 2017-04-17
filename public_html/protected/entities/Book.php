@@ -10,7 +10,9 @@ class Book implements Serializable {
      * @param $author
      * @param $isbn
      * @param $category
-     * @param $loanId
+     * @param $memberId
+     * @param $taken
+     * @param $returned
      */
     public function __construct($id, $title, $author, $isbn, $category, $memberId, $taken, $returned) {
         $this->id = $id;

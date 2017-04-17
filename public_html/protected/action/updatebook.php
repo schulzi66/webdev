@@ -7,6 +7,7 @@ require_once "../controller/SessionController.php";
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
+    //check if all required fields are set
     if (empty($_POST["id"]) != true) {
         $id = ValidationController::validateInput($_POST["id"]);
     } else {
@@ -32,11 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorArray[] = 'ISBN is required.';
     }
     $category = ValidationController::validateInput($_POST["category"]);
+
+    //check for errors
     if (ValidationController::checkForErrors($errorArray)) {
         echo "<h4>Please <a href='../view/updatebook.php'>go back</a> and enter information again!</h4>";
     } else {
-        $book = new Book($id, $title, $author, $isbn, $category, null);
+        //no errors
+        //create new book object, use null for category, taken and returned, because these values will not be updated
+        $book = new Book($id, $title, $author, $isbn, $category, null, null, null);
+        //call to controller
         if (BookManagementController::updateBook($book)) {
+            //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
             $uri = "/Webdev/public_html/protected/view";
             $extra = 'bookmanagement.php';

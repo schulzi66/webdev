@@ -7,7 +7,10 @@ require "ConnectionFactory.php";
  */
 class DatabaseModel {
 
-    public static function getAdapter() {
+    /**
+     * @return mysqli
+     */
+    public static function getAdapter() : mysqli{
         $connection = new ConnectionFactory();
         return $connection->getConnection();
     }

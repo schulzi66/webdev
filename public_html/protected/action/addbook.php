@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $author = "";
     $isbn = "";
     $category = "";
+    //check if all required fields are set
     if (empty($_POST["title"]) != true) {
         $title = ValidationController::validateInput($_POST["title"]);
     } else {
@@ -28,11 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $category = ValidationController::validateInput($_POST["category"]);
 
+    //check for errors
     if (ValidationController::checkForErrors($errorArray)) {
         echo "<h4>Please <a href='../view/addbook.php'>go back</a> and enter details again!</h4>";
     } else {
-        $book = new Book(null, $title, $author, $isbn, $category, null);
+        //no errors
+        //create new book object
+        $book = new Book(null, $title, $author, $isbn, $category, null, null,null);
+        //call to controller
         if (BookManagementController::addBook($book)) {
+            //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
             $uri = "/Webdev/public_html/protected/view";
             $extra = 'bookmanagement.php';

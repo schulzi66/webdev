@@ -7,6 +7,7 @@ require_once "../controller/SessionController.php";
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
+    //check if all required fields are set
     if (empty($_POST["id"]) != true) {
         $id = ValidationController::validateInput($_POST["id"]);
     } else {
@@ -39,11 +40,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = ValidationController::validateInput($_POST["gender"]);
     $email = ValidationController::validateInput($_POST["email"]);
 
+    //check for errors
     if (ValidationController::checkForErrors($errorArray)) {
         echo "<h4>Please <a href='../view/updatemember.php'>go back</a> and enter information again!</h4>";
     } else {
+        //no errors
+        //create new member object
         $member = new Member($id, $firstName, $surName, $address, $phone, $birth, $gender, $email);
+        //call to controller
         if (MemberManagementController::updateMember($member)) {
+            //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
             $uri = "/Webdev/public_html/protected/view";
             $extra = 'membermanagement.php';

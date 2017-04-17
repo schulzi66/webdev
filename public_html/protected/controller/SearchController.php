@@ -2,6 +2,7 @@
 require_once "../database/MySQLService.php";
 
 class SearchController {
+    //TODO PHKO: neeeded because the value is will never be != null
     protected $searchResults;
 
     /**
