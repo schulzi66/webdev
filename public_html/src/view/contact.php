@@ -12,8 +12,8 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
 <div class="" data-placeholder-label="Header">
     <div class="">
         <div class="">
-            <div class="heading"><h1><?php echo $content->getHeadline() ?></h1>
-                <label><?php echo $content->getContent() ?></label>
+            <div class="heading"><h1><?php if (isset($content)) {echo $content->getHeadline();} ?></h1>
+                <label><?php if (isset($content)) {echo $content->getContent();} ?></label>
             </div>
 
         </div>
