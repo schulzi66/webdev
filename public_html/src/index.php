@@ -16,6 +16,7 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
             <label><?php echo $content->getContent() ?></label></div>
         <div class="searchBox">
             <div id="searchbox_div">
+                <!-- Form for searching both the title and author of books to the given string-->
                 <form name="searchForm" action="../protected/action/indexsearch.php" method="post">
                     <input id="searchTextbox" name="searchText" type="text" minlength="3"
                            title="At least 3 characters required" required/>

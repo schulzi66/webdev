@@ -1,6 +1,8 @@
 <?php
 require_once "../database/MySQLService.php";
-
+/*
+ * Controller for all searches
+ */
 class SearchController {
     protected $searchResults;
 
