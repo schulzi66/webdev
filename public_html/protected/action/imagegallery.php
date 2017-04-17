@@ -7,4 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['image-gallery'])) {
         //TODO juls
     }
+
+    if (isset($_GET['image-gallery-visibility'])) {
+        //TODO juls
+    }
 }

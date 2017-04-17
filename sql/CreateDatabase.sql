@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS galleryimages (
 CREATE TABLE IF NOT EXISTS gallery (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   Name      VARCHAR(50)            NOT NULL,
-  Status    BOOLEAN                NOT NULL
+  State    BOOLEAN                NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS messages (
