@@ -20,7 +20,6 @@ SessionController::validateAdminSession();
                 <td>Author</td>
                 <td>ISBN</td>
                 <td>Category</td>
-                <td>LoanId</td>
                 <td><?php echo '<a href="../protected/action/bookmanagement.php?book-add">Add new Book</a>'; ?></td>
             </tr>
 
@@ -37,7 +36,6 @@ SessionController::validateAdminSession();
                     echo '<td>' . $book->getAuthor() . '</td>';
                     echo '<td>' . $book->getIsbn() . '</td>';
                     echo '<td>' . $book->getCategory() . '</td>';
-                    echo '<td>' . $book->getMemberId() . '</td>';
                     echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
                     echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
                     echo '</tr>';
