@@ -152,6 +152,7 @@ class Book implements Serializable {
     public function setTaken($taken) {
         $this->taken = $taken;
     }
+
     /**
      * @return mixed
      */

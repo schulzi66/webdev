@@ -29,22 +29,22 @@ $book = unserialize($_GET["book"]);
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" name="title"
-                           value="<?php echo $book->getTitle() ?>" required>
+                           value="<?php echo $book->getTitle() ?>" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
                     <input type="text" class="form-control" id="author" name="author"
-                           value="<?php echo $book->getAuthor() ?>" required>
+                           value="<?php echo $book->getAuthor() ?>" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label for="isbn">ISBN</label>
                     <input type="text" class="form-control" id="isbn" name="isbn" value="<?php echo $book->getIsbn() ?>"
-                           required>
+                           maxlength="10" required>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
                     <input type="text" class="form-control" id="category" name="category"
-                           value="<?php echo $book->getCategory() ?>">
+                           value="<?php echo $book->getCategory() ?>" maxlength="50">
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

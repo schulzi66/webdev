@@ -21,31 +21,34 @@ SessionController::validateAdminSession();
                 <h2>Add New Member</h2>
                 <div class="form-group">
                     <label for="firstName">Firstname</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                    <input type="text" class="form-control" id="firstName" name="firstName" maxlength="50"
+                           pattern="[a-zA-Z]+" required>
                 </div>
                 <div class="form-group">
                     <label for="surName">Surname</label>
-                    <input type="text" class="form-control" id="surName" name="surName" required>
+                    <input type="text" class="form-control" id="surName" name="surName" maxlength="50"
+                           pattern="[a-zA-Z]+" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" required>
+                    <input type="text" class="form-control" id="address" name="address" maxlength="50" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone">
+                    <input type="text" class="form-control" id="phone" name="phone" pattern="^[0-9\-\+\s\(\)]*$"
+                           maxlength="50">
                 </div>
                 <div class="form-group">
                     <label for="birth">Birth</label>
-                    <input type="date" class="form-control" id="birth" name="birth">
+                    <input type="date" class="form-control" id="birth" name="birth" pattern="\d{1,2}/\d{1,2}/\d{4">
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender</label>
-                    <input type="text" class="form-control" id="gender" name="gender">
+                    <input type="text" class="form-control" id="gender" name="gender" maxlength="50">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email" maxlength="50">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>

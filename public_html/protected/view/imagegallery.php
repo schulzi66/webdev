@@ -75,7 +75,9 @@ SessionController::validateAdminSession();
                     ?>
             </div>
         </div>
-        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to Gallery</button>
+        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to
+            Gallery
+        </button>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->

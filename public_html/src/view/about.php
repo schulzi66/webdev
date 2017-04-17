@@ -5,9 +5,9 @@
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 <?php
-    require_once "../../protected/controller/ContentController.php";
-    require_once "../../protected/entities/PageContent.php";
-    $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
+require_once "../../protected/controller/ContentController.php";
+require_once "../../protected/entities/PageContent.php";
+$content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
 ?>
 <div class="" data-placeholder-label="Header">
     <div class="">

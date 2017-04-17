@@ -22,7 +22,7 @@
                 <li><a href="view/search.php">Search Library</a></li>
                 <li><a href="view/admin.php">Admin</a></li>
                 <?php
-                if(!isset($_SESSION)) {
+                if (!isset($_SESSION)) {
                     session_start();
                 }
                 if (!empty($_SESSION) && $_SESSION["admin"] == true) {

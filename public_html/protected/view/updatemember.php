@@ -29,37 +29,37 @@ $member = unserialize($_GET["member"]);
                 <div class="form-group">
                     <label for="firstName">Firstname</label>
                     <input type="text" class="form-control" id="firstName" name="firstName"
-                           value="<?php echo $member->getFirstName() ?>" required>
+                           value="<?php echo $member->getFirstName() ?>" maxlength="50" pattern="[a-zA-Z]+" required>
                 </div>
                 <div class="form-group">
                     <label for="surName">Surname</label>
                     <input type="text" class="form-control" id="surName" name="surName"
-                           value="<?php echo $member->getSurName() ?>" required>
+                           value="<?php echo $member->getSurName() ?>" maxlength="50" pattern="[a-zA-Z]+" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address"
-                           value="<?php echo $member->getAddress() ?>" required>
+                           value="<?php echo $member->getAddress() ?>" maxlength="50" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
                     <input type="text" class="form-control" id="phone" name="phone"
-                           value="<?php echo $member->getPhone() ?>">
+                           value="<?php echo $member->getPhone() ?>" pattern="^[0-9\-\+\s\(\)]*$" maxlength="50">
                 </div>
                 <div class="form-group">
                     <label for="birth">Birth</label>
                     <input type="date" class="form-control" id="birth" name="birth"
-                           value="<?php echo $member->getBirth() ?>">
+                           value="<?php echo $member->getBirth() ?>" pattern="\d{1,2}/\d{1,2}/\d{4">
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender</label>
                     <input type="text" class="form-control" id="gender" name="gender"
-                           value="<?php echo $member->getGender() ?>">
+                           value="<?php echo $member->getGender() ?>" maxlength="50">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email"
-                           value="<?php echo $member->getEmail() ?>">
+                    <input type="email" class="form-control" id="email" name="email"
+                           value="<?php echo $member->getEmail() ?>" maxlength="50">
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
