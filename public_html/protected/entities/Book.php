@@ -1,7 +1,7 @@
 <?php
 
 class Book implements Serializable {
-    private $id, $title, $author, $isbn, $category, $loanId;
+    private $id, $title, $author, $isbn, $category, $memberId, $taken, $returned;
 
     /**
      * Book constructor.
@@ -12,13 +12,15 @@ class Book implements Serializable {
      * @param $category
      * @param $loanId
      */
-    public function __construct($id, $title, $author, $isbn, $category, $loanId) {
+    public function __construct($id, $title, $author, $isbn, $category, $memberId, $taken, $returned) {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
         $this->isbn = $isbn;
         $this->category = $category;
-        $this->loanId = $loanId;
+        $this->memberId = $memberId;
+        $this->taken = $taken;
+        $this->returned = $returned;
     }
 
     /**
@@ -31,7 +33,9 @@ class Book implements Serializable {
             $this->author,
             $this->isbn,
             $this->category,
-            $this->loanId
+            $this->memberId,
+            $this->taken,
+            $this->returned
         ]);
     }
 
@@ -45,7 +49,9 @@ class Book implements Serializable {
             $this->author,
             $this->isbn,
             $this->category,
-            $this->loanId
+            $this->memberId,
+            $this->taken,
+            $this->returned
             ) = unserialize($data);
     }
 
@@ -122,14 +128,41 @@ class Book implements Serializable {
     /**
      * @return mixed
      */
-    public function getLoanId() {
-        return $this->loanId;
+    public function getMemberId() {
+        return $this->memberId;
     }
 
     /**
-     * @param mixed $loanId
+     * @param mixed $memberId
      */
-    public function setLoanId($loanId) {
-        $this->loanId = $loanId;
+    public function setMemberId($memberId) {
+        $this->memberId = $memberId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTaken() {
+        return $this->taken;
+    }
+
+    /**
+     * @param mixed $taken
+     */
+    public function setTaken($taken) {
+        $this->taken = $taken;
+    }
+    /**
+     * @return mixed
+     */
+    public function getReturned() {
+        return $this->returned;
+    }
+
+    /**
+     * @param mixed $returned
+     */
+    public function setReturned($returned) {
+        $this->returned = $returned;
     }
 }

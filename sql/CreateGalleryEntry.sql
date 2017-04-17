@@ -1,3 +1,4 @@
+
 USE webdev;
 DELETE FROM gallery;
 DELETE From images;
