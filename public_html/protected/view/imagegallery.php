@@ -44,33 +44,32 @@ SessionController::validateAdminSession();
             <?php
             $galleryNames = ImageGalleryController::getGalleryNames();
             foreach ($galleryNames as $name) { ?>
-                <li><a href="#"><?php echo $name[0] ?></a></li>
+                <li><a href=""><?php echo $name[0] ?></a></li>
             <?php } ?>
         </ul>
     </div>
 
-    <div class="container" hidden>
+    <div id="imageSelectionWrapper" class="container" hidden>
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Available images</h2>
             </div>
-            <select multiple="multiple" class="image-picker show-html">
-                <?php
-                $images = ImageGalleryController::getImages();
-                foreach ($images as $image) {
-                    ?>
-                    <option data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image['PictureRef'] ?>"
-                            value="<?php echo $image['ImageID'] ?>"><?php echo $image['Name'] ?></option>
-                <?php } ?>
-            </select>
+
+            <div class="picker">
+                <select id="imageGallerySelect" multiple="multiple" data-limit='5' class="form-control image-picker show-html">
+                    <?php
+                    $images = ImageGalleryController::getImages();
+                    foreach ($images as $image) {
+                        ?>
+                        <option data-img-class="thumbnail-img" data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
+                                value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
+                    <?php }
+                    echo '</select>' ?>
+            </div>
         </div>
+        <button onclick="sendSelectedValues();" " class="btn btn-primary">Add Selected Images to Gallery</button>
     </div>
 </div>
-<!--                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>-->
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
 <?php include '../../protected/view/parts/scripts.php'; ?>
 </body>
