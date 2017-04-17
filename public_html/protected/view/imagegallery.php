@@ -56,7 +56,7 @@ SessionController::validateAdminSession();
             </div>
 
             <div class="picker">
-                <select multiple="multiple" data-limit='5' class="form-control image-picker show-html"
+                <select id="imageGallerySelect" multiple="multiple" data-limit='5' class="form-control image-picker show-html"
                         id="imageGallerySelect">
                     <?php
                     $images = ImageGalleryController::getImages();

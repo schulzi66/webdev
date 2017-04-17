@@ -29,15 +29,15 @@ $(document).ready(function () {
 });
 
 function sendSelectedValues() {
-    var values = JSON.stringify(ImagePicker.selected_values());
-    console.log(ImagePicker.selected_values());
+    var values = [];
+    $('#imageGallerySelect:selected').each(function(i, selected){
+        values[i] = $(selected).text();
+        console.log(values[i]);
+    });
     $.ajax({
         type: 'POST',
         url: '', //TODO post URL
-        data: values,
-        success: function(response) {
-            content.html(response);
-        }
+        data: values
     });
 }
 //TODO Never use alert in productive code
