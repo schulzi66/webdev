@@ -8,13 +8,6 @@ $(document).ready(function () {
         return this.href == url;
     }).parent().addClass('active').parent().parent().addClass('active');
 
-
-    /*$('#imageGalleryDropdown').on('change', function () {
-     if (this.value == '1') {
-     alert("test");
-     }
-     });*/
-
     $('#imageGalleryDropdown a').on('click', function (e) {
         e.preventDefault();
         $('#imageSelectionWrapper').show();
@@ -30,13 +23,13 @@ $(document).ready(function () {
 
 function sendSelectedValues() {
     var values = [];
-    $('#imageGallerySelect :selected').each(function(i, selected){
+    $('#imageGallerySelect :selected').each(function (i, selected) {
         values[i] = $(selected).val();
     });
     console.log(values);
     $.ajax({
         type: 'POST',
-        url: '', //TODO post URL
+        url: '../protected/action/imagegallery.php?update-gallery=1' , //TODO post URL
         data: values
     });
 }
