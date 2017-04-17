@@ -16,7 +16,6 @@ SessionController::validateAdminSession();
             <tr>
                 <td>ID</td>
                 <td>Name</td>
-                <td>Number Of Images</td>
                 <td>Status</td>
                 <td>Update</td>
             </tr>
@@ -27,10 +26,13 @@ SessionController::validateAdminSession();
                 echo '<tr>';
                 echo '<td>' . $gallery["0"] . '</td>';
                 echo '<td>' . $gallery["1"] . '</td>';
-                echo '<td>' . $gallery["2"] . '</td>';
-                echo '<td><label class="radio-inline"><input type="radio" name="optradio" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" name="optradio">Shown</label></td>';
+                if ($gallery["2"] == 0) {
+                    echo '<td><label class="radio-inline"><input type="radio" id="visibilityHidden" name="visibilityRadio" checked="checked">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio">Shown</label></td>';
+                } else if ($gallery["2"] == 1) {
+                    echo '<td><label class="radio-inline"><input type="radio" id="visibilityHidden" name="visibilityRadio">Hidden</label><label class="radio-inline"><input type="radio" id="visibilityShown" name="visibilityRadio" checked="checked">Shown</label></td>';
+                }
                 # TODO: Button action for hide / show gallery
-                echo '<td><button class="btn btn-primary" type="button">Update</button></td>';
+                echo '<td><button class="btn btn-primary" onclick="updateVisibility(' . $gallery["0"] . ')" type="button">Update</button></td>';
                 echo '</tr>';
             }
             echo '<tr>';
@@ -61,13 +63,16 @@ SessionController::validateAdminSession();
                         class="form-control image-picker show-html">
                     <?php
                     $images = ImageGalleryController::getImages();
-                    foreach ($images as $image) {
-                        ?>
-                        <option data-img-class="thumbnail-img"
-                                data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
-                                value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
-                    <?php }
-                    echo '</select>' ?>
+                    if ($images != null) {
+                        foreach ($images as $image) {
+                            ?>
+                            <option data-img-class="thumbnail-img"
+                                    data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
+                                    value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
+                        <?php }
+                    }
+                    echo '</select>'
+                    ?>
             </div>
         </div>
         <button onclick="sendSelectedValues();" class="btn btn-primary">Add Selected Images to Gallery</button>

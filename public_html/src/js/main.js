@@ -29,9 +29,20 @@ function sendSelectedValues() {
     console.log(values);
     $.ajax({
         type: 'POST',
-        url: '../protected/action/imagegallery.php?update-gallery=1' , //TODO post URL
+        url: '../protected/action/imagegallery.php?update-gallery=1', //TODO post URL
         data: values
     });
+}
+
+function updateVisibility(galleryID) {
+    var current = $('input:radio[name=visibilityRadio]:checked');
+    if (current.attr('id') == 'visibilityShown') {
+        $.ajax({
+            type: 'POST',
+            url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
+            data: current
+        });
+    }
 }
 //TODO Never use alert in productive code
 function validate() {
