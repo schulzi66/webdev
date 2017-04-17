@@ -20,7 +20,13 @@
                 <li><a href="view/about.php">About Us</a></li>
                 <li><a href="view/contact.php">Contact Us</a></li>
                 <li><a href="view/search.php">Search Library</a></li>
-                <li><a href="view/admin.php">Admin</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <?php if (!empty($_SESSION) && $_SESSION["admin"] == true) { ?>
+                    <li ><a href="view/admin.php"> Dashbaord</a></li >
+                <?php } else {?>
+                    <li ><a href="view/admin.php"> Admin Login</a></li >
+                <?php }?>
                 <?php
                 if (!isset($_SESSION)) {
                     session_start();
@@ -28,7 +34,6 @@
                 if (!empty($_SESSION) && $_SESSION["admin"] == true) {
                     echo "<li><a href='../protected/action/logout.php'>Logout</a></li>";
                 } ?>
-            </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
