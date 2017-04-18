@@ -9,28 +9,26 @@ SessionController::redirectAdmin();
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
-<div class="" data-placeholder-label="Header">
-    <div class="">
-        <div class="">
-            <div class="heading"><h1>SWD LIBRARY</h1>
+<div class="container" data-placeholder-label="Header">
+    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+    <div class="heading"><h1>SWD LIBRARY</h1>
+    </div>
+    <div class="form-container container">
+        <form action="../protected/action/admin.php" method="post">
+            <h2>Admin Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="userName" maxlength="50" required>
             </div>
-        </div>
-        <div class="form-container container">
-            <form action="../protected/action/admin.php" method="post">
-                <h2>Admin Login</h2>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="userName" maxlength="50" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" maxlength="255" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" maxlength="255" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
     </div>
 </div>
+
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
 <?php include '../../protected/view/parts/scripts.php'; ?>
 </body>

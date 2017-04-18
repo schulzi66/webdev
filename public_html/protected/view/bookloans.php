@@ -22,7 +22,7 @@ SessionController::validateAdminSession();
                 <td>Loaned By</td>
                 <td>Taken Since</td>
                 <td>Returned On</td>
-                <td> </td>
+                <td></td>
             </tr>
 
             <?php
@@ -39,14 +39,13 @@ SessionController::validateAdminSession();
                     echo '<td>' . $book->getAuthor() . '</td>';
                     echo '<td>' . $book->getIsbn() . '</td>';
                     echo '<td>' . $book->getCategory() . '</td>';
-                    if(!$available) {
+                    if (!$available) {
                         $member = MemberManagementController::getMemberById($book->getMemberId());
                         echo '<td>' . $member->getFirstName() . ' ' . $member->getSurName() . '</td>';
                         echo '<td>' . $book->getTaken() . '</td>';
                         echo '<td> Not returned</td>';
                         echo '<td><a href="../protected/action/bookloans.php?book-return=' . $book->getId() . '">Return book</a></td>';
-                    }
-                    else {
+                    } else {
                         echo '<td> Available </td>';
                         echo '<td> Available </td>';
                         echo '<td>' . $book->getReturned() . '</td>';

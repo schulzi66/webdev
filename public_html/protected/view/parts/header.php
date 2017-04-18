@@ -23,10 +23,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if (!empty($_SESSION) && $_SESSION["admin"] == true) { ?>
-                    <li ><a href="view/admin.php"> Dashbaord</a></li >
-                <?php } else {?>
-                    <li ><a href="view/admin.php"> Admin Login</a></li >
-                <?php }?>
+                    <li><a href="view/admin.php"> Dashboard</a></li>
+                <?php } else { ?>
+                    <li><a href="view/admin.php"> Admin Login</a></li>
+                <?php } ?>
                 <?php
                 if (!isset($_SESSION)) {
                     session_start();
