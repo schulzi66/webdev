@@ -557,7 +557,19 @@ class MySQLService {
             $bookId = mysqli_real_escape_string($connection, $input["bookId"]);
             $memberId = mysqli_real_escape_string($connection, $input["memberId"]);
             $takenDate = mysqli_real_escape_string($connection, $input["taken"]);
-            $sql = "UPDATE books SET MemberId = $memberId, Taken = $takenDate WHERE ID = $bookId;";
+            $sql = "UPDATE books SET MemberId = $memberId, Taken = '$takenDate', Returned = NULL WHERE ID = $bookId;";
+            $result = mysqli_query($connection, $sql);
+        }
+        return $result;
+    }
+
+    public function returnBook($input) : bool {
+        $connection = $this->getConnection();
+        $result = false;
+        if($connection) {
+            $bookId = mysqli_real_escape_string($connection, $input["bookId"]);
+            $returnDate = mysqli_real_escape_string($connection, $input["returned"]);
+            $sql = "UPDATE books SET MemberId = NULL, Taken = NULL, Returned = ''$returnDate'' WHERE ID = $bookId;";
             $result = mysqli_query($connection, $sql);
         }
         return $result;
