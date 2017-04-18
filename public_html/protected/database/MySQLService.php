@@ -72,6 +72,7 @@ class MySQLService {
      */
     public function getAllBooks(): ?array {
         $connection = $this->getConnection();
+        $bookArray = null;
         if ($connection) {
             $sql = "SELECT * FROM books";
             $result = mysqli_query($connection, $sql);
@@ -81,10 +82,9 @@ class MySQLService {
                 foreach ($resultArray as $book) {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
                 }
-                return $bookArray;
             }
         }
-        return null;
+        return $bookArray;
     }
 
     /**
@@ -93,16 +93,16 @@ class MySQLService {
      */
     public function getBookById($id): ?Book {
         $connection = $this->getConnection();
+        $book = null;
         if ($connection) {
             $sql = "SELECT * FROM books WHERE ID = '" . $id . "';";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
                 $book = new Book($result["ID"], $result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["MemberID"], $result["Taken"], $result["Returned"]);
-                return $book;
             }
         }
-        return null;
+        return $book;
     }
 
     /**
@@ -129,14 +129,14 @@ class MySQLService {
      */
     public function deleteBook($bookId): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $result = $connection->query("DELETE FROM books WHERE ID = " . $bookId . ";");
             if ($result) {
                 $connection->query("ALTER TABLE books AUTO_INCREMENT = " . $bookId . ";");
             }
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**
@@ -146,6 +146,7 @@ class MySQLService {
     public function updateBook($book): bool {
 
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $id = mysqli_real_escape_string($connection, $book->getId());
             $title = mysqli_real_escape_string($connection, $book->getTitle());
@@ -157,9 +158,8 @@ class MySQLService {
             $sql->bind_param('ssssi', $title, $author, $isbn, $category, $id);
 
             $result = $sql->execute();
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**
@@ -168,6 +168,7 @@ class MySQLService {
      */
     public function getBooksByTitleOrAuthor($input): ?array {
         $connection = $this->getConnection();
+        $bookArray = null;
         if ($connection) {
             if(count($input) == 3)
             //If the "Search library" was used, input will always contain 3 input strings that need to be prepared for SQL Execution
@@ -209,10 +210,9 @@ class MySQLService {
                 foreach ($resultArray as $book) {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
                 }
-                return $bookArray;
             }
         }
-        return null;
+        return $bookArray;
     }
 
     //endregion
@@ -223,6 +223,7 @@ class MySQLService {
      */
     public function getAllMembers(): ?array {
         $connection = $this->getConnection();
+        $memberArray = null;
         if ($connection) {
             $sql = "SELECT * FROM member";
             $result = mysqli_query($connection, $sql);
@@ -232,10 +233,9 @@ class MySQLService {
                 foreach ($resultArray as $member) {
                     array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"], $member["7"]));
                 }
-                return $memberArray;
             }
         }
-        return null;
+        return $memberArray;
     }
 
     /**
@@ -244,16 +244,16 @@ class MySQLService {
      */
     public function getMemberById($id): ?Member {
         $connection = $this->getConnection();
+        $member = null;
         if ($connection) {
             $sql = "SELECT * FROM member WHERE MemberID = '" . $id . "';";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
                 $member = new Member($result["MemberID"], $result["Firstname"], $result["Surname"], $result["Address"], $result["Phone"], $result["Birth"], $result["Gender"], $result["Email"]);
-                return $member;
             }
         }
-        return null;
+        return $member;
     }
 
     /**
@@ -262,6 +262,7 @@ class MySQLService {
      */
     public function addMember($member): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $firstName = mysqli_real_escape_string($connection, $member->getFirstName());
             $surName = mysqli_real_escape_string($connection, $member->getSurName());
@@ -272,9 +273,8 @@ class MySQLService {
             $mail = mysqli_real_escape_string($connection, $member->getEmail());
             $sql = "INSERT INTO member (MemberID, Firstname, Surname, Address, Phone, Birth, Gender, Email) VALUES (DEFAULT , '$firstName', '$surName', '$address', '$phone', '$birth', '$gender', '$mail')";
             $result = mysqli_query($connection, $sql);
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**
@@ -283,14 +283,14 @@ class MySQLService {
      */
     public function deleteMember($memberId): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $result = $connection->query("DELETE FROM member WHERE MemberID = " . $memberId . ";");
             if ($result) {
                 $connection->query("ALTER TABLE member AUTO_INCREMENT = " . $memberId . ";");
             }
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**
@@ -300,6 +300,7 @@ class MySQLService {
     public function updateMember($member): bool {
 
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $memberId = mysqli_real_escape_string($connection, $member->getMemberId());
             $firstName = mysqli_real_escape_string($connection, $member->getFirstName());
@@ -314,9 +315,8 @@ class MySQLService {
             $sql->bind_param('sssssssi', $firstName, $surName, $address, $phone, $birth, $gender, $mail, $memberId);
 
             $result = $sql->execute();
-            return $result;
         }
-        return false;
+        return $result;
     }
     //endregion
     //TODO JUUL: Queries
@@ -327,6 +327,7 @@ class MySQLService {
      */
     public function getImages($imageGalleryName = "default"): ?array {
         $connection = $this->getConnection();
+        $imageArray = null;
         if ($connection) {
             if ($imageGalleryName == "default") {
                 $sql = "SELECT * FROM images";
@@ -337,10 +338,9 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $imageArray = $result->fetch_all();
-                return $imageArray;
             }
         }
-        return null;
+        return $imageArray;
     }
 
     /**
@@ -357,7 +357,7 @@ class MySQLService {
             }
             $connection->multi_query($sql);
         }
-        return false;
+        return false; //TODO JUULS: Die Methode returned immer false ^^
     }
 
     /**
@@ -366,12 +366,12 @@ class MySQLService {
      */
     public function updateImageGallery($imageGalleryName, $images): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $sql = $connection->prepare("");
             $result = $sql->execute();
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     public function updateImageGalleryVisibility($imageGalleryID, $state) {
@@ -387,15 +387,15 @@ class MySQLService {
     //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
+        $galleryArray = null;
         if ($connection) {
             $sql = "SELECT * FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $galleryArray = $result->fetch_all();
-                return $galleryArray;
             }
         }
-        return null;
+        return $galleryArray;
     }
 
     public function getGalleryNames(): ?array {
@@ -420,6 +420,7 @@ class MySQLService {
      */
     public function receiveContactRequest($contactRequest): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $name = mysqli_real_escape_string($connection, $contactRequest->getName());
             $surName = mysqli_real_escape_string($connection, $contactRequest->getSurName());
@@ -427,9 +428,8 @@ class MySQLService {
             $message = mysqli_real_escape_string($connection, $contactRequest->getMessage());
             $sql = "INSERT INTO messages (MessageID, Firstname, Surname, Email, Message, Replied) VALUES (DEFAULT , '$name', '$surName', '$email', '$message', FALSE )";
             $result = mysqli_query($connection, $sql);
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**
@@ -437,6 +437,7 @@ class MySQLService {
      */
     public function getAllContactRequests(): ?array {
         $connection = $this->getConnection();
+        $requestArray = null;
         if ($connection) {
             $sql = "SELECT * FROM messages";
             $result = mysqli_query($connection, $sql);
@@ -446,10 +447,9 @@ class MySQLService {
                 foreach ($resultArray as $request) {
                     array_push($requestArray, new ContactRequest($request["0"], $request["1"], $request["2"], $request["3"], $request["4"], $request["5"]));
                 }
-                return $requestArray;
             }
         }
-        return null;
+        return $requestArray;
     }
 
     /**
@@ -476,15 +476,15 @@ class MySQLService {
      */
     public function setContactRequestToReplied($id): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $messageId = mysqli_real_escape_string($connection, $id);
             $sql = $connection->prepare("UPDATE messages SET Replied=TRUE WHERE MessageID=?");
             $sql->bind_param('i', $messageId);
 
             $result = $sql->execute();
-            return $result;
         }
-        return false;
+        return $result;
     }
     //endregion
 
@@ -534,6 +534,7 @@ class MySQLService {
      */
     public function updatePageContent($pageContent): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $pageName = mysqli_real_escape_string($connection, $pageContent->getPageName());
             $headline = mysqli_real_escape_string($connection, $pageContent->getHeadline());
@@ -543,10 +544,23 @@ class MySQLService {
             $sql->bind_param('sss', $headline, $content, $pageName);
 
             $result = $sql->execute();
-            return $result;
         }
-        return false;
+        return $result;
     }
 
+    //endregion
+    //region Loans
+    public function loanBook($input) : bool {
+        $connection = $this->getConnection();
+        $result = false;
+        if($connection) {
+            $bookId = mysqli_real_escape_string($connection, $input["bookId"]);
+            $memberId = mysqli_real_escape_string($connection, $input["memberId"]);
+            $takenDate = mysqli_real_escape_string($connection, $input["taken"]);
+            $sql = "UPDATE books SET MemberId = $memberId, Taken = $takenDate WHERE ID = $bookId;";
+            $result = mysqli_query($connection, $sql);
+        }
+        return $result;
+    }
     //endregion
 }
