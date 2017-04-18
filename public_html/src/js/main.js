@@ -132,7 +132,7 @@ function getCookie(cname) {
  */
 function validateSearchForm() {
     if ($('#searchBookTitle').val() === "" && $('#searchBookAuthor').val() === "") {
-        if($('#searchValidationErrorMessage').length > 0) {
+        if($('#searchValidationErrorMessage').length == 0) {
             $('#searchErrorMessageWrapper').append("<div id='searchValidationErrorMessage' class='alert alert-warning'>Please fill at least one search field. </div>");
         }
         return false;
