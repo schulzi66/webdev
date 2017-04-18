@@ -169,27 +169,35 @@ class MySQLService {
     public function getBooksByTitleOrAuthor($input): ?array {
         $connection = $this->getConnection();
         if ($connection) {
+            if(count($input) == 3)
+            //If the "Search library" was used, input will always contain 3 input strings that need to be prepared for SQL Execution
+            {
+                $bookTitle = mysqli_real_escape_string($connection, $input["bookTitle"]);
+                $bookAuthor = mysqli_real_escape_string($connection, $input["bookAuthor"]);
+                $isAvailable = mysqli_real_escape_string($connection, $input["isAvailable"]);
+            }
             //if the main page search was used the input will be only one string. Both Title and Author are searched for this String
             if (count($input) == 1) {
+                $input = mysqli_real_escape_string($connection, $input);
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
                     . $input . "%';";
             }
             /*else if the "Search library" was used these are all the possibilities which input fields were used or not
             to provide the correct data back to the user*/
-            else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["isAvailable"] == "on") {
-                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
-                    . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
-            } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
-                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
-                    . $input["bookAuthor"] . "%';";
-            } else if ($input["bookTitle"] != "" && $input["isAvailable"] == "on") {
-                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND MemberID IS NULL;";
-            } else if ($input["bookTitle"] != "") {
-                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%';";
-            } else if ($input["bookAuthor"] != "" && $input["isAvailable"] == "on") {
-                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
-            } else if ($input["bookAuthor"] != "") {
-                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $input["bookAuthor"] . "%';";
+            else if ($bookTitle != "" && $bookAuthor != "" && $isAvailable == "on") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $bookTitle . "%' AND Author LIKE '%"
+                    . $bookAuthor . "%' AND MemberID IS NULL;";
+            } else if ($bookTitle != "" && $bookAuthor != "") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $bookTitle . "%' AND Author LIKE '%"
+                    . $bookAuthor . "%';";
+            } else if ($bookTitle != "" && $isAvailable == "on") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $bookTitle . "%' AND MemberID IS NULL;";
+            } else if ($bookTitle != "") {
+                $sql = "SELECT * FROM books WHERE Title LIKE '%" . $bookTitle . "%';";
+            } else if ($bookAuthor != "" && $isAvailable == "on") {
+                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $bookAuthor . "%' AND MemberID IS NULL;";
+            } else if ($bookAuthor != "") {
+                $sql = "SELECT * FROM books WHERE Author LIKE '%" . $bookAuthor . "%';";
             } else {
                 return null;
             }
@@ -343,7 +351,9 @@ class MySQLService {
         if ($connection) {
             $sql = "";
             foreach ($images as $image) {
-                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $image["GalleryID"] . "," . $image["imageID"] . ")";
+                $galleryId = mysqli_real_escape_string($connection, $image["GalleryID"]);
+                $imageId = mysqli_real_escape_string($connection, $image["imageID"]);
+                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $galleryId . "," . $imageId . ")";
             }
             $connection->multi_query($sql);
         }
@@ -486,6 +496,7 @@ class MySQLService {
     public function getContentByPageName($pageName): ?PageContent {
         $connection = $this->getConnection();
         if ($connection) {
+            $pageName = mysqli_real_escape_string($connection, $pageName);
             $sql = "SELECT * FROM pagecontent WHERE PageName = '" . $pageName . "';";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
