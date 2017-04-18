@@ -40,10 +40,10 @@ function sendSelectedValues(galleryID) {
     $('#imageGallerySelect :selected').each(function (i, selected) {
         values[i] = $(selected).val();
     });
+    values = JSON.stringify(values);
     $.ajax({
         type: 'POST',
-        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID, //TODO post URL
-        data: values,
+        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
         success: function () {
             console.log("success");
         },
@@ -60,13 +60,12 @@ function sendSelectedValues(galleryID) {
 
 function updateVisibility(galleryID) {
     var current = $('input:radio[name=visibilityRadio_' + galleryID + ']:checked');
-    var state = 0;
+    var state = false;
     if (current.attr('id') == 'visibilityShown') {
-        state = 1;
+        state = true;
         $.ajax({
-            type: 'POST',
-            url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
-            data: state,
+            type: 'GET',
+            url: '../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
             success: function () {
                 console.log("success");
             },
@@ -75,11 +74,10 @@ function updateVisibility(galleryID) {
             }
         });
     } else {
-        state = 0;
+        state = false;
         $.ajax({
-            type: 'POST',
-            url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
-            data: state,
+            type: 'GET',
+            url: '../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
             success: function () {
                 console.log("success");
             },

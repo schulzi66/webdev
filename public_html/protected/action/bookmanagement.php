@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //check if the call from the bookmanagement view is for the update, delete or add
     if (isset($_GET['book-update'])) {
         //load book object from database via controller
+        //TODO: MASC no superglobal arrays validate
         $book = BookManagementController::getBookById($_GET["book-update"]);
         //serialize the book to pass it in the redirect as parameter
         $book = serialize($book);

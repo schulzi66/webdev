@@ -1,15 +1,17 @@
 <?php
 require_once "../controller/ImageGalleryController.php";
 require_once "../controller/SessionController.php";
+require_once "../controller/ValidationController.php";
 
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['image-gallery'])) {
-        //TODO juls
+        //$data = json_decode($_GET["values"]);
     }
 
     if (isset($_GET['image-gallery-visibility'])) {
+
+        //TOdO JUUL validation controller usen and variables usen
         ImageGalleryController::updateImageGalleryVisibility($_GET['image-gallery-visibility'], $_GET['image-gallery-visibility']);
-        //TODO juls
     }
 }
