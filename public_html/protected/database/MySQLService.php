@@ -364,10 +364,10 @@ class MySQLService {
         return false;
     }
 
-    public function updateImageGalleryVisibility($imageGalleryName, $param) {
+    public function updateImageGalleryVisibility($imageGalleryID, $state) {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = $connection->prepare("");
+            $sql = $connection->prepare("UPDATE gallery SET State = . $state . WHERE GalleryID = . $imageGalleryID . ");
             $result = $sql->execute();
             return $result;
         }

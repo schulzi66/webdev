@@ -94,7 +94,7 @@ DROP TABLE IF EXISTS gallery;
 CREATE TABLE IF NOT EXISTS gallery (
   GalleryID INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   Name      VARCHAR(50)            NOT NULL,
-  Status    BOOLEAN                NOT NULL
+  State    BOOLEAN                NOT NULL
 );
 
 DROP TABLE IF EXISTS galleryimages;
@@ -110,10 +110,10 @@ INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(2, 'jpg', '
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(3, 'jpg', 'class-steel-installation', 'Class Steel Installation' ,'');
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(4, 'jpg', 'ArchitectureArtDesigns-180', 'Architecture Art Designs' ,'');
 
-INSERT INTO gallery (GalleryID, Name, Status) VALUES(1, 'First Gallery', 0);
-INSERT INTO gallery (GalleryID, Name, Status) VALUES(2, 'Second Gallery', 1);
-INSERT INTO gallery (GalleryID, Name, Status) VALUES(3, 'Third Gallery', 0);
-INSERT INTO gallery (GalleryID, Name, Status) VALUES(4, 'Fourth Gallery', 1);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(1, 'First Gallery', 0);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(2, 'Second Gallery', 1);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(3, 'Third Gallery', 0);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(4, 'Fourth Gallery', 1);
 
 ALTER TABLE galleryimages
   Add Constraint PK_galleryimages
