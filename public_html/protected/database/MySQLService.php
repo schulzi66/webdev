@@ -173,7 +173,10 @@ class MySQLService {
             if (count($input) == 1) {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input . "%' OR Author LIKE '%"
                     . $input . "%';";
-            } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["isAvailable"] == "on") {
+            }
+            /*else if the "Search library" was used these are all the possibilities which input fields were used or not
+            to provide the correct data back to the user*/
+            else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "" && $input["isAvailable"] == "on") {
                 $sql = "SELECT * FROM books WHERE Title LIKE '%" . $input["bookTitle"] . "%' AND Author LIKE '%"
                     . $input["bookAuthor"] . "%' AND MemberID IS NULL;";
             } else if ($input["bookTitle"] != "" && $input["bookAuthor"] != "") {
@@ -192,6 +195,7 @@ class MySQLService {
             }
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows > 0) {
+                //Fetch all arrays and create Book entities out of the arrays.
                 $resultArray = $result->fetch_all();
                 $bookArray = Array();
                 foreach ($resultArray as $book) {

@@ -6,8 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
 
     if (empty($_POST["searchText"]) == false) {
+        //Server-side validation
         $searchText = $_POST["searchText"];
         $searchText = ValidationController::validateInput($searchText);
+        //Give the input to the search controller to get books from the database
         $resultBooks = SearchController::searchBooks($searchText);
         if ($resultBooks != null && count($resultBooks) > 0) {
             $resultBooks = serialize($resultBooks);

@@ -6,6 +6,5 @@
 .idea/
 logs/*
 tmp/*
-xxxsample_code
 vendor/*
 *.ini

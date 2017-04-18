@@ -4,6 +4,8 @@
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
+<!-- This page shows two input fields for the title and the author of a book. There is also a checkbox
+     that lets the user only search available books. Client-side validation is also performed.-->
 <div class="" data-placeholder-label="Header">
     <div class="">
         <div class="">

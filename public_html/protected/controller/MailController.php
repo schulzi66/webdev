@@ -2,6 +2,7 @@
 
 
 class MailController {
+    //used const because the from value will never change
     private const headers = "From: swd.library.griffith@gmail.com" . "\r\n";
 
     /**

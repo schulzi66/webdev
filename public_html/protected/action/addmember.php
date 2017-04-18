@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $birth = "";
     $gender = "";
     $mail = "";
+    //check if all required fields are set
     if (empty($_POST["firstName"]) != true) {
         $firstName = ValidationController::validateInput($_POST["firstName"]);
     } else {
@@ -34,11 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = ValidationController::validateInput($_POST["gender"]);
     $email = ValidationController::validateInput($_POST["email"]);
 
+    //check for errors
     if (ValidationController::checkForErrors($errorArray)) {
         echo "<h4>Please <a href='../view/addmember.php'>go back</a> and enter details again!</h4>";
     } else {
+        //no errors
+        //create new member object
         $member = new Member(null, $firstName, $surName, $address, $phone, $birth, $gender, $email);
+        //call to controller
         if (MemberManagementController::addMember($member)) {
+            //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
             $uri = "/Webdev/public_html/protected/view";
             $extra = 'membermanagement.php';

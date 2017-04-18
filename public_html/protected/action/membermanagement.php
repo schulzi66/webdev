@@ -4,9 +4,13 @@ require_once "../controller/SessionController.php";
 
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    //check if the call from the membermanagement view is for the update, delete or add
     if (isset($_GET['member-update'])) {
+        //load member object from database via controller
         $member = MemberManagementController::getMemberById($_GET["member-update"]);
+        //serialize the book to pass it in the redirect as parameter
         $member = serialize($member);
+        //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
         $uri = "/Webdev/public_html/protected/view";
         $extra = 'updatemember.php';
@@ -15,8 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (isset($_GET['member-delete'])) {
+        //load member object from database via controller
         $member = MemberManagementController::getMemberById($_GET["member-delete"]);
+        //serialize the book to pass it in the redirect as parameter
         $member = serialize($member);
+        //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
         $uri = "/Webdev/public_html/protected/view";
         $extra = 'deletemember.php';
@@ -25,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (isset($_GET['member-add'])) {
+        //redirect to according view
         $host = $_SERVER['HTTP_HOST'];
         $uri = "/Webdev/public_html/protected/view";
         $extra = 'addmember.php';

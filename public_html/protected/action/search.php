@@ -8,13 +8,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["bookTitle"]) == false || empty($_POST["bookAuthor"]) == false) {
         $bookTitle = $_POST["bookTitle"];
         $bookAuthor = $_POST["bookAuthor"];
+        //HTML automatically sets a ticked checkbox to the string "on", if set.
         if (empty($_POST["isAvailableCheckbox"])) {
             $isAvailable = "";
         } else {
             $isAvailable = $_POST["isAvailableCheckbox"];
         }
+        //Server-side validation
         $searchArray = ['bookTitle' => $bookTitle, 'bookAuthor' => $bookAuthor, 'isAvailable' => $isAvailable];
         $searchArray = ValidationController::validateInputArray($searchArray);
+        //Give the input to the search controller to get books from the database
         $resultBooks = SearchController::searchBooks($searchArray);
         if ($resultBooks != null && count($resultBooks) > 0) {
             $resultBooks = serialize($resultBooks);

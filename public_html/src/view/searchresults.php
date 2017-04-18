@@ -8,6 +8,7 @@ $count = Count($books); ?>
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
+<!-- This page shows a view of all books returned in either the "Search library" search or the main page search-->
 
 <div class="container">
     <div class="panel panel-default">

@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $surName = "";
     $email = "";
     $message = "";
+    //check if all required fields are set
     if (empty($_POST["name"]) != true) {
         $name = $_POST["name"];
     } else {
@@ -29,11 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $errorArray[] = "Message is required";
     }
+    //check for errors
     if (ValidationController::checkForErrors($errorArray)) {
         echo "<h4>Please <a href='../../src/view/contact.php'>go back</a> and enter details again again!</h4>";
     } else {
+        //no errors
+        //create new contact request object
         $contactRequest = new ContactRequest(null, $name, $surName, $email, $message, null);
+        //call to controller
         if (ContactController::receiveContactRequest($contactRequest)) {
+            //redirect
             $host = $_SERVER['HTTP_HOST'];
             $uri = "/Webdev/public_html/src";
             $extra = 'index.php';

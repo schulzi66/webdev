@@ -4,10 +4,10 @@ USE libraryswd;
 
 -- -- UNCOMMENT THE FOLLOWING AFTER FIRST USE OF THIS SCRIPT
 ALTER TABLE books
-DROP FOREIGN KEY FK_books_member;
+  DROP FOREIGN KEY FK_books_member;
 ALTER TABLE galleryimages
-DROP FOREIGN KEY FK_gallery,
-DROP FOREIGN KEY FK_images;
+  DROP FOREIGN KEY FK_gallery,
+  DROP FOREIGN KEY FK_images;
 --
 
 DROP TABLE IF EXISTS books;
@@ -146,6 +146,6 @@ CREATE TABLE IF NOT EXISTS pagecontent (
 
 ALTER TABLE pagecontent AUTO_INCREMENT = 0;
 INSERT INTO pagecontent
-VALUES(DEFAULT ,"about", "About", "Test Content"),
-  (DEFAULT , "contact", "Contact Us", "Test Content"),
-  (DEFAULT , "index", "Home", "Test Content");
+VALUES(DEFAULT ,"about", "About", "The SWD Library is a great library with all kinds of books for all ages. - Your library team"),
+  (DEFAULT , "contact", "Contact Us", "Please feel free to contact us anytime with regards to any questions"),
+  (DEFAULT , "index", "Home", "Welcome to the SWD Library!");

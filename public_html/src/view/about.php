@@ -13,11 +13,11 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
     <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="">
         <div class="">
-            <div class="heading"><h1><?php echo $content->getHeadline() ?></h1>
+            <div class="heading"><h1><?php if (isset($content)) {echo $content->getHeadline();} ?></h1>
             </div>
         </div>
         <div class="form-container container">
-            <label><?php echo $content->getContent() ?></label>
+            <label><?php if (isset($content)) {echo $content->getContent();} ?></label>
         </div>
     </div>
 </div>
