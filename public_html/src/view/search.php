@@ -13,19 +13,19 @@
             </div>
         </div>
         <div class="form-container container">
-            <form name="searchForm" onsubmit="return validate()" action="../protected/action/search.php" method="post">
+            <form name="searchForm" onsubmit="return validateSearchForm()" action="../protected/action/search.php" method="post">
                 <h2>Search our library</h2>
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="bookTitle" minlength="3"
+                    <input type="text" class="form-control" id="searchBookTitle" name="bookTitle" minlength="3"
                            title="At least 3 characters required">
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="bookAuthor" minlength="3"
+                    <input type="text" class="form-control" id="searchBookAuthor" name="bookAuthor" minlength="3"
                            title="At least 3 characters required">
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="searchErrorMessageWrapper">
                     <label class="checkbox-inline"><input type="checkbox" id="isAvailableCheckbox"
                                                           name="isAvailableCheckbox" value="on">Display available books
                         only</label>

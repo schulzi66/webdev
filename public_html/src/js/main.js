@@ -30,7 +30,12 @@ $(document).ready(function () {
 
 });
 
-function sendSelectedValues(id) {
+/**
+ * Ajax call to send selected image values for further processing
+ * @param galleryID
+ */
+
+function sendSelectedValues(galleryID) {
     var values = [];
     $('#imageGallerySelect :selected').each(function (i, selected) {
         values[i] = $(selected).val();
@@ -39,11 +44,19 @@ function sendSelectedValues(id) {
         type: 'POST',
         url: '../protected/action/imagegallery.php?update-gallery=' + id, //TODO post URL
         data: values,
-        success: function (data) {
-            location.reload();
+        success: function () {
+            console.log("success");
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus); alert("Error: " + errorThrown);
         }
     });
 }
+
+/**
+ * Ajax call to send the visibility state of the gallery specified by galleryID
+ * @param galleryID
+ */
 
 function updateVisibility(galleryID) {
     var current = $('input:radio[name=visibilityRadio_' + galleryID + ']:checked');
@@ -54,8 +67,11 @@ function updateVisibility(galleryID) {
             type: 'POST',
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
             data: state,
-            success: function (data) {
-                location.reload();
+            success: function () {
+                console.log("success");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus); alert("Error: " + errorThrown);
             }
         });
     } else {
@@ -64,23 +80,38 @@ function updateVisibility(galleryID) {
             type: 'POST',
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
             data: state,
-            success: function (data) {
-                location.reload();
+            success: function () {
+                console.log("success");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus); alert("Error: " + errorThrown);
             }
         });
     }
 }
 
-/*
- Cookie Functions
+/**
+ * Function to specify a cookie
+ * @param name
+ * @param value
  */
 function setCookie(name, value) {
     document.cookie = name + '=' + value + '; Path=/;';
 }
+
+/**
+ * Function to delete a cookie
+ * @param name
+ */
 function deleteCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
+/**
+ * Function to get a cookie
+ * @param cname
+ * @returns {*}
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -98,9 +129,14 @@ function getCookie(cname) {
 }
 
 //TODO Never use alert in productive code
-function validate() {
-    if (document.forms["searchForm"]["bookTitle"].value === "" && document.forms["searchForm"]["bookAuthor"].value === "") {
-        alert("Please fill either field with text for a valid search");
+//TODO Use jQuery
+/**
+ * Validation for forms
+ * @returns {boolean}
+ */
+function validateSearchForm() {
+    if ($('#searchBookTitle').val() === "" && $('#searchBookAuthor').val() === "") {
+        $('#searchErrorMessageWrapper').append("<div class='alert alert-warning'>Please fill at least one search field. </div>");
         return false;
     }
     return true;

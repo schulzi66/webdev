@@ -13,7 +13,7 @@
     echo '</a></li>';
 
     foreach ($crumbs as $crumb) {
-        //TODO JUUL: change this damn workaround
+        //TODO all: change this damn workaround
         $counter++;
         if ($counter >= 6) {
             if ($crumb == "") {
