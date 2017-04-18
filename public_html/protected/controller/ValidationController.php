@@ -19,6 +19,7 @@ class ValidationController {
     public static function validateInput($data): string {
         $data = trim($data);
         $data = stripcslashes($data);
+        $data = strip_tags($data);
         $data = htmlspecialchars($data);
         $data = htmlentities($data);
         return $data;
