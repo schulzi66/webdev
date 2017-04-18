@@ -42,7 +42,7 @@ function sendSelectedValues(galleryID) {
     });
     $.ajax({
         type: 'POST',
-        url: '../protected/action/imagegallery.php?update-gallery=' + id, //TODO post URL
+        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID, //TODO post URL
         data: values,
         success: function () {
             console.log("success");
@@ -128,15 +128,15 @@ function getCookie(cname) {
     return "";
 }
 
-//TODO Never use alert in productive code
-//TODO Use jQuery
 /**
  * Validation for forms
  * @returns {boolean}
  */
 function validateSearchForm() {
     if ($('#searchBookTitle').val() === "" && $('#searchBookAuthor').val() === "") {
-        $('#searchErrorMessageWrapper').append("<div class='alert alert-warning'>Please fill at least one search field. </div>");
+        if($('#searchValidationErrorMessage').length > 0) {
+            $('#searchErrorMessageWrapper').append("<div id='searchValidationErrorMessage' class='alert alert-warning'>Please fill at least one search field. </div>");
+        }
         return false;
     }
     return true;
