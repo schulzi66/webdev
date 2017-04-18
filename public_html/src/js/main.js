@@ -40,9 +40,7 @@ function sendSelectedValues(id) {
         url: '../protected/action/imagegallery.php?update-gallery=' + id, //TODO post URL
         data: values,
         success: function (data) {
-            if (data.success == true) { // if true (1)
-                location.reload(); // then reload the page.(3)
-            }
+            location.reload();
         }
     });
 }
@@ -57,9 +55,7 @@ function updateVisibility(galleryID) {
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
             data: state,
             success: function (data) {
-                if (data.success == true) { // if true (1)
-                    location.reload(); // then reload the page.(3)
-                }
+                location.reload();
             }
         });
     } else {
@@ -69,9 +65,7 @@ function updateVisibility(galleryID) {
             url: '../protected/action/imagegallery.php?image-gallery-visiblity=' + galleryID,
             data: state,
             success: function (data) {
-                if (data.success == true) { // if true (1)
-                    location.reload(); // then reload the page.(3)
-                }
+                location.reload();
             }
         });
     }
