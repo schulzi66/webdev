@@ -38,7 +38,7 @@ $pageContent = unserialize($_GET["page-content"]);
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea type="text" class="form-control" name="content"
+                    <textarea title="content" class="form-control" name="content"
                               required><?php echo $pageContent->getContent() ?></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>

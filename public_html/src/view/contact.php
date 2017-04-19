@@ -21,19 +21,19 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
             <form action="../protected/action/contact.php" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" required>
+                    <input title="name" type="text" class="form-control" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="surname">Surname</label>
-                    <input type="text" class="form-control" name="surname" required>
+                    <input title="surname" type="text" class="form-control" name="surname" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" required>
+                    <input title="email" type="email" class="form-control" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea type="text" class="form-control" name="message" required></textarea>
+                    <textarea title="message" class="form-control" name="message" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

@@ -23,26 +23,26 @@ $request = unserialize($_GET["request"]);
                 <h2>Reply to the Request</h2>
                 <div class="form-group">
                     <label for="ID">Request ID</label>
-                    <input type="text" class="form-control" name="ID" value="<?php echo $request->getId() ?>" readonly>
+                    <input title="ID" type="text" class="form-control" name="ID" value="<?php echo $request->getId() ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="from">From</label>
-                    <input type="text" class="form-control" name="from"
+                    <input title="from" type="text" class="form-control" name="from"
                            value="<?php echo $request->getName() . " " . $request->getSurName() ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $request->getMail() ?>"
+                    <input title="from" type="text" class="form-control" name="email" value="<?php echo $request->getMail() ?>"
                            readonly>
                 </div>
                 <div class="form-group">
                     <label for="request">Request</label>
-                    <textarea type="text" class="form-control" name="request"
+                    <textarea title="request" class="form-control" name="request"
                               readonly><?php echo $request->getMessage() ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="response">Response</label>
-                    <textarea type="text" class="form-control" name="response" required></textarea>
+                    <textarea title="response" class="form-control" name="response" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Reply</button>
             </form>
