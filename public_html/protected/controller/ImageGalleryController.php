@@ -27,13 +27,15 @@ class ImageGalleryController {
     }
 
     /**
-     * @param $imageGalleryName
+     * @param $galleryID
+     * @param $images
      * @return bool
+     * @internal param $imageGalleryName
      */
-    public static function updateImageGallery($imageGalleryName, $images): bool {
+    public static function updateImageGallery($galleryID, $images): bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->updateImageGallery($imageGalleryName, $images);
+            return $sqlService->updateImageGallery($galleryID, $images);
         }
         return null;
     }

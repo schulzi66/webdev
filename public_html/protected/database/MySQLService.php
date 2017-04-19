@@ -11,7 +11,7 @@ require "$root/webdev/public_html/protected/entities/Gallery.php";
 
 class MySQLService {
     private $connection;
-    #region Getter and Setter
+
 
     /**
      * @return bool
@@ -26,15 +26,13 @@ class MySQLService {
         }
     }
 
+    //region Getter and Setter
     /**
      * @return mixed
      */
     public function getConnection() {
         return $this->connection;
     }
-    #endregion
-
-    //region Connection
 
     /**
      * @param mixed $connection
@@ -346,6 +344,7 @@ class MySQLService {
     }
 
     /**
+     * @param $images
      * @return bool
      */
     public function setImageGalleryImages($images): bool {
@@ -357,16 +356,21 @@ class MySQLService {
                 $imageId = mysqli_real_escape_string($connection, $image["imageID"]);
                 $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $galleryId . "," . $imageId . ")";
             }
-            $connection->multi_query($sql);
+            $result = $connection->multi_query($sql);
+            return $result;
         }
-        return false; //TODO JUULS: Die Methode returned immer false ^^
+        return false;
     }
 
     /**
-     * @param $imageGalleryName
+     * @param $galleryID
+     * @param $images
      * @return bool
      */
-    public function updateImageGallery($imageGalleryName, $images): bool {
+    /* TODO Query: Update galleryimages if galleryimgages with id $galleryID exists, otherwise Insert into galleryimages ....
+        ---> Request if imagegallery exists
+    */
+    public function updateImageGallery($galleryID, $images): bool {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
