@@ -387,12 +387,12 @@ class MySQLService {
      */
     public function updateImageGalleryVisibility($imageGalleryID, $state): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
-            $sql = $connection->prepare("UPDATE gallery SET State = . $state . WHERE GalleryID = . $imageGalleryID . ");
+            $sql = $connection->prepare("UPDATE gallery SET State = $state WHERE GalleryID = $imageGalleryID; ");
             $result = $sql->execute();
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**

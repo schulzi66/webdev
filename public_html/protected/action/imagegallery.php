@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
     }
 
-    if (isset($_GET['image-gallery-visibility']) && isset($_GET['values'])) {
+    if (isset($_GET['image-gallery-visibility']) && isset($_GET['state'])) {
 
         $visibility = ValidationController::validateInput($_GET['image-gallery-visibility']);
         $state = ValidationController::validateInput($_GET['state']);
