@@ -1,6 +1,7 @@
 <?php
 
-require_once "../database/MySQLService.php";
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once "$root/webdev/public_html/protected/database/MySQLService.php";
 
 class ImageGalleryController {
     /**
@@ -79,7 +80,7 @@ class ImageGalleryController {
     public static function getGalleryVisibilityByPageName($pageName) : ?Gallery {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->getGalleryVisibilityByPageName();
+            return $sqlService->getGalleryVisibilityByPageName($pageName);
         }
         return null;
     }

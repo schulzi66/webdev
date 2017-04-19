@@ -349,6 +349,7 @@ class MySQLService {
      */
     public function setImageGalleryImages($images): bool {
         $connection = $this->getConnection();
+        $result = false;
         if ($connection) {
             $sql = "";
             foreach ($images as $image) {
@@ -357,9 +358,8 @@ class MySQLService {
                 $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $galleryId . "," . $imageId . ")";
             }
             $result = $connection->multi_query($sql);
-            return $result;
         }
-        return false;
+        return $result;
     }
 
     /**
@@ -434,6 +434,7 @@ class MySQLService {
      */
     public function getGalleryVisibilityByPageName($pageName): ?Gallery {
         $connection = $this->getConnection();
+        $gallery = null;
         if ($connection) {
             $pageName = mysqli_real_escape_string($connection, $pageName);
             $sql = "SELECT * FROM gallery WHERE Name = '" . $pageName . "';";
@@ -441,10 +442,9 @@ class MySQLService {
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
                 $gallery = new Gallery($result["GalleryID"], $result["Name"], $result["State"]);
-                return $gallery;
             }
         }
-        return null;
+        return $gallery;
     }
 
     //endregion
@@ -494,16 +494,16 @@ class MySQLService {
      */
     public function getContactRequestById($id): ?ContactRequest {
         $connection = $this->getConnection();
+        $request = null;
         if ($connection) {
             $sql = "SELECT * FROM messages WHERE MessageID = '" . $id . "';";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
                 $request = new ContactRequest($result["MessageID"], $result["Firstname"], $result["Surname"], $result["Email"], $result["Message"], $result["Replied"]);
-                return $request;
             }
         }
-        return null;
+        return $request;
     }
 
     /**
@@ -517,7 +517,6 @@ class MySQLService {
             $messageId = mysqli_real_escape_string($connection, $id);
             $sql = $connection->prepare("UPDATE messages SET Replied=TRUE WHERE MessageID=?");
             $sql->bind_param('i', $messageId);
-
             $result = $sql->execute();
         }
         return $result;
@@ -531,6 +530,7 @@ class MySQLService {
      */
     public function getContentByPageName($pageName): ?PageContent {
         $connection = $this->getConnection();
+        $request = null;
         if ($connection) {
             $pageName = mysqli_real_escape_string($connection, $pageName);
             $sql = "SELECT * FROM pagecontent WHERE PageName = '" . $pageName . "';";
@@ -538,10 +538,9 @@ class MySQLService {
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
                 $request = new PageContent($result["PageID"], $result["PageName"], $result["Headline"], $result["Content"]);
-                return $request;
             }
         }
-        return null;
+        return $request;
     }
 
     /**
@@ -549,6 +548,7 @@ class MySQLService {
      */
     public function getAllPageContents(): ? array {
         $connection = $this->getConnection();
+        $contentArray = null;
         if ($connection) {
             $sql = "SELECT * FROM pagecontent";
             $result = mysqli_query($connection, $sql);
@@ -558,10 +558,9 @@ class MySQLService {
                 foreach ($resultArray as $content) {
                     array_push($contentArray, new PageContent($content["0"], $content["1"], $content["2"], $content["3"]));
                 }
-                return $contentArray;
             }
         }
-        return null;
+        return $contentArray;
     }
 
     /**
