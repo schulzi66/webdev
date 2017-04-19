@@ -72,4 +72,13 @@ class ImageGalleryController {
         }
         return null;
     }
+
+    //TODO JUUL entity
+    public static function getGalleryVisibilityByPageName($pageName) : ?Gallery {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->getGalleryVisibilityByPageName();
+        }
+        return null;
+    }
 }

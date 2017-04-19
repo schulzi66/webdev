@@ -6,6 +6,8 @@ require "$root/webdev/public_html/protected/entities/Book.php";
 require "$root/webdev/public_html/protected/entities/Member.php";
 require "$root/webdev/public_html/protected/entities/ContactRequest.php";
 require "$root/webdev/public_html/protected/entities/PageContent.php";
+require "$root/webdev/public_html/protected/entities/Gallery.php";
+
 
 class MySQLService {
     private $connection;
@@ -374,7 +376,12 @@ class MySQLService {
         return $result;
     }
 
-    public function updateImageGalleryVisibility($imageGalleryID, $state) {
+    /**
+     * @param $imageGalleryID
+     * @param $state
+     * @return bool
+     */
+    public function updateImageGalleryVisibility($imageGalleryID, $state): bool {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = $connection->prepare("UPDATE gallery SET State = . $state . WHERE GalleryID = . $imageGalleryID . ");
@@ -384,6 +391,9 @@ class MySQLService {
         return false;
     }
 
+    /**
+     * @return array|null
+     */
     //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
@@ -398,6 +408,9 @@ class MySQLService {
         return $galleryArray;
     }
 
+    /**
+     * @return array|null
+     */
     public function getGalleryNames(): ?array {
         $connection = $this->getConnection();
         if ($connection) {
@@ -406,6 +419,25 @@ class MySQLService {
             if ($result->num_rows >= 1) {
                 $galleryArray = $result->fetch_all();
                 return $galleryArray;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param $pageName
+     * @return Gallery|null
+     */
+    public function getGalleryVisibilityByPageName($pageName): ?Gallery {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $pageName = mysqli_real_escape_string($connection, $pageName);
+            $sql = "SELECT * FROM gallery WHERE Name = '" . $pageName . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows == 1) {
+                $result = $result->fetch_assoc();
+                $gallery = new Gallery($result["GalleryID"], $result["Name"], $result["State"]);
+                return $gallery;
             }
         }
         return null;
@@ -574,5 +606,6 @@ class MySQLService {
         }
         return $result;
     }
+
     //endregion
 }

@@ -7,10 +7,17 @@
 <?php
 require_once "../../protected/controller/ContentController.php";
 require_once "../../protected/entities/PageContent.php";
+require_once "../../protected/controller/ImageGalleryController.php";
 $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
 ?>
 <div class="container" data-placeholder-label="Header">
     <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+
+    <?php
+    $visibility = ImageGalleryController::getGalleryVisibilityByPageName(basename(__FILE__, '.php'));
+    if(isset($visibility) && $visibility == 1) {
+        include '../../protected/view/parts/imagegallery.php';
+    } ?>
     <div class="">
         <div class="">
             <div class="heading"><h1><?php if (isset($content)) {echo $content->getHeadline();} ?></h1>

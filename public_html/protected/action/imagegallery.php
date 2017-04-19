@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['image-gallery-visibility'])) {
 
         //TOdO JUUL validation controller usen and variables usen
-        ImageGalleryController::updateImageGalleryVisibility($_GET['image-gallery-visibility'], $_GET['image-gallery-visibility']);
+        ValidationController::validateInput($_GET['image-gallery-visibility']);
+        ImageGalleryController::updateImageGalleryVisibility($_GET['image-gallery-visibility'], $_GET['state']);
     }
 }

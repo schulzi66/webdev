@@ -3,16 +3,19 @@
     <?php
     $images = ImageGalleryController::getImages();
     $counter = 0;
-    foreach ($images as $image) {
-        $counter++;
-        ?>
-        <ol class="carousel-indicators">
-            <li data-target="#imagegallery" data-slide-to="<?php echo $counter ?>"
-                id="indicator_ <?php echo $counter; ?>"></li>
-        </ol>
-        <?php
+    if (isset($images)) {
+        foreach ($images as $image) {
+            $counter++;
+            ?>
+            <ol class="carousel-indicators">
+                <li data-target="#imagegallery" data-slide-to="<?php echo $counter ?>"
+                    id="indicator_ <?php echo $counter; ?>"></li>
+            </ol>
+            <?php
+        }
     }
-    ?>
+        ?>
+    <!--TODO check null -->
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <?php

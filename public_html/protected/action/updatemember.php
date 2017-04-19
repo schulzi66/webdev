@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $birth = "";
     $gender = "";
     $mail = "";
-    if (empty($_POST["firstName"]) != true) {
+    if (empty($_POST["firstName"]) != true) { //TODO MASC: empty != true ===> !empty(xxx)
         $firstName = ValidationController::validateInput($_POST["firstName"]);
     } else {
         $errorArray[] = 'Firstname is required.';
