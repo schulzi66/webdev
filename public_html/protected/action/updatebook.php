@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["ID"]) != true) {
         $id = ValidationController::validateInput($_POST["ID"]);
     } else {
+        $id = null;
         $errorArray[] = 'Id must be set';
     }
     $title = "";
