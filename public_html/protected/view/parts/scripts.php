@@ -4,3 +4,4 @@
         crossorigin="anonymous"></script>
 <script src="../src/js/main.js"></script>
 <script src="../src/lib/js/image-picker.js"></script>
+<script src="../src/lib/js/jquery-ui.min.js"></script>

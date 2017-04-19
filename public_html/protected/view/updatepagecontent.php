@@ -22,8 +22,8 @@ $pageContent = unserialize($_GET["page-content"]);
             <form action="../protected/action/updatepagecontent.php" method="post">
                 <h2>Update Content</h2>
                 <div class="form-group">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
+                    <label for="ID">ID</label>
+                    <input type="text" class="form-control" id="ID" name="ID"
                            value="<?php echo $pageContent->getPageId() ?>" readonly>
                 </div>
                 <div class="form-group">

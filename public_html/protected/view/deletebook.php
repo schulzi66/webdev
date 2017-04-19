@@ -22,8 +22,8 @@ $book = unserialize($_GET["book"]);
             <form action="../protected/action/deletebook.php" method="post">
                 <h2>Delete Book</h2>
                 <div class="form-group">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" value="<?php echo $book->getId() ?>"
+                    <label for="ID">ID</label>
+                    <input type="text" class="form-control" id="ID" name="ID" value="<?php echo $book->getId() ?>"
                            readonly>
                 </div>
                 <div class="form-group">

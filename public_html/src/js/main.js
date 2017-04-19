@@ -28,6 +28,38 @@ $(document).ready(function () {
     // Retrieve the picker
     $("select").data('picker');
 
+    $('#returnDateInput').datepicker({
+        dateFormat: 'dd-mm-yy',
+        minDate: '+0d',
+        changeMonth: true,
+        changeYear: true,
+    });
+
+    $('#loanDateInput').datepicker({
+        dateFormat: 'dd-mm-yy',
+        minDate: '+0d',
+        maxDate: '+0d',
+        changeMonth: true,
+        changeYear: true,
+    });
+
+    /*
+     Handles issues while changing months and years
+     */
+    var enforceModalFocusFn = $.fn.modal.Constructor.prototype.enforceFocus;
+    $.fn.modal.Constructor.prototype.enforceFocus = function () {
+    };
+    try {
+        $confModal.on('hidden', function () {
+            $.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFn;
+        });
+        $confModal.modal({backdrop: false});
+    }
+    catch (error) {
+        if (error.name != 'ReferenceError')
+            throw error;
+    }
+
 });
 
 /**
@@ -47,8 +79,9 @@ function sendSelectedValues(galleryID) {
         success: function () {
             console.log("success");
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert("Status: " + textStatus); alert("Error: " + errorThrown);
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus);
+            alert("Error: " + errorThrown);
         }
     });
 }
@@ -69,8 +102,9 @@ function updateVisibility(galleryID) {
             success: function () {
                 console.log("success");
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert("Status: " + textStatus); alert("Error: " + errorThrown);
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus);
+                alert("Error: " + errorThrown);
             }
         });
     } else {
@@ -81,11 +115,40 @@ function updateVisibility(galleryID) {
             success: function () {
                 console.log("success");
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert("Status: " + textStatus); alert("Error: " + errorThrown);
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus);
+                alert("Error: " + errorThrown);
             }
         });
     }
+}
+
+function returnBook(bookID) {
+    $.ajax({
+        type: 'GET',
+        url: '../protected/action/bookloans.php?book-return=' + bookID,
+        success: function () {
+            console.log("success");
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus);
+            alert("Error: " + errorThrown);
+        }
+    });
+}
+
+function loanBook(bookID, memberID) {
+    $.ajax({
+        type: 'GET',
+        url: '../protected/action/bookloans.php?book-loan=' + bookID,
+        success: function () {
+            console.log("success");
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status: " + textStatus);
+            alert("Error: " + errorThrown);
+        }
+    });
 }
 
 /**
@@ -94,6 +157,9 @@ function updateVisibility(galleryID) {
  * @param value
  */
 function setCookie(name, value) {
+    if (document.cookie.valueOf(name)) {
+        deleteCookie(name);
+    }
     document.cookie = name + '=' + value + '; Path=/;';
 }
 
@@ -126,13 +192,21 @@ function getCookie(cname) {
     return "";
 }
 
+
+function getID() {
+    var ID = document.getElementById("memberDropdown").options[document.getElementById("memberDropdown").selectedIndex].id;
+    $("#memberDropdown").change(function () {
+        ID = document.getElementById("memberDropdown").options[document.getElementById("memberDropdown").selectedIndex].id;
+    });
+    return ID;
+}
 /**
  * Validation for forms
  * @returns {boolean}
  */
 function validateSearchForm() {
     if ($('#searchBookTitle').val() === "" && $('#searchBookAuthor').val() === "") {
-        if($('#searchValidationErrorMessage').length == 0) {
+        if ($('#searchValidationErrorMessage').length == 0) {
             $('#searchErrorMessageWrapper').append("<div id='searchValidationErrorMessage' class='alert alert-warning'>Please fill at least one search field. </div>");
         }
         return false;

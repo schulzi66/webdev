@@ -22,8 +22,8 @@ $request = unserialize($_GET["request"]);
             <form action="../protected/action/replyrequest.php" method="post">
                 <h2>Reply to the Request</h2>
                 <div class="form-group">
-                    <label for="id">Request ID</label>
-                    <input type="text" class="form-control" name="id" value="<?php echo $request->getId() ?>" readonly>
+                    <label for="ID">Request ID</label>
+                    <input type="text" class="form-control" name="ID" value="<?php echo $request->getId() ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="from">From</label>

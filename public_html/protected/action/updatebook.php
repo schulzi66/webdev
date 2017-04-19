@@ -8,8 +8,8 @@ SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();
     //check if all required fields are set
-    if (empty($_POST["id"]) != true) {
-        $id = ValidationController::validateInput($_POST["id"]);
+    if (empty($_POST["ID"]) != true) {
+        $id = ValidationController::validateInput($_POST["ID"]);
     } else {
         $errorArray[] = 'Id must be set';
     }

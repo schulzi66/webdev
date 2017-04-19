@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $errorArray[] = 'Content is required.';
     }
-    $id = ValidationController::validateInput($_POST["id"]);
+    $id = ValidationController::validateInput($_POST["ID"]);
 
     //check for errors
     if (ValidationController::checkForErrors($errorArray)) {

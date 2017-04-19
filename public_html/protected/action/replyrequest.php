@@ -12,8 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = "";
     $response = "";
     //check if all required fields are set
-    if (empty($_POST["id"]) != true) {
-        $id = ValidationController::validateInput($_POST["id"]);
+    if (empty($_POST["ID"]) != true) {
+        $id = ValidationController::validateInput($_POST["ID"]);
     } else {
         $errorArray[] = 'ID must be set';
     }
