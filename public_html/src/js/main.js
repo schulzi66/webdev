@@ -5,16 +5,16 @@ $(document).ready(function () {
 
     // Will also work for relative and absolute hrefs
     $('ul.nav a').filter(function () {
-        return this.href == url;
+        return this.href === url;
     }).parent().addClass('active').parent().parent().addClass('active');
 
 
-    $('#imageGalleryDropdown a').on('click', function (e) {
+    $('#imageGalleryDropdown').find('a').on('click', function (e) {
         e.preventDefault();
         if (document.cookie.indexOf('slider') === 0) {
             deleteCookie("currentSlider")
         }
-        $('#imageGalleryDropdown li').click(function () {
+        $('#imageGalleryDropdown').find('li').click(function () {
             var current = $(this).attr('id');
             setCookie("currentSlider", current);
             $('#imageSelectionWrapper').show();
@@ -32,7 +32,7 @@ $(document).ready(function () {
         dateFormat: 'dd-mm-yy',
         minDate: '+0d',
         changeMonth: true,
-        changeYear: true,
+        changeYear: true
     });
 
     $('#loanDateInput').datepicker({
@@ -40,7 +40,7 @@ $(document).ready(function () {
         minDate: '+0d',
         maxDate: '+0d',
         changeMonth: true,
-        changeYear: true,
+        changeYear: true
     });
 
     /*
@@ -56,7 +56,7 @@ $(document).ready(function () {
         $confModal.modal({backdrop: false});
     }
     catch (error) {
-        if (error.name != 'ReferenceError')
+        if (error.name !== 'ReferenceError')
             throw error;
     }
 
@@ -69,7 +69,7 @@ $(document).ready(function () {
 //TODO: error handling
 function sendSelectedValues(galleryID) {
     var values = [];
-    $('#imageGallerySelect :selected').each(function (i, selected) {
+    $('#imageGallerySelect').find(':selected').each(function (i, selected) {
         values[i] = $(selected).val();
     });
     values = JSON.stringify(values);
@@ -94,7 +94,7 @@ function sendSelectedValues(galleryID) {
 function updateVisibility(galleryID) {
     var current = $('input:radio[name=visibilityRadio_' + galleryID + ']:checked');
     var state = false;
-    if (current.attr('id') == 'visibilityShown') {
+    if (current.attr('id') === 'visibilityShown') {
         state = true;
         $.ajax({
             type: 'GET',
@@ -182,10 +182,10 @@ function getCookie(cname) {
     var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') {
+        while (c.charAt(0) === ' ') {
             c = c.substring(1);
         }
-        if (c.indexOf(name) == 0) {
+        if (c.indexOf(name) === 0) {
             return c.substring(name.length, c.length);
         }
     }
@@ -206,7 +206,7 @@ function getID() {
  */
 function validateSearchForm() {
     if ($('#searchBookTitle').val() === "" && $('#searchBookAuthor').val() === "") {
-        if ($('#searchValidationErrorMessage').length == 0) {
+        if ($('#searchValidationErrorMessage').length === 0) {
             $('#searchErrorMessageWrapper').append("<div id='searchValidationErrorMessage' class='alert alert-warning'>Please fill at least one search field. </div>");
         }
         return false;
