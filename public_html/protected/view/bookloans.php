@@ -110,13 +110,9 @@ SessionController::validateAdminSession();
                             <div class="form-group">
                                 <select class="form-control" id="memberDropdown">
                                     <?php
-                                    $memberID = array();
                                     $members = MemberManagementController::getAllMembers();
-                                    #TODO fill options based on member
-                                    $counter = 1;
                                     foreach ($members as $member) {
                                         echo '<option id="memberID_' . $member->getMemberId() . '" >' . $member->getFirstName() . ' ' . $member->getSurName() . '</option>';
-                                        $counter++;
                                     }
                                     ?>
                                 </select>
