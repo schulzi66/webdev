@@ -140,7 +140,7 @@ function returnBook(bookID) {
 function loanBook(bookID, memberID) {
     $.ajax({
         type: 'GET',
-        url: '../protected/action/bookloans.php?book-loan=' + bookID,
+        url: '../protected/action/bookloans.php?book-loan=' + bookID + '&memberID=' + memberID,
         success: function () {
             console.log("success");
         },
