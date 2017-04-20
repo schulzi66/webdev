@@ -36,6 +36,7 @@ textarea {
     margin-right: auto !important;
     width: 60%;
     padding-top: 60px;
+    text-align: center;
 }
 
 .wrapper .heading h1 {
