@@ -211,3 +211,101 @@ textarea {
     position: relative;
     z-index: 9999 !important;
 }
+
+/* Responsive design for main page
+ -------------------------------------------------- */
+
+@media screen and (max-width: 1700px) {
+      .outer.col {
+        width: 70% !important;
+    }
+
+       .heading {
+        width: 70%;
+    }
+
+       .searchbox {
+        width: 70%;
+    }
+
+     
+}
+
+  
+
+@media screen and (max-width: 1450px) {
+      .heading {
+        width: 80%;
+    }
+
+       .searchbox {
+        width: 80%;
+    }
+
+      .outer.col {
+        width: 80% !important;
+    }
+
+     
+}
+
+  
+
+@media screen and (max-width: 1350px) {
+      .heading {
+        width: 85%;
+    }
+
+       .searchbox {
+        width: 85%;
+    }
+
+       .outer.col {
+        width: 85% !important;
+    }
+}
+
+  
+
+@media screen and (max-width: 1200px) {
+      .outer.col {
+        width: 90% !important;
+    }
+
+      .heading {
+         width: 90%;
+    }
+
+      .searchbox {
+        width: 90%;
+    }
+}
+
+  
+
+@media screen and (max-width: 1140px) {
+      .searchbox {
+        width: 95%;
+    }
+
+      .heading {
+         width: 95%;
+    }
+}
+
+  
+
+@media screen and (max-width: 600px) {
+      .mainSearchWrapper {
+         height: 350px;
+    }
+
+      .heading h1 {
+        font-size: 34px;
+         margin-top: 70px;
+    }
+
+      .searchbox {
+        top: 70px;
+    }
+}

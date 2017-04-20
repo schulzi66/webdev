@@ -26,18 +26,19 @@ $count = Count($books); ?>
             <?php
             foreach ($books as $book) {
                 $categories = explode(",", $book->getCategory());
-               $image = ImageGalleryController::getImageById($book->getImageId());
+                $image = ImageGalleryController::getImageById($book->getImageId());
                 echo '<tr>';
                 echo '<td class="align-center">'
-            ?>
-            <img class="img-thumbnail" width="100" height="80" src="../src/img/<?php echo $image[0][2]?>.jpg" alt="<?php $image[0][2]; ?>">
-            <?php
+                ?>
+                <img class="img-thumbnail" width="100" height="80" src="../src/img/<?php echo $image[0][2] ?>.jpg"
+                     alt="<?php $image[0][2]; ?>">
+                <?php
                 echo '</td>';
                 echo '<td>' . $book->getTitle() . '</td>';
                 echo '<td>' . $book->getAuthor() . '</td>';
                 echo '<td>' . $book->getIsbn() . '</td>';
                 echo '<td>';
-                foreach ($categories as $category){
+                foreach ($categories as $category) {
                     echo $category . '</br>';
                 }
                 echo '</td>';
