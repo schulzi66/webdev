@@ -1,5 +1,4 @@
 <?php
-    //TODO JUUL: still raw format
 ?>
 <ol class="breadcrumb">
     <?php
