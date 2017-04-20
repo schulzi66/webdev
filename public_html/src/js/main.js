@@ -77,6 +77,7 @@ function sendSelectedValues(galleryID) {
         type: 'GET',
         url: '../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
         success: function () {
+            deleteCookie("currentSlider");
             console.log("success");
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -100,7 +101,9 @@ function updateVisibility(galleryID) {
             type: 'GET',
             url: '../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
             success: function () {
-                console.log("success");
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Status: " + textStatus);
@@ -108,12 +111,13 @@ function updateVisibility(galleryID) {
             }
         });
     } else {
-        state = false;
         $.ajax({
             type: 'GET',
             url: '../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
             success: function () {
-                console.log("success");
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Status: " + textStatus);
