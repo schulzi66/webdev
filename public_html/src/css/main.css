@@ -32,11 +32,14 @@ textarea {
     background-position: center;
 }
 
+.mainSearchWrapper > .heading {
+    width: 60%;
+    padding-top: 60px;
+}
+
 .heading {
     margin-left: auto !important;
     margin-right: auto !important;
-    width: 60%;
-    padding-top: 60px;
     text-align: center;
 }
 
@@ -130,6 +133,7 @@ textarea {
 .navbar-default {
     background-color: #eeeeee;
 }
+
 /*
     Dashboard View
  -------------------------------------------------- */
