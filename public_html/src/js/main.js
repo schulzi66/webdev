@@ -60,14 +60,15 @@ $(document).ready(function () {
             throw error;
     }
 
-    $('#filterMemberDropdown').on('change', function() {
+    $('#filterMemberDropdown').on('change', function () {
         var selected = $('#filterMemberDropdown').val();
-        $("td").each(function() {
-            if($(this).text() == selected) {
+        $("td").each(function () {
+            if ($(this).text() == selected) {
                 $(this).parent().siblings().hide().not('thead');
-                console.log($(this).parent());
-            } else if($(this).text() == "All Member") {
-                console.log($(this).text());
+            }
+        });
+        $("td").each(function () {
+            if (selected == "All Member") {
                 $(this).parent().siblings().show();
             }
         });
