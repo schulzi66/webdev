@@ -29,7 +29,7 @@ $count = Count($books); ?>
                 echo '<tr>';
                 echo '<td>
                             <option data-img-class="thumbnail-img"
-                            data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
+                            data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/books/<?php echo $image[2] . "." . $image[1] ?>"
                             value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
                       </td>';
                 echo '<td>' . $book->getTitle() . '</td>';
