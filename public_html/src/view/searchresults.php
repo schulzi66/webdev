@@ -30,7 +30,7 @@ $count = Count($books); ?>
                 echo '<tr>';
                 echo '<td>'
             ?>
-            <img class="img-thumbnail" width="150" height="100" src="../src/img/books/<?php echo $image[0][2]?>.jpg" alt="<?php $image[0][2]; ?>">
+            <img class="img-thumbnail" width="150" height="100" src="../src/img/<?php echo $image[0][2]?>.jpg" alt="<?php $image[0][2]; ?>">
             <?php
                 echo '</td>';
                 echo '<td>' . $book->getTitle() . '</td>';
