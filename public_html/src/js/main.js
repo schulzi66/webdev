@@ -101,7 +101,6 @@ $(document).ready(function () {
  * Ajax call to send selected image values for further processing
  * @param galleryID
  */
-//TODO: error handling
 function sendSelectedValues(galleryID) {
     var values = [];
     $('#imageGallerySelect :selected').each(function (i, selected) {
@@ -129,7 +128,6 @@ function sendSelectedValues(galleryID) {
  * Ajax call to send the visibility state of the gallery specified by galleryID
  * @param galleryID
  */
-//TODO: error handling
 function updateVisibility(galleryID) {
     var current = $('input:radio[name=visibilityRadio_' + galleryID + ']:checked');
     var state = false;

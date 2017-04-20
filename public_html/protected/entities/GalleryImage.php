@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * Class GalleryImage
+ */
 class GalleryImage implements Serializable {
     private $galleryID, $imageID;
 
