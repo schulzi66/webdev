@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         //no errors
         //create new book object
-        $book = new Book(null, $title, $author, $isbn, $category, null, null,null);
+        $book = new Book(null, $title, $author, $isbn, $category, null, null,null, null);
         //call to controller
         if (BookManagementController::addBook($book)) {
             //redirect to overview

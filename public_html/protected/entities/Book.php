@@ -1,7 +1,7 @@
 <?php
 
 class Book implements Serializable {
-    private $id, $title, $author, $isbn, $category, $memberId, $taken, $returned;
+    private $id, $title, $author, $isbn, $category, $memberId, $taken, $returned, $imageId;
 
     /**
      * Book constructor.
@@ -14,7 +14,7 @@ class Book implements Serializable {
      * @param $taken
      * @param $returned
      */
-    public function __construct($id, $title, $author, $isbn, $category, $memberId, $taken, $returned) {
+    public function __construct($id, $title, $author, $isbn, $category, $memberId, $taken, $returned, $imageId) {
         $this->id = $id;
         $this->title = $title;
         $this->author = $author;
@@ -23,6 +23,7 @@ class Book implements Serializable {
         $this->memberId = $memberId;
         $this->taken = $taken;
         $this->returned = $returned;
+        $this->imageId = $imageId;
     }
 
     /**
@@ -37,7 +38,8 @@ class Book implements Serializable {
             $this->category,
             $this->memberId,
             $this->taken,
-            $this->returned
+            $this->returned,
+            $this->imageId
         ]);
     }
 
@@ -53,7 +55,8 @@ class Book implements Serializable {
             $this->category,
             $this->memberId,
             $this->taken,
-            $this->returned
+            $this->returned,
+            $this->imageId
             ) = unserialize($data);
     }
 
@@ -167,5 +170,19 @@ class Book implements Serializable {
      */
     public function setReturned($returned) {
         $this->returned = $returned;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageId() {
+        return $this->imageId;
+    }
+
+    /**
+     * @param mixed $imageId
+     */
+    public function setImageId($imageid) {
+        $this->imageId = $imageid;
     }
 }
