@@ -4,6 +4,7 @@ body {
     margin: 0 0 40px;
     border-top: 3px solid #096838;
     overflow-x: hidden;
+    background-color: #f7f7f7;
 }
 
 h1 {
@@ -90,7 +91,7 @@ textarea {
     width: 100% !important;
     height: 40px;
     position: absolute;
-    background-color: #f7f7f7;
+    background-color: #eeeeee;
 }
 
 /* Form Container
@@ -126,6 +127,9 @@ textarea {
     border-color: #074828;
 }
 
+.navbar-default {
+    background-color: #eeeeee;
+}
 /*
     Dashboard View
  -------------------------------------------------- */
@@ -193,7 +197,6 @@ textarea {
 .admin-panel-text {
     font-weight: bold;
 }
-
 
 /*
     Date Picker
