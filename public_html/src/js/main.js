@@ -1,3 +1,6 @@
+/**
+ * The methods below will only be executed after the DOM is fully loaded.
+ */
 $(document).ready(function () {
     var url = window.location;
     // Will only work if string in href matches with location
@@ -21,13 +24,18 @@ $(document).ready(function () {
         });
     });
 
-    // Initialize the image picker
+    /**
+     * Initialize the imagepicker in the admin imagegallery view
+     */
     $("select").imagepicker({
         hide_select: false
     });
     // Retrieve the picker
     $("select").data('picker');
 
+    /**
+     * Initialize the return datepicker
+     */
     $('#returnDateInput').datepicker({
         dateFormat: 'dd/mm/yy',
         minDate: '+0d',
@@ -35,6 +43,9 @@ $(document).ready(function () {
         changeYear: true
     });
 
+    /**
+     * Initialize the loan datepicker
+     */
     $('#loanDateInput').datepicker({
         dateFormat: 'dd/mm/yy',
         minDate: '+0d',
@@ -43,8 +54,8 @@ $(document).ready(function () {
         changeYear: true
     });
 
-    /*
-     Handles issues while changing months and years
+    /**
+     * Handles issues while changing months and years
      */
     var enforceModalFocusFn = $.fn.modal.Constructor.prototype.enforceFocus;
     $.fn.modal.Constructor.prototype.enforceFocus = function () {
@@ -59,7 +70,9 @@ $(document).ready(function () {
         if (error.name != 'ReferenceError')
             throw error;
     }
-
+    /**
+     * Filter logic for book management. Show only books loan by the selected member
+     */
     $('#filterMemberDropdown').on('change', function () {
         $('tbody').children().show();
         var selected = $('#filterMemberDropdown').val();
@@ -82,6 +95,7 @@ $(document).ready(function () {
      */
     $('#carousel-inner').find('div').first().addClass('active');
 });
+
 
 /**
  * Ajax call to send selected image values for further processing
@@ -151,6 +165,11 @@ function updateVisibility(galleryID) {
     }
 }
 
+/**
+ * Ajax call for return a loaned book.
+ * @param bookID
+ * @param date
+ */
 function returnBook(bookID, date) {
     $.ajax({
         type: 'GET',
@@ -167,6 +186,12 @@ function returnBook(bookID, date) {
     });
 }
 
+/**
+ * Ajax call to loan a book.
+ * @param bookID
+ * @param memberID
+ * @param date
+ */
 function loanBook(bookID, memberID, date) {
     $.ajax({
         type: 'GET',
@@ -224,6 +249,11 @@ function getCookie(cname) {
     return "";
 }
 
+/**
+ * Returns the value from the datepicker within the loan/ return modal
+ * @param dateInput
+ * @returns {jQuery}
+ */
 function getDatepickerValue(dateInput) {
     return $(dateInput).val();
 }
@@ -235,6 +265,7 @@ function getID() {
     });
     return ID;
 }
+
 /**
  * Validation for forms
  * @returns {boolean}
