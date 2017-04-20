@@ -1,6 +1,7 @@
 <?php
 
-class GalleryImages implements Serializable {
+
+class GalleryImage implements Serializable {
     private $galleryID, $imageID;
 
     /**
@@ -60,5 +61,4 @@ class GalleryImages implements Serializable {
     public function setImageID($imageID) {
         $this->imageID = $imageID;
     }
-
 }
