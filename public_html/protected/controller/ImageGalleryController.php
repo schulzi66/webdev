@@ -64,7 +64,6 @@ class ImageGalleryController {
         return null;
     }
 
-    //TODO JUUL entity
     /**
      * @param $pageName
      * @return Gallery|null

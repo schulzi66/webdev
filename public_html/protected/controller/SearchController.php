@@ -4,9 +4,6 @@ require_once "../database/MySQLService.php";
  * Controller for all searches
  */
 class SearchController {
-    //TODO PHKO: neeeded because the value is will never be != null
-    protected $searchResults;
-
     /**
      * @param $input
      * @return array
