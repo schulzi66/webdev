@@ -12,7 +12,7 @@
     echo 'Home';
     echo '</a></li>';
     //Any protected view has to be called from the dashboard, except for the dashboard itself.
-    if($crumbs[3] == "protected" && $crumbs[5] != "dashboard.php")
+    if($crumbs[3] == "protected" && end($crumbs) != "dashboard.php")
     {
         echo '<li class="breadcrumb-item">';
         echo '<a href="' . $base . '/dashboard.php">';
