@@ -12,7 +12,8 @@ $request = unserialize($_GET["request"]);
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
-<div class="" data-placeholder-label="Header">
+<div class="container" data-placeholder-label="Header">
+    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="">
         <div class="">
             <div class="heading"><h1>SWD LIBRARY</h1>
