@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $values = ValidationController::validateInputArray(json_decode($_POST["data"]));
         $galleryID = ValidationController::validateInput($_GET['update-gallery']);
 
+        ImageGalleryController::getImageNamesByImageID($values);
         $currentGalleryImages = ImageGalleryController::getGalleryImagesByGalleryID($galleryID);
 
         if (ImageGalleryController::updateImageGallery($galleryID, $values)) {

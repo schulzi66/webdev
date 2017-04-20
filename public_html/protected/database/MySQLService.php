@@ -398,15 +398,21 @@ class MySQLService {
         return $galleries;
     }
 
-    /*
-     * if ($result->num_rows >= 1) {
-                $resultArray = $result->fetch_all();
-                $bookArray = Array();
-                foreach ($resultArray as $book) {
-                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
+    public function getImageIDByImageName($imageNames) {
+        $connection = $this->getConnection();
+        $imageIDs = array();
+        if ($connection) {
+            $sql = ";";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows == 1) {
+                $resultArray = $result->fetch_assoc();
+                foreach ($resultArray as $image) {
+                    array_push($imageIDs, new GalleryImage($image["GalleryID"], $image["ImageID"]));
                 }
             }
-     */
+        }
+        return $galleryImages;
+    }
 
     public function getGalleryImagesByGalleryID($galleryID): ?array {
         $connection = $this->getConnection();
