@@ -107,7 +107,6 @@ CREATE TABLE IF NOT EXISTS galleryimages (
 
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(1, 'jpg', 'harry-potter-and-the-chamber-of-secrets', 'Testimage' ,'');
 INSERT INTO galleryimages (GalleryID, ImageID) VALUES(1, 1);
-
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(2, 'jpg', 'library-5', 'Library' ,'');
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(3, 'jpg', 'class-steel-installation', 'Class Steel Installation' ,'');
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(4, 'jpg', 'AFeastForCrows', 'A Feast For Crows' ,'');
@@ -129,6 +128,7 @@ INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(19, 'jpg', 
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(20, 'jpg', 'DaVinciCode', 'The Da Vinci Code' ,'');
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(21, 'jpg', 'TheDictatorsHandbook', 'The Dictators Handbook: Why Bad Behavior is Almost Always Good Politics' ,'');
 INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(22, 'jpg', 'The_Hitchhikers_Guide_to_the_Galaxy', 'The Hitchhikers Guide to the Galaxy' ,'');
+INSERT INTO images (ImageID, Type, PictureRef, Name, Caption) VALUES(23, 'jpg', 'ArchitectureArtDesigns-180', 'Architecture Art Designs' ,'');
 
 ALTER TABLE books
   Add Constraint FK_books_images
@@ -136,10 +136,9 @@ FOREIGN KEY(ImageID)
 REFERENCES images(ImageID);
 
 
-INSERT INTO gallery (GalleryID, Name, State) VALUES(1, 'First Gallery', 0);
-INSERT INTO gallery (GalleryID, Name, State) VALUES(2, 'Second Gallery', 1);
-INSERT INTO gallery (GalleryID, Name, State) VALUES(3, 'Third Gallery', 0);
-INSERT INTO gallery (GalleryID, Name, State) VALUES(4, 'Fourth Gallery', 1);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(1, 'about', 1);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(2, 'index', 1);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(3, 'contact us', 1);
 
 ALTER TABLE galleryimages
   Add Constraint PK_galleryimages

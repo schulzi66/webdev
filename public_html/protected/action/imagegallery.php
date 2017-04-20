@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $galleryID = ValidationController::validateInput($_GET['update-gallery']);
 
         $imageIds = ImageGalleryController::getImageIdsByImageNames($values);
-//        $currentGalleryImages = ImageGalleryController::getGalleryImagesByGalleryID($galleryID);
 
         if (ImageGalleryController::updateImageGallery($galleryID, $imageIds)) {
             //redirect to overview

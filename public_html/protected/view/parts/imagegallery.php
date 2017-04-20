@@ -37,7 +37,7 @@ $fileFormat = ".jpg";
                 ?>
                 <!-- creates slides dynamically based on the images configured within the admin view -->
                 <div class="item">
-                    <img src="../../public_html/src/img/gallery/<?php echo $image . $fileFormat ?>" alt="<?php echo $image; ?>">
+                    <img src="../../public_html/src/img/<?php echo $image . $fileFormat ?>" alt="<?php echo $image; ?>">
                 </div>
                 <?php
             }
@@ -59,6 +59,6 @@ $fileFormat = ".jpg";
 foreach ($images as $image) {
     ?>
         <!-- creates slides dynamically based on the images configured within the admin view -->
-        <img src="../../public_html/src/img/gallery/<?php echo $image . $fileFormat ?>" alt="<?php $image; ?>">
+        <img src="../../public_html/src/img/<?php echo $image . $fileFormat ?>" alt="<?php $image; ?>">
         <?php
 }?>
