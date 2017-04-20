@@ -61,9 +61,13 @@ $(document).ready(function () {
     }
 
     $('#filterMemberDropdown').on('change', function () {
+        $('tbody').children().show();
         var selected = $('#filterMemberDropdown').val();
+        console.log("SELECTED: " + selected);
         $("td").each(function () {
             if ($(this).text() == selected) {
+
+                console.log("THIS.text: " + $(this).text());
                 $(this).parent().siblings().hide().not('thead');
             }
         });

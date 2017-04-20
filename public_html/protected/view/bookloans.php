@@ -41,7 +41,7 @@ SessionController::validateAdminSession();
                     </div>
                 </td>
             </thead>
-
+            <tbody>
             <?php
             $books = BookManagementController::getAllBooks();
             if ($books != null) {
@@ -70,6 +70,7 @@ SessionController::validateAdminSession();
             }
             echo '<tr>';
             echo '</tr>';
+            echo '</tbody>';
             echo '</table>';
             echo '</div></br>';
             ?>
