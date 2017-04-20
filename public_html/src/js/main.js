@@ -64,9 +64,9 @@ $(document).ready(function () {
         $('tbody').children().show();
         var selected = $('#filterMemberDropdown').val();
         console.log("SELECTED: " + selected);
+        $('tbody').children().hide();
         $("tbody").find("td").each(function () {
             if ($(this).text() == selected) {
-                $(this).parent().siblings().hide().not('thead');
                 $(this).parent().show();
             }
         });
