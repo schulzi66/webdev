@@ -39,6 +39,11 @@ textarea {
     text-align: center;
 }
 
+.heading > label {
+    font-size: 15px;
+    color: #d7d7d7;
+}
+
 .wrapper .heading h1 {
     font-size: 70px;
 }
