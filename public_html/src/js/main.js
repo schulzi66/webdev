@@ -78,7 +78,9 @@ function sendSelectedValues(galleryID) {
         url: '../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
         success: function () {
             deleteCookie("currentSlider");
-            console.log("success");
+            setTimeout(function () {
+                location.reload();
+            }, 500);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
