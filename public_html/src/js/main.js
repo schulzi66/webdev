@@ -64,11 +64,10 @@ $(document).ready(function () {
         $('tbody').children().show();
         var selected = $('#filterMemberDropdown').val();
         console.log("SELECTED: " + selected);
-        $("td").each(function () {
+        $("tbody").find("td").each(function () {
             if ($(this).text() == selected) {
-
-                console.log("THIS.text: " + $(this).text());
                 $(this).parent().siblings().hide().not('thead');
+                $(this).parent().show();
             }
         });
         $("td").each(function () {
