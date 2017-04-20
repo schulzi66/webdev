@@ -345,6 +345,19 @@ class MySQLService {
         return $images;
     }
 
+    public function getImageById($id) : ?array {
+        $connection = $this->getConnection();
+        $result = null;
+        if($connection){
+            $sql = "SELECT * FROM images WHERE ImageID = $id";
+            $result = mysqli_query($connection, $sql);
+            if($result->num_rows == 1) {
+                $result = $result->fetch_all();
+            }
+        }
+        return $result;
+    }
+
     /**
      * @param $galleryID
      * @param $images

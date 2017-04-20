@@ -125,4 +125,12 @@ class ImageGalleryController {
         }
         return null;
     }
+
+    public static function getImageById($id) : ?array{
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->getImageById($id);
+        }
+        return null;
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 require_once "../../protected/entities/Book.php";
+require_once "../protected/controller/ImageGalleryController.php";
 $books = unserialize($_GET["result-books"]);
 $count = Count($books); ?>
 <html>
@@ -15,7 +16,7 @@ $count = Count($books); ?>
         <div class="panel-heading"><?php echo $count ?> results returned</div>
         <table class="table table-hover table-bordered">
             <tr>
-                <td>ID</td>
+                <td>Image</td>
                 <td>Title</td>
                 <td>Author</td>
                 <td>ISBN</td>
@@ -24,9 +25,13 @@ $count = Count($books); ?>
 
             <?php
             foreach ($books as $book) {
-
+               $image = ImageGalleryController::getImageById($book->getImageId());
                 echo '<tr>';
-                echo '<td>' . $book->getId() . '</td>';
+                echo '<td>
+                            <option data-img-class="thumbnail-img"
+                            data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/gallery/<?php echo $image[2] . "." . $image[1] ?>"
+                            value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
+                      </td>';
                 echo '<td>' . $book->getTitle() . '</td>';
                 echo '<td>' . $book->getAuthor() . '</td>';
                 echo '<td>' . $book->getIsbn() . '</td>';
