@@ -470,6 +470,20 @@ class MySQLService {
         return null;
     }
 
+
+    public function getGalleryIDByGalleryName($galleryName) {
+        $connection = $this->getConnection();
+        if ($connection) {
+            $sql = "SELECT GalleryID FROM gallery WHERE Name=" . $galleryName . ";";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows >= 1) {
+                $galleryArray = $result->fetch_all();
+                return $galleryArray;
+            }
+        }
+        return null;
+    }
+
     /**
      * @param $pageName
      * @return Gallery|null
@@ -488,7 +502,6 @@ class MySQLService {
         }
         return $gallery;
     }
-
 
     //endregion
 

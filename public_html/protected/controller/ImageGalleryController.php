@@ -100,4 +100,12 @@ class ImageGalleryController {
         }
         return null;
     }
+
+    public static function getGalleryIDByGalleryName($galleryName) {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->getGalleryIDByGalleryName($galleryName);
+        }
+        return null;
+    }
 }
