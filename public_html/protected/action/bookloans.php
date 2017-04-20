@@ -6,8 +6,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if (isset($_GET['date']) && isset($_GET['book-return'])) {
         $bookId = $_GET['book-return'];
-        $returned = $_GET['date'];
-        $returned = changeDateToDatabaseFormat($returned);
+        if($returned == "")
+        {
+            $returned = gmdate("Y-m-d");
+        }
+        else {
+            $returned = $_GET['date'];
+            $returned = changeDateToDatabaseFormat($returned);
+        }
         $inputArray = ['bookId' => $bookId, 'returned' => $returned];
         $inputArray = ValidationController::validateInputArray($inputArray);
         if(!LoanController::returnBook($inputArray))
