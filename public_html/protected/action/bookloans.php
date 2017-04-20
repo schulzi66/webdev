@@ -6,12 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if (isset($_GET['date']) && isset($_GET['book-return'])) {
         $bookId = $_GET['book-return'];
+        $returned = $_GET['date'];
         if($returned == "")
         {
             $returned = gmdate("Y-m-d");
         }
         else {
-            $returned = $_GET['date'];
             $returned = changeDateToDatabaseFormat($returned);
         }
         $inputArray = ['bookId' => $bookId, 'returned' => $returned];
@@ -22,10 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $errorArray[] = "Return book failed.";
         }
     }
-    if (isset($_GET['memberID']) && isset($_GET['book-loan'])){
+    if (isset($_GET['memberID']) && isset($_GET['book-loan']) && isset($_GET['date'])){
         $bookId = $_GET['book-loan'];
         $memberId = $_GET['memberID'];
-        $inputArray = ['bookId' => $bookId, 'memberId' => $memberId];
+        $taken = $_GET['date'];
+        if($taken == "")
+        {
+            $taken = gmdate("Y-m-d");
+        }
+        else {
+            $taken = changeDateToDatabaseFormat($taken);
+        }
+        $inputArray = ['bookId' => $bookId, 'memberId' => $memberId, 'taken' => $taken];
         $inputArray = ValidationController::validateInputArray($inputArray);
         if(!LoanController::loanBook($inputArray))
         {
