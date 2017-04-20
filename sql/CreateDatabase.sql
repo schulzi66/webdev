@@ -86,8 +86,8 @@ DROP TABLE IF EXISTS images;
 CREATE TABLE IF NOT EXISTS images (
   ImageID    INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
   Type       VARCHAR(25)            NOT NULL,
-  PictureRef VARCHAR(50)            NOT NULL,
-  Name       VARCHAR(50)            NOT NULL,
+  PictureRef VARCHAR(255)            NOT NULL,
+  Name       VARCHAR(255)            NOT NULL,
   Caption    VARCHAR(255)
 );
 

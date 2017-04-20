@@ -1,6 +1,6 @@
 <?php
 require_once "../../protected/entities/Book.php";
-require_once "../../protected/controller/ImageGalleryController.php";
+require_once "../protected/controller/ImageGalleryController.php";
 $books = unserialize($_GET["result-books"]);
 $count = Count($books); ?>
 <html>
@@ -30,7 +30,7 @@ $count = Count($books); ?>
                 echo '<td>'
             ?>
             <img class="img-thumbnail" width="150" height="100" src="../src/img/books/<?php echo $image[0][2]?>.jpg" alt="<?php $image[0][2]; ?>">
-            <?php                
+            <?php
                 echo '</td>';
                 echo '<td>' . $book->getTitle() . '</td>';
                 echo '<td>' . $book->getAuthor() . '</td>';
