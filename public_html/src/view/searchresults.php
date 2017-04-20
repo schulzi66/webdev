@@ -1,6 +1,6 @@
 <?php
 require_once "../../protected/entities/Book.php";
-require_once "../protected/controller/ImageGalleryController.php";
+require_once "../../protected/controller/ImageGalleryController.php";
 $books = unserialize($_GET["result-books"]);
 $count = Count($books); ?>
 <html>
