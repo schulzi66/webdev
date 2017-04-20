@@ -60,6 +60,18 @@ $(document).ready(function () {
             throw error;
     }
 
+    $('#filterMemberDropdown').on('change', function() {
+        var selected = $('#filterMemberDropdown').val();
+        $("td").each(function() {
+            if($(this).text() == selected) {
+                $(this).parent().siblings().hide().not('thead');
+                console.log($(this).parent());
+            } else if($(this).text() == "All Member") {
+                console.log($(this).text());
+                $(this).parent().siblings().show();
+            }
+        });
+    });
 });
 
 /**

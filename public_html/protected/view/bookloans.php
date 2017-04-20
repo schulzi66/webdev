@@ -17,7 +17,7 @@ SessionController::validateAdminSession();
     <div class="panel panel-default">
         <div class="panel-heading">Book Loans</div>
         <table class="table table-hover table-bordered">
-            <tr>
+            <thead>
                 <td>ID</td>
                 <td>Title</td>
                 <td>Author</td>
@@ -26,8 +26,21 @@ SessionController::validateAdminSession();
                 <td>Loaned By</td>
                 <td>Taken Since</td>
                 <td>Returned On</td>
-                <td></td>
-            </tr>
+                <td>Filter
+                    <div class="form-group">
+                        <select class="form-control" id="filterMemberDropdown">
+                            <?php
+                            $members = MemberManagementController::getAllMembers();
+                            echo '<option disabled selected >Please select a Member</option>';
+                            echo '<option>All Member</option>';
+                            foreach ($members as $member) {
+                                echo '<option id="' . $member->getMemberId() . '" >' . $member->getFirstName() . ' ' . $member->getSurName() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </td>
+            </thead>
 
             <?php
             $books = BookManagementController::getAllBooks();
@@ -83,7 +96,8 @@ SessionController::validateAdminSession();
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button id="returnBookButton" type="button" data-dismiss="modal" class="btn btn-default" onclick="returnBook(getCookie('bookID'), getDatepickerValue('#returnDateInput'))">
+                                <button id="returnBookButton" type="button" data-dismiss="modal" class="btn btn-default"
+                                        onclick="returnBook(getCookie('bookID'), getDatepickerValue('#returnDateInput'))">
                                     Submit
                                 </button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -111,7 +125,7 @@ SessionController::validateAdminSession();
                                 <select class="form-control" id="memberDropdown">
                                     <?php
                                     $members = MemberManagementController::getAllMembers();
-                                        echo '<option disabled selected >Please select a Member</option>';
+                                    echo '<option disabled selected >Please select a Member</option>';
                                     foreach ($members as $member) {
                                         echo '<option id="' . $member->getMemberId() . '" >' . $member->getFirstName() . ' ' . $member->getSurName() . '</option>';
                                     }
@@ -127,7 +141,8 @@ SessionController::validateAdminSession();
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="loanBookButton" data-dismiss="modal" class="btn btn-default" onclick="loanBook(getCookie('bookID'), getID(), getDatepickerValue('#loanDateInput'))">
+                            <button type="button" id="loanBookButton" data-dismiss="modal" class="btn btn-default"
+                                    onclick="loanBook(getCookie('bookID'), getID(), getDatepickerValue('#loanDateInput'))">
                                 Submit
                             </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
