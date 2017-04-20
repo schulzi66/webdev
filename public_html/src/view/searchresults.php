@@ -25,6 +25,7 @@ $count = Count($books); ?>
 
             <?php
             foreach ($books as $book) {
+                $categories = explode(",", $book->getCategory());
                $image = ImageGalleryController::getImageById($book->getImageId());
                 echo '<tr>';
                 echo '<td>'
@@ -35,7 +36,11 @@ $count = Count($books); ?>
                 echo '<td>' . $book->getTitle() . '</td>';
                 echo '<td>' . $book->getAuthor() . '</td>';
                 echo '<td>' . $book->getIsbn() . '</td>';
-                echo '<td>' . $book->getCategory() . '</td>';
+                echo '<td>';
+                foreach ($categories as $category){
+                    echo $category . '</br>';
+                }
+                echo '</td>';
                 echo '</tr>';
             }
             echo '<tr>';
