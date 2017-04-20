@@ -16,7 +16,7 @@ $count = Count($books); ?>
         <div class="panel-heading"><?php echo $count ?> results returned</div>
         <table class="table table-hover table-bordered">
             <tr>
-                <td>Image</td>
+                <td></td>
                 <td>Title</td>
                 <td>Author</td>
                 <td>ISBN</td>
@@ -28,9 +28,9 @@ $count = Count($books); ?>
                 $categories = explode(",", $book->getCategory());
                $image = ImageGalleryController::getImageById($book->getImageId());
                 echo '<tr>';
-                echo '<td>'
+                echo '<td class="align-center">'
             ?>
-            <img class="img-thumbnail" width="150" height="100" src="../src/img/<?php echo $image[0][2]?>.jpg" alt="<?php $image[0][2]; ?>">
+            <img class="img-thumbnail" width="100" height="80" src="../src/img/<?php echo $image[0][2]?>.jpg" alt="<?php $image[0][2]; ?>">
             <?php
                 echo '</td>';
                 echo '<td>' . $book->getTitle() . '</td>';

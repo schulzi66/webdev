@@ -21,6 +21,12 @@ textarea {
     resize: vertical;
 }
 
+/* General classes
+ -------------------------------------------------- */
+.align-center {
+    text-align: center
+}
+
 /* Searchbox / Main Search
 -------------------------------------------------- */
 .mainSearchWrapper {
@@ -108,11 +114,9 @@ textarea {
  -------------------------------------------------- */
 .thumbnail-img {
     width: 264px;
-    /*height: 264px;*/
 }
 
-/*
-    Overwriting standard Bootstrap
+/* Overwriting standard Bootstrap
  -------------------------------------------------- */
 
 .btn-primary {
@@ -134,8 +138,7 @@ textarea {
     background-color: #eeeeee;
 }
 
-/*
-    Dashboard View
+/* Dashboard View
  -------------------------------------------------- */
 .panel-green {
     border-color: #5cb85c;
@@ -191,8 +194,7 @@ textarea {
     color: #df8a13;
 }
 
-/*
-    Prevent overwriting this stuff
+/* Prevent overwriting this stuff
 -------------------------------------------------- */
 .panel-footer-blue {
     color: #337ab7;
@@ -202,8 +204,7 @@ textarea {
     font-weight: bold;
 }
 
-/*
-    Date Picker
+/* Date Picker
  -------------------------------------------------- */
 
 .clsDatePicker {
