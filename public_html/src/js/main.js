@@ -199,8 +199,8 @@ function getCookie(cname) {
     return "";
 }
 
-function getDatepickerValue(returnDateInput) {
-    var date = $('#returnDateInput').val();
+function getDatepickerValue(dateInput) {
+    var date = $(dateInput).val();
     return date;
 }
 
