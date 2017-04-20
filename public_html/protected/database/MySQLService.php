@@ -1,13 +1,13 @@
 <?php
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-require "DatabaseModel.php";
-require "$root/webdev/public_html/protected/entities/User.php";
-require "$root/webdev/public_html/protected/entities/Book.php";
-require "$root/webdev/public_html/protected/entities/Member.php";
-require "$root/webdev/public_html/protected/entities/ContactRequest.php";
-require "$root/webdev/public_html/protected/entities/PageContent.php";
-require "$root/webdev/public_html/protected/entities/Gallery.php";
-require "$root/webdev/public_html/protected/entities/GalleryImage.php";
+require_once "DatabaseModel.php";
+require_once "$root/webdev/public_html/protected/entities/User.php";
+require_once "$root/webdev/public_html/protected/entities/Book.php";
+require_once "$root/webdev/public_html/protected/entities/Member.php";
+require_once "$root/webdev/public_html/protected/entities/ContactRequest.php";
+require_once "$root/webdev/public_html/protected/entities/PageContent.php";
+require_once "$root/webdev/public_html/protected/entities/Gallery.php";
+require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
 
 
 
