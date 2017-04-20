@@ -57,9 +57,8 @@ SessionController::validateAdminSession();
             <div class="col-lg-12">
                 <h2 class="page-header">Available images</h2>
             </div>
-            <!-- TODO all: discuss about data-limit if necessary-->
             <div class="picker">
-                <select id="imageGallerySelect" multiple="multiple" data-limit='5'
+                <select id="imageGallerySelect" multiple="multiple"
                         class="form-control image-picker show-html">
                     <?php
                     $images = ImageGalleryController::getImages();

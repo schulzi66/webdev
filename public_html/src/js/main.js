@@ -29,14 +29,14 @@ $(document).ready(function () {
     $("select").data('picker');
 
     $('#returnDateInput').datepicker({
-        dateFormat: 'dd-mm-yy',
+        dateFormat: 'dd/mm/yy',
         minDate: '+0d',
         changeMonth: true,
         changeYear: true
     });
 
     $('#loanDateInput').datepicker({
-        dateFormat: 'dd-mm-yy',
+        dateFormat: 'dd/mm/yy',
         minDate: '+0d',
         maxDate: '+0d',
         changeMonth: true,
@@ -75,7 +75,8 @@ function sendSelectedValues(galleryID) {
     values = JSON.stringify(values);
     $.ajax({
         type: 'GET',
-        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
+        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID,
+        data: values,
         success: function () {
             deleteCookie("currentSlider");
             setTimeout(function () {
@@ -129,10 +130,10 @@ function updateVisibility(galleryID) {
     }
 }
 
-function returnBook(bookID) {
+function returnBook(bookID, date) {
     $.ajax({
         type: 'GET',
-        url: '../protected/action/bookloans.php?book-return=' + bookID,
+        url: '../protected/action/bookloans.php?book-return=' + bookID + '&date=' + date,
         success: function () {
             console.log("success");
         },
@@ -198,6 +199,10 @@ function getCookie(cname) {
     return "";
 }
 
+function getDatepickerValue(returnDateInput) {
+    var date = $('#returnDateInput').val();
+    return date;
+}
 
 function getID() {
     var ID = document.getElementById("memberDropdown").options[document.getElementById("memberDropdown").selectedIndex].id;

@@ -78,7 +78,7 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $resultArray = $result->fetch_all();
-                $bookArray = Array();
+                $bookArray = array();
                 foreach ($resultArray as $book) {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
                 }
@@ -206,7 +206,7 @@ class MySQLService {
             if ($result->num_rows > 0) {
                 //Fetch all arrays and create Book entities out of the arrays.
                 $resultArray = $result->fetch_all();
-                $bookArray = Array();
+                $bookArray = array();
                 foreach ($resultArray as $book) {
                     array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
                 }
@@ -229,7 +229,7 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $resultArray = $result->fetch_all();
-                $memberArray = Array();
+                $memberArray = array();
                 foreach ($resultArray as $member) {
                     array_push($memberArray, new Member($member["0"], $member["1"], $member["2"], $member["3"], $member["4"], $member["5"], $member["6"], $member["7"]));
                 }
@@ -327,7 +327,7 @@ class MySQLService {
      */
     public function getImages($imageGalleryName = "default"): ?array {
         $connection = $this->getConnection();
-        $imageArray = null;
+        $images = array();
         if ($connection) {
             if ($imageGalleryName == "default") {
                 $sql = "SELECT * FROM images";
@@ -337,29 +337,10 @@ class MySQLService {
             }
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $imageArray = $result->fetch_all();
+                $images = $result->fetch_all();
             }
         }
-        return $imageArray;
-    }
-
-    /**
-     * @param $images
-     * @return bool
-     */
-    public function setImageGalleryImages($images): bool {
-        $connection = $this->getConnection();
-        $result = false;
-        if ($connection) {
-            $sql = "";
-            foreach ($images as $image) {
-                $galleryId = mysqli_real_escape_string($connection, $image["GalleryID"]);
-                $imageId = mysqli_real_escape_string($connection, $image["imageID"]);
-                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $galleryId . "," . $imageId . ")";
-            }
-            $result = $connection->multi_query($sql);
-        }
-        return $result;
+        return $images;
     }
 
     /**
@@ -374,8 +355,13 @@ class MySQLService {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
-            $sql = $connection->prepare("");
-            $result = $sql->execute();
+            $sql = "";
+            foreach ($images as $image) {
+                $ID = mysqli_real_escape_string($connection, $galleryID);
+                $imageID = mysqli_real_escape_string($connection, $image["imageID"]);
+                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $ID . "," . $imageID . ")";
+            }
+            $result = $connection->multi_query($sql);
         }
         return $result;
     }
@@ -401,15 +387,41 @@ class MySQLService {
     //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
-        $galleryArray = null;
+        $galleries = array();
         if ($connection) {
             $sql = "SELECT * FROM gallery";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $galleryArray = $result->fetch_all();
+                $galleries = $result->fetch_all();
             }
         }
-        return $galleryArray;
+        return $galleries;
+    }
+
+    /*
+     * if ($result->num_rows >= 1) {
+                $resultArray = $result->fetch_all();
+                $bookArray = Array();
+                foreach ($resultArray as $book) {
+                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
+                }
+            }
+     */
+
+    public function getGalleryImagesByGalleryID($galleryID): ?array {
+        $connection = $this->getConnection();
+        $galleryImages = array();
+        if ($connection) {
+            $sql = "SELECT galleryimages.GalleryID, images.Type, images.PictureRef, galleryimages.ImageID FROM galleryimages JOIN images ON galleryimages.ImageID = images.ImageID WHERE GalleryID = '" . $galleryID . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows == 1) {
+                $resultArray = $result->fetch_assoc();
+                foreach ($resultArray as $image) {
+                    array_push($galleryImages, new GalleryImage($image["GalleryID"], $image["ImageID"]));
+                }
+            }
+        }
+        return $galleryImages;
     }
 
     /**
@@ -447,6 +459,7 @@ class MySQLService {
         return $gallery;
     }
 
+
     //endregion
 
     //region ContactRequests
@@ -479,7 +492,7 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $resultArray = $result->fetch_all();
-                $requestArray = Array();
+                $requestArray = array();
                 foreach ($resultArray as $request) {
                     array_push($requestArray, new ContactRequest($request["0"], $request["1"], $request["2"], $request["3"], $request["4"], $request["5"]));
                 }
@@ -554,7 +567,7 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
                 $resultArray = $result->fetch_all();
-                $contentArray = Array();
+                $contentArray = array();
                 foreach ($resultArray as $content) {
                     array_push($contentArray, new PageContent($content["0"], $content["1"], $content["2"], $content["3"]));
                 }
