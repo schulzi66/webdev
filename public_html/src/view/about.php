@@ -14,18 +14,20 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
     <?php include '../../protected/view/parts/breadcrumb.php'; ?>
 
     <?php
-    $visibility = ImageGalleryController::getGalleryVisibilityByPageName(basename(__FILE__, '.php'));
-    if(isset($visibility) && $visibility == 1) {
+    $visibility = ImageGalleryController::getGalleryVisibilityByPageName(basename(__FILE__));
+    echo $visibility;
+    if (isset($visibility) && $visibility == 1) {
         include '../../protected/view/parts/imagegallery.php';
     } ?>
-    <div class="">
-        <div class="">
-            <div class="heading"><h1><?php if (isset($content)) {echo $content->getHeadline();} ?></h1>
-            </div>
-        </div>
-        <div class="form-container container">
-            <label><?php if (isset($content)) {echo $content->getContent();} ?></label>
-        </div>
+    <div class="heading"><h1><?php if (isset($content)) {
+                echo $content->getHeadline();
+            } ?></h1>
+    </div>
+
+    <div class="form-container container">
+        <label><?php if (isset($content)) {
+                echo $content->getContent();
+            } ?></label>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
