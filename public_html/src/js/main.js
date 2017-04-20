@@ -77,6 +77,9 @@ $(document).ready(function () {
         });
     });
 
+    /**
+     * Set active class after document load to avoid errors with the bootstrap carousel
+     */
     $('#carousel-inner').find('div').first().addClass('active');
 });
 
