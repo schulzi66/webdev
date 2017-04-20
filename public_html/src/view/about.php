@@ -16,9 +16,12 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
     $visibility = ImageGalleryController::getGalleryVisibilityByPageName(basename(__FILE__, '.php'));
 
     if (isset($visibility) && $visibility->getState() == 1) {
+        ?>
+        <div id="imageGalleryWrapper">
+    <?php
         include '../../protected/view/parts/imagegallery.php';
     } ?>
-
+        </div>
     <div class="heading">
         <h1><?php if (isset($content)) {
                 echo $content->getHeadline();

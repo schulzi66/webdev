@@ -4,6 +4,9 @@ require_once "../../entities/Gallery.php";
 require_once "../../entities/GalleryImage.php";
 
 $galleryID = ImageGalleryController::getGalleryIDByGalleryName(basename(__FILE__, '.php'));
+?>
+<!-- <?php echo $galleryID ?> -->
+<?php
 $images = ImageGalleryController::getGalleryImagesByGalleryID($galleryID);
 $fileFormat = ".jpg";
 ?>
