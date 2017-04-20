@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         //no errors
         //create new book object, use null for category, taken and returned, because these values will not be updated
-        $book = new Book($id, $title, $author, $isbn, $category, null, null, null);
+        $book = new Book($id, $title, $author, $isbn, $category, null, null, null, null);
         //call to controller
         if (BookManagementController::updateBook($book)) {
             //redirect to overview

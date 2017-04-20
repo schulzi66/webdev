@@ -82,7 +82,7 @@ class MySQLService {
                 $resultArray = $result->fetch_all();
                 $bookArray = array();
                 foreach ($resultArray as $book) {
-                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
+                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"], $book["8"]));
                 }
             }
         }
@@ -101,7 +101,7 @@ class MySQLService {
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
-                $book = new Book($result["ID"], $result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["MemberID"], $result["Taken"], $result["Returned"]);
+                $book = new Book($result["ID"], $result["Title"], $result["Author"], $result["ISBN"], $result["Category"], $result["MemberID"], $result["Taken"], $result["Returned"], $result["ImageID"]);
             }
         }
         return $book;
@@ -210,7 +210,7 @@ class MySQLService {
                 $resultArray = $result->fetch_all();
                 $bookArray = array();
                 foreach ($resultArray as $book) {
-                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"]));
+                    array_push($bookArray, new Book($book["0"], $book["1"], $book["2"], $book["3"], $book["4"], $book["5"], $book["6"], $book["7"], $book["8"]));
                 }
             }
         }
