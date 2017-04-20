@@ -374,7 +374,7 @@ class MySQLService {
             $ID = mysqli_real_escape_string($connection, $galleryID);
             $sql .= "DELETE FROM galleryimages WHERE GalleryID = '" . $galleryID . "';";
             foreach ($images as $image) {
-                $imageID = mysqli_real_escape_string($connection, $image["imageID"]);
+                $imageID = mysqli_real_escape_string($connection, $image);
                 $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $ID . "," . $imageID . ");";
             }
             $result = $connection->multi_query($sql);

@@ -57,12 +57,3 @@ $fileFormat = ".jpg";
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-<?php
-//TODO JUUL: prove that images load. has to to something with the slider
-#foreach ($images as $image) {
-    ?>
-    <!-- creates slides dynamically based on the images configured within the admin view
-    <img src="../../public_html/src/img/<?php #echo $image . $fileFormat ?>" alt="<?php #echo $image; ?>">-->
-    <?php
-#} ?>
