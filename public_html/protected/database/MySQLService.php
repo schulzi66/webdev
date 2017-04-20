@@ -604,7 +604,7 @@ class MySQLService {
         if($connection) {
             $bookId = mysqli_real_escape_string($connection, $input["bookId"]);
             $memberId = mysqli_real_escape_string($connection, $input["memberId"]);
-            $takenDate = mysqli_real_escape_string($connection, $input["taken"]);
+            $takenDate = gmdate("Y-m-d");
             $sql = "UPDATE books SET MemberId = $memberId, Taken = '$takenDate', Returned = NULL WHERE ID = $bookId;";
             $result = mysqli_query($connection, $sql);
         }
