@@ -76,6 +76,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#carousel-inner').find('div').first().addClass('active');
 });
 
 /**
