@@ -19,6 +19,7 @@ class ImageGalleryController {
      * @param $images
      * @return bool
      */
+    //TODO JUUL needed?!
     public static function setImageGalleryImages($images): bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
@@ -101,10 +102,26 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getGalleryIDByGalleryName($galleryName) {
+    public static function getGalleryIdByGalleryName($galleryName) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->getGalleryIDByGalleryName($galleryName);
+            return $sqlService->getGalleryIdByGalleryName($galleryName);
+        }
+        return null;
+    }
+
+    public static function getImageNamesByImageIds($ids) {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->getImageNamesByImageIds($ids);
+        }
+        return null;
+    }
+
+    public static function getGalleryImageIdsByGalleryID($ids) {
+        $sqlService = new MySQLService();
+        if ($sqlService->connect()) {
+            return $sqlService->getGalleryImageIdsByGalleryID($ids);
         }
         return null;
     }

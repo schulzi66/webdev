@@ -5,20 +5,23 @@
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 <?php
+//global $pageName;
+$pageName = basename(__FILE__, '.php');
 require_once "../../protected/controller/ContentController.php";
 require_once "../../protected/entities/PageContent.php";
 require_once "../../protected/controller/ImageGalleryController.php";
-$content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
+$content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="container" data-placeholder-label="Header">
     <?php include '../../protected/view/parts/breadcrumb.php';
 
-    $visibility = ImageGalleryController::getGalleryVisibilityByPageName(basename(__FILE__, '.php'));
+    $visibility = ImageGalleryController::getGalleryVisibilityByPageName($pageName);
 
     if (isset($visibility) && $visibility->getState() == 1) {
         ?>
         <div id="imageGalleryWrapper">
     <?php
+
         include '../../protected/view/parts/imagegallery.php';
     } ?>
         </div>

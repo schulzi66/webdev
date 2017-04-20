@@ -440,18 +440,64 @@ class MySQLService {
      */
     public function getGalleryImagesByGalleryID($galleryID): ?array {
         $connection = $this->getConnection();
-        $galleryImages = array();
+        $galleryIds = array();
         if ($connection) {
             $sql = "SELECT galleryimages.GalleryID, images.Type, images.PictureRef, galleryimages.ImageID FROM galleryimages JOIN images ON galleryimages.ImageID = images.ImageID WHERE GalleryID = '" . $galleryID . "';";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows > 0) {
                 $resultArray = $result->fetch_all();
                 foreach ($resultArray as $image) {
-                    array_push($galleryImages, new GalleryImage($image["0"], $image["3"]));
+                    array_push($galleryIds, new GalleryImage($image["0"], $image["3"]));
                 }
             }
         }
-        return $galleryImages;
+        return $galleryIds;
+    }
+
+    public function getGalleryImageIdsByGalleryID($galleryID): ?array {
+        $connection = $this->getConnection();
+        $galleryIds = array();
+        if ($connection) {
+            $sql = "SELECT ImageID FROM galleryimages WHERE GalleryID = '" . $galleryID . "';";
+            $result = mysqli_query($connection, $sql);
+            if ($result->num_rows > 0) {
+                $resultArray = $result->fetch_all();
+                foreach ($resultArray as $image) {
+                    array_push($galleryIds, $image["0"]);
+                }
+            }
+        }
+        return $galleryIds;
+    }
+
+    public function getImageNamesByImageIds($ids) : array {
+        $connection = $this->getConnection();
+        $imageNames = array();
+        $sql = "";
+        if ($connection) {
+            foreach ($ids as $id) {
+                $id = mysqli_real_escape_string($connection, $id);
+                $sql .= "SELECT PictureRef From images WHERE ImageID = '" . $id . "';";
+            }
+            if (mysqli_multi_query($connection,$sql))
+            {
+                do
+                {
+                    // Store first result set
+                    if ($result=mysqli_store_result($connection)) {
+                        // Fetch one and one row
+                        while ($row=mysqli_fetch_row($result))
+                        {
+                            $imageNames[] = $row[0];
+                        }
+                        // Free result set
+                        mysqli_free_result($result);
+                    }
+                }
+                while (mysqli_next_result($connection));
+            }
+        }
+        return $imageNames;
     }
 
     /**
@@ -470,15 +516,18 @@ class MySQLService {
         return null;
     }
 
-
-    public function getGalleryIDByGalleryName($galleryName) {
+    /**
+     * @param $galleryName
+     * @return int
+     */
+    public function getGalleryIdByGalleryName($galleryName) : int {
         $connection = $this->getConnection();
         if ($connection) {
-            $sql = "SELECT GalleryID FROM gallery WHERE Name=" . $galleryName . ";";
+            $sql = "SELECT GalleryID FROM gallery WHERE Name = '" . $galleryName . "';";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows >= 1) {
-                $galleryArray = $result->fetch_all();
-                return $galleryArray;
+                $galleryArray = $result->fetch_assoc();
+                return $galleryArray["GalleryID"];
             }
         }
         return null;
