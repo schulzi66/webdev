@@ -36,7 +36,7 @@ class ImageGalleryController {
     public static function updateImageGallery($galleryID, $images): bool {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->updateImageGallery($galleryID, $images);
+                return $sqlService->updateImageGallery($galleryID, $images);
         }
         return null;
     }
@@ -93,10 +93,10 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getImageIDByImageName($imageNames) {
+    public static function getImageIdsByImageNames($imageNames) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
-            return $sqlService->getImageIDByImageName($imageNames);
+            return $sqlService->getImageIdsByImageNames($imageNames);
         }
         return null;
     }

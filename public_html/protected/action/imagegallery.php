@@ -5,14 +5,14 @@ require_once "../controller/ValidationController.php";
 
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (isset($_GET['update-gallery']) && isset($_POST['data'])) {
-        $values = ValidationController::validateInputArray(json_decode($_POST["data"]));
+    if (isset($_GET['update-gallery']) && isset($_GET['values'])) {
+        $values = ValidationController::validateInputArray(json_decode($_GET["values"]));
         $galleryID = ValidationController::validateInput($_GET['update-gallery']);
 
-        ImageGalleryController::getImageNamesByImageID($values);
-        $currentGalleryImages = ImageGalleryController::getGalleryImagesByGalleryID($galleryID);
+        $imageIds = ImageGalleryController::getImageIdsByImageNames($values);
+//        $currentGalleryImages = ImageGalleryController::getGalleryImagesByGalleryID($galleryID);
 
-        if (ImageGalleryController::updateImageGallery($galleryID, $values)) {
+        if (ImageGalleryController::updateImageGallery($galleryID, $imageIds)) {
             //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
             $uri = "/Webdev/public_html/protected/view";

@@ -7,6 +7,8 @@ require "$root/webdev/public_html/protected/entities/Member.php";
 require "$root/webdev/public_html/protected/entities/ContactRequest.php";
 require "$root/webdev/public_html/protected/entities/PageContent.php";
 require "$root/webdev/public_html/protected/entities/Gallery.php";
+require "$root/webdev/public_html/protected/entities/GalleryImage.php";
+
 
 
 class MySQLService {
@@ -359,7 +361,7 @@ class MySQLService {
             foreach ($images as $image) {
                 $ID = mysqli_real_escape_string($connection, $galleryID);
                 $imageID = mysqli_real_escape_string($connection, $image["imageID"]);
-                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $ID . "," . $imageID . ")";
+                $sql .= "INSERT INTO galleryimages(GalleryID, ImageID) VALUES(" . $ID . "," . $imageID . ");";
             }
             $result = $connection->multi_query($sql);
         }
@@ -398,32 +400,54 @@ class MySQLService {
         return $galleries;
     }
 
-    public function getImageIDByImageName($imageNames) {
+    /**
+     * @param $imageNames
+     * @return array
+     */
+    public function getImageIdsByImageNames($imageNames) : array {
         $connection = $this->getConnection();
         $imageIDs = array();
+        $sql = "";
         if ($connection) {
-            $sql = ";";
-            $result = mysqli_query($connection, $sql);
-            if ($result->num_rows == 1) {
-                $resultArray = $result->fetch_assoc();
-                foreach ($resultArray as $image) {
-                    array_push($imageIDs, new GalleryImage($image["GalleryID"], $image["ImageID"]));
+            foreach ($imageNames as $name) {
+                $name = mysqli_real_escape_string($connection, $name);
+                $sql .= "SELECT ImageID From images WHERE PictureRef = '" . $name . "';";
+            }
+            if (mysqli_multi_query($connection,$sql))
+            {
+                do
+                {
+                    // Store first result set
+                    if ($result=mysqli_store_result($connection)) {
+                        // Fetch one and one row
+                        while ($row=mysqli_fetch_row($result))
+                        {
+                            $imageIDs[] = $row[0];
+                        }
+                        // Free result set
+                        mysqli_free_result($result);
+                    }
                 }
+                while (mysqli_next_result($connection));
             }
         }
-        return $galleryImages;
+        return $imageIDs;
     }
 
+    /**
+     * @param $galleryID
+     * @return array|null
+     */
     public function getGalleryImagesByGalleryID($galleryID): ?array {
         $connection = $this->getConnection();
         $galleryImages = array();
         if ($connection) {
             $sql = "SELECT galleryimages.GalleryID, images.Type, images.PictureRef, galleryimages.ImageID FROM galleryimages JOIN images ON galleryimages.ImageID = images.ImageID WHERE GalleryID = '" . $galleryID . "';";
             $result = mysqli_query($connection, $sql);
-            if ($result->num_rows == 1) {
-                $resultArray = $result->fetch_assoc();
+            if ($result->num_rows > 0) {
+                $resultArray = $result->fetch_all();
                 foreach ($resultArray as $image) {
-                    array_push($galleryImages, new GalleryImage($image["GalleryID"], $image["ImageID"]));
+                    array_push($galleryImages, new GalleryImage($image["0"], $image["3"]));
                 }
             }
         }

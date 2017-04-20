@@ -91,7 +91,7 @@ function sendSelectedValues(galleryID) {
     values = JSON.stringify(values);
     $.ajax({
         type: 'GET',
-        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID,
+        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
         data: values,
         success: function () {
             deleteCookie("currentSlider");
