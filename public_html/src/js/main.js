@@ -159,10 +159,10 @@ function returnBook(bookID, date) {
     });
 }
 
-function loanBook(bookID, memberID) {
+function loanBook(bookID, memberID, date) {
     $.ajax({
         type: 'GET',
-        url: '../protected/action/bookloans.php?book-loan=' + bookID + '&memberID=' + memberID,
+        url: '../protected/action/bookloans.php?book-loan=' + bookID + '&memberID=' + memberID + '&date=' + date,
         success: function () {
             setTimeout(function () {
                 location.reload();
