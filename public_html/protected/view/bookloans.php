@@ -83,7 +83,7 @@ SessionController::validateAdminSession();
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" onclick="returnBook(getCookie('bookID'), getDatepickerValue('#returnDateInput'))">
+                                <button id="returnBookButton" type="button" data-dismiss="modal" class="btn btn-default" onclick="returnBook(getCookie('bookID'), getDatepickerValue('#returnDateInput'))">
                                     Submit
                                 </button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -113,7 +113,7 @@ SessionController::validateAdminSession();
                                     $members = MemberManagementController::getAllMembers();
                                         echo '<option disabled selected >Please select a Member</option>';
                                     foreach ($members as $member) {
-                                        echo '<option id="memberID_' . $member->getMemberId() . '" >' . $member->getFirstName() . ' ' . $member->getSurName() . '</option>';
+                                        echo '<option id="' . $member->getMemberId() . '" >' . $member->getFirstName() . ' ' . $member->getSurName() . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -127,7 +127,7 @@ SessionController::validateAdminSession();
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" onclick="loanBook(getCookie('bookID'), getID(), getDatepickerValue('#loanDateInput'))">
+                            <button type="button" id="loanBookButton" data-dismiss="modal" class="btn btn-default" onclick="loanBook(getCookie('bookID'), getID(), getDatepickerValue('#loanDateInput'))">
                                 Submit
                             </button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

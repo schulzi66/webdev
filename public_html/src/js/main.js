@@ -135,7 +135,9 @@ function returnBook(bookID, date) {
         type: 'GET',
         url: '../protected/action/bookloans.php?book-return=' + bookID + '&date=' + date,
         success: function () {
-            console.log("success");
+            setTimeout(function () {
+                location.reload();
+            }, 500);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
@@ -149,7 +151,9 @@ function loanBook(bookID, memberID) {
         type: 'GET',
         url: '../protected/action/bookloans.php?book-loan=' + bookID + '&memberID=' + memberID,
         success: function () {
-            console.log("success");
+            setTimeout(function () {
+                location.reload();
+            }, 500);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Status: " + textStatus);
@@ -200,8 +204,7 @@ function getCookie(cname) {
 }
 
 function getDatepickerValue(dateInput) {
-    var date = $(dateInput).val();
-    return date;
+    return $(dateInput).val();
 }
 
 function getID() {
