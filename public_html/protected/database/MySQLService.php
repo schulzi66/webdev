@@ -14,7 +14,7 @@ require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
  * Class MySQLService
  * Service implementation for MySQL of the @DatabaseServiceInterface
  */
-class MySQLService {
+class MySQLService implements DatabaseServiceInterface {
     private $connection;
 
     /**
