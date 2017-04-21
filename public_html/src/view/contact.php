@@ -9,7 +9,7 @@ require_once "../../protected/controller/ContentController.php";
 require_once "../../protected/entities/PageContent.php";
 $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
 ?>
-<div class="container" data-placeholder-label="Header">
+<div class="container">
     <?php include '../../protected/view/parts/breadcrumb.php';?>
     <div class="">
         <div class="">

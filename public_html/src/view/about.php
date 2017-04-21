@@ -12,7 +12,7 @@ require_once "../../protected/entities/PageContent.php";
 require_once "../../protected/controller/ImageGalleryController.php";
 $content = ContentController::getContentByPageName($pageName);
 ?>
-<div class="container" data-placeholder-label="Header">
+<div class="container">
     <?php include '../../protected/view/parts/breadcrumb.php';
 
     $visibility = ImageGalleryController::getGalleryVisibilityByPageName($pageName);

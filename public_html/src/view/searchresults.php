@@ -10,7 +10,7 @@ $count = Count($books); ?>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
 <!-- This page shows a view of all books returned in either the "Search library" search or the main page search-->
-<div class="container" data-placeholder-label="Header">
+<div class="container">
 <?php include '../../protected/view/parts/breadcrumb.php';?>
     <div class="panel panel-default">
         <div class="panel-heading"><?php echo $count ?> results returned</div>

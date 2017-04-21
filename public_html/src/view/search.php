@@ -6,7 +6,7 @@
 <body>
 <!-- This page shows two input fields for the title and the author of a book. There is also a checkbox
      that lets the user only search available books. Client-side validation is also performed.-->
-<div class="container" data-placeholder-label="Header">
+<div class="container">
     <?php include '../../protected/view/parts/breadcrumb.php';?>
     <div class="">
         <div class="">
