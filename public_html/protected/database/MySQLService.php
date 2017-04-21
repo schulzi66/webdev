@@ -324,8 +324,7 @@ class MySQLService implements DatabaseServiceInterface {
     }
     //endregion
 
-    /* Region Imagegallery
-     -------------------------*/
+    //region Imagegallery
     /**
      * @param string $imageGalleryName
      * @return array|null
@@ -358,8 +357,13 @@ class MySQLService implements DatabaseServiceInterface {
         if($connection){
             $sql = "SELECT * FROM images WHERE ImageID = $id";
             $result = mysqli_query($connection, $sql);
-            if($result->num_rows == 1) {
-                $result = $result->fetch_all();
+            if($result) {
+                if ($result->num_rows == 1) {
+                    $result = $result->fetch_all();
+                }
+            }
+            else{
+                $result = null;
             }
         }
         return $result;
@@ -445,7 +449,7 @@ class MySQLService implements DatabaseServiceInterface {
                         mysqli_free_result($result);
                     }
                 }
-                while (mysqli_next_result($connection));
+                while (mysqli_more_results($connection) && mysqli_next_result($connection));
             }
         }
         return $imageIDs;
@@ -519,7 +523,7 @@ class MySQLService implements DatabaseServiceInterface {
                         mysqli_free_result($result);
                     }
                 }
-                while (mysqli_next_result($connection));
+                while (mysqli_more_results($connection) && mysqli_next_result($connection));
             }
         }
         return $imageNames;
