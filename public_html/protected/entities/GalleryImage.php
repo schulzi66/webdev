@@ -2,6 +2,7 @@
 
 /**
  * Class GalleryImage
+ * Generate GalleryImage objects
  */
 class GalleryImage implements Serializable {
     private $galleryID, $imageID;

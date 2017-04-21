@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Class User
+ * Generate User objects
+ */
 class User implements Serializable {
     private $userId, $userName;
 

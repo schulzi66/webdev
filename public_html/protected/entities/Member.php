@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Class Member
+ * Generate Member objects
+ */
 class Member implements Serializable {
     private $memberId, $firstName, $surName, $address, $phone, $birth, $gender, $email;
 

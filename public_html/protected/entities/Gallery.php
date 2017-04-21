@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class Gallery
+ * Generate Gallery objects
+ */
 class Gallery implements Serializable {
     private $galleryId, $name, $state;
 

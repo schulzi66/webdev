@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Class PageContent
+ * Generate PageContent objects
+ */
 class PageContent implements Serializable {
     private $pageId, $pageName, $headline, $content;
 
