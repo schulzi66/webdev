@@ -8,7 +8,7 @@ require_once "$root/webdev/public_html/protected/entities/ContactRequest.php";
 require_once "$root/webdev/public_html/protected/entities/PageContent.php";
 require_once "$root/webdev/public_html/protected/entities/Gallery.php";
 require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
-
+require_once "DatabaseServiceInterface.php";
 
 /**
  * Class MySQLService
