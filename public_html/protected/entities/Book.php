@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class Book
+ * Generate Book objects
+ */
 class Book implements Serializable {
     private $id, $title, $author, $isbn, $category, $memberId, $taken, $returned, $imageId;
 
@@ -180,7 +184,8 @@ class Book implements Serializable {
     }
 
     /**
-     * @param mixed $imageId
+     * @param $imageid
+     * @internal param mixed $imageId
      */
     public function setImageId($imageid) {
         $this->imageId = $imageid;

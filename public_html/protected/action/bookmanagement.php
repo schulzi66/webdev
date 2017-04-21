@@ -2,6 +2,9 @@
 require_once "../controller/BookManagementController.php";
 require_once "../controller/SessionController.php";
 
+/**
+ * Validate session before executing action
+ */
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //check if the call from the bookmanagement view is for the update, delete or add

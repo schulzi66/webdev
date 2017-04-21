@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Class ContactRequest
+ * Generate ContactRequest objects
+ */
 class ContactRequest implements Serializable {
     private $id, $name, $surName, $mail, $message, $replied;
 

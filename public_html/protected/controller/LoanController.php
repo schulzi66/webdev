@@ -1,6 +1,9 @@
 <?php
 require_once "../database/MYSQLService.php";
 
+/**
+ * Controller-Class LoanController
+ */
 class LoanController
 {
     public static function loanBook($input) : bool{

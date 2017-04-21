@@ -21,6 +21,12 @@ textarea {
     resize: vertical;
 }
 
+/* General classes
+ -------------------------------------------------- */
+.align-center {
+    text-align: center
+}
+
 /* Searchbox / Main Search
 -------------------------------------------------- */
 .mainSearchWrapper {
@@ -108,11 +114,9 @@ textarea {
  -------------------------------------------------- */
 .thumbnail-img {
     width: 264px;
-    /*height: 264px;*/
 }
 
-/*
-    Overwriting standard Bootstrap
+/* Overwriting standard Bootstrap
  -------------------------------------------------- */
 
 .btn-primary {
@@ -134,8 +138,7 @@ textarea {
     background-color: #eeeeee;
 }
 
-/*
-    Dashboard View
+/* Dashboard View
  -------------------------------------------------- */
 .panel-green {
     border-color: #5cb85c;
@@ -191,8 +194,7 @@ textarea {
     color: #df8a13;
 }
 
-/*
-    Prevent overwriting this stuff
+/* Prevent overwriting this stuff
 -------------------------------------------------- */
 .panel-footer-blue {
     color: #337ab7;
@@ -202,11 +204,108 @@ textarea {
     font-weight: bold;
 }
 
-/*
-    Date Picker
+/* Date Picker
  -------------------------------------------------- */
 
 .clsDatePicker {
     position: relative;
     z-index: 9999 !important;
+}
+
+/* Responsive design for main page
+ -------------------------------------------------- */
+
+@media screen and (max-width: 1700px) {
+      .outer.col {
+        width: 70% !important;
+    }
+
+       .heading {
+        width: 70%;
+    }
+
+       .searchbox {
+        width: 70%;
+    }
+
+     
+}
+
+  
+
+@media screen and (max-width: 1450px) {
+      .heading {
+        width: 80%;
+    }
+
+       .searchbox {
+        width: 80%;
+    }
+
+      .outer.col {
+        width: 80% !important;
+    }
+
+     
+}
+
+  
+
+@media screen and (max-width: 1350px) {
+      .heading {
+        width: 85%;
+    }
+
+       .searchbox {
+        width: 85%;
+    }
+
+       .outer.col {
+        width: 85% !important;
+    }
+}
+
+  
+
+@media screen and (max-width: 1200px) {
+      .outer.col {
+        width: 90% !important;
+    }
+
+      .heading {
+         width: 90%;
+    }
+
+      .searchbox {
+        width: 90%;
+    }
+}
+
+  
+
+@media screen and (max-width: 1140px) {
+      .searchbox {
+        width: 95%;
+    }
+
+      .heading {
+         width: 95%;
+    }
+}
+
+  
+
+@media screen and (max-width: 600px) {
+      .mainSearchWrapper {
+         height: 350px;
+    }
+
+      .heading h1 {
+        font-size: 34px;
+         margin-top: 70px;
+    }
+
+      .searchbox {
+        top: 70px;
+    }
 }

@@ -10,10 +10,12 @@ require_once "$root/webdev/public_html/protected/entities/Gallery.php";
 require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
 
 
-
+/**
+ * Class MySQLService
+ * Service implementation for MySQL of the @DatabaseServiceInterface
+ */
 class MySQLService {
     private $connection;
-
 
     /**
      * @return bool
@@ -321,8 +323,9 @@ class MySQLService {
         return $result;
     }
     //endregion
-    //TODO JUUL: Queries
-    //region Images
+
+    /* Region Imagegallery
+     -------------------------*/
     /**
      * @param string $imageGalleryName
      * @return array|null
@@ -345,6 +348,10 @@ class MySQLService {
         return $images;
     }
 
+    /**
+     * @param $id
+     * @return array|null
+     */
     public function getImageById($id) : ?array {
         $connection = $this->getConnection();
         $result = null;
@@ -363,9 +370,6 @@ class MySQLService {
      * @param $images
      * @return bool
      */
-    /* TODO Query: Update galleryimages if galleryimgages with id $galleryID exists, otherwise Insert into galleryimages ....
-        ---> Request if imagegallery exists
-    */
     public function updateImageGallery($galleryID, $images): bool {
         $connection = $this->getConnection();
         $result = false;
@@ -400,7 +404,6 @@ class MySQLService {
     /**
      * @return array|null
      */
-    //TODO JUUL: use Galleries entity -> see getAllBooks, use getter in view
     public function getAllGalleries(): ?array {
         $connection = $this->getConnection();
         $galleries = array();
@@ -416,9 +419,9 @@ class MySQLService {
 
     /**
      * @param $imageNames
-     * @return array
+     * @return array|null
      */
-    public function getImageIdsByImageNames($imageNames) : array {
+    public function getImageIdsByImageNames($imageNames): ?array {
         $connection = $this->getConnection();
         $imageIDs = array();
         $sql = "";
@@ -468,6 +471,10 @@ class MySQLService {
         return $galleryIds;
     }
 
+    /**
+     * @param $galleryID
+     * @return array|null
+     */
     public function getGalleryImageIdsByGalleryID($galleryID): ?array {
         $connection = $this->getConnection();
         $galleryIds = array();
@@ -484,7 +491,11 @@ class MySQLService {
         return $galleryIds;
     }
 
-    public function getImageNamesByImageIds($ids) : array {
+    /**
+     * @param $ids
+     * @return array|null
+     */
+    public function getImageNamesByImageIds($ids): ?array {
         $connection = $this->getConnection();
         $imageNames = array();
         $sql = "";
@@ -534,7 +545,7 @@ class MySQLService {
      * @param $galleryName
      * @return int
      */
-    public function getGalleryIdByGalleryName($galleryName) : int {
+    public function getGalleryIdByGalleryName($galleryName): int {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT GalleryID FROM gallery WHERE Name = '" . $galleryName . "';";

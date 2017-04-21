@@ -3,7 +3,7 @@ require "ConnectionFactory.php";
 
 /**
  * Class DatabaseModel
- * @package Database
+ * Simple model which is required to access the connection factory (MVC concept)
  */
 class DatabaseModel {
 

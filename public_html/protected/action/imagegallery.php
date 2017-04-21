@@ -3,8 +3,14 @@ require_once "../controller/ImageGalleryController.php";
 require_once "../controller/SessionController.php";
 require_once "../controller/ValidationController.php";
 
+/**
+ * Validate session before executing action
+ */
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    /**
+     * Update gallery images
+     */
     if (isset($_GET['update-gallery']) && isset($_GET['values'])) {
         $values = ValidationController::validateInputArray(json_decode($_GET["values"]));
         $galleryID = ValidationController::validateInput($_GET['update-gallery']);
@@ -27,6 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
     }
 
+    /**
+     * Update image gallery visibility
+     */
     if (isset($_GET['image-gallery-visibility']) && isset($_GET['state'])) {
 
         $visibility = ValidationController::validateInput($_GET['image-gallery-visibility']);

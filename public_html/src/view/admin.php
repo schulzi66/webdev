@@ -9,7 +9,7 @@ SessionController::redirectAdmin();
 </head>
 <?php include '../../protected/view/parts/header.php'; ?>
 <body>
-<div class="container" data-placeholder-label="Header">
+<div class="container">
     <?php include '../../protected/view/parts/breadcrumb.php'; ?>
     <div class="heading"><h1>SWD LIBRARY</h1>
     </div>

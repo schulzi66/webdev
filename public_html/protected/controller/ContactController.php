@@ -1,6 +1,9 @@
 <?php
 require_once "../database/MySQLService.php";
 
+/**
+ * Controller-Class ContactController
+ */
 class ContactController {
     /**
      * @param $contactRequest

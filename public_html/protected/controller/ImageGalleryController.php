@@ -3,6 +3,9 @@
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/database/MySQLService.php";
 
+/**
+ * Controller-Class ImageGalleryController
+ */
 class ImageGalleryController {
     /**
      * @return array|null
@@ -11,19 +14,6 @@ class ImageGalleryController {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getImages();
-        }
-        return null;
-    }
-
-    /**
-     * @param $images
-     * @return bool
-     */
-    //TODO JUUL needed?!
-    public static function setImageGalleryImages($images): bool {
-        $sqlService = new MySQLService();
-        if ($sqlService->connect()) {
-            return $sqlService->setImageGalleryImages($images);
         }
         return null;
     }
@@ -77,7 +67,10 @@ class ImageGalleryController {
         return null;
     }
 
-    //TODO JUUL entity
+    /**
+     * @param $pageName
+     * @return Gallery|null
+     */
     public static function getGalleryVisibilityByPageName($pageName) : ?Gallery {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
@@ -86,7 +79,11 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getGalleryImagesByGalleryID($galleryID) {
+    /**
+     * @param $galleryID
+     * @return array|null
+     */
+    public static function getGalleryImagesByGalleryID($galleryID): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getGalleryImagesByGalleryID($galleryID);
@@ -94,7 +91,11 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getImageIdsByImageNames($imageNames) {
+    /**
+     * @param $imageNames
+     * @return array|null
+     */
+    public static function getImageIdsByImageNames($imageNames): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getImageIdsByImageNames($imageNames);
@@ -102,7 +103,11 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getGalleryIdByGalleryName($galleryName) {
+    /**
+     * @param $galleryName
+     * @return int|null
+     */
+    public static function getGalleryIdByGalleryName($galleryName): int {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getGalleryIdByGalleryName($galleryName);
@@ -110,7 +115,11 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getImageNamesByImageIds($ids) {
+    /**
+     * @param $ids
+     * @return array|null
+     */
+    public static function getImageNamesByImageIds($ids): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getImageNamesByImageIds($ids);
@@ -118,7 +127,11 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getGalleryImageIdsByGalleryID($ids) {
+    /**
+     * @param $ids
+     * @return array|null
+     */
+    public static function getGalleryImageIdsByGalleryID($ids): ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getGalleryImageIdsByGalleryID($ids);
@@ -126,7 +139,11 @@ class ImageGalleryController {
         return null;
     }
 
-    public static function getImageById($id) : ?array{
+    /**
+     * @param $id
+     * @return array|null
+     */
+    public static function getImageById($id) : ?array {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getImageById($id);

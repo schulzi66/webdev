@@ -7,44 +7,39 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['date']) && isset($_GET['book-return'])) {
         $bookId = $_GET['book-return'];
         $returned = $_GET['date'];
-        if($returned == "")
-        {
+        if ($returned == "") {
             $returned = gmdate("Y-m-d");
-        }
-        else {
+        } else {
             $returned = changeDateToDatabaseFormat($returned);
         }
         $inputArray = ['bookId' => $bookId, 'returned' => $returned];
         $inputArray = ValidationController::validateInputArray($inputArray);
-        if(!LoanController::returnBook($inputArray))
-        {
+        if (!LoanController::returnBook($inputArray)) {
             $errorArray = array();
             $errorArray[] = "Return book failed.";
         }
     }
-    if (isset($_GET['memberID']) && isset($_GET['book-loan']) && isset($_GET['date'])){
+    if (isset($_GET['memberID']) && isset($_GET['book-loan']) && isset($_GET['date'])) {
         $bookId = $_GET['book-loan'];
         $memberId = $_GET['memberID'];
         $taken = $_GET['date'];
-        if($taken == "")
-        {
+        if ($taken == "") {
             $taken = gmdate("Y-m-d");
-        }
-        else {
+        } else {
             $taken = changeDateToDatabaseFormat($taken);
         }
         $inputArray = ['bookId' => $bookId, 'memberId' => $memberId, 'taken' => $taken];
         $inputArray = ValidationController::validateInputArray($inputArray);
-        if(!LoanController::loanBook($inputArray))
-        {
+        if (!LoanController::loanBook($inputArray)) {
             $errorArray = array();
             $errorArray[] = "Return book failed.";
         }
     }
 }
 
-function changeDateToDatabaseFormat($date) : String{
+function changeDateToDatabaseFormat($date): String
+{
     //changes dates to a database friendly format (YYYY-mm-DD)
     $dateArray = explode("/", $date);
-    return $dateArray[2] . "-" .$dateArray[1] . "-" . $dateArray[0];
+    return $dateArray[2] . "-" . $dateArray[1] . "-" . $dateArray[0];
 }

@@ -4,6 +4,9 @@ require_once "../controller/SessionController.php";
 require_once "../controller/ValidationController.php";
 require_once "../controller/ContactController.php";
 
+/**
+ * Validate session before executing action
+ */
 SessionController::validateAdminSession();
 //To test this feature, check the README!
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

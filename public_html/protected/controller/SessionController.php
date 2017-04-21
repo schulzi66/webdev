@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * Controller-Class SessionController
+ */
 class SessionController {
     /**
      *

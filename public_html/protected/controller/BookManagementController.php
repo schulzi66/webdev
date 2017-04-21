@@ -1,6 +1,9 @@
 <?php
 require_once "../database/MySQLService.php";
 
+/**
+ * Controller-Class BookManagementController
+ */
 class BookManagementController {
     /**
      * @return array|null
