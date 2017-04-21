@@ -2,7 +2,7 @@
 
 /**
  * Class ConnectionFactory
- * @package Database
+ * Factory class to create a mysql connection based on the loaded configuration file database.ini in the same directory
  */
 class ConnectionFactory {
     protected static $connection;

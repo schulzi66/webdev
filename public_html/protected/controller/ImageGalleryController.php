@@ -3,6 +3,9 @@
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/database/MySQLService.php";
 
+/**
+ * Controller-Class ImageGalleryController
+ */
 class ImageGalleryController {
     /**
      * @return array|null

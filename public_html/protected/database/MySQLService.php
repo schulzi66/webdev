@@ -10,10 +10,12 @@ require_once "$root/webdev/public_html/protected/entities/Gallery.php";
 require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
 
 
-
-class MySQLService {
+/**
+ * Class MySQLService
+ * Service implementation for MySQL of the @DatabaseServiceInterface
+ */
+class MySQLService implements DatabaseServiceInterface {
     private $connection;
-
 
     /**
      * @return bool

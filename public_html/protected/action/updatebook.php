@@ -4,6 +4,9 @@ require_once "../controller/BookManagementController.php";
 require_once "../entities/Book.php";
 require_once "../controller/SessionController.php";
 
+/**
+ * Validate session before executing action
+ */
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();

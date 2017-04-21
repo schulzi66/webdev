@@ -1,6 +1,9 @@
 <?php
 require_once "../database/MySQLService.php";
 
+/**
+ * Controller-Class MemberManagementController
+ */
 class MemberManagementController {
     /**
      * @return array|null

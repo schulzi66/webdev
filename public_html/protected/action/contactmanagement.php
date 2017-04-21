@@ -2,6 +2,9 @@
 require_once "../controller/ContactController.php";
 require_once "../controller/SessionController.php";
 
+/**
+ * Validate session before executing action
+ */
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //check if the call from the contactmanagement view includes needed parameter

@@ -1,6 +1,9 @@
 <?php
 require_once "../database/MySQLService.php";
 
+/**
+ * Controller-Class LoginController
+ */
 class LoginController {
     /**
      * @param $credentials

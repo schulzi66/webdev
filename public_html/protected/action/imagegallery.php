@@ -3,6 +3,9 @@ require_once "../controller/ImageGalleryController.php";
 require_once "../controller/SessionController.php";
 require_once "../controller/ValidationController.php";
 
+/**
+ * Validate session before executing action
+ */
 SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     /**

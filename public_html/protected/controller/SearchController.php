@@ -1,7 +1,8 @@
 <?php
 require_once "../database/MySQLService.php";
-/*
- * Controller for all searches
+
+/**
+ * Controller-Class SearchController
  */
 class SearchController {
     /**

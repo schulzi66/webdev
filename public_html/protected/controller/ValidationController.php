@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Controller-Class ValidationController
+ */
 class ValidationController {
     /**
      * @param $array
