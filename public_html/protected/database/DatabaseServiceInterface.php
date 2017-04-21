@@ -4,7 +4,7 @@
  * Interface MySQLServiceInterface
  * Interface allows to implement several database models with all needed methods
  */
-interface DatabaseServiceInterface{
+interface DatabaseServiceInterface {
     /**
      * @param $credentials
      * @return null|User
