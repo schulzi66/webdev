@@ -1,6 +1,7 @@
 <?php
 require_once "../controller/BookManagementController.php";
 require_once "../controller/SessionController.php";
+require_once "../controller/ValidationController.php";
 
 /**
  * Validate session before executing action
@@ -9,9 +10,9 @@ SessionController::validateAdminSession();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //check if the call from the bookmanagement view is for the update, delete or add
     if (isset($_GET['book-update'])) {
+        $bookId = ValidationController::validateInput($_GET["book-update"]);
         //load book object from database via controller
-        //TODO: MASC no superglobal arrays validate
-        $book = BookManagementController::getBookById($_GET["book-update"]);
+        $book = BookManagementController::getBookById($bookId);
         //serialize the book to pass it in the redirect as parameter
         $book = serialize($book);
         //redirect with parameter to according view
@@ -23,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (isset($_GET['book-delete'])) {
+        $bookId = ValidationController::validateInput($_GET["book-update"]);
         //load book object from database via controller
-        $book = BookManagementController::getBookById($_GET["book-delete"]);
+        $book = BookManagementController::getBookById($bookId);
         //serialize the book to pass it in the redirect as parameter
         $book = serialize($book);
         //redirect with parameter to according view
