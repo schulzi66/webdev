@@ -234,8 +234,6 @@ textarea {
        .searchbox {
         width: 70%;
     }
-
-     
 }
 
 @media screen and (max-width: 1450px) {
@@ -250,8 +248,6 @@ textarea {
       .outer.col {
         width: 80% !important;
     }
-
-     
 }
 
 @media screen and (max-width: 1350px) {
@@ -308,7 +304,7 @@ textarea {
 }
 
 /* Page Styles
- */
+ -------------------------------------------------- */
 .contact > label, .about > label{
     color: #000;
 }
