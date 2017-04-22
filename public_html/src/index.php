@@ -5,11 +5,12 @@
 <?php include '../protected/view/parts/header.php'; ?>
 <body>
 <?php
+$pageName = basename(__FILE__, '.php');
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/controller/ContentController.php";
 require_once "$root/webdev/public_html/protected/entities/PageContent.php";
 require_once "$root/webdev/public_html/protected/controller/ImageGalleryController.php";
-$content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
+$content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="outer col" data-placeholder-label="Header">
 
