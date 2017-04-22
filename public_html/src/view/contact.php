@@ -7,6 +7,7 @@
 <?php
 $pageName = basename(__FILE__, '.php');
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+
 require_once "$root/webdev/public_html/protected/controller/ContentController.php";
 require_once "$root/webdev/public_html/protected/controller/ImageGalleryController.php";
 require_once "../../protected/entities/PageContent.php";
@@ -25,7 +26,7 @@ $content = ContentController::getContentByPageName($pageName);
         include '../../protected/view/parts/imagegallery.php';
         } ?>
     </div>
-    <div class="heading"><h1><?php if (isset($content)) {
+    <div class="heading contact"><h1><?php if (isset($content)) {
                 echo $content->getHeadline();
             } ?></h1>
         <label><?php if (isset($content)) {

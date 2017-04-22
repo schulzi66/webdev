@@ -237,8 +237,6 @@ textarea {
      
 }
 
-  
-
 @media screen and (max-width: 1450px) {
       .heading {
         width: 80%;
@@ -255,8 +253,6 @@ textarea {
      
 }
 
-  
-
 @media screen and (max-width: 1350px) {
       .heading {
         width: 85%;
@@ -270,8 +266,6 @@ textarea {
         width: 85% !important;
     }
 }
-
-  
 
 @media screen and (max-width: 1200px) {
       .outer.col {
@@ -287,8 +281,6 @@ textarea {
     }
 }
 
-  
-
 @media screen and (max-width: 1140px) {
       .searchbox {
         width: 95%;
@@ -298,8 +290,6 @@ textarea {
          width: 95%;
     }
 }
-
-  
 
 @media screen and (max-width: 600px) {
       .mainSearchWrapper {
@@ -314,4 +304,10 @@ textarea {
       .searchbox {
         top: 70px;
     }
+}
+
+/* Page Styles
+ */
+.contact > label, .about > label{
+    color: #000;
 }

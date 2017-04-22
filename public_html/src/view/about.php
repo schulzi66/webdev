@@ -26,7 +26,7 @@ $content = ContentController::getContentByPageName($pageName);
         include '../../protected/view/parts/imagegallery.php';
         } ?>
     </div>
-    <div class="heading">
+    <div class="heading about">
         <h1><?php if (isset($content)) {
                 echo $content->getHeadline();
             } ?>
