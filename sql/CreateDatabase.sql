@@ -3,12 +3,12 @@ CREATE DATABASE IF NOT EXISTS libraryswd;
 USE libraryswd;
 
 -- -- UNCOMMENT THE FOLLOWING AFTER FIRST USE OF THIS SCRIPT
-ALTER TABLE books
-  DROP FOREIGN KEY FK_books_member,
-  DROP FOREIGN KEY FK_books_images;
-ALTER TABLE galleryimages
-  DROP FOREIGN KEY FK_gallery,
-  DROP FOREIGN KEY FK_images;
+-- ALTER TABLE books
+--  DROP FOREIGN KEY FK_books_member,
+--  DROP FOREIGN KEY FK_books_images;
+-- ALTER TABLE galleryimages
+--  DROP FOREIGN KEY FK_gallery,
+--  DROP FOREIGN KEY FK_images;
 --
 
 DROP TABLE IF EXISTS books;
