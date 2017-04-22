@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 21. Apr 2017 um 23:52
+-- Erstellungszeit: 22. Apr 2017 um 10:40
 -- Server-Version: 10.1.21-MariaDB
 -- PHP-Version: 7.1.3
 
@@ -83,7 +83,7 @@ CREATE TABLE `gallery` (
 INSERT INTO `gallery` (`GalleryID`, `Name`, `State`) VALUES
 (1, 'about', 1),
 (2, 'index', 1),
-(3, 'contact us', 1);
+(3, 'contact', 1);
 
 -- --------------------------------------------------------
 
