@@ -8,7 +8,7 @@
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/controller/ContentController.php";
 require_once "$root/webdev/public_html/protected/controller/ImageGalleryController.php";
-require_once "$root/webdev/public_html/protected/entities/PageContent.php";
+require_once "../../protected/entities/PageContent.php";
 $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
 ?>
 <div class="container">
@@ -21,7 +21,7 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
     <div id="imageGalleryWrapper">
         <?php
 
-        include "$root/webdev/public_html/protectedview/parts/imagegallery.php";
+        include '../../protected/view/parts/imagegallery.php';
         } ?>
     </div>
     <div class="heading"><h1><?php if (isset($content)) {

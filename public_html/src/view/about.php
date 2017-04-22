@@ -14,7 +14,7 @@ require_once "$root/webdev/public_html/protected/controller/ImageGalleryControll
 $content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="container">
-    <?php include "$root/webdev/public_html/protected/view/parts/breadcrumb.php";
+    <?php include '../../protected/view/parts/breadcrumb.php';
 
     $visibility = ImageGalleryController::getGalleryVisibilityByPageName($pageName);
 
@@ -23,7 +23,7 @@ $content = ContentController::getContentByPageName($pageName);
     <div id="imageGalleryWrapper">
         <?php
 
-        include "$root/webdev/public_html/protected/view/parts/imagegallery.php";
+        include '../../protected/view/parts/imagegallery.php';
         } ?>
     </div>
     <div class="heading">
