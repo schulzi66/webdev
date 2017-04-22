@@ -21,7 +21,7 @@ $content = ContentController::getContentByPageName(basename(__FILE__, '.php'));
     <div id="imageGalleryWrapper">
         <?php
 
-        include '../../protected/view/parts/imagegallery.php';
+        include "$root/webdev/public_html/protectedview/parts/imagegallery.php";
         } ?>
     </div>
     <div class="heading"><h1><?php if (isset($content)) {

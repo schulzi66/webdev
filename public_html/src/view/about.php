@@ -7,13 +7,14 @@
 <?php
 //global $pageName;
 $pageName = basename(__FILE__, '.php');
-require_once "../../protected/controller/ContentController.php";
-require_once "../../protected/entities/PageContent.php";
-require_once "../../protected/controller/ImageGalleryController.php";
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once "$root/webdev/public_html/protected/controller/ContentController.php";
+require_once "$root/webdev/public_html/protected/entities/PageContent.php";
+require_once "$root/webdev/public_html/protected/controller/ImageGalleryController.php";
 $content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="container">
-    <?php include '../../protected/view/parts/breadcrumb.php';
+    <?php include "$root/webdev/public_html/protected/view/parts/breadcrumb.php";
 
     $visibility = ImageGalleryController::getGalleryVisibilityByPageName($pageName);
 
@@ -22,7 +23,7 @@ $content = ContentController::getContentByPageName($pageName);
     <div id="imageGalleryWrapper">
         <?php
 
-        include '../../protected/view/parts/imagegallery.php';
+        include "$root/webdev/public_html/protected/view/parts/imagegallery.php";
         } ?>
     </div>
     <div class="heading">
