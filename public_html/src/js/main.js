@@ -23,7 +23,9 @@ $(document).ready(function () {
             $('#imageSelectionWrapper').show();
         });
     });
-
+    /**
+     * Wildcard jQuery selector to set image height for slider
+     */
     $('div[id^="slider_"]').find('img').css('height', '300px');
 
     /**
