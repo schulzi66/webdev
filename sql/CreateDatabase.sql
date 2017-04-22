@@ -3,12 +3,12 @@ CREATE DATABASE IF NOT EXISTS libraryswd;
 USE libraryswd;
 
 -- -- UNCOMMENT THE FOLLOWING AFTER FIRST USE OF THIS SCRIPT
-ALTER TABLE books
-  DROP FOREIGN KEY FK_books_member,
-  DROP FOREIGN KEY FK_books_images;
-ALTER TABLE galleryimages
-  DROP FOREIGN KEY FK_gallery,
-  DROP FOREIGN KEY FK_images;
+-- ALTER TABLE books
+--  DROP FOREIGN KEY FK_books_member,
+--  DROP FOREIGN KEY FK_books_images;
+-- ALTER TABLE galleryimages
+--  DROP FOREIGN KEY FK_gallery,
+--  DROP FOREIGN KEY FK_images;
 --
 
 DROP TABLE IF EXISTS books;
@@ -174,3 +174,6 @@ INSERT INTO pagecontent
 VALUES(DEFAULT ,"about", "About", "The SWD Library is a great library with all kinds of books for all ages. - Your library team"),
   (DEFAULT , "contact", "Contact Us", "Please feel free to contact us anytime with regards to any questions"),
   (DEFAULT , "index", "Home", "Welcome to the SWD Library!");
+
+INSERT INTO `messages` (`MessageID`, `Firstname`, `Surname`, `Email`, `Message`, `Replied`) VALUES
+  (1, 'Marius', 'Schulze', 'marius.schulze@eufh-mail.de', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.', 0);
