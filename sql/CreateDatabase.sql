@@ -138,7 +138,7 @@ REFERENCES images(ImageID);
 
 INSERT INTO gallery (GalleryID, Name, State) VALUES(1, 'about', 1);
 INSERT INTO gallery (GalleryID, Name, State) VALUES(2, 'index', 1);
-INSERT INTO gallery (GalleryID, Name, State) VALUES(3, 'contact us', 1);
+INSERT INTO gallery (GalleryID, Name, State) VALUES(3, 'contact', 1);
 
 ALTER TABLE galleryimages
   Add Constraint PK_galleryimages
