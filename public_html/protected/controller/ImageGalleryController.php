@@ -1,7 +1,5 @@
 <?php
-//TODO: Index und Contact keine Gallery, selbst wenn Show
 //TODO: Image-Sliders sollten eine festvorgeschriebene Größe haben (Slider skaliert aktuell mit Bildergröße, sieht kacke aus). Außerdem sollten die Bilder zentriert im Slider sein
-//TODO: Button "Add selected Images to Gallery" sollte oben im Bereich sein, ewig runterscrollen ist kein tolles UX
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/database/MySQLService.php";
 

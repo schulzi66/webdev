@@ -24,6 +24,8 @@ $(document).ready(function () {
         });
     });
 
+    $('div[id^="slider_"]').find('img').css('height', '300px');
+
     /**
      * Initialize the imagepicker in the admin imagegallery view
      */

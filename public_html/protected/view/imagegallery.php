@@ -51,12 +51,14 @@ SessionController::validateAdminSession();
             <?php } ?>
         </ul>
     </div>
-
     <div id="imageSelectionWrapper" class="container" hidden>
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Available images</h2>
             </div>
+            <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary btn-margin-bt">Add Selected Images to
+                Gallery
+            </button>
             <div class="picker">
                 <select id="imageGallerySelect" multiple="multiple"
                         class="form-control image-picker show-html">
@@ -74,9 +76,6 @@ SessionController::validateAdminSession();
                     ?>
             </div>
         </div>
-        <button onclick="sendSelectedValues(getCookie('currentSlider'));" class="btn btn-primary">Add Selected Images to
-            Gallery
-        </button>
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->

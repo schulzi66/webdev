@@ -27,6 +27,9 @@ textarea {
     text-align: center
 }
 
+.btn-margin-bt {
+    margin-bottom: 10px;
+}
 /* Searchbox / Main Search
 -------------------------------------------------- */
 .mainSearchWrapper {
@@ -116,6 +119,9 @@ textarea {
     width: 264px;
 }
 
+#carousel-inner {
+    margin-left: 25%;
+}
 /* Overwriting standard Bootstrap
  -------------------------------------------------- */
 
