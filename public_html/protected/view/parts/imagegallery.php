@@ -48,7 +48,7 @@ $fileFormat = ".jpg";
         ?>
     </div>
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#slider_ <?php echo $pageName; ?>" role="button" data-slide="prev">
+    <a class="left carousel-control" href="#slider_<?php echo $pageName; ?>" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
