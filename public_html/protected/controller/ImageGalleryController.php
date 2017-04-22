@@ -1,5 +1,4 @@
 <?php
-//TODO: Image-Sliders sollten eine festvorgeschriebene Größe haben (Slider skaliert aktuell mit Bildergröße, sieht kacke aus). Außerdem sollten die Bilder zentriert im Slider sein
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "$root/webdev/public_html/protected/database/MySQLService.php";
 
