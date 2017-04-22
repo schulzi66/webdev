@@ -120,8 +120,8 @@ textarea {
     max-height: 300px;
 }
 
-#carousel-inner {
-    margin-left: 25%;
+.carousel-inner > .item > img {
+    margin: 0 auto;
 }
 /* Overwriting standard Bootstrap
  -------------------------------------------------- */
