@@ -30,7 +30,6 @@ $count = Count($books); ?>
                 $image = ImageGalleryController::getImageById($book->getImageId());
                 echo '<tr>';
                 echo '<td class="align-center">'
-                //TODO: So machen dass der das img-tag nur aufruft, wenn $image != null ist, sonst ruft der das 404 Bild auf
                     ?>
                     <img class="img-thumbnail" width="100" height="80" src="../src/img/<?php echo $image[0][2] ?>.jpg"
                          alt="<?php $image[0][2]; ?>">
