@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 22. Apr 2017 um 10:40
+-- Erstellungszeit: 22. Apr 2017 um 16:39
 -- Server-Version: 10.1.21-MariaDB
--- PHP-Version: 7.1.3
+-- PHP-Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -82,7 +82,7 @@ CREATE TABLE `gallery` (
 
 INSERT INTO `gallery` (`GalleryID`, `Name`, `State`) VALUES
 (1, 'about', 1),
-(2, 'index', 1),
+(2, 'index', 0),
 (3, 'contact', 1);
 
 -- --------------------------------------------------------
@@ -101,7 +101,13 @@ CREATE TABLE `galleryimages` (
 --
 
 INSERT INTO `galleryimages` (`GalleryID`, `ImageID`) VALUES
-(1, 1);
+(1, 2),
+(1, 3),
+(2, 2),
+(2, 3),
+(2, 23),
+(3, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -185,6 +191,13 @@ CREATE TABLE `messages` (
   `Message` longtext NOT NULL,
   `Replied` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `messages`
+--
+
+INSERT INTO `messages` (`MessageID`, `Firstname`, `Surname`, `Email`, `Message`, `Replied`) VALUES
+(1, 'Marius', 'Schulze', 'marius.schulze@eufh-mail.de', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.', 0);
 
 -- --------------------------------------------------------
 
@@ -310,7 +323,7 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT für Tabelle `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT für Tabelle `pagecontent`
 --
