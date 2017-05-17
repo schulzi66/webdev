@@ -7,7 +7,7 @@ class SessionController {
     /**
      *
      */
-    public static function redirectAdmin(): void {
+    public static function redirectAdmin(){
         session_start();
         if (!empty($_SESSION) && $_SESSION["admin"] == true) {
             $host = $_SERVER['HTTP_HOST'];
@@ -21,7 +21,7 @@ class SessionController {
     /**
      *
      */
-    public static function logout(): void {
+    public static function logout() {
         session_start();
         session_unset();
         session_destroy();
@@ -31,7 +31,7 @@ class SessionController {
     /**
      *
      */
-    public static function validateAdminSession(): void {
+    public static function validateAdminSession(){
         session_start();
         if ($_SESSION["admin"] == false) {
             $host = $_SERVER['HTTP_HOST'];

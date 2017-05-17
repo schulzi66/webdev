@@ -1,6 +1,6 @@
 <?php
-require_once "../controller/ValidationController.php";
-require_once "../controller/LoanController.php";
+require_once __DIR__. "/../controller/ValidationController.php";
+require_once __DIR__. "/../controller/LoanController.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 
-function changeDateToDatabaseFormat($date): String
+function changeDateToDatabaseFormat($date)
 {
     //changes dates to a database friendly format (YYYY-mm-DD)
     $dateArray = explode("/", $date);

@@ -1,7 +1,7 @@
 <?php
-require_once "../controller/BookManagementController.php";
-require_once "../controller/SessionController.php";
-require_once "../controller/ValidationController.php";
+require_once __DIR__. "/../controller/BookManagementController.php";
+require_once __DIR__. "/../controller/SessionController.php";
+require_once __DIR__. "/../controller/ValidationController.php";
 
 /**
  * Validate session before executing action

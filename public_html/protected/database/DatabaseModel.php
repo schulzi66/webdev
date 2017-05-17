@@ -10,7 +10,7 @@ class DatabaseModel {
     /**
      * @return mysqli
      */
-    public static function getAdapter() : mysqli{
+    public static function getAdapter(){
         $connection = new ConnectionFactory();
         return $connection->getConnection();
     }

@@ -1,5 +1,5 @@
 <?php
-require_once "../database/MySQLService.php";
+require_once __DIR__. "/../database/MySQLService.php";
 
 /**
  * Controller-Class BookManagementController
@@ -8,7 +8,7 @@ class BookManagementController {
     /**
      * @return array|null
      */
-    public static function getAllBooks(): ?array {
+    public static function getAllBooks() {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllBooks();
@@ -20,7 +20,7 @@ class BookManagementController {
      * @param $id
      * @return Book|null
      */
-    public static function getBookById($id): ?Book {
+    public static function getBookById($id) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getBookById($id);
@@ -32,7 +32,7 @@ class BookManagementController {
      * @param $book
      * @return bool
      */
-    public static function addBook($book): bool {
+    public static function addBook($book){
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->addBook($book);
@@ -44,7 +44,7 @@ class BookManagementController {
      * @param $bookId
      * @return bool
      */
-    public static function deleteBook($bookId): bool {
+    public static function deleteBook($bookId){
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->deleteBook($bookId);
@@ -56,7 +56,7 @@ class BookManagementController {
      * @param $book
      * @return bool
      */
-    public static function updateBook($book): bool {
+    public static function updateBook($book) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->updateBook($book);

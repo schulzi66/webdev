@@ -1,6 +1,6 @@
 <?php
-include "../entities/Book.php";
-require_once "../controller/SessionController.php";
+include __DIR__ . "/../entities/Book.php";
+require_once __DIR__ . "/../controller/SessionController.php";
 
 SessionController::validateAdminSession();
 $book = unserialize($_GET["book"]);

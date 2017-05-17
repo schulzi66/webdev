@@ -11,7 +11,7 @@ class ConnectionFactory {
     /**
      * @return mysqli
      */
-    public function getConnection(): mysqli {
+    public function getConnection() {
         try {
             $config = $this->loadConfiguration();
             // Make the connection
@@ -32,7 +32,7 @@ class ConnectionFactory {
      * @param string $file
      * @return array
      */
-    private function loadConfiguration($file = 'database.ini'): array {
+    private function loadConfiguration($file = 'database.ini') {
         $settings = parse_ini_file($file, TRUE);
 
         $host = $settings['database']['host'];

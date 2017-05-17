@@ -1,6 +1,7 @@
 <?php
-$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-require_once "$root/webdev/public_html/protected/database/MySQLService.php";
+//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+//require_once (dirname(__FILE__).'/../database/MySQLService.php');
+require_once __DIR__. '/../database/MySQLService.php';
 
 /**
  * Controller-Class ContentController
@@ -10,7 +11,7 @@ class ContentController {
      * @param $pageName
      * @return null|PageContent
      */
-    public static function getContentByPageName($pageName): ?PageContent {
+    public static function getContentByPageName($pageName){
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getContentByPageName($pageName);
@@ -21,7 +22,7 @@ class ContentController {
     /**
      * @return array|null
      */
-    public static function getAllPageContents(): ?array {
+    public static function getAllPageContents() {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllPageContents();
@@ -33,7 +34,7 @@ class ContentController {
      * @param $pageContent
      * @return bool
      */
-    public static function updatePageContent($pageContent): bool {
+    public static function updatePageContent($pageContent){
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->updatePageContent($pageContent);

@@ -1,7 +1,7 @@
 <?php
-require_once "../controller/ContactController.php";
-require_once "../controller/ValidationController.php";
-require_once "../entities/ContactRequest.php";
+require_once __DIR__. "/../controller/ContactController.php";
+require_once __DIR__. "/../controller/ValidationController.php";
+require_once __DIR__. "/../entities/ContactRequest.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();

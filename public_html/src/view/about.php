@@ -7,10 +7,10 @@
 <?php
 //global $pageName;
 $pageName = basename(__FILE__, '.php');
-$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-require_once "$root/webdev/public_html/protected/controller/ContentController.php";
-require_once "$root/webdev/public_html/protected/entities/PageContent.php";
-require_once "$root/webdev/public_html/protected/controller/ImageGalleryController.php";
+//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once __DIR__ . "/../../protected/controller/ContentController.php";
+require_once __DIR__ . "/../../protected/entities/PageContent.php";
+require_once __DIR__ . "/../../protected/controller/ImageGalleryController.php";
 $content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="container">

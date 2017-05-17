@@ -13,7 +13,7 @@ class MailController {
      * @param $msg
      * @return bool
      */
-    public static function sendMail($to, $subject, $msg): bool {
+    public static function sendMail($to, $subject, $msg){
         return mail($to, $subject, wordwrap($msg, 70), self::headers);
     }
 }

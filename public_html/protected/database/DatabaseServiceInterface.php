@@ -9,75 +9,75 @@ interface DatabaseServiceInterface {
      * @param $credentials
      * @return null|User
      */
-    public function getUserFromDatabase($credentials): ?User;
+    public function getUserFromDatabase($credentials);
 
 /* Book methods
 ---–-----------------------*/
     /**
      * @return array|null
      */
-    public function getAllBooks(): ?array;
+    public function getAllBooks();
 
     /**
      * @param $id
      * @return Book|null
      */
-    public function getBookById($id): ?Book;
+    public function getBookById($id);
 
     /**
      * @param $book
      * @return bool
      */
-    public function addBook($book): bool;
+    public function addBook($book);
 
     /**
      * @param $bookId
      * @return bool
      */
-    public function deleteBook($bookId): bool;
+    public function deleteBook($bookId);
 
     /**
      * @param $book
      * @return bool
      */
-    public function updateBook($book): bool;
+    public function updateBook($book);
 
     /**
      * @param $input
      * @return array|null
      */
-    public function getBooksByTitleOrAuthor($input): ?array;
+    public function getBooksByTitleOrAuthor($input);
 
 /* Member methods
 ---–-----------------------*/
     /**
      * @return array|null
      */
-    public function getAllMembers(): ?array;
+    public function getAllMembers();
 
     /**
      * @param $id
      * @return Member|null
      */
-    public function getMemberById($id): ?Member;
+    public function getMemberById($id);
 
     /**
      * @param $member
      * @return bool
      */
-    public function addMember($member): bool;
+    public function addMember($member);
 
     /**
      * @param $memberId
      * @return bool
      */
-    public function deleteMember($memberId): bool;
+    public function deleteMember($memberId);
 
     /**
      * @param $member
      * @return bool
      */
-    public function updateMember($member): bool;
+    public function updateMember($member);
 
 /* Gallery methods
 ---–-----------------------*/
@@ -85,73 +85,73 @@ interface DatabaseServiceInterface {
      * @param $imageGalleryName
      * @return array|null
      */
-    public function getImages($imageGalleryName): ?array;
+    public function getImages($imageGalleryName);
 
     /**
      * @param $id
      * @return array|null
      */
-    public function getImageById($id) : ?array;
+    public function getImageById($id);
 
     /**
      * @param $galleryID
      * @param $images
      * @return bool
      */
-    public function updateImageGallery($galleryID, $images): bool;
+    public function updateImageGallery($galleryID, $images);
 
     /**
      * @param $imageGalleryID
      * @param $state
      * @return bool
      */
-    public function updateImageGalleryVisibility($imageGalleryID, $state): bool;
+    public function updateImageGalleryVisibility($imageGalleryID, $state);
 
     /**
      * @return array|null
      */
-    public function getAllGalleries(): ?array;
+    public function getAllGalleries();
 
     /**
      * @param $imageNames
      * @return array|null
      */
-    public function getImageIdsByImageNames($imageNames): ?array;
+    public function getImageIdsByImageNames($imageNames);
 
     /**
      * @param $galleryID
      * @return array|null
      */
-    public function getGalleryImagesByGalleryID($galleryID): ?array;
+    public function getGalleryImagesByGalleryID($galleryID);
 
     /**
      * @param $galleryID
      * @return array|null
      */
-    public function getGalleryImageIdsByGalleryID($galleryID): ?array;
+    public function getGalleryImageIdsByGalleryID($galleryID);
 
     /**
      * @param $ids
      * @return array|null
      */
-    public function getImageNamesByImageIds($ids): ?array;
+    public function getImageNamesByImageIds($ids);
 
     /**
      * @return array|null
      */
-    public function getGalleryNames(): ?array;
+    public function getGalleryNames();
 
     /**
      * @param $galleryName
      * @return int
      */
-    public function getGalleryIdByGalleryName($galleryName): int;
+    public function getGalleryIdByGalleryName($galleryName);
 
     /**
      * @param $pageName
      * @return Gallery|null
      */
-    public function getGalleryVisibilityByPageName($pageName): ?Gallery;
+    public function getGalleryVisibilityByPageName($pageName);
 
 /* Contact request methods
 ---–-----------------------*/
@@ -159,24 +159,24 @@ interface DatabaseServiceInterface {
      * @param $contactRequest
      * @return bool
      */
-    public function receiveContactRequest($contactRequest): bool;
+    public function receiveContactRequest($contactRequest);
 
     /**
      * @return array|null
      */
-    public function getAllContactRequests(): ?array;
+    public function getAllContactRequests();
 
     /**
      * @param $id
      * @return ContactRequest|null
      */
-    public function getContactRequestById($id): ?ContactRequest;
+    public function getContactRequestById($id);
 
     /**
      * @param $id
      * @return bool
      */
-    public function setContactRequestToReplied($id): bool;
+    public function setContactRequestToReplied($id);
 
 /* Page content methods
 ---–-----------------------*/
@@ -184,18 +184,18 @@ interface DatabaseServiceInterface {
      * @param $pageName
      * @return null|PageContent
      */
-    public function getContentByPageName($pageName): ?PageContent;
+    public function getContentByPageName($pageName);
 
     /**
      * @return array|null
      */
-    public function getAllPageContents(): ? array;
+    public function getAllPageContents();
 
     /**
      * @param $pageContent
      * @return bool
      */
-    public function updatePageContent($pageContent): bool;
+    public function updatePageContent($pageContent);
 
 /* Book loan and return methods
 ---–-----------------------*/
@@ -203,11 +203,11 @@ interface DatabaseServiceInterface {
      * @param $input
      * @return bool
      */
-    public function loanBook($input) : bool;
+    public function loanBook($input);
 
     /**
      * @param $input
      * @return bool
      */
-    public function returnBook($input) : bool;
+    public function returnBook($input);
 }

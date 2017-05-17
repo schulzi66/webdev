@@ -1,5 +1,5 @@
 <?php
-require_once "../database/MySQLService.php";
+require_once __DIR__. "/../database/MySQLService.php";
 
 /**
  * Controller-Class MemberManagementController
@@ -8,7 +8,7 @@ class MemberManagementController {
     /**
      * @return array|null
      */
-    public static function getAllMembers(): ?array {
+    public static function getAllMembers(){
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getAllMembers();
@@ -20,7 +20,7 @@ class MemberManagementController {
      * @param $id
      * @return Member|null
      */
-    public static function getMemberById($id): ?Member {
+    public static function getMemberById($id) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->getMemberById($id);
@@ -32,7 +32,7 @@ class MemberManagementController {
      * @param $member
      * @return bool
      */
-    public static function addMember($member): bool {
+    public static function addMember($member) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->addMember($member);
@@ -44,7 +44,7 @@ class MemberManagementController {
      * @param $memberId
      * @return bool
      */
-    public static function deleteMember($memberId): bool {
+    public static function deleteMember($memberId) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->deleteMember($memberId);
@@ -56,7 +56,7 @@ class MemberManagementController {
      * @param $member
      * @return bool
      */
-    public static function updateMember($member): bool {
+    public static function updateMember($member) {
         $sqlService = new MySQLService();
         if ($sqlService->connect()) {
             return $sqlService->updateMember($member);

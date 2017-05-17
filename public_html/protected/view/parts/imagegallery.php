@@ -1,8 +1,9 @@
 <?php
-$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-require_once "$root/webdev/public_html/protected/controller/ImageGalleryController.php";
-require_once "$root/webdev/public_html/protected/entities/Gallery.php";
-require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
+//TODO
+//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once __DIR__ . "/../../controller/ImageGalleryController.php";
+require_once __DIR__ . "/../../entities/Gallery.php";
+require_once __DIR__ . "/../../entities/GalleryImage.php";
 
 $galleryID = ImageGalleryController::getGalleryIDByGalleryName($pageName);
 ?>

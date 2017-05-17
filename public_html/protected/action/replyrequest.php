@@ -1,8 +1,8 @@
 <?php
-require_once "../controller/MailController.php";
-require_once "../controller/SessionController.php";
-require_once "../controller/ValidationController.php";
-require_once "../controller/ContactController.php";
+require_once __DIR__. "/../controller/MailController.php";
+require_once __DIR__. "/../controller/SessionController.php";
+require_once __DIR__. "/../controller/ValidationController.php";
+require_once __DIR__. "/../controller/ContactController.php";
 
 /**
  * Validate session before executing action

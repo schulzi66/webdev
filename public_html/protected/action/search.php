@@ -1,6 +1,6 @@
 <?php
-require_once "../controller/ValidationController.php";
-require_once "../controller/SearchController.php";
+require_once __DIR__. "/../controller/ValidationController.php";
+require_once __DIR__. "/../controller/SearchController.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errorArray = array();

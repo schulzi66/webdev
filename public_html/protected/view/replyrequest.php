@@ -1,6 +1,6 @@
 <?php
-require_once "../controller/SessionController.php";
-require_once "../entities/ContactRequest.php";
+require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../entities/ContactRequest.php";
 
 SessionController::validateAdminSession();
 $request = unserialize($_GET["request"]);

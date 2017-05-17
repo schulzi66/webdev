@@ -1,8 +1,8 @@
 <?php
-require_once "../controller/SessionController.php";
-require_once "../controller/MemberManagementController.php";
-require_once "../controller/BookManagementController.php";
-require_once "../entities/Book.php";
+require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../controller/MemberManagementController.php";
+require_once __DIR__ . "/../controller/BookManagementController.php";
+require_once __DIR__ . "/../entities/Book.php";
 
 SessionController::validateAdminSession();
 ?>
@@ -158,7 +158,7 @@ SessionController::validateAdminSession();
     <!-- Keep this at the end of the body tag to load the scripts at the right time -->
     <?php include '../../protected/view/parts/scripts.php'; ?>
 </body>
-<?php include '../../protected/view/parts/footer.php'; ?>
+<?php //include '../../protected/view/parts/footer.php'; ?>
 </html>
 
 

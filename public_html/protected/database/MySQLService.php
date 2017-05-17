@@ -1,13 +1,13 @@
 <?php
-$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once "DatabaseModel.php";
-require_once "$root/webdev/public_html/protected/entities/User.php";
-require_once "$root/webdev/public_html/protected/entities/Book.php";
-require_once "$root/webdev/public_html/protected/entities/Member.php";
-require_once "$root/webdev/public_html/protected/entities/ContactRequest.php";
-require_once "$root/webdev/public_html/protected/entities/PageContent.php";
-require_once "$root/webdev/public_html/protected/entities/Gallery.php";
-require_once "$root/webdev/public_html/protected/entities/GalleryImage.php";
+require_once __DIR__. "/../entities/User.php";
+require_once __DIR__. "/../entities/Book.php";
+require_once __DIR__. "/../entities/Member.php";
+require_once __DIR__. "/../entities/ContactRequest.php";
+require_once __DIR__. "/../entities/PageContent.php";
+require_once __DIR__. "/../entities/Gallery.php";
+require_once __DIR__. "/../entities/GalleryImage.php";
 //require_once "DatabaseServiceInterface.php";
 
 /**
@@ -20,7 +20,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return bool
      */
-    public function connect(): bool {
+    public function connect(){
         $this->setConnection(DatabaseModel::getAdapter());
 
         if ($this->getConnection()) {
@@ -53,7 +53,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $credentials
      * @return null|User
      */
-    public function getUserFromDatabase($credentials): ?User {
+    public function getUserFromDatabase($credentials) {
         $connection = $this->getConnection();
         if ($connection) {
             $userName = mysqli_real_escape_string($connection, $credentials["userName"]);
@@ -74,7 +74,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return array|null
      */
-    public function getAllBooks(): ?array {
+    public function getAllBooks() {
         $connection = $this->getConnection();
         $bookArray = null;
         if ($connection) {
@@ -95,7 +95,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $id
      * @return Book|null
      */
-    public function getBookById($id): ?Book {
+    public function getBookById($id) {
         $connection = $this->getConnection();
         $book = null;
         if ($connection) {
@@ -113,7 +113,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $book
      * @return bool
      */
-    public function addBook($book): bool {
+    public function addBook($book) {
         $connection = $this->getConnection();
         if ($connection) {
             $title = mysqli_real_escape_string($connection, $book->getTitle());
@@ -131,7 +131,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $bookId
      * @return bool
      */
-    public function deleteBook($bookId): bool {
+    public function deleteBook($bookId) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -147,7 +147,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $book
      * @return bool
      */
-    public function updateBook($book): bool {
+    public function updateBook($book) {
 
         $connection = $this->getConnection();
         $result = false;
@@ -170,7 +170,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $input
      * @return array
      */
-    public function getBooksByTitleOrAuthor($input): ?array {
+    public function getBooksByTitleOrAuthor($input) {
         $connection = $this->getConnection();
         $bookArray = null;
         if ($connection) {
@@ -225,7 +225,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return array|null
      */
-    public function getAllMembers(): ?array {
+    public function getAllMembers() {
         $connection = $this->getConnection();
         $memberArray = null;
         if ($connection) {
@@ -246,7 +246,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $id
      * @return Member|null
      */
-    public function getMemberById($id): ?Member {
+    public function getMemberById($id) {
         $connection = $this->getConnection();
         $member = null;
         if ($connection) {
@@ -264,7 +264,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $member
      * @return bool
      */
-    public function addMember($member): bool {
+    public function addMember($member) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -285,7 +285,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $memberId
      * @return bool
      */
-    public function deleteMember($memberId): bool {
+    public function deleteMember($memberId) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -301,7 +301,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $member
      * @return bool
      */
-    public function updateMember($member): bool {
+    public function updateMember($member) {
 
         $connection = $this->getConnection();
         $result = false;
@@ -329,7 +329,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param string $imageGalleryName
      * @return array|null
      */
-    public function getImages($imageGalleryName = "default"): ?array {
+    public function getImages($imageGalleryName = "default") {
         $connection = $this->getConnection();
         $images = array();
         if ($connection) {
@@ -351,7 +351,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $id
      * @return array|null
      */
-    public function getImageById($id) : ?array {
+    public function getImageById($id)  {
         $connection = $this->getConnection();
         $result = null;
         if($connection){
@@ -374,7 +374,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $images
      * @return bool
      */
-    public function updateImageGallery($galleryID, $images): bool {
+    public function updateImageGallery($galleryID, $images) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -395,7 +395,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $state
      * @return bool
      */
-    public function updateImageGalleryVisibility($imageGalleryID, $state): bool {
+    public function updateImageGalleryVisibility($imageGalleryID, $state) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -408,7 +408,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return array|null
      */
-    public function getAllGalleries(): ?array {
+    public function getAllGalleries() {
         $connection = $this->getConnection();
         $galleries = array();
         if ($connection) {
@@ -425,7 +425,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $imageNames
      * @return array|null
      */
-    public function getImageIdsByImageNames($imageNames): ?array {
+    public function getImageIdsByImageNames($imageNames) {
         $connection = $this->getConnection();
         $imageIDs = array();
         $sql = "";
@@ -459,7 +459,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $galleryID
      * @return array|null
      */
-    public function getGalleryImagesByGalleryID($galleryID): ?array {
+    public function getGalleryImagesByGalleryID($galleryID) {
         $connection = $this->getConnection();
         $galleryIds = array();
         if ($connection) {
@@ -479,7 +479,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $galleryID
      * @return array|null
      */
-    public function getGalleryImageIdsByGalleryID($galleryID): ?array {
+    public function getGalleryImageIdsByGalleryID($galleryID) {
         $connection = $this->getConnection();
         $galleryIds = array();
         if ($connection) {
@@ -499,7 +499,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $ids
      * @return array|null
      */
-    public function getImageNamesByImageIds($ids): ?array {
+    public function getImageNamesByImageIds($ids) {
         $connection = $this->getConnection();
         $imageNames = array();
         $sql = "";
@@ -532,7 +532,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return array|null
      */
-    public function getGalleryNames(): ?array {
+    public function getGalleryNames() {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT Name, GalleryID FROM gallery";
@@ -549,7 +549,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $galleryName
      * @return int
      */
-    public function getGalleryIdByGalleryName($galleryName): int {
+    public function getGalleryIdByGalleryName($galleryName) {
         $connection = $this->getConnection();
         if ($connection) {
             $sql = "SELECT GalleryID FROM gallery WHERE Name = '" . $galleryName . "';";
@@ -566,7 +566,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $pageName
      * @return Gallery|null
      */
-    public function getGalleryVisibilityByPageName($pageName): ?Gallery {
+    public function getGalleryVisibilityByPageName($pageName) {
         $connection = $this->getConnection();
         $gallery = null;
         if ($connection) {
@@ -588,7 +588,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $contactRequest
      * @return bool
      */
-    public function receiveContactRequest($contactRequest): bool {
+    public function receiveContactRequest($contactRequest) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -605,7 +605,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return array|null
      */
-    public function getAllContactRequests(): ?array {
+    public function getAllContactRequests() {
         $connection = $this->getConnection();
         $requestArray = null;
         if ($connection) {
@@ -626,7 +626,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $id
      * @return ContactRequest|null
      */
-    public function getContactRequestById($id): ?ContactRequest {
+    public function getContactRequestById($id) {
         $connection = $this->getConnection();
         $request = null;
         if ($connection) {
@@ -644,7 +644,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $id
      * @return bool
      */
-    public function setContactRequestToReplied($id): bool {
+    public function setContactRequestToReplied($id) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -662,7 +662,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $pageName
      * @return null|PageContent
      */
-    public function getContentByPageName($pageName): ?PageContent {
+    public function getContentByPageName($pageName) {
         $connection = $this->getConnection();
         $request = null;
         if ($connection) {
@@ -680,7 +680,7 @@ class MySQLService { // implements DatabaseServiceInterface {
     /**
      * @return array|null
      */
-    public function getAllPageContents(): ? array {
+    public function getAllPageContents() {
         $connection = $this->getConnection();
         $contentArray = null;
         if ($connection) {
@@ -701,7 +701,7 @@ class MySQLService { // implements DatabaseServiceInterface {
      * @param $pageContent
      * @return bool
      */
-    public function updatePageContent($pageContent): bool {
+    public function updatePageContent($pageContent) {
         $connection = $this->getConnection();
         $result = false;
         if ($connection) {
@@ -719,7 +719,7 @@ class MySQLService { // implements DatabaseServiceInterface {
 
     //endregion
     //region Loans
-    public function loanBook($input) : bool {
+    public function loanBook($input) {
         $connection = $this->getConnection();
         $result = false;
         if($connection) {
@@ -732,7 +732,7 @@ class MySQLService { // implements DatabaseServiceInterface {
         return $result;
     }
 
-    public function returnBook($input) : bool {
+    public function returnBook($input)  {
         $connection = $this->getConnection();
         $result = false;
         if($connection) {

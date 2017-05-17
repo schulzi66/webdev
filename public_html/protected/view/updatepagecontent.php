@@ -1,6 +1,6 @@
 <?php
-include "../entities/PageContent.php";
-require_once "../controller/SessionController.php";
+include __DIR__ . "/../entities/PageContent.php";
+require_once __DIR__ . "/../controller/SessionController.php";
 
 SessionController::validateAdminSession();
 $pageContent = unserialize($_GET["page-content"]);

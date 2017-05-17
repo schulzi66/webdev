@@ -1,5 +1,5 @@
 <?php
-require_once "../../protected/controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
 
 SessionController::redirectAdmin();
 ?>

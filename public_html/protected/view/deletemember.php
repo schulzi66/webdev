@@ -1,6 +1,6 @@
 <?php
-include "../entities/Member.php";
-require_once "../controller/SessionController.php";
+include __DIR__ . "/../entities/Member.php";
+require_once __DIR__ . "/../controller/SessionController.php";
 
 SessionController::validateAdminSession();
 $member = unserialize($_GET["member"]);
