@@ -1,24 +1,24 @@
 <?php
-require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
 
 SessionController::validateAdminSession();
 ?>
 
 <html>
 <head>
-    <?php include '../../protected/view/parts/head.php'; ?>
+    <?php include __DIR__ . '/parts/head.php'; ?>
 </head>
-<?php include '../../protected/view/parts/header.php'; ?>
+<?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 <div class="container">
-    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+    <?php include __DIR__ . '/parts/breadcrumb.php'; ?>
     <div class="">
         <div class="">
             <div class="heading"><h1>SWD LIBRARY</h1>
             </div>
         </div>
         <div class="form-container container">
-            <form action="../protected/action/addmember.php" method="post">
+            <form action="../../protected/action/addmember.php" method="post">
                 <h2>Add New Member</h2>
                 <div class="form-group">
                     <label for="firstName">Firstname</label>
@@ -57,9 +57,9 @@ SessionController::validateAdminSession();
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-<?php include '../../protected/view/parts/scripts.php'; ?>
+<?php include __DIR__ . '/parts/scripts.php'; ?>
 </body>
-<?php include '../../protected/view/parts/footer.php'; ?>
+<?php include __DIR__ . '/parts/footer.php'; ?>
 </html>
 
 

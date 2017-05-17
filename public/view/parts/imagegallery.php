@@ -1,9 +1,9 @@
 <?php
 //TODO
 //$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-require_once __DIR__ . "/../../controller/ImageGalleryController.php";
-require_once __DIR__ . "/../../entities/Gallery.php";
-require_once __DIR__ . "/../../entities/GalleryImage.php";
+require_once __DIR__ . "/../../../protected/controller/ImageGalleryController.php";
+require_once __DIR__ . "/../../../protected/entities/Gallery.php";
+require_once __DIR__ . "/../../../protected/entities/GalleryImage.php";
 
 $galleryID = ImageGalleryController::getGalleryIDByGalleryName($pageName);
 ?>
@@ -39,7 +39,7 @@ $fileFormat = ".jpg";
                 ?>
                 <!-- creates slides dynamically based on the images configured within the admin view -->
                 <div class="item">
-                    <img src="../../public_html/src/img/<?php echo $image . $fileFormat ?>"
+                    <img src="../assets/img/<?php echo $image . $fileFormat ?>"
                          alt="<?php echo $image; ?>">
                 </div>
                 <?php
