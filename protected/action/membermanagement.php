@@ -15,9 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $member = serialize($member);
         //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/Webdev/public_html/protected/view";
+        $uri = "/public/view";
+        $path = $_COOKIE["path"];
         $extra = 'updatemember.php';
-        header("Location: http://$host$uri/$extra/?member=$member");
+        header("Location: http://$host$path$uri/$extra/?member=$member");
         exit;
     }
 
@@ -28,18 +29,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $member = serialize($member);
         //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/Webdev/public_html/protected/view";
+        $uri = "/public/view";
+        $path = $_COOKIE["path"];
         $extra = 'deletemember.php';
-        header("Location: http://$host$uri/$extra/?member=$member");
+        header("Location: http://$host$path$uri/$extra/?member=$member");
         exit;
     }
 
     if (isset($_GET['member-add'])) {
         //redirect to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/Webdev/public_html/protected/view";
+        $uri = "/public/view";
+        $path = $_COOKIE["path"];
         $extra = 'addmember.php';
-        header("Location: http://$host$uri/$extra");
+        header("Location: http://$host$path$uri/$extra");
         exit;
     }
 }

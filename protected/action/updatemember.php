@@ -55,9 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (MemberManagementController::updateMember($member)) {
             //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/protected/view";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'membermanagement.php';
-            header("Location: http://$host$uri/$extra");
+            header("Location: http://$host$path$uri/$extra");
             exit;
         } else {
             $errorArray[] = 'Member could not be updated';

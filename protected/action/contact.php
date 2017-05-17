@@ -41,9 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (ContactController::receiveContactRequest($contactRequest)) {
             //redirect
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/public";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'index.php';
-            header("Location: http://$host$uri/$extra");
+            header("Location: http://$host$path$uri/$extra");
             exit;
         } else {
             $errorArray[] = "Contact request could not be send.";

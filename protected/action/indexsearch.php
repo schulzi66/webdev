@@ -14,9 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($resultBooks != null && count($resultBooks) > 0) {
             $resultBooks = serialize($resultBooks);
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/src/view";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'searchresults.php';
-            header("Location: http://$host$uri/$extra/?result-books=" . $resultBooks);
+            header("Location: http://$host$path$uri/$extra/?result-books=" . $resultBooks);
             exit;
         } else {
             echo "<h4>No books could be found using the provided search terms. Please <a href='../../index.php'>go back</a>";

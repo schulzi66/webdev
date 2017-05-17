@@ -43,9 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (BookManagementController::addBook($book)) {
             //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/protected/view";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'bookmanagement.php';
-            header("Location: http://$host$uri/$extra");
+            header("Location: http://$host$path$uri/$extra");
             exit;
         } else {
             $errorArray[] = 'Book could not be added';

@@ -43,9 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (ContentController::updatePageContent($pageContent)) {
             //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/protected/view";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'pagemanagement.php';
-            header("Location: http://$host$uri/$extra");
+            header("Location: http://$host$path$uri/$extra");
             exit;
         } else {
             $errorArray[] = 'Page could not be updated';

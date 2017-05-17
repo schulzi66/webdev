@@ -17,9 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $book = serialize($book);
         //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/Webdev/public_html/protected/view";
+        $uri = "/public/view";
+        $path = $_COOKIE["path"];
         $extra = 'updatebook.php';
-        header("Location: http://$host$uri/$extra/?book=$book");
+        header("Location: http://$host$path$uri/$extra/?book=$book");
         exit;
     }
 
@@ -31,18 +32,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $book = serialize($book);
         //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/Webdev/public_html/protected/view";
+        $uri = "/public/view";
+        $path = $_COOKIE["path"];
         $extra = 'deletebook.php';
-        header("Location: http://$host$uri/$extra/?book=$book");
+        header("Location: http://$host$path$uri/$extra/?book=$book");
         exit;
     }
 
     if (isset($_GET['book-add'])) {
         //redirect to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/Webdev/public_html/protected/view";
+        $uri = "/public/view";
+        $path = $_COOKIE["path"];
         $extra = 'addbook.php';
-        header("Location: http://$host$uri/$extra");
+        header("Location: http://$host$path$uri/$extra");
         exit;
     }
 }
