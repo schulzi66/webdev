@@ -47,9 +47,11 @@
                         <li><a href="public/view/admin.php"> Admin Login</a></li>
                     <?php } ?>
                     <?php
-                    if (!empty($_SESSION) && in_array("admin", $_SESSION) && $_SESSION["admin"] == true) {
-                        echo "<li><a href='protected/action/logout.php'>Logout</a></li>";
-                    } ?>
+                    if (!empty($_SESSION) && in_array("admin", $_SESSION)) {
+                        if ($_SESSION["admin"] == true) {
+                            echo "<li><a href='protected/action/logout.php'>Logout</a></li>";
+                        }
+                    }?>
                 <?php } else { ?>
                     <?php
                     if (!isset($_SESSION)) {
@@ -62,8 +64,10 @@
                         <li><a href="admin.php"> Admin Login</a></li>
                     <?php } ?>
                     <?php
-                    if (!empty($_SESSION) && in_array("admin", $_SESSION) && $_SESSION["admin"] == true) {
-                        echo "<li><a href='../../protected/action/logout.php'>Logout</a></li>";
+                    if (!empty($_SESSION) && in_array("admin", $_SESSION)) {
+                        if ($_SESSION["admin"] == true){
+                            echo "<li><a href='../../protected/action/logout.php'>Logout</a></li>";
+                        }
                     } ?>
                 <?php } ?>
         </div><!-- /.navbar-collapse -->
