@@ -16,9 +16,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/index.php">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
-                <li><a href="search.php">Search Library</a></li>
+                <li><a href="<?php $_COOKIE["path"] ?>/about.php">About Us</a></li>
+                <li><a href="<?php ?>/contact.php">Contact Us</a></li>
+                <li><a href="<?php ?>/search.php">Search Library</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php
