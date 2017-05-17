@@ -34,13 +34,18 @@ $fileFormat = ".jpg";
         <?php
         if (isset($images)) {
             foreach ($images as $image) {
-                ?>
-                <!-- creates slides dynamically based on the images configured within the admin view -->
-                <div class="item">
-                    <img src="../assets/img/<?php echo $image . $fileFormat ?>"
-                         alt="<?php echo $image; ?>">
-                </div>
-                <?php
+                if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == "index.php"){ ?>
+                    <!-- creates slides dynamically based on the images configured within the admin view -->
+                    <div class="item">
+                        <img src="public/assets/img/<?php echo $image . $fileFormat ?>"
+                             alt="<?php echo $image; ?>">
+                    </div>
+                <?php } else { ?>
+                    <div class="item">
+                        <img src="../assets/img/<?php echo $image . $fileFormat ?>"
+                             alt="<?php echo $image; ?>">
+                    </div>
+                <?php }
             } ?>
             <?php
         }
