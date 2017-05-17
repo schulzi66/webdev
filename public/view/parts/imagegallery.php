@@ -39,7 +39,7 @@ $fileFormat = ".jpg";
                 ?>
                 <!-- creates slides dynamically based on the images configured within the admin view -->
                 <div class="item">
-                    <img src="../../assets/img/<?php echo $image . $fileFormat ?>"
+                    <img src="../assets/img/<?php echo $image . $fileFormat ?>"
                          alt="<?php echo $image; ?>">
                 </div>
                 <?php
