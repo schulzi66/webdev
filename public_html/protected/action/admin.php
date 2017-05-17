@@ -19,9 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["admin"] = true;
             //redirect to dashboard
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/protected/view";
+            $uri = "/public_html/protected/view";
             $extra = 'dashboard.php';
-            header("Location: http://$host$uri/$extra");
+            $path = constant('url');
+            header("Location: http://$host$path$uri/$extra");
             exit;
         } else {
             $errorArray[] = "Please provide valid credentials";

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../../protected/controller/SessionController.php";
-
+echo __DIR__;
 SessionController::redirectAdmin();
 ?>
 <html>
@@ -14,7 +14,7 @@ SessionController::redirectAdmin();
     <div class="heading"><h1>SWD LIBRARY</h1>
     </div>
     <div class="form-container container">
-        <form action="../protected/action/admin.php" method="post">
+        <form action="../../protected/action/admin.php" method="post">
             <h2>Admin Login</h2>
             <div class="form-group">
                 <label for="username">Username</label>
