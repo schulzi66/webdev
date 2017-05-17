@@ -20,7 +20,7 @@ $member = unserialize($_GET["member"]);
             </div>
         </div>
         <div class="form-container container">
-            <form action="../../protected/action/updatemember.php" method="post">
+            <form action="../../../protected/action/updatemember.php" method="post">
                 <h2>Update Member</h2>
                 <div class="form-group">
                     <label for="ID">ID</label>

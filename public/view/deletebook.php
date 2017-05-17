@@ -20,7 +20,7 @@ $book = unserialize($_GET["book"]);
             </div>
         </div>
         <div class="form-container container">
-            <form action="../../protected/action/deletebook.php" method="post">
+            <form action="../../../protected/action/deletebook.php" method="post">
                 <h2>Delete Book</h2>
                 <div class="form-group">
                     <label for="ID">ID</label>
