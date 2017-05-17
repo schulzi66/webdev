@@ -20,7 +20,7 @@ $pageContent = unserialize($_GET["page-content"]);
             </div>
         </div>
         <div class="form-container container">
-            <form action="../../protected/action/updatepagecontent.php" method="post">
+            <form action="../../../protected/action/updatepagecontent.php" method="post">
                 <h2>Update Content</h2>
                 <div class="form-group">
                     <label for="ID">ID</label>
