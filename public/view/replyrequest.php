@@ -20,7 +20,7 @@ $request = unserialize($_GET["request"]);
             </div>
         </div>
         <div class="form-container container">
-            <form action="../../protected/action/replyrequest.php" method="post">
+            <form action="../../../protected/action/replyrequest.php" method="post">
                 <h2>Reply to the Request</h2>
                 <div class="form-group">
                     <label for="ID">Request ID</label>

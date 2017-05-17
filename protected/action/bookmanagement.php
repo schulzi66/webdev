@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (isset($_GET['book-delete'])) {
-        $bookId = ValidationController::validateInput($_GET["book-update"]);
+        $bookId = ValidationController::validateInput($_GET["book-delete"]);
         //load book object from database via controller
         $book = BookManagementController::getBookById($bookId);
         //serialize the book to pass it in the redirect as parameter
