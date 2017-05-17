@@ -20,8 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if (ImageGalleryController::updateImageGallery($galleryID, $imageIds)) {
             //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/public/view";
-            $path = $_COOKIE["path"];
+            $uri = "webdev/public/view";
+            $arr = explode('htdocs', __DIR__);
+            $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
             $extra = 'imagegallery.php';
             header("Location: http://$host$path$uri/$extra");
             exit;
@@ -46,8 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if (ImageGalleryController::updateImageGalleryVisibility($visibility, $state)) {
             //redirect to overview
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/public/view";
-            $path = $_COOKIE["path"];
+            $uri = "webdev/public/view";
+            $arr = explode('htdocs', __DIR__);
+            $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
             $extra = 'imagegallery.php';
             header("Location: http://$host$path$uri/$extra");
             exit;

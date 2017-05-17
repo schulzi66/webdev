@@ -15,8 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $member = serialize($member);
         //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/public/view";
-        $path = $_COOKIE["path"];
+        $uri = "webdev/public/view";
+        $arr = explode('htdocs', __DIR__);
+        $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
         $extra = 'updatemember.php';
         header("Location: http://$host$path$uri/$extra/?member=$member");
         exit;
@@ -29,8 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $member = serialize($member);
         //redirect with parameter to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/public/view";
-        $path = $_COOKIE["path"];
+        $uri = "webdev/public/view";
+        $arr = explode('htdocs', __DIR__);
+        $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
         $extra = 'deletemember.php';
         header("Location: http://$host$path$uri/$extra/?member=$member");
         exit;
@@ -39,8 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['member-add'])) {
         //redirect to according view
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/public/view";
-        $path = $_COOKIE["path"];
+        $uri = "webdev/public/view";
+        $arr = explode('htdocs', __DIR__);
+        $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
         $extra = 'addmember.php';
         header("Location: http://$host$path$uri/$extra");
         exit;

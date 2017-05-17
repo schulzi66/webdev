@@ -5,8 +5,6 @@
 <?php include realpath(dirname(__DIR__)) . '/webdev/public/view/parts/header.php'; ?>
 <body>
 <?php
-
-//TODO CLEAN UP
 $pageName = basename(__FILE__, '.php');
 $arr = explode('htdocs', __DIR__);
 $path = $arr[1];

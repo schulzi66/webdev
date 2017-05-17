@@ -63,12 +63,14 @@ SessionController::validateAdminSession();
                 <select id="imageGallerySelect" multiple="multiple"
                         class="form-control image-picker show-html">
                     <?php
+                    $arr = explode('htdocs', __DIR__);
+                    $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
                     $images = ImageGalleryController::getImages();
                     if ($images != null) {
                         foreach ($images as $image) {
                             ?>
                             <option data-img-class="thumbnail-img"
-                                    data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] . str_replace("\\", "/",$_COOKIE["path"])?>/public/assets/img/<?php echo $image[2] . "." . $image[1] ?>"
+                                    data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] . $path?>/webdev/public/assets/img/<?php echo $image[2] . "." . $image[1] ?>"
                                     value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
                         <?php }
                     }

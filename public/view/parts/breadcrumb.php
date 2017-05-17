@@ -3,7 +3,9 @@
 <ol class="breadcrumb">
     <?php
     $crumbs = explode("/", $_SERVER["REQUEST_URI"]);
-    $root = $_COOKIE["path"] ."/index.php";
+    $arr = explode('htdocs', __DIR__);
+    $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
+    $root = $path . "webdev/index.php";
     //The base of each visible website is everything up to "view", since all display php files in this project are in view folders
     $base = substr($_SERVER["REQUEST_URI"],0,strrpos($_SERVER["REQUEST_URI"], "view/") + 4);
     echo '<li class="breadcrumb-item">';

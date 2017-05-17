@@ -5,7 +5,6 @@
 <?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 <?php
-//TODO CLEAN UP
 $pageName = basename(__FILE__, '.php');
 require_once __DIR__ . "/../../protected/controller/ContentController.php";
 require_once __DIR__ . "/../../protected/controller/ImageGalleryController.php";

@@ -14,8 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($resultBooks != null && count($resultBooks) > 0) {
             $resultBooks = serialize($resultBooks);
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/public/view";
-            $path = $_COOKIE["path"];
+            $uri = "webdev/public/view";
+            $arr = explode('htdocs', __DIR__);
+            $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
             $extra = 'searchresults.php';
             header("Location: http://$host$path$uri/$extra/?result-books=" . $resultBooks);
             exit;

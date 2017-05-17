@@ -41,9 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (ContactController::receiveContactRequest($contactRequest)) {
             //redirect
             $host = $_SERVER['HTTP_HOST'];
-            $path = $_COOKIE["path"];
-            $extra = 'index.php';
-            header("Location: http://$host$path/$extra");
+            $arr = explode('htdocs', __DIR__);
+            $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
+            $extra = 'webdev/index.php';
+            header("Location: http://$host$path$extra");
             exit;
         } else {
             $errorArray[] = "Contact request could not be send.";

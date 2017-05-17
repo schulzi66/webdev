@@ -15,8 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $pageContent = serialize($pageContent);
         //redirect to view with parameter
         $host = $_SERVER['HTTP_HOST'];
-        $uri = "/public/view";
-        $path = $_COOKIE["path"];
+        $uri = "webdev/public/view";
+        $arr = explode('htdocs', __DIR__);
+        $path = substr($arr[1], 0, strpos($arr[1], 'webdev'));
         $extra = 'updatepagecontent.php';
         header("Location: http://$host$path$uri/$extra/?page-content=$pageContent");
         exit;
