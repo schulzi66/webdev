@@ -22,6 +22,7 @@ echo $path;
 //echo $y;
 $y = substr($y, 0, strpos($y, 'public'));
 //echo $y;
+
 require_once dirname(__DIR__) . '/webdev/protected/controller/ContentController.php';
 require_once dirname(__DIR__) . '/webdev/protected/entities/PageContent.php';
 require_once dirname(__DIR__) . '/webdev/protected/controller/ImageGalleryController.php';
