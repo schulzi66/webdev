@@ -1,8 +1,8 @@
 <html>
 <head>
-    <?php include realpath(dirname(__DIR__)) . '/sswd/public/view/parts/head.php'; ?>
+    <?php include realpath(dirname(__DIR__)) . '/webdev/public/view/parts/head.php'; ?>
 </head>
-<?php include realpath(dirname(__DIR__)) . '/sswd/public/view/parts/header.php'; ?>
+<?php include realpath(dirname(__DIR__)) . '/webdev/public/view/parts/header.php'; ?>
 <body>
 <?php
 
@@ -14,9 +14,9 @@ $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 //echo $y;
 $y = substr($y, 0, strpos($y, 'public'));
 //echo $y;
-require_once dirname(__DIR__) . '/sswd/protected/controller/ContentController.php';
-require_once dirname(__DIR__) . '/sswd/protected/entities/PageContent.php';
-require_once dirname(__DIR__) . '/sswd/protected/controller/ImageGalleryController.php';
+require_once dirname(__DIR__) . '/webdev/protected/controller/ContentController.php';
+require_once dirname(__DIR__) . '/webdev/protected/entities/PageContent.php';
+require_once dirname(__DIR__) . '/webdev/protected/controller/ImageGalleryController.php';
 $content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="outer col" data-placeholder-label="Header">
@@ -29,7 +29,7 @@ $content = ContentController::getContentByPageName($pageName);
     <div id="imageGalleryWrapper">
         <?php
 
-        include dirname(__DIR__) . '/sswd/public/view/parts/imagegallery.php';
+        include dirname(__DIR__) . '/webdev/public/view/parts/imagegallery.php';
         } ?>
     </div>
 
@@ -53,9 +53,9 @@ $content = ContentController::getContentByPageName($pageName);
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-<?php include dirname(__DIR__) . '/sswd/public/view/parts/scripts.php'; ?>
+<?php include dirname(__DIR__) . '/webdev/public/view/parts/scripts.php'; ?>
 </body>
-<?php include dirname(__DIR__) . '/sswd/public/view/parts/footer.php'; ?>
+<?php include dirname(__DIR__) . '/webdev/public/view/parts/footer.php'; ?>
 </html>
 
 
