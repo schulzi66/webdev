@@ -68,7 +68,7 @@ SessionController::validateAdminSession();
                         foreach ($images as $image) {
                             ?>
                             <option data-img-class="thumbnail-img"
-                                    data-img-src="../../assets/img/<?php echo $image[2] . "." . $image[1] ?>"
+                                    data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] .  $_COOKIE['path'] ?>/public/assets/img/<?php echo $image[2] . "." . $image[1] ?>"
                                     value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
                         <?php }
                     }
