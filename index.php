@@ -1,21 +1,22 @@
 <html>
 <head>
-    <?php include 'public_html/protected/view/parts/head.php'; ?>
+    <?php include realpath(dirname(__DIR__)) . '/sswd/public/view/parts/head.php'; ?>
 </head>
-<?php include 'public_html/protected/view/parts/header.php'; ?>
+<?php include realpath(dirname(__DIR__)) . '/sswd/public/view/parts/header.php'; ?>
 <body>
 <?php
+
 //TODO CLEAN UP
 $pageName = basename(__FILE__, '.php');
 $x = __FILE__;
 $y = realpath(dirname(__FILE__));
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 //echo $y;
-$y = substr($y, 0, strpos($y, 'src'));
+$y = substr($y, 0, strpos($y, 'public'));
 //echo $y;
-require_once "public_html/protected/controller/ContentController.php";
-require_once "public_html/protected/entities/PageContent.php";
-require_once "public_html/protected/controller/ImageGalleryController.php";
+require_once dirname(__DIR__) . '/sswd/protected/controller/ContentController.php';
+require_once dirname(__DIR__) . '/sswd/protected/entities/PageContent.php';
+require_once dirname(__DIR__) . '/sswd/protected/controller/ImageGalleryController.php';
 $content = ContentController::getContentByPageName($pageName);
 ?>
 <div class="outer col" data-placeholder-label="Header">
@@ -28,7 +29,7 @@ $content = ContentController::getContentByPageName($pageName);
     <div id="imageGalleryWrapper">
         <?php
 
-        include "public_html/protected/view/parts/imagegallery.php";
+        include dirname(__DIR__) . '/sswd/public/view/parts/imagegallery.php';
         } ?>
     </div>
 
@@ -42,7 +43,7 @@ $content = ContentController::getContentByPageName($pageName);
         <div class="searchBox">
             <div id="searchbox_div">
                 <!-- Form for searching both the title and author of books to the given string-->
-                <form name="searchForm" action="public_html/protected/action/indexsearch.php" method="post">
+                <form name="searchForm" action="protected/action/indexsearch.php" method="post">
                     <input id="searchTextbox" name="searchText" type="text" minlength="3"
                            title="At least 3 characters required" required/>
                     <input type="submit" id="searchBtn"/>
@@ -52,9 +53,9 @@ $content = ContentController::getContentByPageName($pageName);
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-<?php include 'public_html/protected/view/parts/scripts.php'; ?>
+<?php include dirname(__DIR__) . '/sswd/public/view/parts/scripts.php'; ?>
 </body>
-<?php include 'public_html/protected/view/parts/footer.php'; ?>
+<?php include dirname(__DIR__) . '/sswd/public/view/parts/footer.php'; ?>
 </html>
 
 
