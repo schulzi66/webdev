@@ -113,7 +113,7 @@ function sendSelectedValues(galleryID) {
     values = JSON.stringify(values);
     $.ajax({
         type: 'GET',
-        url: '../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
+        url: '../../protected/action/imagegallery.php?update-gallery=' + galleryID + '&values=' + values,
         data: values,
         success: function () {
             deleteCookie("currentSlider");
@@ -139,7 +139,7 @@ function updateVisibility(galleryID) {
         state = true;
         $.ajax({
             type: 'GET',
-            url: '../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
+            url: '../../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
             success: function () {
                 setTimeout(function () {
                     location.reload();
@@ -153,7 +153,7 @@ function updateVisibility(galleryID) {
     } else {
         $.ajax({
             type: 'GET',
-            url: '../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
+            url: '../../protected/action/imagegallery.php?image-gallery-visibility=' + galleryID + '&state=' + state,
             success: function () {
                 setTimeout(function () {
                     location.reload();
@@ -175,7 +175,7 @@ function updateVisibility(galleryID) {
 function returnBook(bookID, date) {
     $.ajax({
         type: 'GET',
-        url: '../protected/action/bookloans.php?book-return=' + bookID + '&date=' + date,
+        url: '../../protected/action/bookloans.php?book-return=' + bookID + '&date=' + date,
         success: function () {
             setTimeout(function () {
                 location.reload();
@@ -197,7 +197,7 @@ function returnBook(bookID, date) {
 function loanBook(bookID, memberID, date) {
     $.ajax({
         type: 'GET',
-        url: '../protected/action/bookloans.php?book-loan=' + bookID + '&memberID=' + memberID + '&date=' + date,
+        url: '../../protected/action/bookloans.php?book-loan=' + bookID + '&memberID=' + memberID + '&date=' + date,
         success: function () {
             setTimeout(function () {
                 location.reload();
