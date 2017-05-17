@@ -14,6 +14,7 @@ SessionController::validateAdminSession();
 <body>
 
 <div class="container">
+    <?php include __DIR__ . '/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Book Loans</div>
         <table class="table table-hover table-bordered">

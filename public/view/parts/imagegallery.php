@@ -1,6 +1,4 @@
 <?php
-//TODO
-//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once __DIR__ . "/../../../protected/controller/ImageGalleryController.php";
 require_once __DIR__ . "/../../../protected/entities/Gallery.php";
 require_once __DIR__ . "/../../../protected/entities/GalleryImage.php";
