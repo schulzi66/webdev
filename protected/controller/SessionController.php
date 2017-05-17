@@ -11,9 +11,10 @@ class SessionController {
         session_start();
         if (!empty($_SESSION) && $_SESSION["admin"] == true) {
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/protected/view";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'dashboard.php';
-            header("Location: http://$host$uri/$extra");
+            header("Location: http://$host$path$uri/$extra");
             exit;
         }
     }
@@ -35,9 +36,10 @@ class SessionController {
         session_start();
         if ($_SESSION["admin"] == false) {
             $host = $_SERVER['HTTP_HOST'];
-            $uri = "/Webdev/public_html/public/view";
+            $uri = "/public/view";
+            $path = $_COOKIE["path"];
             $extra = 'admin.php';
-            header("Location: http://$host$uri/$extra");
+            header("Location: http://$host$path$uri/$extra");
             exit;
         }
     }

@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . "/../../protected/controller/SessionController.php";
-echo __DIR__;
 SessionController::redirectAdmin();
 ?>
 <html>

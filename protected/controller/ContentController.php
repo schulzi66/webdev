@@ -1,6 +1,4 @@
 <?php
-//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-//require_once (dirname(__FILE__).'/../database/MySQLService.php');
 require_once __DIR__ . '/../database/MySQLService.php';
 
 /**

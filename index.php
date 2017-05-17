@@ -8,20 +8,9 @@
 
 //TODO CLEAN UP
 $pageName = basename(__FILE__, '.php');
-$x = __FILE__;
-$y = realpath(dirname(__FILE__));
-$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-echo __DIR__;
 $arr = explode('htdocs', __DIR__);
 $path = $arr[1];
 setcookie("path", $path);
-//$GLOBALS["path"] = $path;
-//define('path', $path);
-echo "..........";
-echo $path;
-//echo $y;
-$y = substr($y, 0, strpos($y, 'public'));
-//echo $y;
 
 require_once dirname(__DIR__) . '/webdev/protected/controller/ContentController.php';
 require_once dirname(__DIR__) . '/webdev/protected/entities/PageContent.php';
