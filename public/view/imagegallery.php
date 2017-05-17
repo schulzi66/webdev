@@ -1,16 +1,16 @@
 <?php
-require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
 
 SessionController::validateAdminSession();
 ?>
 <html>
 <head>
-    <?php include '../../protected/view/parts/head.php'; ?>
+    <?php include __DIR__ . '/parts/head.php'; ?>
 </head>
-<?php include '../../protected/view/parts/header.php'; ?>
+<?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 <div class="container">
-    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+    <?php include __DIR__ . '/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Available Galleries</div>
         <table class="table table-hover table-bordered">
@@ -21,7 +21,7 @@ SessionController::validateAdminSession();
                 <td>Update Visibility</td>
             </tr>
             <?php
-            require_once "../controller/ImageGalleryController.php";
+            require_once __DIR__ . "/../../protected/controller/ImageGalleryController.php";
             $galleries = ImageGalleryController::getAllGalleries();
             foreach ($galleries as $gallery) {
                 echo '<tr>';
@@ -68,7 +68,7 @@ SessionController::validateAdminSession();
                         foreach ($images as $image) {
                             ?>
                             <option data-img-class="thumbnail-img"
-                                    data-img-src="http://localhost:<?php echo $_SERVER['SERVER_PORT'] ?>/Webdev/public_html/src/img/<?php echo $image[2] . "." . $image[1] ?>"
+                                    data-img-src="../../assets/img/<?php echo $image[2] . "." . $image[1] ?>"
                                     value="<?php echo $image[2] ?>"><?php echo $image[3] ?></option>
                         <?php }
                     }
@@ -79,7 +79,7 @@ SessionController::validateAdminSession();
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-<?php include '../../protected/view/parts/scripts.php'; ?>
+<?php include __DIR__ . '/parts/scripts.php'; ?>
 </body>
 <?php //include '../../protected/view/parts/footer.php'; ?>
 </html>

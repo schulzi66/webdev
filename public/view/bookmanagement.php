@@ -1,17 +1,17 @@
 <?php
-require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
 
 SessionController::validateAdminSession();
 ?>
 <html>
 <head>
-    <?php include '../../protected/view/parts/head.php'; ?>
+    <?php include __DIR__ . '/parts/head.php'; ?>
 </head>
-<?php include '../../protected/view/parts/header.php'; ?>
+<?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 
 <div class="container">
-    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+    <?php include __DIR__ . '/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Book Management</div>
         <table class="table table-hover table-bordered">
@@ -21,12 +21,12 @@ SessionController::validateAdminSession();
                 <td>Author</td>
                 <td>ISBN</td>
                 <td>Category</td>
-                <td><?php echo '<a href="../protected/action/bookmanagement.php?book-add">Add new Book</a>'; ?></td>
+                <td><?php echo '<a href="../../protected/action/bookmanagement.php?book-add">Add new Book</a>'; ?></td>
             </tr>
 
             <?php
-            require_once "../controller/BookManagementController.php";
-            require_once "../entities/Book.php";
+            require_once __DIR__ . "/../../protected/controller/BookManagementController.php";
+            require_once __DIR__ . "/../../protected/entities/Book.php";
 
             $books = BookManagementController::getAllBooks();
             if ($books != null) {
@@ -38,8 +38,8 @@ SessionController::validateAdminSession();
                     echo '<td>' . $book->getAuthor() . '</td>';
                     echo '<td>' . $book->getIsbn() . '</td>';
                     echo '<td>' . $book->getCategory() . '</td>';
-                    echo '<td><a href="../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
-                    echo '<td><a href="../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
+                    echo '<td><a href="../../protected/action/bookmanagement.php?book-update=' . $book->getId() . '">Update</a></td>';
+                    echo '<td><a href="../../protected/action/bookmanagement.php?book-delete=' . $book->getId() . '">Delete</a></td>';
                     echo '</tr>';
                 }
             }
@@ -50,7 +50,7 @@ SessionController::validateAdminSession();
             ?>
 
             <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-            <?php include '../../protected/view/parts/scripts.php'; ?>
+            <?php include __DIR__ . '/parts/scripts.php'; ?>
 </body>
 <?php //include '../../protected/view/parts/footer.php'; ?>
 </html>

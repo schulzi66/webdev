@@ -1,16 +1,16 @@
 <?php
-require_once __DIR__ . "/../controller/SessionController.php";
-require_once __DIR__ . "/../controller/MemberManagementController.php";
-require_once __DIR__ . "/../controller/BookManagementController.php";
-require_once __DIR__ . "/../entities/Book.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/MemberManagementController.php";
+require_once __DIR__ . "/../../protected/controller/BookManagementController.php";
+require_once __DIR__ . "/../../protected/entities/Book.php";
 
 SessionController::validateAdminSession();
 ?>
 <html>
 <head>
-    <?php include '../../protected/view/parts/head.php'; ?>
+    <?php include __DIR__ . '/parts/head.php'; ?>
 </head>
-<?php include '../../protected/view/parts/header.php'; ?>
+<?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 
 <div class="container">
@@ -156,7 +156,7 @@ SessionController::validateAdminSession();
             <!-- /.modal -->
     </div>
     <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-    <?php include '../../protected/view/parts/scripts.php'; ?>
+    <?php include __DIR__ . '/parts/scripts.php'; ?>
 </body>
 <?php //include '../../protected/view/parts/footer.php'; ?>
 </html>

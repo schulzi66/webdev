@@ -1,17 +1,17 @@
 <?php
-require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
 
 SessionController::validateAdminSession();
 ?>
 <html>
 <head>
-    <?php include '../../protected/view/parts/head.php'; ?>
+    <?php include __DIR__ . '/parts/head.php'; ?>
 </head>
-<?php include '../../protected/view/parts/header.php'; ?>
+<?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 
 <div class="container">
-    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+    <?php include __DIR__ . '/parts/breadcrumb.php'; ?>
     <div class="panel panel-default">
         <div class="panel-heading">Contact Requests</div>
         <table class="table table-hover table-bordered">
@@ -25,8 +25,8 @@ SessionController::validateAdminSession();
             </tr>
 
             <?php
-            require_once "../controller/ContactController.php";
-            require_once "../entities/ContactRequest.php";
+            require_once __DIR__ . "/../../protected/controller/ContactController.php";
+            require_once __DIR__ . "/../../protected/entities/ContactRequest.php";
             $contactRequests = ContactController::getAllContactRequests();
             if ($contactRequests != null) {
                 foreach ($contactRequests as $request) {
@@ -38,7 +38,7 @@ SessionController::validateAdminSession();
                     echo '<td>' . $request->getMail() . '</td>';
                     echo '<td>' . $request->getMessage() . '</td>';
                     echo '<td>' . $request->getReplied() . '</td>';
-                    echo '<td><a href="../protected/action/contactmanagement.php?contact-reply=' . $request->getId() . '">Reply</a></td>';
+                    echo '<td><a href="../../protected/action/contactmanagement.php?contact-reply=' . $request->getId() . '">Reply</a></td>';
                     echo '</tr>';
                 }
             }
@@ -49,8 +49,8 @@ SessionController::validateAdminSession();
             ?>
 
             <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-            <?php include '../../protected/view/parts/scripts.php'; ?>
+            <?php include __DIR__ . '/parts/scripts.php'; ?>
 </body>
-<?php include '../../protected/view/parts/footer.php'; ?>
+<?php include __DIR__ . '/parts/footer.php'; ?>
 </html>
 

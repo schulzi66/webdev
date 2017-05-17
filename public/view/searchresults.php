@@ -1,5 +1,4 @@
 <?php
-//$root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once __DIR__ . "/../../protected/entities/Book.php";
 require_once __DIR__ . "/../../protected/controller/ImageGalleryController.php";
 $books = unserialize($_GET["result-books"]);

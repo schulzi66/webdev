@@ -1,16 +1,16 @@
 <?php
-require_once __DIR__ . "/../controller/SessionController.php";
+require_once __DIR__ . "/../../protected/controller/SessionController.php";
 
 SessionController::validateAdminSession();
 ?>
 <html>
 <head>
-    <?php include '../../protected/view/parts/head.php'; ?>
+    <?php include __DIR__ . '/parts/head.php'; ?>
 </head>
-<?php include '../../protected/view/parts/header.php'; ?>
+<?php include __DIR__ . '/parts/header.php'; ?>
 <body>
 <div class="container">
-    <?php include '../../protected/view/parts/breadcrumb.php'; ?>
+    <?php include __DIR__ . '/parts/breadcrumb.php'; ?>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">SWD Library Administration</h1>
@@ -29,7 +29,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/pagemanagement.php">
+                <a href="../../public/view/pagemanagement.php">
                     <div class="panel-footer panel-footer-blue">
                         <span class="pull-left">Edit pages</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -50,7 +50,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/imagegallery.php">
+                <a href="../../public/view/imagegallery.php">
                     <div class="panel-footer">
                         <span class="pull-left">Edit Galleries</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -71,7 +71,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/bookmanagement.php">
+                <a href="../../public/view/bookmanagement.php">
                     <div class="panel-footer panel-footer">
                         <span class="pull-left">Manage Books</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,7 +92,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/membermanagement.php">
+                <a href="../../public/view/membermanagement.php">
                     <div class="panel-footer">
                         <span class="pull-left">Edit Members</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -113,7 +113,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/bookloans.php">
+                <a href="../../public/view/bookloans.php">
                     <div class="panel-footer">
                         <span class="pull-left">View Loans</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -134,7 +134,7 @@ SessionController::validateAdminSession();
                         </div>
                     </div>
                 </div>
-                <a href="../protected/view/contactmanagement.php">
+                <a href="../../public/view/contactmanagement.php">
                     <div class="panel-footer">
                         <span class="pull-left">Manage Contact Requests</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -146,9 +146,9 @@ SessionController::validateAdminSession();
     </div>
 </div>
 <!-- Keep this at the end of the body tag to load the scripts at the right time -->
-<?php include '../../protected/view/parts/scripts.php'; ?>
+<?php include __DIR__ . '/parts/scripts.php'; ?>
 </body>
-<?php include '../../protected/view/parts/footer.php'; ?>
+<?php include __DIR__ . '/parts/footer.php'; ?>
 </html>
 
 
